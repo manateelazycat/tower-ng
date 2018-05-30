@@ -51,5 +51,49 @@ body, html {
     margin-top: 5px;
     margin-bottom: 5px;
     width: 256px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-primary {
+    background-color: #3ccefd;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 18px;
+    border-color: none;
+}
+
+.btn-primary:hover {
+    background: #3cdefd;
+    color: rgba(255, 255, 255, 0.9);
+    border-color: none;
+}
+
+.btn-primary:active,
+.btn-primary:active:hover,
+.btn-primary:active:focus,
+.btn-primary:focus {
+    background: #3cbefd;
+    color: rgba(255, 255, 255, 0.9);
+    border-color: none;
+}
+
+.btn-link {
+    color: #fff;
+    font-size: 16px;
+}
+
+.btn-link:hover {
+    color: #3cdefd;
+}
+
+.btn-link:active,
+.btn-link:active:hover,
+.btn-link:active:focus,
+.btn-link:focus {
+    color: #3cbefd;
 }
