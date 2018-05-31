@@ -18,7 +18,7 @@ body, html {
     background-size: cover;
 }
 
-.background_color {
+.background-color {
     background-color: #f4f7ed;
     
     /* Full height */
@@ -51,7 +51,7 @@ body, html {
     margin-bottom: 40px;
 }
 
-.home_logo {
+.home-logo {
     font-size: 600%;
     color: #fff;
     font-weight: bold;
@@ -117,32 +117,31 @@ body, html {
     color: #3cbefd;
 }
 
-.sign_in_title,
-.sign_up_title {
+.sign-title {
     margin-bottom: 20px;
 }
 
-.sign_up_button {
+.sign-button {
     margin-top: 20px;
 }
 
-.direct_sign_in {
+.sign-link {
     color: #aaa;
     font-size: 12px;
 }
 
-.direct_sign_in:hover {
+.sign-link:hover {
     color: #3cdefd;
 }
 
-.direct_sign_in:active,
-.direct_sign_in:active:hover,
-.direct_sign_in:active:focus,
-.direct_sign_in:focus {
+.sign-link:active,
+.sign-link:active:hover,
+.sign-link:active:focus,
+.sign-link:focus {
     color: #3cbefd;
 }
 
-.sign_box {
+.sign-box {
     background-color: #fff;
     padding-left: 30px;
     padding-right: 30px;
@@ -153,8 +152,8 @@ body, html {
     box-shadow: 0px 10px 50px #eeeeee;
 }
 
-.sign_in_area,
-.sign_up_area {
+.sign-in-area,
+.sign-up-area {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -177,23 +176,10 @@ body, html {
 .form-check-label {
     font-weight: normal;
     font-size: 12px;
+    color: #aaa;
 }
 
 .forget-button {
-    color: #aaa;
-    font-size: 12px;
-    text-align: right;
     width: 160px;
+    text-align: right;
 }
-
-.forget-button:hover {
-    color: #3cdefd;
-}
-
-.forget-button:active,
-.forget-button:active:hover,
-.forget-button:active:focus,
-.forget-button:focus {
-    color: #3cbefd;
-}
-
