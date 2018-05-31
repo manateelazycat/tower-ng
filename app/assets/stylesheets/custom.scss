@@ -5,10 +5,22 @@ body, html {
     height: 100%;
 }
 
-.bg {
+.background {
     /* The image used */
     background-image: url("background.jpg");
 
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.background_color {
+    background-color: #f4f7ed;
+    
     /* Full height */
     height: 100%;
 
@@ -33,6 +45,13 @@ body, html {
 }
 
 .logo {
+    font-size: 450%;
+    color: #5bc4c7;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.home_logo {
     font-size: 600%;
     color: #fff;
     font-weight: bold;
@@ -97,3 +116,53 @@ body, html {
 .btn-link:focus {
     color: #3cbefd;
 }
+
+.sign_up_title {
+    margin-bottom: 20px;
+}
+
+.sign_up_button {
+    margin-top: 20px;
+}
+
+.direct_sign_in {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.direct_sign_in:hover {
+    color: #3cdefd;
+}
+
+.direct_sign_in:active,
+.direct_sign_in:active:hover,
+.direct_sign_in:active:focus,
+.direct_sign_in:focus {
+    color: #3cbefd;
+}
+
+.sign_box {
+    background-color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 50px #eeeeee;
+}
+
+.sign_up_area {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    text-align: center;
+}
+
+.form-control:focus{
+    border-color: #3cbefd;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+} 
