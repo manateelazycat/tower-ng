@@ -117,6 +117,7 @@ body, html {
     color: #3cbefd;
 }
 
+.sign_in_title,
 .sign_up_title {
     margin-bottom: 20px;
 }
@@ -152,6 +153,7 @@ body, html {
     box-shadow: 0px 10px 50px #eeeeee;
 }
 
+.sign_in_area,
 .sign_up_area {
     position: absolute;
     top: 45%;
@@ -166,3 +168,32 @@ body, html {
     box-shadow: none;
     -webkit-box-shadow: none;
 } 
+
+.form-check-input,
+.form-check-label {
+    text-align: left;
+}
+
+.form-check-label {
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.forget-button {
+    color: #aaa;
+    font-size: 12px;
+    text-align: right;
+    width: 160px;
+}
+
+.forget-button:hover {
+    color: #3cdefd;
+}
+
+.forget-button:active,
+.forget-button:active:hover,
+.forget-button:active:focus,
+.forget-button:focus {
+    color: #3cbefd;
+}
+
