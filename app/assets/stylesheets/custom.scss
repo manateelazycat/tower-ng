@@ -108,6 +108,7 @@ body, html {
 
 .btn-link:hover {
     color: #3cdefd;
+    text-decoration: none;
 }
 
 .btn-link:active,
@@ -123,22 +124,6 @@ body, html {
 
 .sign-button {
     margin-top: 20px;
-}
-
-.sign-link {
-    color: #aaa;
-    font-size: 12px;
-}
-
-.sign-link:hover {
-    color: #3cdefd;
-}
-
-.sign-link:active,
-.sign-link:active:hover,
-.sign-link:active:focus,
-.sign-link:focus {
-    color: #3cbefd;
 }
 
 .sign-box {
@@ -168,22 +153,41 @@ body, html {
     -webkit-box-shadow: none;
 } 
 
-.form-check-input,
-.form-check-label {
-    text-align: left;
-}
-
 .form-check-label {
     font-weight: normal;
     font-size: 12px;
     color: #aaa;
 }
 
-.forget-button {
-    width: 160px;
-    text-align: right;
+.remember-me {
+    float: left;
 }
 
-.sign_error {
+.forget-button {
+    float: right;
+}
+
+.sign-error {
     width: 256px;
+}
+
+.sign-link {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.sign-link:hover {
+    color: #3cdefd;
+    text-decoration: none;
+}
+
+.sign-link:active,
+.sign-link:active:hover,
+.sign-link:active:focus,
+.sign-link:focus {
+    color: #3cbefd;
+}
+
+.no-underline-link:hover {
+    text-decoration: none;
 }

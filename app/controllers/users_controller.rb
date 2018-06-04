@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      render html: "Add user " + user_params["name"]
+      redirect_to teams_path
     else
+      flash.now[:danger] = @user.errors.full_messages.first
       render 'new'
     end
   end
