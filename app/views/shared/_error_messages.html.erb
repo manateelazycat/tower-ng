@@ -1,0 +1,7 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger sign_error">
+      <%= @user.errors.full_messages.first %>
+    </div>
+  </div>
+<% end %>

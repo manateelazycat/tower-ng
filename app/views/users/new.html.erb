@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="background-color">
+      <div class="container">
+        <div class="sign-up-area">
+          <h1 class="logo">Tower</h1>
+          <div class="sign-box">
+            <h3 class="sign-title">注册</h3>
+	    <%= form_for(@user, url: sign_up_path) do |f| %>
+	      <%= render 'shared/error_messages' %>
+	      <p><input class="form-control" placeholder="团队名称"></p>
+	      <p><%= f.text_field :name, class: "form-control", placeholder: "你的名字" %></p>
+	      <p><%= f.email_field :email, class: "form-control", placeholder: "邮箱,例如: qq号码@qq.com" %></p>
+	      <p><%= f.password_field :password, class: "form-control", placeholder: "密码， 至少包含6位字符" %></p>
+	      <p><%= f.submit "注册", class: "btn btn-primary sign-button" %></p>
+              <p><button class="btn btn-link sign-link">已有账号？直接登录</button></p>
+	    <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
