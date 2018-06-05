@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="background-color">
+      <div class="container">
+        <div class="sign-in-area">
+          <h1 class="logo">Tower</h1>
+          <div class="sign-box">
+            <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+              <h3 class="sign-title">重新设置密码</h3>
+              <p><%= f.email_field :email, class: "form-control", placeholder: "请填写登录邮箱" %></p>
+              <p><%= f.submit "发送密码重设邮件", class: "btn btn-primary" %></p>
+            <% end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
