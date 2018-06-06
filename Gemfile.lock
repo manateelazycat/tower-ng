@@ -58,6 +58,7 @@ GEM
       sass (>= 3.3.4)
     bootstrap-will_paginate (1.0.0)
       will_paginate
+    browser (2.5.3)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.1.1)
@@ -213,6 +214,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap-sass
   bootstrap-will_paginate (= 1.0.0)
+  browser
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
