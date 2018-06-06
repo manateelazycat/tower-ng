@@ -194,15 +194,12 @@ body, html {
 
 .top-header {
     width: 990px;
-    height: 30px;
-    margin: auto;
 }
 
 .team-name {
     font-size: 20px;
     color: #5bc4c7;
     font-weight: 500;
-    margin-bottom: 40px;
 }
 
 .team-name:hover {
@@ -220,9 +217,7 @@ body, html {
 .top-header-item {
     font-size: 16px;
     color: #aaaaaa;
-    font-weight: 500;
-    margin-bottom: 40px;
-}
+    }
 
 .top-header-item:hover {
     color: #aaaaaa;
@@ -255,4 +250,25 @@ body, html {
 
 .phone-bottom-item-icon {
     font-size: 20px;
+}
+
+.top-header-search {
+    background-color: #f4f7ed;
+    height: 24px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.top-search-bar-group {
+    width: 200px;
+}
+
+.top-search-bar-input {
+    background-color: #f4f7ed;
+}
+
+.top-search-bar-button {
+    background-color: #f4f7ed;
+    margin: 0px;
+    width: 40px;
 }
