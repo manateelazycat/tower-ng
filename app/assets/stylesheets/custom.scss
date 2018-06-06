@@ -20,7 +20,7 @@ body, html {
 
 .background-color {
     background-color: #f4f7ed;
-    
+
     /* Full height */
     height: 100%;
 
@@ -151,7 +151,7 @@ body, html {
     border-color: #3cbefd;
     box-shadow: none;
     -webkit-box-shadow: none;
-} 
+}
 
 .form-check-label {
     font-weight: normal;
@@ -238,13 +238,18 @@ body, html {
 
 .content-box {
     background-color: red;
-
 }
 
-
-
-
-
-
-
-
+.phone-bottom-nav-item {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+.phone-bottom-nav-item {
+    float: left;
+}
+.phone-bottom-nav-item {
+    width: 20%;
+}
