@@ -191,3 +191,60 @@ body, html {
 .no-underline-link:hover {
     text-decoration: none;
 }
+
+.top-header {
+    width: 990px;
+    height: 30px;
+    margin: auto;
+}
+
+.team-name {
+    font-size: 20px;
+    color: #5bc4c7;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.team-name:hover {
+    color: #5bc4c7;
+    text-decoration: none;
+}
+
+.team-name:active,
+.team-name:active:hover,
+.team-name:active:focus,
+.team-name:focus {
+    color: #5bc4c7;
+}
+
+.top-header-item {
+    font-size: 16px;
+    color: #aaaaaa;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.top-header-item:hover {
+    color: #aaaaaa;
+    text-decoration: none;
+}
+
+.top-header-item:active,
+.top-header-item:active:hover,
+.top-header-item:active:focus,
+.top-header-item:focus {
+    color: #aaaaaa;
+}
+
+.content-box {
+    background-color: red;
+
+}
+
+
+
+
+
+
+
+
