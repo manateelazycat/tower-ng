@@ -7,11 +7,26 @@
       <div class="container">
         <nav>
           <ul class="nav navbar-nav">
-            <div class="phone-bottom-nav-item"><li><%= link_to "项目", root_path, :class => "top-header-item" %></li></div>
-            <div class="phone-bottom-nav-item"><li><%= link_to "动态", root_path, :class => "top-header-item" %></li></div>
-            <div class="phone-bottom-nav-item"><li><%= link_to "我的", root_path, :class => "top-header-item" %></li></div>
-            <div class="phone-bottom-nav-item"><li><%= link_to "团队", root_path, :class => "top-header-item" %></li></div>
-            <div class="phone-bottom-nav-item"><li><%= link_to "更多", root_path, :class => "top-header-item" %></li></div>
+            <div class="phone-bottom-tab">
+	      <span class="glyphicon glyphicon-inbox phone-bottom-item-icon"></span>
+	      <li><%= link_to "项目", root_path, :class => "phone-bottom-item-text" %></li>
+	    </div>
+            <div class="phone-bottom-tab">
+              <span class="glyphicon glyphicon-comment phone-bottom-item-icon"></span>
+	      <li><%= link_to "动态", root_path, :class => "phone-bottom-item-text" %></li>
+	    </div>
+            <div class="phone-bottom-tab">
+              <span class="glyphicon glyphicon-user phone-bottom-item-icon"></span>
+	      <li><%= link_to "我的", root_path, :class => "phone-bottom-item-text" %></li>
+	    </div>
+            <div class="phone-bottom-tab">
+              <span class="glyphicon glyphicon-calendar phone-bottom-item-icon"></span>
+	      <li><%= link_to "团队", root_path, :class => "phone-bottom-item-text" %></li>
+	    </div>
+            <div class="phone-bottom-tab">
+              <span class="glyphicon glyphicon-tasks phone-bottom-item-icon"></span>
+	      <li><%= link_to "更多", root_path, :class => "phone-bottom-item-text" %></li>
+	    </div>
           </ul>
         </nav>
       </div>

@@ -240,16 +240,19 @@ body, html {
     background-color: red;
 }
 
-.phone-bottom-nav-item {
-    position: relative;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
-    padding-top: 5px;
-}
-.phone-bottom-nav-item {
+.phone-bottom-tab {
+    // Make tab split width with 5 column and keep center of tab area.
     float: left;
-}
-.phone-bottom-nav-item {
+    text-align: center;
     width: 20%;
+    padding-top: 3px;
+}
+
+.phone-bottom-item-text {
+    font-size: 12px;
+    color: #666;
+}
+
+.phone-bottom-item-icon {
+    font-size: 20px;
 }
