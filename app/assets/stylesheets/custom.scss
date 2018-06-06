@@ -1,6 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+:root {
+    --bg-color: #f4f7ed;
+    --logo-color: #5bc4c7;
+    --focus-color: #3cbefd;
+    --hover-color: #3cbefd;
+    --button-color: #3ccefd;
+    --link-text-color: #aaa;
+    --logo-text-color: #fff;
+}
+
 body, html {
     height: 100%;
 }
@@ -19,7 +29,7 @@ body, html {
 }
 
 .background-color {
-    background-color: #f4f7ed;
+    background-color: var(--bg-color);
 
     /* Full height */
     height: 100%;
@@ -46,21 +56,21 @@ body, html {
 
 .logo {
     font-size: 450%;
-    color: #5bc4c7;
+    color: var(--logo-color);
     font-weight: bold;
     margin-bottom: 40px;
 }
 
 .home-logo {
     font-size: 600%;
-    color: #fff;
+    color: var(--logo-text-color);
     font-weight: bold;
     opacity: 0.9;
 }
 
 .solgan {
     font-size: 250%;
-    color: #fff;
+    color: var(--logo-text-color);
     font-weight: bold;
     opacity: 0.9;
     margin-bottom: 100px;
@@ -80,34 +90,34 @@ body, html {
 }
 
 .btn-primary {
-    background-color: #3ccefd;
+    background-color: var(--button-color);
     color: rgba(255, 255, 255, 0.9);
     font-size: 18px;
-    border-color: #3ccefd;
+    border-color: var(--button-color);
 }
 
 .btn-primary:hover {
-    background: #3cdefd;
+    background: var(--hover-color);
     color: rgba(255, 255, 255, 0.9);
-    border-color: #3cdefd;
+    border-color: var(--hover-color);
 }
 
 .btn-primary:active,
 .btn-primary:active:hover,
 .btn-primary:active:focus,
 .btn-primary:focus {
-    background: #3cbefd;
+    background: var(--focus-color);
     color: rgba(255, 255, 255, 0.9);
-    border-color: #3cbefd;
+    border-color: var(--focus-color);
 }
 
 .btn-link {
-    color: #fff;
+    color: var(--logo-text-color);
     font-size: 16px;
 }
 
 .btn-link:hover {
-    color: #3cdefd;
+    color: var(--hover-color);
     text-decoration: none;
 }
 
@@ -115,7 +125,7 @@ body, html {
 .btn-link:active:hover,
 .btn-link:active:focus,
 .btn-link:focus {
-    color: #3cbefd;
+    color: var(--focus-color);
 }
 
 .sign-title {
@@ -148,7 +158,7 @@ body, html {
 }
 
 .form-control:focus{
-    border-color: #3cbefd;
+    border-color: var(--focus-color);
     box-shadow: none;
     -webkit-box-shadow: none;
 }
@@ -156,7 +166,7 @@ body, html {
 .form-check-label {
     font-weight: normal;
     font-size: 12px;
-    color: #aaa;
+    color: var(--link-text-color);
 }
 
 .remember-me {
@@ -172,12 +182,12 @@ body, html {
 }
 
 .sign-link {
-    color: #aaa;
+    color: var(--link-text-color);
     font-size: 12px;
 }
 
 .sign-link:hover {
-    color: #3cdefd;
+    color: var(--hover-color);
     text-decoration: none;
 }
 
@@ -185,7 +195,7 @@ body, html {
 .sign-link:active:hover,
 .sign-link:active:focus,
 .sign-link:focus {
-    color: #3cbefd;
+    color: var(--focus-color);
 }
 
 .no-underline-link:hover {
@@ -198,12 +208,12 @@ body, html {
 
 .team-name {
     font-size: 20px;
-    color: #5bc4c7;
+    color: var(--logo-color);
     font-weight: 500;
 }
 
 .team-name:hover {
-    color: #5bc4c7;
+    color: var(--logo-color);
     text-decoration: none;
 }
 
@@ -211,16 +221,16 @@ body, html {
 .team-name:active:hover,
 .team-name:active:focus,
 .team-name:focus {
-    color: #5bc4c7;
+    color: var(--logo-color);
 }
 
 .top-header-item {
     font-size: 16px;
-    color: #aaaaaa;
+    color: var(--link-text-color);
     }
 
 .top-header-item:hover {
-    color: #aaaaaa;
+    color: var(--link-text-color);
     text-decoration: none;
 }
 
@@ -228,7 +238,7 @@ body, html {
 .top-header-item:active:hover,
 .top-header-item:active:focus,
 .top-header-item:focus {
-    color: #aaaaaa;
+    color: var(--link-text-color);
 }
 
 .content-box {
@@ -253,7 +263,7 @@ body, html {
 }
 
 .top-header-search {
-    background-color: #f4f7ed;
+    background-color: var(--bg-color);
     height: 24px;
     text-align: center;
     margin-top: 15px;
@@ -264,11 +274,11 @@ body, html {
 }
 
 .top-search-bar-input {
-    background-color: #f4f7ed;
+    background-color: var(--bg-color);
 }
 
 .top-search-bar-button {
-    background-color: #f4f7ed;
+    background-color: var(--bg-color);
     margin: 0px;
     width: 40px;
 }
