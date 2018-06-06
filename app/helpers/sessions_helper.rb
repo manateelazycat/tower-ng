@@ -36,4 +36,11 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+  
+  def jump_to_user_team(user)
+    team = Team.find_by(creator: user.email)
+    if team
+      redirect_to team_url(team.hashid)
+    end
+  end
 end

@@ -3,6 +3,13 @@ class TeamsController < ApplicationController
   end
   
   def index
+  end
+  
+  def edit
+    
+  end
+  
+  def show
     
   end
 end

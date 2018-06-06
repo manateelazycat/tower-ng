@@ -1,5 +1,8 @@
 # coding: utf-8
 class User < ApplicationRecord
+  has_many :team_admins
+  has_many :teams, :through => :team_admins
+  
   attr_accessor :remember_token
   attr_accessor :activation_token
   attr_accessor :reset_token

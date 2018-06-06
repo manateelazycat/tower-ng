@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   def new
     if logged_in?
-      redirect_to teams_path
+      jump_to_user_team(current_user)
     end
   end
 end

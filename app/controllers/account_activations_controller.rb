@@ -6,7 +6,7 @@ class AccountActivationsController < ApplicationController
       user.activate
       log_in user
       flash[:success] = "账户已经激活"
-      redirect_to teams_path
+      jump_to_user_team(user)
     else
       flash[:danger] = "不合法的激活链接"
       redirect_to root_url

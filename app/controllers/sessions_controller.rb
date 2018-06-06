@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
       if user.activated?
         log_in user
         params[:session][:remeber_me] == '1' ? remeber(user) : forget(user)
-        redirect_to teams_path
+        jump_to_user_team(user)
       else
         message = "账户还未激活"
-        message += "请检查邮件已激活账户"
+        message += "请检查邮件以激活账户"
         flash[:warning] = message
         redirect_to root_url
       end
