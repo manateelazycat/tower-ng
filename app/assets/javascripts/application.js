@@ -15,4 +15,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require sortable-rails
 //= require_tree .
+$(document).ready(function () {
+    Sortable.create(sortableContainer, {});
+});

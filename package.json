@@ -1,5 +1,7 @@
 {
   "name": "tower-ng",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "sortablejs": "^1.7.0"
+  }
 }
