@@ -265,6 +265,7 @@
 
 .top-search-bar-group {
     width: 200px;
+    margin-top: 3px;
 }
 
 .top-search-bar-input {
@@ -273,6 +274,10 @@
 
 .top-search-bar-button {
     background-color: var(--background-color);
+}
+
+.top-search-bar-icon {
+    font-size: 12px;
 }
 
 // Phone page CSS.
