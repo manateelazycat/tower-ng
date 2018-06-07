@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html class="single-page-html">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
-    <div class="background-color">
-      <div class="container">
+  <body class="single-page-body">
+    <div class="single-page-background">
+      <div class="single-page-container">
         <div class="sign-in-area">
           <h1 class="logo">Tower</h1>
           <div class="sign-box">
@@ -21,7 +21,7 @@
                 </label>
                 <%= link_to "忘记密码了?", new_password_reset_path, :class => "forget-button sign-link" %>
               </div>
-              <p><%= f.submit "登录", class: "btn btn-primary" %></p>
+              <p><%= f.submit "登录", class: "btn btn-primary click-button" %></p>
               <p><%= link_to "没有账号？立即注册", sign_up_path, :class => "sign-link" %></p>
             <% end%>
           </div>

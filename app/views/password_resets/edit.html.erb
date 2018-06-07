@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html class="single-page-html">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
-    <div class="background-color">
-      <div class="container">
+  <body class="single-page-body">
+    <div class="single-page-background">
+      <div class="single-page-container">
         <div class="sign-in-area">
           <h1 class="logo">Tower</h1>
           <div class="sign-box">
@@ -14,7 +14,7 @@
 	      
               <h3 class="sign-title">设置新的密码</h3>
               <p><%= f.password_field :password, class: "form-control", placeholder: "请填写新的密码" %></p>
-              <p><%= f.submit "更新密码", class: "btn btn-primary" %></p>
+              <p><%= f.submit "更新密码", class: "btn btn-primary click-button" %></p>
             <% end%>
           </div>
         </div>

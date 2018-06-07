@@ -2,7 +2,8 @@
 @import "bootstrap";
 
 :root {
-    --bg-color: #f4f7ed;
+    // Color variables.
+    --background-color: #f4f7ed;
     --logo-color: #5bc4c7;
     --focus-color: #3cbefd;
     --hover-color: #3cbefd;
@@ -11,11 +12,8 @@
     --logo-text-color: #fff;
 }
 
-body, html {
-    height: 100%;
-}
-
-.background {
+// Home page CSS.
+.home-background {
     /* The image used */
     background-image: url("background.jpg");
 
@@ -28,37 +26,13 @@ body, html {
     background-size: cover;
 }
 
-.background-color {
-    background-color: var(--bg-color);
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.container {
-    position: relative;
-    height: 100%;
-}
-
-.centerarea {
+.home-content-area {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background: transparent;
     text-align: center;
-}
-
-.logo {
-    font-size: 450%;
-    color: var(--logo-color);
-    font-weight: bold;
-    margin-bottom: 40px;
 }
 
 .home-logo {
@@ -76,15 +50,112 @@ body, html {
     margin-bottom: 100px;
 }
 
-.btn {
+// Single page CSS.
+.single-page-body,
+.single-page-html {
+    height: 100%;
+}
+
+.single-page-background {
+    background-color: var(--background-color);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.single-page-container {
+    position: relative;
+    height: 100%;
+}
+
+.sign-title {
+    margin-bottom: 20px;
+}
+
+.sign-button {
+    margin-top: 20px;
+}
+
+.sign-box {
+    background-color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 50px #eeeeee;
+}
+
+.sign-in-area,
+.sign-up-area {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: transparent;
+    text-align: center;
+}
+
+.remember-me {
+    float: left;
+}
+
+.forget-button {
+    float: right;
+}
+
+.sign-error {
+    width: 256px;
+}
+
+.sign-link {
+    color: var(--link-text-color);
+    font-size: 12px;
+}
+
+.sign-link:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.sign-link:active,
+.sign-link:active:hover,
+.sign-link:active:focus,
+.sign-link:focus {
+    color: var(--focus-color);
+}
+
+.no-underline-link:hover {
+    text-decoration: none;
+}
+
+// Generic page CSS.
+.logo {
+    font-size: 450%;
+    color: var(--logo-color);
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.click-button {
     margin-top: 5px;
     margin-bottom: 5px;
     width: 256px;
+}
+
+.btn {
     outline: none !important;
     box-shadow: none !important;
 }
 
-.btn:focus, .btn:active {
+.btn:focus,
+.btn:active {
     outline: none !important;
     box-shadow: none !important;
 }
@@ -128,35 +199,6 @@ body, html {
     color: var(--focus-color);
 }
 
-.sign-title {
-    margin-bottom: 20px;
-}
-
-.sign-button {
-    margin-top: 20px;
-}
-
-.sign-box {
-    background-color: #fff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 10px 50px #eeeeee;
-}
-
-.sign-in-area,
-.sign-up-area {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: transparent;
-    text-align: center;
-}
-
 .form-control:focus{
     border-color: var(--focus-color);
     box-shadow: none;
@@ -169,41 +211,9 @@ body, html {
     color: var(--link-text-color);
 }
 
-.remember-me {
-    float: left;
-}
-
-.forget-button {
-    float: right;
-}
-
-.sign-error {
-    width: 256px;
-}
-
-.sign-link {
-    color: var(--link-text-color);
-    font-size: 12px;
-}
-
-.sign-link:hover {
-    color: var(--hover-color);
-    text-decoration: none;
-}
-
-.sign-link:active,
-.sign-link:active:hover,
-.sign-link:active:focus,
-.sign-link:focus {
-    color: var(--focus-color);
-}
-
-.no-underline-link:hover {
-    text-decoration: none;
-}
-
-.top-header {
-    width: 990px;
+// Desktop page CSS.
+.content-page-body {
+    background-color: var(--background-color);
 }
 
 .team-name {
@@ -224,6 +234,10 @@ body, html {
     color: var(--logo-color);
 }
 
+.top-header {
+    width: 990px;
+}
+
 .top-header-item {
     font-size: 16px;
     color: var(--link-text-color);
@@ -241,29 +255,8 @@ body, html {
     color: var(--link-text-color);
 }
 
-.content-box {
-    background-color: red;
-}
-
-.phone-bottom-tab {
-    // Make tab split width with 5 column and keep center of tab area.
-    float: left;
-    text-align: center;
-    width: 20%;
-    padding-top: 3px;
-}
-
-.phone-bottom-item-text {
-    font-size: 12px;
-    color: #666;
-}
-
-.phone-bottom-item-icon {
-    font-size: 20px;
-}
-
 .top-header-search {
-    background-color: var(--bg-color);
+    background-color: var(--background-color);
     height: 24px;
     text-align: center;
     margin-top: 15px;
@@ -274,15 +267,14 @@ body, html {
 }
 
 .top-search-bar-input {
-    background-color: var(--bg-color);
+    background-color: var(--background-color);
 }
 
 .top-search-bar-button {
-    background-color: var(--bg-color);
-    margin: 0px;
-    width: 40px;
+    background-color: var(--background-color);
 }
 
+// Phone page CSS.
 .phone-top-bar {
     background-color: var(--logo-color);
     width: 100%;
@@ -326,3 +318,19 @@ body, html {
     padding-right: 24px;
 }
 
+.phone-bottom-tab {
+    // Make tab split width with 5 column and keep center of tab area.
+    float: left;
+    text-align: center;
+    width: 20%;
+    padding-top: 3px;
+}
+
+.phone-bottom-item-text {
+    font-size: 12px;
+    color: #666;
+}
+
+.phone-bottom-item-icon {
+    font-size: 20px;
+}
