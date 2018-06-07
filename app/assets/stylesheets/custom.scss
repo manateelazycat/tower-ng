@@ -282,3 +282,47 @@ body, html {
     margin: 0px;
     width: 40px;
 }
+
+.phone-top-bar {
+    background-color: var(--logo-color);
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    height: 54px;
+}
+
+.phone-top-left-area {
+    float: left;
+    text-align: center;
+    margin: auto;
+    display: table;
+    height: 100%;
+}
+
+.phone-top-right-area {
+    float: right;
+    text-align: center;
+    margin: auto;
+    display: table;
+    height: 100%;
+}
+
+.phone-top-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--logo-text-color);
+    display: table-cell;
+    vertical-align: middle;
+    padding-top: 6px;
+    padding-left: 24px;
+}
+
+.phone-top-item-icon {
+    font-size: 18px;
+    color: var(--logo-text-color);
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
