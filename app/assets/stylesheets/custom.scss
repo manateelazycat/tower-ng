@@ -10,6 +10,7 @@
     --button-color: #3ccefd;
     --link-text-color: #aaa;
     --logo-text-color: #fff;
+    --phone-bottom-text-color: #666;
 }
 
 // Home page CSS.
@@ -328,9 +329,10 @@
 
 .phone-bottom-item-text {
     font-size: 12px;
-    color: #666;
+    color: var(--phone-bottom-text-color);
 }
 
 .phone-bottom-item-icon {
     font-size: 20px;
+    color: var(--phone-bottom-text-color);
 }
