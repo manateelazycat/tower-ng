@@ -11,6 +11,8 @@
     --link-text-color: #aaa;
     --logo-text-color: #fff;
     --phone-bottom-text-color: #666;
+    --phone-page-top-bar-height: 54px;
+    --phone-page-bottom-bar-height: 54px;
 }
 
 // Home page CSS.
@@ -129,6 +131,33 @@
 }
 
 // Generic page CSS.
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flex-vcenter {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.flex-vcenter-columns {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flex-align-right {
+    margin-left: auto;
+}
+
 .float-left {
     float: left;
 }
@@ -283,7 +312,7 @@
 .top-header-item {
     font-size: 16px;
     color: var(--link-text-color);
-    }
+}
 
 .top-header-item:hover {
     color: var(--link-text-color);
@@ -322,8 +351,8 @@
 }
 
 .project-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
 }
 
 .project-item-box {
@@ -358,26 +387,59 @@
 }
 
 // Phone page CSS.
-.phone-top-bar {
-    background-color: var(--logo-color);
+.phone-page-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 0;
+}
+
+.phone-page-scroll-area {
     width: 100%;
-    margin: 0px;
-    padding: 0px;
+    height: calc(100% - var(--phone-page-top-bar-height) - var(--phone-page-bottom-bar-height));
+    margin-top: var(--phone-page-top-bar-height);
+    float: left;
+    overflow-y: scroll;
+}
+
+.phone-page-top-bar {
+    background-color: var(--logo-color);
+    top: 0;
+    width: 100%;
+    height:  var(--phone-page-top-bar-height);
+    position: absolute;
+}
+
+.phone-page-bottom-bar {
+    bottom: 0;
+    width: 100%;
+    height:  var(--phone-page-bottom-bar-height);
+    position: absolute;
+}
+
+.phone-project-item-box {
     height: 54px;
+    border-bottom: 1px solid #eee;
 }
 
-.phone-top-left-area {
-    text-align: center;
-    margin: auto;
-    display: table;
-    height: 100%;
+.phone-project-icon {
+    font-size: 32px;
+    color: var(--logo-color);
+    margin-right: 10px;
 }
 
-.phone-top-right-area {
-    text-align: center;
-    margin: auto;
-    display: table;
-    height: 100%;
+.phone-project-item-name {
+    font-size: 18px;
+    font-weight: light;
+    color: #333;
+}
+
+.phone-project-item-handle {
+    font-size: 20px;
+    color: #ddd;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .phone-top-name {
@@ -393,27 +455,11 @@
 .phone-top-item-icon {
     font-size: 18px;
     color: var(--logo-text-color);
-    display: table-cell;
-    vertical-align: middle;
     padding-left: 24px;
     padding-right: 24px;
 }
 
 .phone-bottom-tab {
-    // Make tab split width with 5 column and keep center of tab area.
-    float: left;
     text-align: center;
-    width: 20%;
-    padding-top: 3px;
-}
-
-.phone-bottom-item-text {
-    font-size: 12px;
-    color: var(--phone-bottom-text-color);
-}
-
-.phone-bottom-item-icon {
-    font-size: 20px;
-    color: var(--phone-bottom-text-color);
 }
 

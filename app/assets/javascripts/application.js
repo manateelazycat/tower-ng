@@ -17,6 +17,13 @@
 //= require turbolinks
 //= require sortable-rails
 //= require_tree .
+// $(document).ready(function () {
+//     Sortable.create(sortableContainer, {});
+// });
+
 $(document).ready(function () {
-    Sortable.create(sortableContainer, {});
+    Sortable.create(phoneSortableContainer, {
+	handle: '.phone-project-item-handle',
+	animation: 150
+    });
 });
