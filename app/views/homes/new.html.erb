@@ -5,17 +5,15 @@
   </head>
   <body class="single-page-body">
     <div class="home-background">
-      <div class="single-page-container">
-        <div class="home-content-area">
-          <h1 class="home-logo">Tower</h1>
-          <h1 class="solgan">团队协作本来就应该这么简单</h1>
-          <p><button class="btn btn-primary click-button">
-            <%= link_to "免费注册", sign_up_path, :style => "color:inherit", :class => "no-underline-link" %>
-          </button></p>
-          <p><button class="btn btn-link click-button">
-            <%= link_to "登录", sign_in_path, :style => "color:inherit", :class => "no-underline-link" %>
-          </button></p>
-        </div>
+      <div class="flex-column-center">
+        <h1 class="home-logo">Tower</h1>
+        <h1 class="solgan">团队协作本来就应该这么简单</h1>
+        <p><button class="btn btn-primary click-button">
+          <%= link_to "免费注册", sign_up_path, :style => "color:inherit", :class => "no-underline-link" %>
+        </button></p>
+        <p><button class="btn btn-link click-button">
+          <%= link_to "登录", sign_in_path, :style => "color:inherit", :class => "no-underline-link" %>
+        </button></p>
       </div>
     </div>
   </body>

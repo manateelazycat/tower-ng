@@ -29,15 +29,6 @@
     background-size: cover;
 }
 
-.home-content-area {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: transparent;
-    text-align: center;
-}
-
 .home-logo {
     font-size: 600%;
     color: var(--logo-text-color);
@@ -50,7 +41,7 @@
     color: var(--logo-text-color);
     font-weight: bold;
     opacity: 0.9;
-    margin-bottom: 100px;
+    margin-bottom: 140px;
 }
 
 // Single page CSS.
@@ -69,11 +60,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.single-page-container {
-    position: relative;
-    height: 100%;
 }
 
 .sign-title {
