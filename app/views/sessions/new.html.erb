@@ -5,26 +5,24 @@
   </head>
   <body class="single-page-body">
     <div class="single-page-background">
-      <div class="single-page-container">
-        <div class="sign-in-area">
-          <h1 class="logo">Tower</h1>
-          <div class="sign-box">
-            <%= form_for(:session, url: sign_in_path) do |f| %>
-              <h3 class="sign-title">登录</h3>
-              <p><%= f.email_field :email, class: "form-control", placeholder: "登录邮箱" %></p>
-              <p><%= f.password_field :password, class: "form-control", placeholder: "密码" %></p>
+      <div class="flex-center">
+        <h1 class="logo">Tower</h1>
+        <div class="sign-box">
+          <%= form_for(:session, url: sign_in_path) do |f| %>
+            <h3 class="sign-title">登录</h3>
+            <p><%= f.email_field :email, class: "form-control", placeholder: "登录邮箱" %></p>
+            <p><%= f.password_field :password, class: "form-control", placeholder: "密码" %></p>
 
-              <div class="form-check">
-                <label class="checkbox-inline float-left">
-                  <%= f.check_box :remember_me, class: "form-check-input", :checked => true %>
-                  <span class="form-check-label">下次自动登录</span>
-                </label>
-                <%= link_to "忘记密码了?", new_password_reset_path, :class => "sign-link float-right" %>
-              </div>
-              <p><%= f.submit "登录", class: "btn btn-primary click-button" %></p>
-              <p><%= link_to "没有账号？立即注册", sign_up_path, :class => "sign-link" %></p>
-            <% end%>
-          </div>
+            <div class="form-check">
+              <label class="checkbox-inline float-left">
+                <%= f.check_box :remember_me, class: "form-check-input", :checked => true %>
+                <span class="form-check-label">下次自动登录</span>
+              </label>
+              <%= link_to "忘记密码了?", new_password_reset_path, :class => "sign-link float-right" %>
+            </div>
+            <p><%= f.submit "登录", class: "btn btn-primary click-button" %></p>
+            <p><%= link_to "没有账号？立即注册", sign_up_path, :class => "sign-link" %></p>
+          <% end%>
         </div>
       </div>
     </div>
