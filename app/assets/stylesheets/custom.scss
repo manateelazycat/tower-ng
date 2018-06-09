@@ -154,6 +154,14 @@ li {
     justify-content: space-around;
 }
 
+.flex-column-center {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .flex-align-right {
     margin-left: auto;
 }
@@ -355,13 +363,7 @@ li {
     grid-template-columns: auto auto auto auto;
 }
 
-.project-item-box {
-    display: table;
-}
-
 .project-item {
-    display: table-cell;
-    vertical-align: middle;
     background-color: #fff;
     text-align: center;
     margin: 10px;
@@ -446,8 +448,6 @@ li {
     font-size: 18px;
     font-weight: bold;
     color: var(--logo-text-color);
-    display: table-cell;
-    vertical-align: middle;
     padding-top: 6px;
     padding-left: 24px;
 }
@@ -462,4 +462,3 @@ li {
 .phone-bottom-tab {
     text-align: center;
 }
-
