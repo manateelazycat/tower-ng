@@ -1,8 +1,7 @@
-# coding: utf-8
 class UsersController < ApplicationController
   def show
   end
-  
+
   def new
     @user = User.new
   end
@@ -13,17 +12,16 @@ class UsersController < ApplicationController
       if check_user.activated?
         flash.now[:info] = "请直接登录"
         redirect_to sign_in_path
-      elsif
-        message = "账户还未激活"
+      elsif message = "账户还未激活"
         message += "请检查邮件以激活账户"
         flash.now[:info] = message
         redirect_to root_url
       end
     elsif
-      # Create team when user first sign up.
+ # Create team when user first sign up.
       team = Team.new(name: params[:team_name], creator: user_params[:email])
       team.save
-      
+
       @user = User.new(user_params)
       if @user.save
         @user.send_activation_email
@@ -31,12 +29,13 @@ class UsersController < ApplicationController
         redirect_to root_url
       else
         flash.now[:danger] = @user.errors.full_messages.first
-        render 'new'
+        render "new"
       end
     end
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
