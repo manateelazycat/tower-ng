@@ -1,28 +1,25 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 :root {
     // Color variables.
     --background-color: #f4f7ed;
-    --logo-color: #5bc4c7;
+    --button-color: #3ccefd;
     --focus-color: #3cbefd;
     --hover-color: #3cbefd;
-    --button-color: #3ccefd;
     --link-text-color: #aaa;
+    --logo-color: #5bc4c7;
     --logo-text-color: #fff;
     --phone-bottom-text-color: #666;
-    --phone-page-top-bar-height: 54px;
     --phone-page-bottom-bar-height: 54px;
+    --phone-page-top-bar-height: 54px;
 }
 
 // Home page CSS.
 .home-background {
     /* The image used */
     background-image: url("background.jpg");
-
     /* Full height */
     height: 100%;
-
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -30,18 +27,18 @@
 }
 
 .home-logo {
-    font-size: 600%;
     color: var(--logo-text-color);
+    font-size: 600%;
     font-weight: bold;
     opacity: 0.9;
 }
 
 .solgan {
-    font-size: 260%;
     color: var(--logo-text-color);
+    font-size: 260%;
     font-weight: bold;
-    opacity: 0.9;
     margin-bottom: 140px;
+    opacity: 0.9;
 }
 
 // Single page CSS.
@@ -52,10 +49,8 @@
 
 .single-page-background {
     background-color: var(--background-color);
-
     /* Full height */
     height: 100%;
-
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -72,13 +67,13 @@
 
 .sign-box {
     background-color: #fff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 50px #eeeeee;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
 }
 
 .sign-error {
@@ -118,15 +113,15 @@ li {
 }
 
 .flex-vcenter {
+    align-items: center;
     display: flex;
     height: 100%;
-    align-items: center;
 }
 
 .flex-vcenter-columns {
+    align-items: center;
     display: flex;
     height: 100%;
-    align-items: center;
     justify-content: space-around;
 }
 
@@ -139,13 +134,13 @@ li {
 }
 
 .flex-center {
-    display: flex;
-    width: 100%;
-    height: 100%;
     align-items: center;
-    justify-content: center;
+    display: flex;
     flex-direction: column;
+    height: 100%;
+    justify-content: center;
     text-align: center;
+    width: 100%;
 }
 
 .flex-align-right {
@@ -161,21 +156,21 @@ li {
 }
 
 .logo {
-    font-size: 450%;
     color: var(--logo-color);
+    font-size: 450%;
     font-weight: bold;
     margin-bottom: 40px;
 }
 
 .click-button {
-    margin-top: 5px;
     margin-bottom: 5px;
+    margin-top: 5px;
     width: 256px;
 }
 
 .btn {
-    outline: none !important;
     box-shadow: none !important;
+    outline: none !important;
 }
 
 .btn:focus,
@@ -186,15 +181,15 @@ li {
 
 .btn-primary {
     background-color: var(--button-color);
+    border-color: var(--button-color);
     color: rgba(255, 255, 255, 0.9);
     font-size: 18px;
-    border-color: var(--button-color);
 }
 
 .btn-primary:hover {
     background: var(--hover-color);
-    color: rgba(255, 255, 255, 0.9);
     border-color: var(--hover-color);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .btn-primary:active,
@@ -202,8 +197,8 @@ li {
 .btn-primary:active:focus,
 .btn-primary:focus {
     background: var(--focus-color);
-    color: rgba(255, 255, 255, 0.9);
     border-color: var(--focus-color);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .btn-link {
@@ -223,16 +218,16 @@ li {
     color: var(--focus-color);
 }
 
-.form-control:focus{
+.form-control:focus {
+    -webkit-box-shadow: none;
     border-color: var(--focus-color);
     box-shadow: none;
-    -webkit-box-shadow: none;
 }
 
 .form-check-label {
-    font-weight: normal;
-    font-size: 12px;
     color: var(--link-text-color);
+    font-size: 12px;
+    font-weight: normal;
 }
 
 // Desktop page CSS.
@@ -241,24 +236,24 @@ li {
 }
 
 .project-box {
-    width: 900px;
     background-color: #fff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 10px 50px #eee;
     margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    width: 900px;
 }
 
 .project-button-group {
+    margin-bottom: 40px;
     margin-left: 0px;
     margin-right: 0px;
-    margin-bottom: 40px;
 }
 
 .project-button {
@@ -280,10 +275,9 @@ li {
     color: var(--focus-color);
 }
 
-
 .team-name {
-    font-size: 20px;
     color: var(--logo-color);
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -304,8 +298,8 @@ li {
 }
 
 .top-header-item {
-    font-size: 16px;
     color: var(--link-text-color);
+    font-size: 16px;
 }
 
 .top-header-item:hover {
@@ -323,13 +317,13 @@ li {
 .top-header-search {
     background-color: var(--background-color);
     height: 24px;
-    text-align: center;
     margin-top: 15px;
+    text-align: center;
 }
 
 .top-search-bar-group {
-    width: 200px;
     margin-top: 3px;
+    width: 200px;
 }
 
 .top-search-bar-input {
@@ -351,10 +345,10 @@ li {
 
 .project-item {
     background-color: #fff;
-    text-align: center;
-    margin: 10px;
-    width: 180px;
     height: 140px;
+    margin: 10px;
+    text-align: center;
+    width: 180px;
 }
 
 .project-item:hover {
@@ -363,84 +357,84 @@ li {
 }
 
 .project-icon {
+    color: var(--logo-color);
     font-size: 48px;
     margin-bottom: 16px;
-    color: var(--logo-color);
 }
 
 .project-name {
+    color: #333;
     font-size: 18px;
     font-weight: light;
-    color: #333;
 }
 
 // Phone page CSS.
 .phone-page-box {
+    height: 100%;
+    left: 0;
+    padding: 0;
     position: fixed;
     top: 0;
-    left: 0;
-    height: 100%;
-    padding: 0;
 }
 
 .phone-page-scroll-area {
-    width: 100%;
+    float: left;
     height: calc(100% - var(--phone-page-top-bar-height) - var(--phone-page-bottom-bar-height));
     margin-top: var(--phone-page-top-bar-height);
-    float: left;
     overflow-y: scroll;
+    width: 100%;
 }
 
 .phone-page-top-bar {
     background-color: var(--logo-color);
+    height: var(--phone-page-top-bar-height);
+    position: absolute;
     top: 0;
     width: 100%;
-    height:  var(--phone-page-top-bar-height);
-    position: absolute;
 }
 
 .phone-page-bottom-bar {
     bottom: 0;
-    width: 100%;
-    height:  var(--phone-page-bottom-bar-height);
+    height: var(--phone-page-bottom-bar-height);
     position: absolute;
+    width: 100%;
 }
 
 .phone-project-item-box {
-    height: 54px;
     border-bottom: 1px solid #eee;
+    height: 54px;
 }
 
 .phone-project-icon {
-    font-size: 32px;
     color: var(--logo-color);
+    font-size: 32px;
     margin-right: 10px;
 }
 
 .phone-project-item-name {
+    color: #333;
     font-size: 18px;
     font-weight: light;
-    color: #333;
 }
 
 .phone-project-item-handle {
-    font-size: 20px;
     color: #ddd;
+    font-size: 20px;
     margin-left: 20px;
     margin-right: 20px;
 }
 
 .phone-top-name {
+    color: var(--logo-text-color);
     font-size: 18px;
     font-weight: bold;
-    color: var(--logo-text-color);
-    padding-top: 6px;
     padding-left: 24px;
+    padding-top: 6px;
 }
 
 .phone-top-item-icon {
-    font-size: 18px;
     color: var(--logo-text-color);
+    font-size: 18px;
     padding-left: 24px;
     padding-right: 24px;
 }
