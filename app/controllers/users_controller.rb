@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   def show
   end
@@ -10,11 +11,12 @@ class UsersController < ApplicationController
     check_user = User.find_by(email: user_params[:email].downcase)
     if check_user
       if check_user.activated?
-        flash.now[:info] = "请直接登录"
+        flash[:info] = "请直接登录"
         redirect_to sign_in_path
-      elsif message = "账户还未激活"
+      else
+        message = "账户还未激活, "
         message += "请检查邮件以激活账户"
-        flash.now[:info] = message
+        flash[:info] = message
         redirect_to root_url
       end
     elsif
