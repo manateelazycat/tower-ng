@@ -17,13 +17,14 @@
 //= require turbolinks
 //= require sortable-rails
 //= require_tree .
-// $(document).ready(function () {
-//     Sortable.create(sortableContainer, {});
-// });
-
-$(document).ready(function () {
-    Sortable.create(phoneSortableContainer, {
-	handle: '.phone-project-item-handle',
-	animation: 150
-    });
+$(document).on("turbolinks:load", function() {
+    if ($("#teams-show-phone").length > 0) {
+	Sortable.create(phoneSortableContainer, {
+	    handle: '.phone-project-item-handle',
+	    animation: 150
+	});
+    } else if ($("#teams-show").length > 0) {
+	Sortable.create(sortableContainer, {});
+    }
 });
+
