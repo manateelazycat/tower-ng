@@ -19,7 +19,7 @@
 //= require_tree .
 $(document).on("turbolinks:load", function() {
     // Make teams page items sortable.
-    if ($("#teams-show").length > 0) {
+    if ($("#projects-index").length > 0) {
 	Sortable.create(sortableContainer, {});
     }
 });
