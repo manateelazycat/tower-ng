@@ -18,15 +18,8 @@
 //= require sortable-rails
 //= require_tree .
 $(document).on("turbolinks:load", function() {
-    // Make phone page items sortable.
-    if ($("#teams-show-phone").length > 0) {
-	Sortable.create(phoneSortableContainer, {
-	    handle: '.phone-project-item-handle',
-	    animation: 150
-	});
-    }
     // Make teams page items sortable.
-    else if ($("#teams-show").length > 0) {
+    if ($("#teams-show").length > 0) {
 	Sortable.create(sortableContainer, {});
     }
 });
