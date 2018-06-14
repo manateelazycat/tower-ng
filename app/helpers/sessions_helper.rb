@@ -37,10 +37,10 @@ module SessionsHelper
     @current_user = nil
   end
 
-  def jump_to_user_team(user)
+  def jump_to_team_homepage(user)
     team = Team.find_by(creator: user.email)
     if team
-      redirect_to team_url(team.hashid)
+      redirect_to team_projects_url(team.hashid)
     end
   end
 end

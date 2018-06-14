@@ -30,7 +30,7 @@ class PasswordResetsController < ApplicationController
     elsif @user.update_attributes(user_params)
       log_in @user
       flash[:success] = "密码重设成功, 自动登录"
-      jump_to_user_team(@user)
+      jump_to_team_homepage(@user)
     else
       render "edit"
     end

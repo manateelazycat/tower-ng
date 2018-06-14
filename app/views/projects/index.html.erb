@@ -6,7 +6,7 @@
     <nav class="navbar">
       <div class="container top-header">
         <ul class="nav navbar-nav navbar-left">
-          <li><%= link_to Team.find_by_hashid(params[:id]).name, root_path, :class => "team-name"%></li>
+          <li><%= link_to Team.find_by_hashid(params[:team_id]).name, root_path, :class => "team-name"%></li>
           <li><%= link_to "项目", root_path, :class => "top-header-item" %></li>
           <li><%= link_to "动态", root_path, :class => "top-header-item" %></li>
           <li><%= link_to "团队", root_path, :class => "top-header-item" %></li>

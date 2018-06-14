@@ -3,4 +3,6 @@ class Team < ApplicationRecord
 
   has_many :team_admins
   has_many :users, :through => :team_admins
+  
+  has_many :projects
 end

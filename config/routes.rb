@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   post 'sign_in', to: 'sessions#create'
   delete 'sign_out', to: 'sessions#destroy'
   resources :users
-  resources :teams
+  
+  resources :teams, :shallow => true do
+    resources :projects
+  end
+    
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
 end
