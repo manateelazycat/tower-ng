@@ -9,7 +9,9 @@
         <span class="phone-top-name">项目</span>
         <div class="flex-align-right">
           <span class="glyphicon glyphicon-search phone-top-item-icon"></span>
-          <span class="glyphicon glyphicon-th-list phone-top-item-icon"></span>
+	  <%= link_to new_team_project_path do %>
+            <span class="glyphicon glyphicon-plus phone-top-item-icon"></span>
+          <% end %>
         </div>
       </div>
 

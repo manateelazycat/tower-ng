@@ -102,6 +102,12 @@
 }
 
 // Generic page CSS.
+.remove-submit-btn-style {
+    background: none;
+    border: none;
+    outline: none;
+}
+
 a:link {
     text-decoration: none;
 }
@@ -445,6 +451,29 @@ li {
 }
 
 // Phone page CSS.
+.phone-input-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+.phone-input-title {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.phone-input-area {
+    border: none;
+    font-size: 16px;
+}
+
+.phone-input-area:focus {
+    outline: none;
+}
+
 .phone-page-box {
     height: 100%;
     left: 0;
@@ -459,6 +488,7 @@ li {
     margin-top: var(--phone-page-top-bar-height);
     overflow-y: scroll;
     width: 100%;
+    background-color: rgba(252, 252, 252, 255);
 }
 
 .phone-page-top-bar {
@@ -479,6 +509,7 @@ li {
 .phone-project-item-box {
     border-bottom: 1px solid #eee;
     height: 54px;
+    background-color: #fff;
 }
 
 .phone-project-icon {
@@ -506,6 +537,20 @@ li {
     font-size: 18px;
     font-weight: bold;
     padding-left: 24px;
+    padding-top: 6px;
+}
+
+.phone-text-button {
+    color: var(--logo-text-color);
+    font-size: 18px;
+    font-weight: bold;
+    padding-right: 24px;
+}
+
+.phone-top-title {
+    color: var(--logo-text-color);
+    font-size: 18px;
+    font-weight: bold;
     padding-top: 6px;
 }
 
