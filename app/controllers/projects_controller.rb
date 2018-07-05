@@ -18,12 +18,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    puts "********"
-    puts params[:project][:name]
-    puts params[:project][:summary]
-    puts params[:team_id]
-    puts @@glyphicon_list.sample
-    puts "********"
+    team = Team.find_by_hashid(params[:team_id])
+
+    project = team.projects.create(
+      team_id: params[:team_id],
+      name: params[:project][:name],
+      summary: params[:project][:summary],
+      icon: @@glyphicon_list.sample,
+    )
+
+    project.save
 
     jump_to_team_homepage(current_user)
   end

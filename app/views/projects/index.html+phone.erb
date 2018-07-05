@@ -15,77 +15,13 @@
 
       <div class="phone-page-scroll-area">
         <ul id="phoneSortableContainer">
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-inbox phone-project-icon"></span>
-            <span class="phone-project-item-name">文件管理器</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-time phone-project-icon"></span>
-            <span class="phone-project-item-name">智能语音闹钟</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-lock phone-project-icon"></span>
-            <span class="phone-project-item-name">超强加密客户端</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-print phone-project-icon"></span>
-            <span class="phone-project-item-name">打印机分享技术</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-camera phone-project-icon"></span>
-            <span class="phone-project-item-name">相机助手</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-fire phone-project-icon"></span>
-            <span class="phone-project-item-name">光盘刻录程序</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-plane phone-project-icon"></span>
-            <span class="phone-project-item-name">机票预订助手</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-shopping-cart phone-project-icon"></span>
-            <span class="phone-project-item-name">在线购物网站</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-hdd phone-project-icon"></span>
-            <span class="phone-project-item-name">在线存储项目</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-globe phone-project-icon"></span>
-            <span class="phone-project-item-name">人造卫星技术</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-phone phone-project-icon"></span>
-            <span class="phone-project-item-name">智能手机生产</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-flash phone-project-icon"></span>
-            <span class="phone-project-item-name">快速SD卡</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-stats phone-project-icon"></span>
-            <span class="phone-project-item-name">无线通讯技术</span>
-          </li>
-
-          <li class="phone-project-item-box flex-vcenter">
-            <span class="glyphicon glyphicon-blackboard phone-project-icon"></span>
-            <span class="phone-project-item-name">多人智能会议系统</span>
-          </li>
-
-        </ul>
+          <% Team.find_by_hashid(params[:team_id]).projects.each do |project| %>
+            <li class="phone-project-item-box flex-vcenter">
+              <span class="glyphicon <%= project.icon %> phone-project-icon"></span>
+              <span class="phone-project-item-name"><%= project.name %></span>
+            </li>
+	  <% end %>
+	</ul>
       </div>
 
       <%= render 'layouts/footer' %>
