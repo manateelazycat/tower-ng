@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <%= render 'layouts/header' %>
+    <div class="board-box">
+      <div class="project-title"><%= Project.find_by_hashid(params[:id]).name %> </div>
+      <div class="project-splitter-bold"></div>
+      <div class="project-splitter-light"></div>
+    </div>
+  </body>
+</html>

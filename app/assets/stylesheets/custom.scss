@@ -12,6 +12,7 @@
     --phone-bottom-text-color: #666;
     --phone-page-bottom-bar-height: 54px;
     --phone-page-top-bar-height: 54px;
+    --project-splitter-color: #BDC8CB;
 }
 
 // Home page CSS.
@@ -302,6 +303,26 @@ li {
 // Desktop page CSS.
 .content-page-body {
     background-color: var(--background-color);
+}
+
+.project-title {
+    font-size: 26px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.project-splitter-bold {
+    width: 100%;
+    height: 4px;
+    background-color: var(--project-splitter-color);
+}
+
+.project-splitter-light {
+    width: 100%;
+    height: 1px;
+    background-color: var(--project-splitter-color);
+    margin-top: 5px;
 }
 
 .form-title {

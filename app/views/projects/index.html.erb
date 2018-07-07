@@ -18,12 +18,14 @@
 
       <div class="grid-container" id="sortableContainer">
         <% Team.find_by_hashid(params[:team_id]).projects.each do |project| %>
-          <div class="project-item">
-            <div class="flex-column-center">
-              <span class="glyphicon <%= project.icon %> project-icon"></span>
-              <div class="project-name"><%= project.name %></div>
+	  <%= link_to project_url(project.hashid) do %>
+            <div class="project-item">
+              <div class="flex-column-center">
+		<span class="glyphicon <%= project.icon %> project-icon"></span>
+		<div class="project-name"><%= project.name %></div>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>

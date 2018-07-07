@@ -33,4 +33,10 @@ class ProjectsController < ApplicationController
     # Redirect to project home page after create new project.
     jump_to_team_homepage(current_user)
   end
+
+  def show
+    # Get team id, make view can access params[:team_id]
+    team = Team.find_by(creator: current_user.email)
+    params[:team_id] = team.hashid
+  end
 end
