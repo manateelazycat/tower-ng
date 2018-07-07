@@ -11,9 +11,9 @@
           <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
 	    <%= hidden_field_tag :email, @user.email %>
 
-            <h3 class="sign-title">设置新的密码</h3>
+            <h3 class="margin-bottom-normal">设置新的密码</h3>
             <p><%= f.password_field :password, class: "form-control", placeholder: "请填写新的密码" %></p>
-            <p><%= f.submit "更新密码", class: "btn btn-primary click-button" %></p>
+            <p><%= f.submit "更新密码", class: "btn btn-primary sign-button-width sign-button-vertical-margins" %></p>
           <% end%>
         </div>
       </div>

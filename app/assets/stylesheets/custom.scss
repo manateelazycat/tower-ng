@@ -57,14 +57,6 @@
     background-size: cover;
 }
 
-.sign-title {
-    margin-bottom: 20px;
-}
-
-.sign-button {
-    margin-top: 20px;
-}
-
 .sign-box {
     background-color: #fff;
     border-radius: 4px;
@@ -80,28 +72,93 @@
     width: 256px;
 }
 
-.sign-link {
-    color: var(--link-text-color);
-    font-size: 12px;
-}
-
-.sign-link:hover {
-    color: var(--hover-color);
-    text-decoration: none;
-}
-
-.sign-link:active,
-.sign-link:active:hover,
-.sign-link:active:focus,
-.sign-link:focus {
-    color: var(--focus-color);
-}
-
 .no-underline-link:hover {
     text-decoration: none;
 }
 
 // Generic page CSS.
+.link-button {
+    color: #666;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.link-button:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.link-button:active,
+.link-button:active:hover,
+.link-button:active:focus,
+.link-button:focus {
+    color: var(--focus-color);
+}
+
+.link-button-big {
+    color: var(--link-text-color);
+    font-size: 16px;
+}
+
+.link-button-big:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.link-button-big:active,
+.link-button-big:active:hover,
+.link-button-big:active:focus,
+.link-button-big:focus {
+    color: var(--focus-color);
+}
+
+.link-button-small {
+    color: var(--link-text-color);
+    font-size: 12px;
+}
+
+.link-button-small:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.link-button-small:active,
+.link-button-small:active:hover,
+.link-button-small:active:focus,
+.link-button-small:focus {
+    color: var(--focus-color);
+}
+
+.remove-textarea-resize-button {
+    resize: none;
+}
+
+.submit-button-width {
+    width: 80px;
+}
+
+.sign-button-width {
+    width: 256px;
+}
+
+.sign-button-vertical-margins {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.margin-bottom-normal {
+    margin-bottom: 20px;
+}
+
+.margin-top-normal {
+    margin-top: 20px;
+}
+
+.margin-left-normal {
+    margin-left: 20px;
+}
+
 .remove-submit-btn-style {
     background: none;
     border: none;
@@ -181,34 +238,6 @@ li {
     margin-bottom: 40px;
 }
 
-.click-button {
-    margin-bottom: 5px;
-    margin-top: 5px;
-    width: 256px;
-}
-
-.submit-button {
-    width: 80px;
-}
-
-.submit-cancel-link {
-    color: var(--link-text-color);
-    font-size: 16px;
-    margin-left: 16px;
-}
-
-.submit-cancel-link:hover {
-    color: var(--hover-color);
-    text-decoration: none;
-}
-
-.submit-cancel-link:active,
-.submit-cancel-link:active:hover,
-.submit-cancel-link:active:focus,
-.submit-cancel-link:focus {
-    color: var(--focus-color);
-}
-
 .btn {
     box-shadow: none !important;
     outline: none !important;
@@ -268,7 +297,6 @@ li {
 .form-check-label {
     color: var(--link-text-color);
     font-size: 12px;
-    font-weight: normal;
 }
 
 // Desktop page CSS.
@@ -276,18 +304,14 @@ li {
     background-color: var(--background-color);
 }
 
-.card-title {
+.form-title {
     margin-top: 10px;
     margin-bottom: 40px;
     font-size: 20px;
     font-weight: 900;
 }
 
-.card-summary {
-    resize: none;
-}
-
-.top-bar-box {
+.bread-crumbs-big {
     background-color: rgba(250, 250, 250, 1);
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -308,15 +332,11 @@ li {
     color: #999;
 }
 
-.top-bar-box:hover {
+.bread-crumbs-big:hover {
     background-color: #fff;
 }
 
-.submit-area {
-    margin-top: 24px;
-}
-
-.project-box {
+.board-box {
     background-color: #fff;
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -332,29 +352,10 @@ li {
     overflow: hidden;		// make parent div expand height when have 'float' child div in it
 }
 
-.project-button-group {
+.link-button-group {
     margin-bottom: 40px;
     margin-left: 0px;
     margin-right: 0px;
-}
-
-.project-button {
-    color: #666;
-    font-size: 14px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.project-button:hover {
-    color: var(--hover-color);
-    text-decoration: none;
-}
-
-.project-button:active,
-.project-button:active:hover,
-.project-button:active:focus,
-.project-button:focus {
-    color: var(--focus-color);
 }
 
 .team-name {
@@ -420,7 +421,7 @@ li {
     font-size: 12px;
 }
 
-.project-container {
+.grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
