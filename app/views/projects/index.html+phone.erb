@@ -9,7 +9,7 @@
         <span class="phone-top-name">项目</span>
         <div class="flex-align-right">
           <span class="glyphicon glyphicon-search phone-top-item-icon"></span>
-	  <%= link_to new_team_project_path do %>
+          <%= link_to new_team_project_path do %>
             <span class="glyphicon glyphicon-plus phone-top-item-icon"></span>
           <% end %>
         </div>
@@ -18,12 +18,14 @@
       <div class="phone-page-scroll-area">
         <ul id="phoneSortableContainer">
           <% Team.find_by_hashid(params[:team_id]).projects.each do |project| %>
-            <li class="phone-project-item-box flex-vcenter">
-              <span class="glyphicon <%= project.icon %> phone-project-icon"></span>
-              <span class="phone-project-item-name"><%= project.name %></span>
-            </li>
-	  <% end %>
-	</ul>
+            <%= link_to project_url(project.hashid) do %>
+              <li class="phone-project-item-box flex-vcenter">
+                <span class="glyphicon <%= project.icon %> phone-project-icon"></span>
+                <span class="phone-project-item-name"><%= project.name %></span>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
 
       <%= render 'layouts/footer' %>
