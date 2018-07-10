@@ -78,6 +78,10 @@
 }
 
 // Generic page CSS.
+.position-relative {
+    position: relative;
+}
+
 .link-button {
     color: #666;
     font-size: 14px;
@@ -710,26 +714,31 @@ li {
     margin-left: 40px;
 }
 
-.mission-list-area {
-    // margin-top: 22px;
-    // width: 200px;
-    // float: right;
-    // clear: both;
+.mission-list-area-parent {
+    position: absolute;
     width: 200px;
-    height: 600px;
+    right: 0;
+}
+
+.mission-list-area {
+    color: #666;
     position: fixed;
-    float: right;
-    left: 65%;
-    z-index: 999;
-    margin-left: 0px;
-    background-color: red;
+    width: 200px;
+    top: 212px;
 }
 
 .mission-list {
+    margin-bottom: 20px;
     font-size: 15px;
     font-weight: 350;
     display: inline-block;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     padding-bottom: 2px;
-    width: 100%;
+    width: 80%;
+}
+
+.mission-list-add-button {
+    color: var(--logo-color);
+    font-size: 15px;
+    font-weight: 350;
 }
