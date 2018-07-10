@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'webpacker', '~> 3.5'
 gem 'pry'
 gem 'rails', '~> 5.2.0'
 gem 'sortable-rails'

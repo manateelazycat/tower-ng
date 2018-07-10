@@ -1,18 +1,49 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= javascript_pack_tag "application" %>
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
-    <div class="board-box">
+    <div class="board-box" data-controller="hello">
       <div class="project-title"><%= Project.find_by_hashid(params[:id]).name %> </div>
       <div class="project-splitter-bold"></div>
       <div class="project-splitter-light"></div>
 
-      <div class="flex-vcenter margins-vertical-normal">
-	<button type="button" class="btn btn-default btn-sm">添加任务</button>
-	<button type="button" class="btn btn-default btn-sm margins-horizontal-normal">添加任务清单</button>
-      </div>
+
+      <ul class="mission-list">默认任务清单
+	<li>
+	  <label class="mission-container">完成任务清单试图
+	    <input type="checkbox">
+	    <span class="checkmark"></span>
+	    <button type="button" class="btn mission-distributor">未指派</button>
+	  </label>
+	</li>
+	<li>
+	  <label class="mission-container">完成任务试图
+	    <input type="checkbox">
+	    <span class="checkmark"></span>
+	    <button type="button" class="btn mission-distributor">未指派</button>
+	  </label>
+	</li>
+	<li>
+	  <label class="mission-container">完成任务清单添加
+	    <input type="checkbox">
+	    <span class="checkmark"></span>
+	    <button type="button" class="btn mission-distributor">未指派</button>
+	  </label>
+	</li>
+	<li>
+	  <label class="mission-container">完成任务添加
+	    <input type="checkbox">
+	    <span class="checkmark"></span>
+	    <button type="button" class="btn mission-distributor">未指派</button>
+	  </label>
+	</li>
+	<li>
+	  <a href="#" class="mission-add-button">添加新任务</a>
+	</li>
+      </ul>
     </div>
   </body>
 </html>

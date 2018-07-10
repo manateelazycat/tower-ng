@@ -601,3 +601,111 @@ li {
 .phone-bottom-tab {
     text-align: center;
 }
+
+.mission-list {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mission {
+    font-size: 14px;
+    font-weight: 350;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* The container */
+.mission-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 350;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.mission-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* On mouse-over, add a grey background color */
+.mission-container:hover input ~ .checkmark {
+    background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.mission-container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.mission-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.mission-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.mission-distributor {
+    color: #aaa;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    height: 18px;
+    width: 52px;
+    font-size: 8px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 0px;
+    margin-left: 10px;
+}
+
+.mission-add-button {
+    color: var(--logo-color);
+    font-size: 15px;
+    font-weight: 350;
+    margin-left: 40px;
+}

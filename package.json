@@ -2,6 +2,11 @@
   "name": "tower-ng",
   "private": true,
   "dependencies": {
-    "sortablejs": "^1.7.0"
+    "@rails/webpacker": "3.5",
+    "sortablejs": "^1.7.0",
+    "stimulus": "^1.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }
