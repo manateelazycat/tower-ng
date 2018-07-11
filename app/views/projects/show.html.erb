@@ -105,6 +105,15 @@
 	  </label>
 	</li>
 	<li>
+	  <%= form_for(:project, url: "#") do |f| %>
+	    <div class="mission-new-rectangle"></div>
+	    <input type="text" class="mission-new-input" placeholder="新的任务">
+	    <button type="button" class="btn mission-distributor">未指派</button>
+            <%= f.submit "添加任务", class: "btn btn-primary btn-xs submit-button-width" %>
+            <%= link_to "取消", "#", :class => "link-button-small margin-left-normal" %>
+	  <% end %>
+	</li>
+	<li>
 	  <a href="#" class="mission-add-button">添加新任务</a>
 	</li>
       </ul>

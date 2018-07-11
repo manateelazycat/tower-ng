@@ -101,6 +101,25 @@
     color: var(--focus-color);
 }
 
+.link-button-small {
+    color: #666;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.link-button-small:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.link-button-small:active,
+.link-button-small:active:hover,
+.link-button-small:active:focus,
+.link-button-small:focus {
+    color: var(--focus-color);
+}
+
 .link-button-big {
     color: var(--link-text-color);
     font-size: 16px;
@@ -740,5 +759,20 @@ li {
 .mission-list-add-button {
     color: var(--logo-color);
     font-size: 13px;
+    font-weight: 350;
+}
+
+.mission-new-rectangle {
+    background-color: #eee;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.mission-new-input {
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
     font-weight: 350;
 }
