@@ -12,7 +12,7 @@
 
       <div class="mission-list-area-parent">
         <div class="mission-list-area"
-             data-target="mission.area"
+             data-target="mission.missionListArea"
              data-action="scroll@window->mission#onScroll">
           <ul>
             <li class="mission-list">
@@ -33,14 +33,38 @@
             <li class="mission-list">
               默认任务清单6
             </li>
+	    <li>
+	      <div class="mission-list-new-form"
+		   data-target="mission.missionListNewForm">
+		<%= form_for(:project, url: "#") do |f| %>
+		  <div class="flex-vcenter">
+                    <input type="text" class="mission-list-new-input" placeholder="新的任务清单">
+		  </div>
+		  <div>
+                    <%= f.submit "添加任务清单", class: "btn-sm mission-list-new-submit-button" %>
+		    <a href="#"
+		       class="link-button-small"
+		       data-target="mission.missionListCancelButton"
+		       data-action="mission#clickMissionListCancelButton">
+		      取消</a>
+		  </div>
+		<% end %>
+              </div>
+	    </li>
             <li>
-              <a href="#" class="mission-list-add-button">添加新任务清单</a>
+	      <a href="#"
+		 class="mission-list-add-button"
+		 data-target="mission.missionListNewButton"
+		 data-action="mission#clickMissionListNewButton">
+		添加新任务清单
+	      </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <ul class="mission-list-title">默认任务清单
+      <ul class="mission-list-title"
+          data-target="mission.missionListTitle">默认任务清单
         <li>
           <label class="mission-container">完成任务清单试图
             <input type="checkbox">
@@ -251,22 +275,34 @@
             <button type="button" class="btn mission-distributor">未指派</button>
           </label>
         </li>
-	<li>
-	  <%= form_for(:project, url: "#") do |f| %>
-            <div class="flex-vcenter">
-              <label class="mission-new-rectangle"></label>
-              <input type="text" class="mission-new-input" placeholder="新的任务">
-              <button type="button" class="btn mission-distributor">未指派</button>
-            </div>
-            <div>
-              <%= f.submit "添加任务", class: "btn-sm mission-new-submit-button" %>
-              <%= link_to "取消", "#", :class => "link-button-small" %>
-            </div>
-	  <% end %>
-	</li>
-	<li>
-          <a href="#" class="mission-add-button">添加新任务</a>
-	</li>
+        <li>
+          <div class="mission-new-form"
+               data-target="mission.missionNewForm">
+            <%= form_for(:project, url: "#") do |f| %>
+              <div class="flex-vcenter">
+                <label class="mission-new-rectangle"></label>
+                <input type="text" class="mission-new-input" placeholder="新的任务">
+                <button type="button" class="btn mission-distributor">未指派</button>
+              </div>
+              <div>
+                <%= f.submit "添加任务", class: "btn-sm mission-new-submit-button" %>
+		<a href="#"
+		   class="link-button-small"
+		   data-target="mission.missionCancelButton"
+		   data-action="mission#clickMissionCancelButton">
+		  取消</a>
+              </div>
+            <% end %>
+          </div>
+        </li>
+        <li>
+          <a href="#"
+             class="mission-add-button"
+             data-target="mission.missionNewButton"
+             data-action="mission#clickMissionNewButton">
+            添加新任务
+	  </a>
+        </li>
       </ul>
     </div>
   </body>

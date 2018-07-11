@@ -792,3 +792,31 @@ li {
     border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+.mission-new-form {
+    display: none;
+}
+
+.mission-list-new-form {
+    display: none;
+}
+
+.mission-list-new-input {
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+    font-size: 13px;
+    font-weight: 350;
+}
+
+.mission-list-new-submit-button {
+    height: 28px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--logo-color);
+    color: #fff;
+    font-weight: 300;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
