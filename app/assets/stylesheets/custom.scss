@@ -728,7 +728,7 @@ li {
 
 .mission-add-button {
     color: var(--logo-color);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 350;
     margin-left: 40px;
 }
@@ -768,11 +768,27 @@ li {
     height: 20px;
     border-radius: 5px;
     border: 1px solid #eee;
+    margin-left: 10px;
 }
 
 .mission-new-input {
     border: none;
     border-bottom: 1px solid #eee;
     outline: none;
+    font-size: 15px;
     font-weight: 350;
+    margin-left: 10px;
+}
+
+.mission-new-submit-button {
+    margin-left: 40px;
+    height: 28px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--logo-color);
+    color: #fff;
+    font-weight: 300;
+    font-size: 13px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }

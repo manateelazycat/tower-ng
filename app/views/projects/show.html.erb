@@ -5,119 +5,269 @@
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
-    <div class="board-box position-relative">
+    <div class="board-box position-relative" data-controller="mission">
       <div class="project-title"><%= Project.find_by_hashid(params[:id]).name %> </div>
       <div class="project-splitter-bold"></div>
       <div class="project-splitter-light"></div>
 
-      <div class="mission-list-area-parent" data-controller="mission">
-	<div class="mission-list-area"
-	     data-target="mission.area"
-	     data-action="scroll@window->mission#onScroll">
-	  <ul>
-	    <li class="mission-list">
-	      默认任务清单1
-	    </li>
-	    <li class="mission-list">
-	      默认任务清单2
-	    </li>
-	    <li class="mission-list">
-	      默认任务清单3
-	    </li>
-	    <li class="mission-list">
-	      默认任务清单4
-	    </li>
-	    <li class="mission-list">
-	      默认任务清单5
-	    </li>
-	    <li class="mission-list">
-	      默认任务清单6
-	    </li>
-	    <li>
-	      <a href="#" class="mission-list-add-button">添加新任务清单</a>
-	    </li>
-	  </ul>
-	</div>
+      <div class="mission-list-area-parent">
+        <div class="mission-list-area"
+             data-target="mission.area"
+             data-action="scroll@window->mission#onScroll">
+          <ul>
+            <li class="mission-list">
+              默认任务清单1
+            </li>
+            <li class="mission-list">
+              默认任务清单2
+            </li>
+            <li class="mission-list">
+              默认任务清单3
+            </li>
+            <li class="mission-list">
+              默认任务清单4
+            </li>
+            <li class="mission-list">
+              默认任务清单5
+            </li>
+            <li class="mission-list">
+              默认任务清单6
+            </li>
+            <li>
+              <a href="#" class="mission-list-add-button">添加新任务清单</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <ul class="mission-list-title">默认任务清单
-	<li>
-	  <label class="mission-container">完成任务清单试图
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务试图
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务清单添加
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务添加
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务清单试图
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务试图
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务添加
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务清单试图
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
-	<li>
-	  <label class="mission-container">完成任务试图
-	    <input type="checkbox">
-	    <span class="checkmark"></span>
-	    <button type="button" class="btn mission-distributor">未指派</button>
-	  </label>
-	</li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务添加
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务清单试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
+        <li>
+          <label class="mission-container">完成任务试图
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </label>
+        </li>
 	<li>
 	  <%= form_for(:project, url: "#") do |f| %>
-	    <div class="mission-new-rectangle"></div>
-	    <input type="text" class="mission-new-input" placeholder="新的任务">
-	    <button type="button" class="btn mission-distributor">未指派</button>
-            <%= f.submit "添加任务", class: "btn btn-primary btn-xs submit-button-width" %>
-            <%= link_to "取消", "#", :class => "link-button-small margin-left-normal" %>
+            <div class="flex-vcenter">
+              <label class="mission-new-rectangle"></label>
+              <input type="text" class="mission-new-input" placeholder="新的任务">
+              <button type="button" class="btn mission-distributor">未指派</button>
+            </div>
+            <div>
+              <%= f.submit "添加任务", class: "btn-sm mission-new-submit-button" %>
+              <%= link_to "取消", "#", :class => "link-button-small" %>
+            </div>
 	  <% end %>
 	</li>
 	<li>
-	  <a href="#" class="mission-add-button">添加新任务</a>
+          <a href="#" class="mission-add-button">添加新任务</a>
 	</li>
       </ul>
-
     </div>
   </body>
 </html>
