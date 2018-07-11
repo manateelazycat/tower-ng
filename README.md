@@ -15,7 +15,7 @@ $ gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
 $ gem install rails
 ```
 
-### 使用方法
+### MacOS 上安装项目依赖
 ```Bash
 $ git clone git@github.com:manateelazycat/tower-ng.git
 $ cd tower-ng
@@ -23,4 +23,5 @@ $ bundle update
 $ rails server
 ``
 
+### 使用
 在浏览器中访问 0.0.0.0:3000 就可以在自己的机器上使用我开发的任务管理工具了, Enjoy!
