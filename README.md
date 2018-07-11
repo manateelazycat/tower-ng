@@ -1,4 +1,6 @@
-我在 [Deepin](https://www.deepin.org/) 用 [Tower](https://tower.im) 来管理研发团队.
+### 这个项目是干什么用的?
+
+我还在 [Deepin](https://www.deepin.org/) 的时候, 主要用 [Tower](https://tower.im) 来管理研发团队所有的任务.
 
 这个项目的目标是用 Ruby on Rails 重新构建一个 Tower.im 一样的协作工具出来, 主要用于验证我学到的 Rails/Html5/CSS/JS 等知识是否理解透彻.
 
@@ -20,4 +22,5 @@ $ cd tower-ng
 $ bundle update
 $ rails server
 ``
-然后在浏览器中访问 0.0.0.0:3000
+
+在浏览器中访问 0.0.0.0:3000 就可以在自己的机器上使用我开发的任务管理工具了, Enjoy!
