@@ -31,15 +31,4 @@ $(document).ready(function () {
             $(this).remove();
 	});
     }, 5000);
-
-    $(window).scroll(function () {
-	// Keep mission list area always float at right of screen.
-	if ($('body').is('.project-page')) {
-	    var scrollOffset = $(this).scrollTop();
-	    var topBlankOffset = 190;
-	    var missionListAreaMarginTop = 22;
-
-	    $('.mission-list-area').css('top', Math.max(topBlankOffset + missionListAreaMarginTop - scrollOffset, missionListAreaMarginTop));
-	}
-    });
 });

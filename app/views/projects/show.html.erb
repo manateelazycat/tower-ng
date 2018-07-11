@@ -3,15 +3,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_pack_tag "application" %>
   </head>
-  <body class="project-page content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
     <div class="board-box position-relative">
       <div class="project-title"><%= Project.find_by_hashid(params[:id]).name %> </div>
       <div class="project-splitter-bold"></div>
       <div class="project-splitter-light"></div>
 
-      <div class="mission-list-area-parent">
-	<div class="mission-list-area">
+      <div class="mission-list-area-parent" data-controller="mission">
+	<div class="mission-list-area"
+	     data-target="mission.area"
+	     data-action="scroll@window->mission#onScroll">
 	  <ul>
 	    <li class="mission-list">
 	      默认任务清单1
