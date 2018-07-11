@@ -716,20 +716,20 @@ li {
 
 .mission-list-area-parent {
     position: absolute;
-    width: 200px;
+    width: 180px;
     right: 0;
 }
 
 .mission-list-area {
     color: #666;
     position: fixed;
-    width: 200px;
+    width: 180px;
     top: 212px;
 }
 
 .mission-list {
     margin-bottom: 20px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 350;
     display: inline-block;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -739,6 +739,6 @@ li {
 
 .mission-list-add-button {
     color: var(--logo-color);
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 350;
 }
