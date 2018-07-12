@@ -7,13 +7,16 @@ export default class extends Controller {
 		     ]
 
     connect() {
+	var projectSplitterRect = $(".project-splitter-light")[0].getBoundingClientRect();
+	this.projectSplitterY = projectSplitterRect.y;
+	this.missionListTop = parseInt(this.data.get("mission-list-top"));
+
+	this.missionListAreaTarget.style.top = (this.projectSplitterY + this.missionListTop).toString() + "px";
     }
 
     onScroll() {
 	var scrollOffset = window.scrollY
-	var topBlankOffset = 190
-	var missionListAreaMarginTop = 22
-	var areaOffset = Math.max(topBlankOffset + missionListAreaMarginTop - scrollOffset, missionListAreaMarginTop)
+	var areaOffset = Math.max(this.projectSplitterY + this.missionListTop - scrollOffset, this.missionListTop)
 
 	this.missionListAreaTarget.style.top = areaOffset.toString() + "px";
     }

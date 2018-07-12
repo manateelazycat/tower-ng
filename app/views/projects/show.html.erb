@@ -5,7 +5,9 @@
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
-    <div class="board-box position-relative" data-controller="mission">
+    <div class="board-box position-relative"
+	 data-controller="mission"
+	 data-mission-mission-list-top="32">
       <div class="project-title"><%= Project.find_by_hashid(params[:id]).name %> </div>
       <div class="project-splitter-bold"></div>
       <div class="project-splitter-light"></div>
@@ -266,7 +268,7 @@
           </a>
         </li>
       </ul>
-      
+
     </div>
   </body>
 </html>
