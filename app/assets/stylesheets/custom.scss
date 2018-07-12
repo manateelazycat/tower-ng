@@ -13,6 +13,9 @@
     --phone-page-bottom-bar-height: 54px;
     --phone-page-top-bar-height: 54px;
     --project-splitter-color: #BDC8CB;
+    --button-border: 1px solid rgba(0, 0, 0, 0.1);
+    --button-radius: 4px;
+    --check-button-radius: 5px;
 }
 
 // Home page CSS.
@@ -60,8 +63,8 @@
 
 .sign-box {
     background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--button-radius);
+    border: var(--button-border);
     box-shadow: 0px 10px 50px #eeeeee;
     padding-bottom: 20px;
     padding-left: 30px;
@@ -372,8 +375,8 @@ li {
 
 .bread-crumbs-big {
     background-color: rgba(250, 250, 250, 1);
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--button-radius);
+    border: var(--button-border);
     border-bottom-style: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -397,8 +400,8 @@ li {
 
 .board-box {
     background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--button-radius);
+    border: var(--button-border);
     box-shadow: 0px 10px 50px #eee;
     margin-bottom: 60px;
     margin-left: auto;
@@ -494,8 +497,8 @@ li {
 }
 
 .project-item:hover {
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--button-radius);
+    border: var(--button-border);
 }
 
 .project-icon {
@@ -650,7 +653,7 @@ li {
     width: 52px;
     font-size: 8px;
     border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: var(--button-border);
     margin-top: 0px;
     margin-left: 10px;
 }
@@ -718,8 +721,8 @@ li {
     color: #fff;
     font-weight: 300;
     font-size: 13px;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--button-radius);
+    border: var(--button-border);
 }
 
 .mission-new-form {
@@ -746,8 +749,8 @@ li {
     color: #fff;
     font-weight: 300;
     font-size: 12px;
-    border-radius: 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--button-radius);
+    border: var(--button-border);
 }
 
 // Checkbox CSS.
@@ -775,8 +778,8 @@ li {
     width: 20px;
     height: 20px;
     background: #fff;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--check-button-radius);
+    border: var(--button-border);
 }
 
 /* checked mark aspect */
@@ -828,8 +831,8 @@ li {
 /* accessibility */
 [type="checkbox"]:checked:focus + label:before,
 [type="checkbox"]:not(:checked):focus + label:before {
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--check-button-radius);
+    border: var(--button-border);
 }
 
 .mission-title {
