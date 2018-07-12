@@ -14,36 +14,51 @@ export default class extends Controller {
 	var topBlankOffset = 190
 	var missionListAreaMarginTop = 22
 	var areaOffset = Math.max(topBlankOffset + missionListAreaMarginTop - scrollOffset, missionListAreaMarginTop)
-	var areaAttributes = "top: " + areaOffset.toString() + "px;"
 
-	this.missionListAreaTarget.setAttribute("style", areaAttributes)
+	this.missionListAreaTarget.style.top = areaOffset.toString() + "px";
     }
 
     clickMissionNewButton(event) {
 	event.preventDefault()
+	var currentTarget = event.currentTarget;
+	var closestNewFormTargets = $(currentTarget).closest(".mission-list-title").find(".mission-new-form");
+	var closestAddButtonTargets = $(currentTarget).closest(".mission-list-title").find(".mission-add-button");
 
-	this.missionNewFormTarget.setAttribute("style", "display: block;")
-	this.missionNewButtonTarget.setAttribute("style", "display: none;")
+	if (closestNewFormTargets.length > 0) {
+	    closestNewFormTargets[0].style.display = "block";
+	}
+
+	if (closestAddButtonTargets.length > 0) {
+	    closestAddButtonTargets[0].style.display = "none";
+	}
     }
 
     clickMissionCancelButton(event) {
 	event.preventDefault()
+	var currentTarget = event.currentTarget;
+	var closestNewFormTargets = $(currentTarget).closest(".mission-list-title").find(".mission-new-form");
+	var closestAddButtonTargets = $(currentTarget).closest(".mission-list-title").find(".mission-add-button");
 
-	this.missionNewFormTarget.setAttribute("style", "display: none;")
-	this.missionNewButtonTarget.setAttribute("style", "display: block;")
+	if (closestNewFormTargets.length > 0) {
+	    closestNewFormTargets[0].style.display = "none";
+	}
+
+	if (closestAddButtonTargets.length > 0) {
+	    closestAddButtonTargets[0].style.display = "block";
+	}
     }
 
     clickMissionListNewButton(event) {
 	event.preventDefault()
 
-	this.missionListNewFormTarget.setAttribute("style", "display: block;")
-	this.missionListNewButtonTarget.setAttribute("style", "display: none;")
+	this.missionListNewFormTarget.style.display = "block";
+	this.missionListNewButtonTarget.style.display = "none";
     }
 
     clickMissionListCancelButton(event) {
 	event.preventDefault()
 
-	this.missionListNewFormTarget.setAttribute("style", "display: none;")
-	this.missionListNewButtonTarget.setAttribute("style", "display: block;")
+	this.missionListNewFormTarget.style.display = "none";
+	this.missionListNewButtonTarget.style.display = "block";
     }
 }
