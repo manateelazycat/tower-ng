@@ -837,3 +837,12 @@ li {
     font-weight: 350;
     font-size: 15px;
 }
+
+.mission-title-link {
+    color: #222;
+    font-weight: 350;
+}
+
+.mission-title-link:hover {
+    color: var(--logo-color);
+}
