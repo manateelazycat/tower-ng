@@ -1,4 +1,3 @@
-* 减少 Mission 的鼠标相应区域
 * NewButton/CancelButton 仅能影响同属 ui 的 li 对象
 * 添加 Mission 和 Mission List 模型, JS 控制模型的更新
 * Hover Mission 增加修改和删除的 tooltip
