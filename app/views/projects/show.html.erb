@@ -6,11 +6,10 @@
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
     <div class="board-box position-relative"
-	 data-controller="mission"
-	 data-mission-mission-list-top="32">
+         data-controller="mission"
+         data-mission-mission-list-top="36">
       <div class="project-title"><%= Project.find_by_hashid(params[:id]).name %> </div>
-      <div class="project-splitter-bold"></div>
-      <div class="project-splitter-light"></div>
+      <div class="project-splitter"></div>
 
       <div class="mission-list-area-parent">
         <div class="mission-list-area"
@@ -35,38 +34,38 @@
             <li class="mission-list">
               默认任务清单6
             </li>
-	    <li>
-	      <div class="mission-list-new-form"
-		   data-target="mission.missionListNewForm">
-		<%= form_for(:project, url: "#") do |f| %>
-		  <div class="flex-vcenter">
-                    <input type="text" class="mission-list-new-input" placeholder="新的任务清单">
-		  </div>
-		  <div>
-                    <%= f.submit "添加任务清单", class: "btn-sm mission-list-new-submit-button" %>
-		    <a href="#"
-		       class="link-button-small"
-		       data-target="mission.missionListCancelButton"
-		       data-action="mission#clickMissionListCancelButton">
-		      取消</a>
-		  </div>
-		<% end %>
-              </div>
-	    </li>
             <li>
-	      <a href="#"
-		 class="mission-list-add-button"
-		 data-target="mission.missionListNewButton"
-		 data-action="mission#clickMissionListNewButton">
-		添加新任务清单
-	      </a>
+              <div class="mission-list-new-form"
+                   data-target="mission.missionListNewForm">
+                <%= form_for(:project, url: "#") do |f| %>
+                  <div class="flex-vcenter">
+                    <input type="text" class="mission-list-new-input" placeholder="新的任务清单">
+                  </div>
+                  <div>
+                    <%= f.submit "添加任务清单", class: "btn-sm mission-list-new-submit-button" %>
+                    <a href="#"
+                       class="link-button-small"
+                       data-target="mission.missionListCancelButton"
+                       data-action="mission#clickMissionListCancelButton">
+                      取消</a>
+                  </div>
+                <% end %>
+              </div>
+            </li>
+            <li>
+              <a href="#"
+                 class="mission-list-add-button"
+                 data-target="mission.missionListNewButton"
+                 data-action="mission#clickMissionListNewButton">
+                添加新任务清单
+              </a>
             </li>
           </ul>
         </div>
       </div>
 
       <ul class="mission-list-title"
-          data-target="mission.missionListTitle">默认任务清单
+                 data-target="mission.missionListTitle">默认任务清单
         <li>
           <input type="checkbox" id="checkbox1">
           <label for="checkbox1" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
@@ -168,7 +167,7 @@
       </ul>
 
       <ul class="mission-list-title"
-          data-target="mission.missionListTitle">默认任务清单
+                 data-target="mission.missionListTitle">默认任务清单
         <li>
           <input type="checkbox" id="checkbox1">
           <label for="checkbox1" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>

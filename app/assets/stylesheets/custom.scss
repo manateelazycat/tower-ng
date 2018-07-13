@@ -347,17 +347,11 @@ li {
     margin-bottom: 20px;
 }
 
-.project-splitter-bold {
-    background-color: var(--project-splitter-color);
+.project-splitter {
+    background: linear-gradient(var(--project-splitter-color) 50%, white 50%, white 90%, var(--project-splitter-color) 90%);
     width: 100%;
-    height: 4px;
-}
-
-.project-splitter-light {
-    background-color: var(--project-splitter-color);
-    width: 100%;
-    height: 1px;
-    margin-top: 5px;
+    height: 10px;
+    margin-bottom: 30px;
 }
 
 .form-title {

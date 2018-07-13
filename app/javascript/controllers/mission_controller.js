@@ -7,8 +7,8 @@ export default class extends Controller {
 		     ]
 
     connect() {
-	var projectSplitterRect = $(".project-splitter-light")[0].getBoundingClientRect();
-	this.projectSplitterY = projectSplitterRect.y;
+	var projectSplitterRect = $(".project-splitter")[0].getBoundingClientRect();
+	this.projectSplitterY = projectSplitterRect.y + projectSplitterRect.height;
 	this.missionListTop = parseInt(this.data.get("mission-list-top"));
 
 	this.missionListAreaTarget.style.top = (this.projectSplitterY + this.missionListTop).toString() + "px";
