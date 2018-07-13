@@ -321,7 +321,6 @@ li {
 }
 
 .form-control:focus {
-    -webkit-box-shadow: none;
     border-color: var(--focus-color);
     box-shadow: none;
 }
@@ -793,17 +792,11 @@ li {
 
 /* checked mark aspect changes */
 [type="checkbox"]:not(:checked) + label:after {
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0);
-    -ms-transform: scale(0);
     opacity: 0;
     transform: scale(0);
 }
 
 [type="checkbox"]:checked + label:after {
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
     opacity: 1;
     transform: scale(1);
 }
