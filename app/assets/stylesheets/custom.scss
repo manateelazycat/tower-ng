@@ -782,12 +782,16 @@ li {
     content: '✔';
     position: absolute;
     font-size: 14px;
-    color: var(--logo-color);
+    color: #fff;
+    background: var(--logo-color);
     top: 0;
-    left: 4px;
+    left: 0;
     right: 0;
     width: 20px;
     height: 20px;
+    padding-left: 2px;          // padding left for content
+    border: var(--button-border);
+    border-radius: var(--check-button-radius);
 }
 
 /* checked mark aspect changes */
