@@ -20,15 +20,6 @@
     --bottom-bar-shadow: #ccc;
 }
 
-// Home page CSS.
-.home-background {
-    background-size: cover;
-    background-image: url("background.jpg");    /* The image used */
-    background-repeat: no-repeat;
-    background-position: center;    /* Center and scale the image nicely */
-    height: 100%;    /* Full height */
-}
-
 .home-logo {
     font-size: 600%;
     font-weight: bold;
@@ -42,20 +33,6 @@
     color: var(--logo-text-color);
     opacity: 0.9;
     margin-bottom: 140px;
-}
-
-// Single page CSS.
-.single-page-body,
-.single-page-html {
-    height: 100%;
-}
-
-.single-page-background {
-    background-size: cover;
-    background-color: var(--background-color);
-    background-repeat: no-repeat;
-    background-position: center;/* Center and scale the image nicely */
-    height: 100%;/* Full height */
 }
 
 .sign-box {
@@ -251,6 +228,7 @@ li {
     text-align: center;
     align-items: center;
     justify-content: center;
+    margin: auto;
 }
 
 .flex-align-right {
@@ -799,4 +777,21 @@ input[type="checkbox"]:disabled + label::before {
 
 .mission-title-link:hover {
     color: var(--logo-color);
+}
+
+.fullscreen-body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.default-background-image {
+    background-size: cover;
+    background-image: url("background.jpg");    /* The image used */
+    background-repeat: no-repeat;
+    background-position: center;    /* Center and scale the image nicely */
+}
+
+.default-background-color {
+    background: var(--background-color);
 }
