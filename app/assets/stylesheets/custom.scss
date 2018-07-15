@@ -655,8 +655,8 @@ li {
     font-size: 14px;
     font-weight: 350;
     color: var(--logo-color);
-    margin-left: 40px;
     margin-top: 10px;
+    margin-left: 40px;
 }
 
 .mission-list-area-parent {
@@ -691,10 +691,10 @@ li {
     background-color: #eee;
     width: 20px;
     height: 20px;
+    margin-top: 4px;
     margin-left: 10px;
     border: 1px solid #eee;
     border-radius: 5px;
-    margin-top: 4px;
 }
 
 .mission-new-input {
@@ -758,16 +758,16 @@ input[type="checkbox"] {
 input[type="checkbox"] + label::before {
     content: '\a0';
     display: inline-block;
+    font-size: 14px;
     background: #fff;
     width: 20px;
     height: 20px;
     padding-left: 2px;          // padding left for content
-    margin-right: 10px;
     margin-top: 10px;
     margin-bottom: 0px;
+    margin-right: 10px;
     border: var(--button-border);
     border-radius: var(--check-button-radius);
-    font-size: 14px;
 }
 
 // Customize checkbox check status.
