@@ -16,7 +16,8 @@
     --button-border: 1px solid rgba(0, 0, 0, 0.1);
     --button-radius: 4px;
     --check-button-radius: 5px;
-    --bar-shadow: #ccc;
+    --top-bar-shadow: #aaa;
+    --bottom-bar-shadow: #ccc;
 }
 
 // Home page CSS.
@@ -549,7 +550,7 @@ li {
     top: 0;
     width: 100%;
     height: var(--phone-page-top-bar-height);
-    box-shadow: 0 -3px 4px 4px var(--bar-shadow);
+    box-shadow: 0 -3px 4px 4px var(--top-bar-shadow);
 }
 
 .phone-page-bottom-bar {
@@ -557,7 +558,7 @@ li {
     bottom: 0;
     width: 100%;
     height: var(--phone-page-bottom-bar-height);
-    box-shadow: 0 3px 4px 4px var(--bar-shadow);
+    box-shadow: 0 3px 4px 4px var(--bottom-bar-shadow);
 }
 
 .phone-project-item-box {
