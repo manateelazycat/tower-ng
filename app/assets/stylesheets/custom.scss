@@ -656,6 +656,7 @@ li {
     font-weight: 350;
     color: var(--logo-color);
     margin-left: 40px;
+    margin-top: 10px;
 }
 
 .mission-list-area-parent {
@@ -693,6 +694,7 @@ li {
     margin-left: 10px;
     border: 1px solid #eee;
     border-radius: 5px;
+    margin-top: 4px;
 }
 
 .mission-new-input {
@@ -719,6 +721,7 @@ li {
 
 .mission-new-form {
     display: none;
+    margin-top: 10px;
 }
 
 .mission-list-new-form {
@@ -745,84 +748,40 @@ li {
     border-radius: var(--button-radius);
 }
 
-// Checkbox CSS.
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
+// Hide default checkbox .
+input[type="checkbox"] {
+    clip: rect(0, 0, 0, 0);
     position: absolute;
-    left: -9999px;
-}
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-    position: relative;
-    padding-left: 30px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    cursor: pointer;
 }
 
-/* checkbox aspect */
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-    content: '';
-    position: absolute;
+// Customize checkbox default status.
+input[type="checkbox"] + label::before {
+    content: '\a0';
+    display: inline-block;
     background: #fff;
-    top: 0;
-    left:0;
-    width: 20px;
-    height: 20px;
-    border: var(--button-border);
-    border-radius: var(--check-button-radius);
-}
-
-/* checked mark aspect */
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-    content: '✔';
-    position: absolute;
-    font-size: 14px;
-    color: #fff;
-    background: var(--logo-color);
-    top: 0;
-    left: 0;
-    right: 0;
     width: 20px;
     height: 20px;
     padding-left: 2px;          // padding left for content
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
     border: var(--button-border);
     border-radius: var(--check-button-radius);
+    font-size: 14px;
 }
 
-/* checked mark aspect changes */
-[type="checkbox"]:not(:checked) + label:after {
-    opacity: 0;
-    transform: scale(0);
+// Customize checkbox check status.
+input[type="checkbox"]:checked + label::before {
+    content: '✔';
+    color: #fff;
+    background: var(--logo-color);
 }
 
-[type="checkbox"]:checked + label:after {
-    opacity: 1;
-    transform: scale(1);
-}
-/* disabled checkbox */
-[type="checkbox"]:disabled:not(:checked) + label:before,
-[type="checkbox"]:disabled:checked + label:before {
-    background-color: #ddd;
-    border-color: #bbb;
+// Customize checkbox disabled status.
+input[type="checkbox"]:disabled + label::before {
+    color: #555;
+    background: gray;
     box-shadow: none;
-}
-
-[type="checkbox"]:disabled:checked + label:after {
-    color: #999;
-}
-
-[type="checkbox"]:disabled + label {
-    color: #aaa;
-}
-
-/* accessibility */
-[type="checkbox"]:checked:focus + label:before,
-[type="checkbox"]:not(:checked):focus + label:before {
-    border: var(--button-border);
-    border-radius: var(--check-button-radius);
 }
 
 .mission-title {
