@@ -768,6 +768,7 @@ input[type="checkbox"] + label::before {
     margin-right: 10px;
     border: var(--button-border);
     border-radius: var(--check-button-radius);
+    transition: 0.2s;
 }
 
 // Customize checkbox check status.
@@ -775,6 +776,7 @@ input[type="checkbox"]:checked + label::before {
     content: '✔';
     color: #fff;
     background: var(--logo-color);
+    transition: 0.2s;
 }
 
 // Customize checkbox disabled status.
