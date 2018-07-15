@@ -3,3 +3,4 @@
 * Hover Mission 增加修改和删除的 tooltip
 * 右侧的不仅仅是任务列表区域, 更是纵向看板设计的关键, 每个列表下面都有百分比进度展示
 * Use CSS drop-shadow implement poup triangle menu
+* Remove border-bottom from last child of ul 
