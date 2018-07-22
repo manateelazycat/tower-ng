@@ -29,13 +29,8 @@ export default class extends Controller {
 	var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form");
 	var closestAddButtonTargets = closestMissionListTitle.find(".mission-add-button");
 
-	if (closestNewFormTargets.length > 0) {
-	    closestNewFormTargets[0].style.display = "block";
-	}
-
-	if (closestAddButtonTargets.length > 0) {
-	    closestAddButtonTargets[0].style.display = "none";
-	}
+	$(closestNewFormTargets[0]).show();
+	$(closestAddButtonTargets[0]).hide();
     }
 
     clickMissionCancelButton(event) {
@@ -46,26 +41,21 @@ export default class extends Controller {
 	var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form");
 	var closestAddButtonTargets = closestMissionListTitle.find(".mission-add-button");
 
-	if (closestNewFormTargets.length > 0) {
-	    closestNewFormTargets[0].style.display = "none";
-	}
-
-	if (closestAddButtonTargets.length > 0) {
-	    closestAddButtonTargets[0].style.display = "block";
-	}
+	$(closestNewFormTargets[0]).hide();
+	$(closestAddButtonTargets[0]).show();
     }
 
     clickMissionListNewButton(event) {
 	event.preventDefault()
 
-	this.missionListNewFormTarget.style.display = "block";
-	this.missionListNewButtonTarget.style.display = "none";
+	$(this.missionListNewFormTarget).show();
+	$(this.missionListNewButtonTarget).hide();
     }
 
     clickMissionListCancelButton(event) {
 	event.preventDefault()
 
-	this.missionListNewFormTarget.style.display = "none";
-	this.missionListNewButtonTarget.style.display = "block";
+	$(this.missionListNewFormTarget).hide();
+	$(this.missionListNewButtonTarget).show();
     }
 }
