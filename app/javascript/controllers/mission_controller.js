@@ -23,9 +23,11 @@ export default class extends Controller {
 
     clickMissionNewButton(event) {
 	event.preventDefault()
+
 	var currentTarget = event.currentTarget;
-	var closestNewFormTargets = $(currentTarget).closest(".mission-list-title").find(".mission-new-form");
-	var closestAddButtonTargets = $(currentTarget).closest(".mission-list-title").find(".mission-add-button");
+	var closestMissionListTitle = $(currentTarget).closest(".mission-list-title");
+	var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form");
+	var closestAddButtonTargets = closestMissionListTitle.find(".mission-add-button");
 
 	if (closestNewFormTargets.length > 0) {
 	    closestNewFormTargets[0].style.display = "block";
@@ -38,9 +40,11 @@ export default class extends Controller {
 
     clickMissionCancelButton(event) {
 	event.preventDefault()
+
 	var currentTarget = event.currentTarget;
-	var closestNewFormTargets = $(currentTarget).closest(".mission-list-title").find(".mission-new-form");
-	var closestAddButtonTargets = $(currentTarget).closest(".mission-list-title").find(".mission-add-button");
+	var closestMissionListTitle = $(currentTarget).closest(".mission-list-title");
+	var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form");
+	var closestAddButtonTargets = closestMissionListTitle.find(".mission-add-button");
 
 	if (closestNewFormTargets.length > 0) {
 	    closestNewFormTargets[0].style.display = "none";
