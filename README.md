@@ -20,6 +20,7 @@ $ gem install rails
 $ git clone git@github.com:manateelazycat/tower-ng.git
 $ cd tower-ng
 $ bundle update
+$ yarn install
 $ rails server
 ```
 
