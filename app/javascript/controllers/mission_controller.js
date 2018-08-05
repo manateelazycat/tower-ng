@@ -67,7 +67,7 @@ export default class extends Controller {
 	var tooltipHideDuration = 400
 	var tooltipArrowWidth = 20
 
-	if (missionListInput.val() == "") {
+	if (missionListInput.val().trim() == "") {
 	    var tooltip
 
 	    // Fade in tooltip element if it exists.
