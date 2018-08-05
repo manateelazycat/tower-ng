@@ -19,6 +19,12 @@ export default class extends Controller {
 	var areaOffset = Math.max(this.projectSplitterY + this.missionListTop - scrollOffset, this.missionListTop)
 
 	this.missionListAreaTarget.style.top = areaOffset.toString() + "px"
+
+	// Hide tooltip element if it exists.
+	if ($(".mission-list-input-tooltip").length) {
+	    var tooltip = $(".mission-list-input-tooltip")
+	    tooltip.hide()
+	}
     }
 
     clickMissionNewButton(event) {
@@ -70,20 +76,7 @@ export default class extends Controller {
 	var scrollOffset = window.scrollY
 
 	if (missionListInput.val().trim() == "") {
-	    var tooltip
-
-	    // Fade in tooltip element if it exists.
-	    if ($(".mission-list-input-tooltip").length) {
-		tooltip = $(".mission-list-input-tooltip")
-		tooltip.fadeIn(0)
-	    }
-	    // Otherwise create tooltip element.
-	    else {
-		tooltip = $("<div />")
-		tooltip.attr({class: 'mission-list-input-tooltip'});
-		tooltip.text("请输入任务清单名字")
-		$("body").append(tooltip)
-	    }
+	    var tooltip = this.createTooltipEelement()
 
 	    // Adjust tooltip coordinate.
 	    tooltip.css({
@@ -97,5 +90,24 @@ export default class extends Controller {
 	    console.log(missionListInput.val())
 	}
 
+    }
+
+    createTooltipEelement() {
+	var tooltip
+
+	// Fade in tooltip element if it exists.
+	if ($(".mission-list-input-tooltip").length) {
+	    tooltip = $(".mission-list-input-tooltip")
+	    tooltip.fadeIn(0)
+	}
+	// Otherwise create tooltip element.
+	else {
+	    tooltip = $("<div />")
+	    tooltip.attr({class: 'mission-list-input-tooltip'});
+	    tooltip.text("请输入任务清单名字")
+	    $("body").append(tooltip)
+	}
+
+	return tooltip
     }
 }
