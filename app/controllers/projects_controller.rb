@@ -38,5 +38,7 @@ class ProjectsController < ApplicationController
     # Get team id, make view can access params[:team_id]
     team = Team.find_by(creator: current_user.email)
     params[:team_id] = team.hashid
+
+    @project = Project.find_by_hashid(params[:id])
   end
 end

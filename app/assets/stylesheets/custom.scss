@@ -18,6 +18,7 @@
     --check-button-radius: 5px;
     --top-bar-shadow: #aaa;
     --bottom-bar-shadow: #ccc;
+    --tooltip-color: #FFFCBB;
 }
 
 .home-logo {
@@ -225,10 +226,10 @@ li {
     width: 100%;
     height: 100%;
     flex-direction: column;
+    margin: auto;
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin: auto;
 }
 
 .flex-align-right {
@@ -688,13 +689,18 @@ li {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--logo-color);
+    background-color: var(--button-color);
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 40px;
     border: var(--button-border);
     border-radius: var(--button-radius);
+}
+
+.mission-new-submit-button:hover {
+    color: #fff;
+    background-color: var(--hover-color);
 }
 
 .mission-new-form {
@@ -709,6 +715,7 @@ li {
 .mission-list-new-input {
     font-size: 13px;
     font-weight: 350;
+    margin-bottom: 10px;
     border: none;
     border-bottom: 1px solid #eee;
     outline: none;
@@ -718,12 +725,23 @@ li {
     font-size: 12px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--logo-color);
+    background-color: var(--button-color);
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
     border: var(--button-border);
     border-radius: var(--button-radius);
+    text-decoration: none;
+}
+
+.mission-list-new-submit-button:hover {
+    color: #fff;
+    background-color: var(--hover-color);
+}
+
+.mission-list-new-submit-button:focus {
+    color: #fff;
+    background-color: var(--focus-color);
 }
 
 // Hide default checkbox .
@@ -734,6 +752,7 @@ input[type="checkbox"] {
 
 // Customize checkbox default status.
 input[type="checkbox"] + label::before {
+    transition: 0.2s;
     content: '\a0';
     display: inline-block;
     font-size: 14px;
@@ -746,15 +765,14 @@ input[type="checkbox"] + label::before {
     margin-right: 10px;
     border: var(--button-border);
     border-radius: var(--check-button-radius);
-    transition: 0.2s;
 }
 
 // Customize checkbox check status.
 input[type="checkbox"]:checked + label::before {
+    transition: 0.2s;
     content: '✔';
     color: #fff;
     background: var(--logo-color);
-    transition: 0.2s;
 }
 
 // Customize checkbox disabled status.
@@ -794,4 +812,35 @@ input[type="checkbox"]:disabled + label::before {
 
 .default-background-color {
     background: var(--background-color);
+}
+
+.mission-list-input-tooltip {
+    filter: drop-shadow(0 1px 5px rgba(0, 0, 0, .5));
+    box-sizing: border-box;
+    position: absolute;
+    font-size: 13px;
+    font-weight: 350;
+    color: #222;
+    background: var(--tooltip-color);
+    width: 100%;
+    width: max-content;
+    height: auto;
+    height: 20px;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 3px 0 0 3px;
+    text-align: center;
+}
+
+.mission-list-input-tooltip:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid var(--tooltip-color);
 }

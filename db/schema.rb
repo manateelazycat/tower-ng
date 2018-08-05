@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_004217) do
+ActiveRecord::Schema.define(version: 2018_07_27_062106) do
+
+  create_table "mission_lists", force: :cascade do |t|
+    t.string "name"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_mission_lists_on_project_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_finish"
+    t.integer "mission_list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_list_id"], name: "index_missions_on_mission_list_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.text "name"
