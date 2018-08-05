@@ -69,30 +69,15 @@ export default class extends Controller {
 	event.preventDefault()
 
 	var missionListInput = $(".mission-list-new-input")
-	var tooltipHideTimeout = 3000
-	var tooltipHideDuration = 400
-	var tooltipArrowWidth = 20
-
-	var scrollOffset = window.scrollY
 
 	if (missionListInput.val().trim() == "") {
-	    var tooltip = this.createTooltipEelement()
-
-	    // Adjust tooltip coordinate.
-	    tooltip.css({
-		top: scrollOffset + missionListInput[0].getBoundingClientRect().top,
-		left: missionListInput[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
-	    })
-
-	    // Hide tooltip after duration.
-	    tooltip.delay(tooltipHideTimeout).fadeOut(tooltipHideDuration)
+	    this.updateTooltipElement(this.createTooltipElement())
 	} else {
 	    console.log(missionListInput.val())
 	}
-
     }
 
-    createTooltipEelement() {
+    createTooltipElement() {
 	var tooltip
 
 	// Fade in tooltip element if it exists.
@@ -109,5 +94,22 @@ export default class extends Controller {
 	}
 
 	return tooltip
+    }
+
+    updateTooltipElement(tooltip) {
+	var missionListInput = $(".mission-list-new-input")
+	var scrollOffset = window.scrollY
+	var tooltipHideTimeout = 3000
+	var tooltipHideDuration = 400
+	var tooltipArrowWidth = 20
+
+	// Adjust tooltip coordinate.
+	tooltip.css({
+	    top: scrollOffset + missionListInput[0].getBoundingClientRect().top,
+	    left: missionListInput[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
+	})
+
+	// Hide tooltip after duration.
+	tooltip.delay(tooltipHideTimeout).fadeOut(tooltipHideDuration)
     }
 }
