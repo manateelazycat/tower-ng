@@ -67,6 +67,8 @@ export default class extends Controller {
 	var tooltipHideDuration = 400
 	var tooltipArrowWidth = 20
 
+	var scrollOffset = window.scrollY
+
 	if (missionListInput.val().trim() == "") {
 	    var tooltip
 
@@ -85,7 +87,7 @@ export default class extends Controller {
 
 	    // Adjust tooltip coordinate.
 	    tooltip.css({
-		top: missionListInput[0].getBoundingClientRect().top,
+		top: scrollOffset + missionListInput[0].getBoundingClientRect().top,
 		left: missionListInput[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
 	    })
 
