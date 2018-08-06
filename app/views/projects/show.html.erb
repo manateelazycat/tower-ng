@@ -16,52 +16,38 @@
              data-target="mission.missionListArea"
              data-action="scroll@window->mission#onScroll">
           <ul>
-	    <%#= render @project.mission_lists %>
-            <!-- <li class="mission-list">
-		 默认任务清单1
-		 </li>
-		 <li class="mission-list">
-		 默认任务清单2
-		 </li>
-		 <li class="mission-list">
-		 默认任务清单3
-		 </li>
-		 <li class="mission-list">
-		 默认任务清单4
-		 </li>
-		 <li class="mission-list">
-		 默认任务清单5
-		 </li>
-		 <li class="mission-list">
-		 默认任务清单6
-		 </li> -->
-            <li class="mission-list-new-form-item">
-              <div class="mission-list-new-form"
+	    <% @project.mission_lists.each do |mission_list| %>
+	      <li class="mission-list">
+		<%= mission_list.name %>
+	      </li>
+	    <% end %>
+	    <li class="mission-list-new-form-item">
+	      <div class="mission-list-new-form"
                    data-target="mission.missionListNewForm">
                 <div class="flex-vcenter">
                   <input type="text" class="mission-list-new-input" placeholder="新的任务清单">
                 </div>
                 <div>
                   <a href="#"
-                     class="btn-sm mission-list-new-submit-button"
-                     data-action="mission#clickMissionListAddButton">
-                    添加任务清单</a>
+		     class="btn-sm mission-list-new-submit-button"
+		     data-action="mission#clickMissionListAddButton">
+		    添加任务清单</a>
                   <a href="#"
-                     class="link-button-small"
-                     data-target="mission.missionListCancelButton"
-                     data-action="mission#clickMissionListCancelButton">
-                    取消</a>
+		     class="link-button-small"
+		     data-target="mission.missionListCancelButton"
+		     data-action="mission#clickMissionListCancelButton">
+		    取消</a>
                 </div>
-              </div>
-            </li>
-            <li>
-              <a href="#"
+	      </div>
+	    </li>
+	    <li>
+	      <a href="#"
                  class="mission-list-add-button"
                  data-target="mission.missionListNewButton"
                  data-action="mission#clickMissionListNewButton">
                 添加新任务清单
-              </a>
-            </li>
+	      </a>
+	    </li>
           </ul>
         </div>
       </div>

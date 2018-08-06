@@ -4,8 +4,6 @@ class MissionListsController < ApplicationController
     project_id = params[:project_id]
     project = Project.find_by_hashid(project_id)
 
-    print("******* ", project.mission_lists.map { |m| m.name })
-
     result = {}
 
     if project.mission_lists.map { |m| m.name }.include?(name)
