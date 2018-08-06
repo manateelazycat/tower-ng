@@ -73,7 +73,14 @@ export default class extends Controller {
 	if (missionListInput.val().trim() == "") {
 	    this.updateTooltip(this.createTooltip())
 	} else {
-	    console.log(missionListInput.val())
+	    // Insert mission list.
+	    var missionList = $("<li />")
+	    missionList.attr({class: 'mission-list'})
+	    missionList.text(missionListInput.val())
+	    missionList.insertBefore(".mission-list-new-form-item")
+
+	    // Clean mission list input after add new mission list.
+	    missionListInput.val('')
 	}
     }
 
