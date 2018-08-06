@@ -70,33 +70,65 @@ export default class extends Controller {
 
 	var missionListInput = $(".mission-list-new-input")
 
-	if (missionListInput.val().trim() == "") {
-	    this.updateTooltip(this.createTooltip())
-	} else {
-	    // Insert mission list.
-	    var missionList = $("<li />")
-	    missionList.attr({class: 'mission-list'})
-	    missionList.text(missionListInput.val())
-	    missionList.insertBefore(".mission-list-new-form-item")
 
-	    // Clean mission list input after add new mission list.
-	    missionListInput.val('')
+	if (missionListInput.val().trim() == "") {
+	    this.updateTooltip(this.createTooltip("请输入任务清单名字"))
+	} else {
+	    var url = $(location).attr('href')
+	    var projectId = url.substring(url.lastIndexOf('/') + 1)
+
+	    var self = this
+
+	    $.ajax({
+		type: "POST",
+		url: "/mission_lists",
+		data: {
+		    name: missionListInput.val(),
+		    project_id: projectId
+		},
+		success: function() {
+		    self.handleMissionListCreated()
+		},
+		error: function() {
+		    self.handleMissionListFailed()
+		}
+	    })
 	}
     }
 
-    createTooltip() {
+    handleMissionListCreated() {
+	var missionListInput = $(".mission-list-new-input")
+
+	// Insert mission list.
+	var missionList = $("<li />")
+	missionList.attr({class: 'mission-list'})
+	missionList.text(missionListInput.val())
+	missionList.insertBefore(".mission-list-new-form-item")
+
+	// Clean mission list input after add new mission list.
+	missionListInput.val('')
+    }
+
+    handleMissionListFailed() {
+	var missionListInput = $(".mission-list-new-input")
+	var msg = "名字 '" + missionListInput.val() + "' 已经存在"
+	this.updateTooltip(this.createTooltip(msg))
+    }
+
+    createTooltip(text) {
 	var tooltip
 
 	// Fade in tooltip element if it exists.
 	if ($(".mission-list-input-tooltip").length) {
 	    tooltip = $(".mission-list-input-tooltip")
+	    tooltip.text(text)
 	    tooltip.fadeIn(0)
 	}
 	// Otherwise create tooltip element.
 	else {
 	    tooltip = $("<div />")
 	    tooltip.attr({class: 'mission-list-input-tooltip'});
-	    tooltip.text("请输入任务清单名字")
+	    tooltip.text(text)
 	    $("body").append(tooltip)
 	}
 
