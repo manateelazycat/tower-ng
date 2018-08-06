@@ -71,13 +71,13 @@ export default class extends Controller {
 	var missionListInput = $(".mission-list-new-input")
 
 	if (missionListInput.val().trim() == "") {
-	    this.updateTooltipElement(this.createTooltipElement())
+	    this.updateTooltip(this.createTooltip())
 	} else {
 	    console.log(missionListInput.val())
 	}
     }
 
-    createTooltipElement() {
+    createTooltip() {
 	var tooltip
 
 	// Fade in tooltip element if it exists.
@@ -96,7 +96,7 @@ export default class extends Controller {
 	return tooltip
     }
 
-    updateTooltipElement(tooltip) {
+    updateTooltip(tooltip) {
 	var missionListInput = $(".mission-list-new-input")
 	var scrollOffset = window.scrollY
 	var tooltipHideTimeout = 3000
