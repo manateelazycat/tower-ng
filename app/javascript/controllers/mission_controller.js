@@ -86,11 +86,12 @@ export default class extends Controller {
 		    name: missionListInput.val(),
 		    project_id: projectId
 		},
-		success: function() {
-		    self.handleMissionListCreated()
-		},
-		error: function() {
-		    self.handleMissionListFailed()
+		success: function(result) {
+		    if (result["status"] == "created") {
+			self.handleMissionListCreated()
+		    } else {
+			self.handleMissionListFailed()
+		    }
 		}
 	    })
 	}
