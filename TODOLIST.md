@@ -1,6 +1,6 @@
-* Refactory mission relative CSS class name.
-* 添加 Mission 和 Mission List 模型, JS 控制模型的更新
+* 添加任务清单的时候, 同时要在左边内容区域动态添加新的任务清单模板
+* 当没有任务清单时, 默认显示一个默认的任务清单
+* 任务清单可以点击切换页面, 并增加任务清单重新编辑和删除的按钮
+* 任务可以点击, 并在任务清单里面增加编辑器
 * Hover Mission 增加修改和删除的 tooltip
 * 右侧的不仅仅是任务列表区域, 更是纵向看板设计的关键, 每个列表下面都有百分比进度展示
-* Use CSS drop-shadow implement poup triangle menu
-* Remove border-bottom from last child of ul 
