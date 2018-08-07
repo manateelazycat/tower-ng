@@ -52,209 +52,54 @@
         </div>
       </div>
 
-      <ul class="mission-list-title"
-          data-target="mission.missionListTitle">默认任务清单
-        <li>
-          <input type="checkbox" id="checkbox1">
-          <label for="checkbox1" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox2">
-          <label for="checkbox2" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox3">
-          <label for="checkbox3" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox4">
-          <label for="checkbox4" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox5">
-          <label for="checkbox5" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox6">
-          <label for="checkbox6" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox7">
-          <label for="checkbox7" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox8">
-          <label for="checkbox8" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox9">
-          <label for="checkbox9" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox10">
-          <label for="checkbox10" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox11">
-          <label for="checkbox11" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox12">
-          <label for="checkbox12" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox13">
-          <label for="checkbox13" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox14">
-          <label for="checkbox14" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <div class="mission-new-form"
-	       data-target="mission.missionNewForm">
-            <%= form_for(:project, url: "#") do |f| %>
-	      <div class="flex-vcenter">
-                <label class="mission-new-rectangle"></label>
-                <input type="text" class="mission-new-input" placeholder="新的任务">
-                <button type="button" class="btn mission-distributor">未指派</button>
-	      </div>
-	      <div>
-                <%= f.submit "添加任务", class: "btn-sm mission-new-submit-button" %>
-                <a href="#"
-                   class="link-button-small"
-                   data-target="mission.missionCancelButton"
-                   data-action="mission#clickMissionCancelButton">
-                  取消</a>
-	      </div>
-            <% end %>
-          </div>
-        </li>
-        <li>
-          <a href="#"
-             class="mission-add-button"
-             data-target="mission.missionNewButton"
-             data-action="mission#clickMissionNewButton">
-            添加新任务
-          </a>
-        </li>
-      </ul>
-
-      <ul class="mission-list-title"
-          data-target="mission.missionListTitle">默认任务清单
-        <li>
-          <input type="checkbox" id="checkbox1">
-          <label for="checkbox1" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox2">
-          <label for="checkbox2" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox3">
-          <label for="checkbox3" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox4">
-          <label for="checkbox4" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox5">
-          <label for="checkbox5" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox6">
-          <label for="checkbox6" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox7">
-          <label for="checkbox7" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox8">
-          <label for="checkbox8" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox9">
-          <label for="checkbox9" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox10">
-          <label for="checkbox10" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox11">
-          <label for="checkbox11" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox12">
-          <label for="checkbox12" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox13">
-          <label for="checkbox13" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <input type="checkbox" id="checkbox14">
-          <label for="checkbox14" class="mission-title"><a href="#" class="mission-title-link">完成任务清单试图</a></label>
-          <button type="button" class="btn mission-distributor">未指派</button>
-        </li>
-        <li>
-          <div class="mission-new-form"
-               data-target="mission.missionNewForm">
-            <%= form_for(:project, url: "#") do |f| %>
+      <% @project.mission_lists.each do |mission_list| %>
+        <ul id=<%= mission_list.hashid %>
+	    class="mission-list-title"
+          data-target="mission.missionListTitle">
+	  <%= mission_list.name %>
+	  <% mission_list.missions.each do |mission| %>
+            <li>
+              <input type="checkbox" id=<%= mission.hashid %>>
+	      <label for=<%= mission.hashid %> class="mission-title">
+		<a href="#" class="mission-title-link">
+		  <%= mission.name %>
+		</a>
+	      </label>
+	      <button type="button" class="btn mission-distributor">未指派</button>
+            </li>
+	  <% end %>
+          <li class="mission-new-form-item">
+            <div class="mission-new-form"
+                 data-target="mission.missionNewForm">
               <div class="flex-vcenter">
                 <label class="mission-new-rectangle"></label>
                 <input type="text" class="mission-new-input" placeholder="新的任务">
                 <button type="button" class="btn mission-distributor">未指派</button>
               </div>
               <div>
-                <%= f.submit "添加任务", class: "btn-sm mission-new-submit-button" %>
+		<button class="btn-sm mission-new-submit-button"
+			data-action="mission#clickMissionSubmitButton">
+		  添加任务
+		</button>
                 <a href="#"
                    class="link-button-small"
                    data-target="mission.missionCancelButton"
                    data-action="mission#clickMissionCancelButton">
-                  取消</a>
+                  取消
+		</a>
               </div>
-            <% end %>
-          </div>
-        </li>
-        <li>
-          <a href="#"
-             class="mission-add-button"
-             data-target="mission.missionNewButton"
-             data-action="mission#clickMissionNewButton">
-            添加新任务
-          </a>
-        </li>
-      </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#"
+               class="mission-add-button"
+               data-target="mission.missionNewButton"
+               data-action="mission#clickMissionNewButton">
+              添加新任务
+            </a>
+          </li>
+	</ul>
+      <% end %>
 
     </div>
   </body>

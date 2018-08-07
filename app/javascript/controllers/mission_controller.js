@@ -39,6 +39,37 @@ export default class extends Controller {
 	$(closestAddButtonTargets[0]).hide()
     }
 
+    clickMissionSubmitButton(event) {
+	event.preventDefault()
+
+	var currentTarget = event.currentTarget
+	var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
+	var missionNewInput = closestMissionListTitle.find(".mission-new-input")
+	var missionNewFormItem = closestMissionListTitle.find(".mission-new-form-item")
+
+	if (missionNewInput.val().trim() == "") {
+	    this.updateTooltip(this.createTooltip("请输入任务标题"), missionNewInput)
+	} else {
+	    var self = this
+
+	    $.ajax({
+	    	type: "POST",
+	    	url: "/missions",
+	    	data: {
+		    mission_list_id: closestMissionListTitle.attr("id"),
+	    	    name: missionNewInput.val()
+	    	},
+	    	success: function(result) {
+		    // Insert mission template.
+		    missionNewFormItem.before(result)
+
+		    // Clean new mission input content.
+		    missionNewInput.val('')
+	    	}
+	    })
+	}
+    }
+
     clickMissionCancelButton(event) {
 	event.preventDefault()
 
@@ -70,9 +101,8 @@ export default class extends Controller {
 
 	var missionListInput = $(".mission-list-new-input")
 
-
 	if (missionListInput.val().trim() == "") {
-	    this.updateTooltip(this.createTooltip("请输入任务清单名字"))
+	    this.updateTooltip(this.createTooltip("请输入任务清单名字"), missionListInput)
 	} else {
 	    var url = $(location).attr('href')
 	    var projectId = url.substring(url.lastIndexOf('/') + 1)
@@ -98,13 +128,17 @@ export default class extends Controller {
     }
 
     handleMissionListCreated() {
+	// Get mission list input.
 	var missionListInput = $(".mission-list-new-input")
 
-	// Insert mission list.
+	// Update new mission list at mission list area.
 	var missionList = $("<li />")
 	missionList.attr({class: 'mission-list'})
 	missionList.text(missionListInput.val())
 	missionList.insertBefore(".mission-list-new-form-item")
+
+	// Update new mission list at mission area.
+
 
 	// Clean mission list input after add new mission list.
 	missionListInput.val('')
@@ -113,7 +147,7 @@ export default class extends Controller {
     handleMissionListFailed() {
 	var missionListInput = $(".mission-list-new-input")
 	var msg = "名字 '" + missionListInput.val() + "' 已经存在"
-	this.updateTooltip(this.createTooltip(msg))
+	this.updateTooltip(this.createTooltip(msg), missionListInput)
     }
 
     createTooltip(text) {
@@ -136,8 +170,7 @@ export default class extends Controller {
 	return tooltip
     }
 
-    updateTooltip(tooltip) {
-	var missionListInput = $(".mission-list-new-input")
+    updateTooltip(tooltip, input) {
 	var scrollOffset = window.scrollY
 	var tooltipHideTimeout = 3000
 	var tooltipHideDuration = 400
@@ -145,8 +178,8 @@ export default class extends Controller {
 
 	// Adjust tooltip coordinate.
 	tooltip.css({
-	    top: scrollOffset + missionListInput[0].getBoundingClientRect().top,
-	    left: missionListInput[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
+	    top: scrollOffset + input[0].getBoundingClientRect().top,
+	    left: input[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
 	})
 
 	// Hide tooltip after duration.
