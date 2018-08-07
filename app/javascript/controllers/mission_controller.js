@@ -56,7 +56,7 @@ export default class extends Controller {
 	if (missionNewInput.val().trim() == "") {
 	    this.updateTooltip(this.createTooltip("请输入任务标题"), missionNewInput)
 	} else {
-	    if (closestMissionListTitle.attr("id") == "0") {
+	    if (closestMissionListTitle.attr("id") == "mission-list-title-0") {
 		var url = $(location).attr('href')
 		var projectId = url.substring(url.lastIndexOf('/') + 1)
 
@@ -153,30 +153,57 @@ export default class extends Controller {
 
 	    var self = this
 
-	    $.ajax({
-		type: "POST",
-		url: "/mission_lists",
-		data: {
-		    name: missionListInput.val(),
-		    project_id: projectId
-		},
-		success: function(result) {
-		    if (result["status"] == "created") {
-			// Update new mission list at mission list area.
-			$(".mission-list-scrollarea").append(result["mission_list_item_html"])
-			$(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+	    if ($(".mission-list").first().attr("id") == "mission-list-0") {
+		$.ajax({
+		    type: "POST",
+		    url: "/mission_lists",
+		    data: {
+			name: missionListInput.val(),
+			project_id: projectId
+		    },
+		    success: function(result) {
+			if (result["status"] == "created") {
+			    // Update default mission list id and text.
+			    $(".mission-list").first().attr("id", result["mission_list_id"])
+			    $(".mission-list").first().text(missionListInput.val())
+			    $(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
 
-			// Update new mission list at mission area.
-			$(".mission-list-title").last().append(result["mission_list_html"])
+			    // Update default mission list id and text.
+			    $($(".mission-list-title").children()[0]).text(missionListInput.val())
+			    $(".mission-list-title").attr("id", result["mission_list_id"])
 
-			// Clean mission list input after add new mission list.
-			missionListInput.val('')
-		    } else {
-			var msg = "名字 '" + missionListInput.val() + "' 已经存在"
-			self.updateTooltip(self.createTooltip(msg), missionListInput)
+			    // Clean mission list input after add new mission list.
+			    missionListInput.val('')
+			}
 		    }
-		}
-	    })
+		})
+	    } else {
+		$.ajax({
+	    	    type: "POST",
+	    	    url: "/mission_lists",
+	    	    data: {
+	    		name: missionListInput.val(),
+	    		project_id: projectId
+	    	    },
+	    	    success: function(result) {
+	    		if (result["status"] == "created") {
+	    		    // Update new mission list at mission list area.
+	    		    $(".mission-list-scrollarea").append(result["mission_list_item_html"])
+	    		    $(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+
+	    		    // Update new mission list at mission area.
+	    		    $(".mission-list-title").last().append(result["mission_list_html"])
+
+	    		    // Clean mission list input after add new mission list.
+	    		    missionListInput.val('')
+	    		} else {
+	    		    var msg = "名字 '" + missionListInput.val() + "' 已经存在"
+	    		    self.updateTooltip(self.createTooltip(msg), missionListInput)
+	    		}
+	    	    }
+		})
+	    }
+
 	}
     }
 

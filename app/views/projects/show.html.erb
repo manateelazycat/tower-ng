@@ -16,8 +16,15 @@
              data-target="mission.missionListArea"
              data-action="scroll@window->mission#onScroll">
           <ul class="mission-list-scrollarea">
-	    <% @project.mission_lists.each do |mission_list| %>
-	      <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
+	    <% if @project.mission_lists.length > 0 %>
+              <% @project.mission_lists.each do |mission_list| %>
+                <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
+              <% end %>
+            <% else %>
+              <li id="mission-list-0"
+		  class="mission-list">
+		默认任务列表
+	      </li>
 	    <% end %>
           </ul>
 	  <ul>
@@ -60,22 +67,22 @@
           <%= render "mission_lists/create_mission_list", mission_list: mission_list %>
         <% end %>
       <% else %>
-        <ul id="0"
+        <ul id="mission-list-title-0"
             class="mission-list-title"
             data-target="mission.missionListTitle">
-          默认任务列表
+          <span>默认任务列表</span>
           <li class="mission-new-form-item">
             <div class="mission-new-form"
                  data-target="mission.missionNewForm">
-              <div class="flex-vcenter">
+	      <div class="flex-vcenter">
                 <label class="mission-new-rectangle"></label>
                 <input type="text"
-                       class="mission-new-input"
-                       placeholder="新的任务"
-                       data-action="keydown->mission#enterMissionNew">
+		       class="mission-new-input"
+		       placeholder="新的任务"
+		       data-action="keydown->mission#enterMissionNew">
                 <button type="button" class="btn mission-distributor">未指派</button>
-              </div>
-              <div>
+	      </div>
+	      <div>
                 <button class="btn-sm mission-new-submit-button"
                         data-action="mission#clickMissionSubmitButton">
                   添加任务
@@ -86,15 +93,15 @@
                    data-action="mission#clickMissionCancelButton">
                   取消
                 </a>
-              </div>
+	      </div>
             </div>
           </li>
           <li>
             <a href="#"
-               class="mission-add-button"
-               data-target="mission.missionNewButton"
-               data-action="mission#clickMissionNewButton">
-              添加新任务
+	       class="mission-add-button"
+	       data-target="mission.missionNewButton"
+	       data-action="mission#clickMissionNewButton">
+	      添加新任务
             </a>
           </li>
         </ul>
