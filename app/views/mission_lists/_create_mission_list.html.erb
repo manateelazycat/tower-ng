@@ -3,15 +3,7 @@
     data-target="mission.missionListTitle">
   <%= mission_list.name %>
   <% mission_list.missions.each do |mission| %>
-    <li>
-      <input type="checkbox" id=<%= mission.hashid %>>
-      <label for=<%= mission.hashid %> class="mission-title">
-	<a href="#" class="mission-title-link">
-	  <%= mission.name %>
-	</a>
-      </label>
-      <button type="button" class="btn mission-distributor">未指派</button>
-    </li>
+    <%= render "missions/create_mission", mission: mission %>
   <% end %>
   <li class="mission-new-form-item">
     <div class="mission-new-form"

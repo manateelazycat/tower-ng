@@ -9,7 +9,7 @@ class MissionsController < ApplicationController
     )
 
     respond_to do |format|
-      format.html {render 'create_mission',
+      format.html {render '_create_mission',
                           :locals => {:mission => mission},
                           :layout => false}
     end

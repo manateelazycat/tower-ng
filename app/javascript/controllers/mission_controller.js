@@ -118,38 +118,22 @@ export default class extends Controller {
 		},
 		success: function(result) {
 		    if (result["status"] == "created") {
-			self.handleMissionListCreated(result["html"])
+			// Update new mission list at mission list area.
+			$(".mission-list-scrollarea").append(result["mission_list_item_html"])
+			$(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+
+			// Update new mission list at mission area.
+			$(".mission-list-title").last().append(result["mission_list_html"])
+
+			// Clean mission list input after add new mission list.
+			missionListInput.val('')
 		    } else {
-			self.handleMissionListFailed()
+			var msg = "名字 '" + missionListInput.val() + "' 已经存在"
+			self.updateTooltip(self.createTooltip(msg), missionListInput)
 		    }
 		}
 	    })
 	}
-    }
-
-    handleMissionListCreated(mission_list_html) {
-	// Get mission list input.
-	var missionListInput = $(".mission-list-new-input")
-
-	// Update new mission list at mission list area.
-	var missionList = $("<li />")
-	missionList.attr({class: 'mission-list'})
-	missionList.text(missionListInput.val())
-
-	$(".mission-list-scrollarea")[0].append(missionList[0])
-	$(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
-
-	// Update new mission list at mission area.
-	$(".mission-list-title").last().append(mission_list_html)
-
-	// Clean mission list input after add new mission list.
-	missionListInput.val('')
-    }
-
-    handleMissionListFailed() {
-	var missionListInput = $(".mission-list-new-input")
-	var msg = "名字 '" + missionListInput.val() + "' 已经存在"
-	this.updateTooltip(this.createTooltip(msg), missionListInput)
     }
 
     createTooltip(text) {
