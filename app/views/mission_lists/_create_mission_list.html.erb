@@ -1,7 +1,11 @@
 <ul id=<%= mission_list.hashid %>
     class="mission-list-title"
     data-target="mission.missionListTitle">
-  <span><%= mission_list.name %></span>
+  <%= link_to project_mission_list_url(@project.hashid, mission_list.hashid) do %>
+    <div>
+      <%= mission_list.name %>
+    </div>
+  <% end %>
   <% mission_list.missions.each do |mission| %>
     <%= render "missions/create_mission", mission: mission %>
   <% end %>

@@ -38,4 +38,13 @@ class MissionListsController < ApplicationController
       end
     end
   end
+
+  def show
+    team = Team.find_by(creator: current_user.email)
+    params[:team_id] = team.hashid
+
+    @mission_list = MissionList.find_by_hashid(params[:id])
+
+    @project = Project.find_by_hashid(params[:project_id])
+  end
 end

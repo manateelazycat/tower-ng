@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <%= render 'layouts/header' %>
+
+    <%= link_to project_url(@project.hashid) do %>
+      <div class="bread-crumbs-big">
+        <%= @project.name %>
+      </div>
+    <% end %>
+
+    <div class="board-box">
+      <%= render "mission_lists/create_mission_list", mission_list: @mission_list %>
+    </div>
+
+  </body>
+</html>
