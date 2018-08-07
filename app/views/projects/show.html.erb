@@ -27,7 +27,10 @@
               <div class="mission-list-new-form"
                    data-target="mission.missionListNewForm">
                 <div class="flex-vcenter">
-                  <input type="text" class="mission-list-new-input" placeholder="新的任务清单">
+                  <input type="text"
+			 class="mission-list-new-input"
+			 placeholder="新的任务清单"
+			 data-action="mission#clickMissionListAddButton">
                 </div>
                 <div>
                   <a href="#"
@@ -75,7 +78,10 @@
                  data-target="mission.missionNewForm">
               <div class="flex-vcenter">
                 <label class="mission-new-rectangle"></label>
-                <input type="text" class="mission-new-input" placeholder="新的任务">
+                <input type="text"
+		       class="mission-new-input"
+		       placeholder="新的任务"
+		       data-action="mission#clickMissionSubmitButton">
                 <button type="button" class="btn mission-distributor">未指派</button>
               </div>
               <div>

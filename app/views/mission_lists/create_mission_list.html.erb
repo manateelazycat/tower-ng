@@ -18,12 +18,15 @@
          data-target="mission.missionNewForm">
       <div class="flex-vcenter">
         <label class="mission-new-rectangle"></label>
-        <input type="text" class="mission-new-input" placeholder="新的任务">
+        <input type="text"
+               class="mission-new-input"
+               placeholder="新的任务"
+               data-action="mission#clickMissionSubmitButton">
         <button type="button" class="btn mission-distributor">未指派</button>
       </div>
       <div>
 	<button class="btn-sm mission-new-submit-button"
-		       data-action="mission#clickMissionSubmitButton">
+		data-action="mission#clickMissionSubmitButton">
 	  添加任务
 	</button>
         <a href="#"
