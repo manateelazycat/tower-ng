@@ -27,6 +27,12 @@ export default class extends Controller {
 	}
     }
 
+    enterMissionNew(event) {
+	if (event.which == 13) {
+	    this.clickMissionSubmitButton(event)
+	}
+    }
+
     clickMissionNewButton(event) {
 	event.preventDefault()
 
@@ -94,6 +100,12 @@ export default class extends Controller {
 
 	$(this.missionListNewFormTarget).hide()
 	$(this.missionListNewButtonTarget).show()
+    }
+
+    enterMissionListAdd(event) {
+	if (event.which == 13) {
+	    this.clickMissionListAddButton(event)
+	}
     }
 
     clickMissionListAddButton(event) {
