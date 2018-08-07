@@ -7,18 +7,27 @@ export default class extends Controller {
 		     ]
 
     connect() {
-	var projectSplitterRect = $(".project-splitter")[0].getBoundingClientRect()
-	this.projectSplitterY = projectSplitterRect.y + projectSplitterRect.height
-	this.missionListTop = parseInt(this.data.get("mission-list-top"))
+	this.hasProjectSplitter = false
 
-	this.missionListAreaTarget.style.top = (this.projectSplitterY + this.missionListTop).toString() + "px"
+	if ($(".project-splitter").length) {
+	    var projectSplitterRect = $(".project-splitter")[0].getBoundingClientRect()
+	    this.projectSplitterY = projectSplitterRect.y + projectSplitterRect.height
+	    this.missionListTop = parseInt(this.data.get("mission-list-top"))
+
+	    this.missionListAreaTarget.style.top = (this.projectSplitterY + this.missionListTop).toString() + "px"
+
+	    this.hasProjectSplitter = true
+	}
+
     }
 
     onScroll() {
-	var scrollOffset = window.scrollY
-	var areaOffset = Math.max(this.projectSplitterY + this.missionListTop - scrollOffset, this.missionListTop)
+	if (this.hasProjectSplitter) {
+	    var scrollOffset = window.scrollY
+	    var areaOffset = Math.max(this.projectSplitterY + this.missionListTop - scrollOffset, this.missionListTop)
 
-	this.missionListAreaTarget.style.top = areaOffset.toString() + "px"
+	    this.missionListAreaTarget.style.top = areaOffset.toString() + "px"
+	}
 
 	// Hide tooltip element if it exists.
 	if ($(".mission-list-input-tooltip").length) {
@@ -64,7 +73,7 @@ export default class extends Controller {
 
 		$.ajax({
 		    type: "POST",
-		    url: "/mission_lists",
+		    url: "/projects/" + projectId + "/mission_lists",
 		    data: {
 			name: "默认任务列表",
 			project_id: projectId
@@ -91,9 +100,12 @@ export default class extends Controller {
     }
 
     addMissionInMissionList(mission_list_id, missionNewFormItem, missionNewInput) {
+	var url = $(location).attr('href')
+	var projectId = url.substring(url.lastIndexOf('/') + 1)
+
 	$.ajax({
 	    type: "POST",
-	    url: "/missions",
+	    url: "/projects/" + projectId + "/missions",
 	    data: {
 	    	mission_list_id: mission_list_id,
 	    	name: missionNewInput.val()
@@ -145,18 +157,18 @@ export default class extends Controller {
 
 	var missionListInput = $(".mission-list-new-input")
 
+	var url = $(location).attr('href')
+	var projectId = url.substring(url.lastIndexOf('/') + 1)
+
 	if (missionListInput.val().trim() == "") {
 	    this.updateTooltip(this.createTooltip("请输入任务清单名字"), missionListInput)
 	} else {
-	    var url = $(location).attr('href')
-	    var projectId = url.substring(url.lastIndexOf('/') + 1)
-
 	    var self = this
 
 	    if ($(".mission-list").first().attr("id") == "mission-list-0") {
 		$.ajax({
 		    type: "POST",
-		    url: "/mission_lists",
+		    url: "/projects/" + projectId + "/mission_lists",
 		    data: {
 			name: missionListInput.val(),
 			project_id: projectId
@@ -180,7 +192,7 @@ export default class extends Controller {
 	    } else {
 		$.ajax({
 	    	    type: "POST",
-	    	    url: "/mission_lists",
+		    url: "/projects/" + projectId + "/mission_lists",
 	    	    data: {
 	    		name: missionListInput.val(),
 	    		project_id: projectId

@@ -2,17 +2,16 @@ class MissionListsController < ApplicationController
   def create
     name = params[:name]
     project_id = params[:project_id]
-    project = Project.find_by_hashid(project_id)
-
+    @project = Project.find_by_hashid(project_id)
 
     respond_to do |format|
-      if project.mission_lists.map { |m| m.name }.include?(name)
+      if @project.mission_lists.map { |m| m.name }.include?(name)
         format.json {
           render :json => {
                    :status => "duplicated"
                  }}
       else
-        mission_list = project.mission_lists.create(
+        mission_list = @project.mission_lists.create(
           name: name,
           project_id: project_id
         )

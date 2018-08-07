@@ -1,6 +1,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= javascript_pack_tag "application" %>
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
@@ -11,7 +12,8 @@
       </div>
     <% end %>
 
-    <div class="board-box">
+    <div data-controller="mission"
+	 class="board-box">
       <%= render "mission_lists/create_mission_list", mission_list: @mission_list %>
     </div>
 
