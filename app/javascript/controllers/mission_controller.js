@@ -118,7 +118,7 @@ export default class extends Controller {
 		},
 		success: function(result) {
 		    if (result["status"] == "created") {
-			self.handleMissionListCreated()
+			self.handleMissionListCreated(result["html"])
 		    } else {
 			self.handleMissionListFailed()
 		    }
@@ -127,7 +127,7 @@ export default class extends Controller {
 	}
     }
 
-    handleMissionListCreated() {
+    handleMissionListCreated(mission_list_html) {
 	// Get mission list input.
 	var missionListInput = $(".mission-list-new-input")
 
@@ -138,7 +138,7 @@ export default class extends Controller {
 	missionList.insertBefore(".mission-list-new-form-item")
 
 	// Update new mission list at mission area.
-
+	$(".mission-list-title").last().append(mission_list_html)
 
 	// Clean mission list input after add new mission list.
 	missionListInput.val('')

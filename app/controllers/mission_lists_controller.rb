@@ -4,20 +4,31 @@ class MissionListsController < ApplicationController
     project_id = params[:project_id]
     project = Project.find_by_hashid(project_id)
 
-    result = {}
 
-    if project.mission_lists.map { |m| m.name }.include?(name)
-      result["status"] = "duplicated"
-    else
-      mission_list = project.mission_lists.create(
-        name: name,
-        project_id: project_id
-      )
-      mission_list.save
+    respond_to do |format|
+      if project.mission_lists.map { |m| m.name }.include?(name)
+        format.json {
+          render :json => {
+                   :status => "duplicated"
+                 }}
+      else
+        mission_list = project.mission_lists.create(
+          name: name,
+          project_id: project_id
+        )
+        mission_list.save
 
-      result["status"] = "created"
+        format.json {
+          render :json => {
+                   :status => "created",
+                   :html => render_to_string(
+                     :template => "mission_lists/create_mission_list.html.erb",
+                     :formats => :html,
+                     :layout => false,
+                     :locals => {:mission_list => mission_list}
+                   )
+                 }}
+      end
     end
-
-    render :json => result.to_json
   end
 end
