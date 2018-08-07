@@ -13,8 +13,5 @@ class MissionsController < ApplicationController
                           :locals => {:mission => mission},
                           :layout => false}
     end
-
-    # result = {"mission_id" => mission.hashid}
-    # render :json => result.to_json
   end
 end
