@@ -696,6 +696,8 @@ li {
     margin-left: 40px;
     border: var(--button-border);
     border-radius: var(--button-radius);
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 .mission-new-submit-button:hover {
