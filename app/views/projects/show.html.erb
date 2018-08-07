@@ -15,7 +15,7 @@
         <div class="mission-list-area"
              data-target="mission.missionListArea"
              data-action="scroll@window->mission#onScroll">
-          <ul class="mission-list-ul">
+          <ul class="mission-list-scrollarea">
 	    <% @project.mission_lists.each do |mission_list| %>
 	      <li class="mission-list">
 		<%= mission_list.name %>

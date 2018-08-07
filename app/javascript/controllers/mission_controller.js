@@ -136,8 +136,8 @@ export default class extends Controller {
 	missionList.attr({class: 'mission-list'})
 	missionList.text(missionListInput.val())
 
-	$(".mission-list-ul")[0].append(missionList[0])
-	$(".mission-list-ul").animate({scrollTop: $(".mission-list-ul").prop("scrollHeight")}, 500)
+	$(".mission-list-scrollarea")[0].append(missionList[0])
+	$(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
 
 	// Update new mission list at mission area.
 	$(".mission-list-title").last().append(mission_list_html)

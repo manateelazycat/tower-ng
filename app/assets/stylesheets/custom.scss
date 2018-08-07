@@ -848,7 +848,7 @@ input[type="checkbox"]:disabled + label::before {
     border-left: 10px solid var(--tooltip-color);
 }
 
-.mission-list-ul {
+.mission-list-scrollarea {
     overflow-y: auto;
     height: 600px;
 }
