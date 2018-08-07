@@ -21,6 +21,7 @@ class MissionListsController < ApplicationController
         format.json {
           render :json => {
                    :status => "created",
+                   :mission_list_id => mission_list.hashid,
                    :mission_list_item_html => render_to_string(
                      :template => "mission_lists/_create_mission_list_item.html.erb",
                      :formats => :html,

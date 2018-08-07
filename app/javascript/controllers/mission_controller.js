@@ -56,24 +56,56 @@ export default class extends Controller {
 	if (missionNewInput.val().trim() == "") {
 	    this.updateTooltip(this.createTooltip("请输入任务标题"), missionNewInput)
 	} else {
-	    var self = this
+	    if (closestMissionListTitle.attr("id") == "0") {
+		var url = $(location).attr('href')
+		var projectId = url.substring(url.lastIndexOf('/') + 1)
 
-	    $.ajax({
-	    	type: "POST",
-	    	url: "/missions",
-	    	data: {
-		    mission_list_id: closestMissionListTitle.attr("id"),
-	    	    name: missionNewInput.val()
-	    	},
-	    	success: function(result) {
-		    // Insert mission template.
-		    missionNewFormItem.before(result)
+		var self = this
 
-		    // Clean new mission input content.
-		    missionNewInput.val('')
-	    	}
-	    })
+		$.ajax({
+		    type: "POST",
+		    url: "/mission_lists",
+		    data: {
+			name: "默认任务列表",
+			project_id: projectId
+		    },
+		    success: function(result) {
+			if (result["status"] == "created") {
+			    // Update new mission list at mission list area.
+			    $(".mission-list-scrollarea").append(result["mission_list_item_html"])
+			    $(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+
+			    // Update mission list title id.
+			    closestMissionListTitle.attr("id", result["mission_list_id"])
+
+			    // Add mission in mission list.
+			    self.addMissionInMissionList(closestMissionListTitle.attr("id"), missionNewFormItem, missionNewInput)
+			}
+		    }
+		})
+	    } else {
+		// Add mission in mission list.
+		this.addMissionInMissionList(closestMissionListTitle.attr("id"), missionNewFormItem, missionNewInput)
+	    }
 	}
+    }
+
+    addMissionInMissionList(mission_list_id, missionNewFormItem, missionNewInput) {
+	$.ajax({
+	    type: "POST",
+	    url: "/missions",
+	    data: {
+	    	mission_list_id: mission_list_id,
+	    	name: missionNewInput.val()
+	    },
+	    success: function(result) {
+	    	// Insert mission template.
+	    	missionNewFormItem.before(result)
+
+	    	// Clean new mission input content.
+	    	missionNewInput.val('')
+	    }
+	})
     }
 
     clickMissionCancelButton(event) {
