@@ -367,10 +367,13 @@ li {
     background-color: #fff;
 }
 
+.min-board-height {
+    min-height: 600px;
+}
+
 .board-box {
     background-color: #fff;
     width: 900px;
-    min-height: 600px;
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 30px;
