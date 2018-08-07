@@ -135,7 +135,9 @@ export default class extends Controller {
 	var missionList = $("<li />")
 	missionList.attr({class: 'mission-list'})
 	missionList.text(missionListInput.val())
-	missionList.insertBefore(".mission-list-new-form-item")
+
+	$(".mission-list-ul")[0].append(missionList[0])
+	$(".mission-list-ul").animate({scrollTop: $(".mission-list-ul").prop("scrollHeight")}, 500)
 
 	// Update new mission list at mission area.
 	$(".mission-list-title").last().append(mission_list_html)

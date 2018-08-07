@@ -655,6 +655,7 @@ li {
     font-size: 13px;
     font-weight: 350;
     width: 80%;
+    color: #999;
     padding-bottom: 2px;
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -845,4 +846,9 @@ input[type="checkbox"]:disabled + label::before {
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-left: 10px solid var(--tooltip-color);
+}
+
+.mission-list-ul {
+    overflow-y: auto;
+    height: 600px;
 }
