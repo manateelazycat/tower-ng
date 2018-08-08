@@ -12,12 +12,15 @@
       </div>
     <% end %>
 
-    <div data-controller="mission"
+    <div class="right-float-menu-top"></div>
+
+    <div data-controller="mission rightfloatmenu"
+	 data-rightfloatmenu-top-offset="80"
          class="board-box right-float-menu-parent">
       <div class="right-float-menu-box">
         <div class="right-float-menu"
-             data-target="mission.missionListArea"
-             data-action="scroll@window->mission#onScroll">
+             data-target="rightfloatmenu.rightMenuArea"
+             data-action="scroll@window->rightfloatmenu#onScroll">
           <ul class="right-float-menu-scrollarea">
             <li class="right-float-menu-item">
               编辑

@@ -1,34 +1,14 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-    static targets = [ "missionListArea",
-		       "missionNewForm", "missionNewButton", "missionCancelButton",
+    static targets = [ "missionNewForm", "missionNewButton", "missionCancelButton",
 		       "missionListNewForm", "missionListNewButton", "missionListCancelButton",
 		     ]
 
     connect() {
-	this.hasProjectSplitter = false
-
-	if ($(".project-splitter").length) {
-	    var projectSplitterRect = $(".project-splitter")[0].getBoundingClientRect()
-	    this.projectSplitterY = projectSplitterRect.y + projectSplitterRect.height
-	    this.missionListTop = parseInt(this.data.get("mission-list-top"))
-
-	    this.missionListAreaTarget.style.top = (this.projectSplitterY + this.missionListTop).toString() + "px"
-
-	    this.hasProjectSplitter = true
-	}
-
     }
 
     onScroll() {
-	if (this.hasProjectSplitter) {
-	    var scrollOffset = window.scrollY
-	    var areaOffset = Math.max(this.projectSplitterY + this.missionListTop - scrollOffset, this.missionListTop)
-
-	    this.missionListAreaTarget.style.top = areaOffset.toString() + "px"
-	}
-
 	// Hide tooltip element if it exists.
 	if ($(".input-tooltip").length) {
 	    var tooltip = $(".input-tooltip")
