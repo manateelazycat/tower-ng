@@ -19,6 +19,12 @@
     --top-bar-shadow: #aaa;
     --bottom-bar-shadow: #ccc;
     --tooltip-color: #FFFCBB;
+    --right-menu-normal-button-normal-color: #5bc4c7;
+    --right-menu-normal-button-hover-color: #69E3E6;
+    --right-menu-normal-button-focus-color: #5bc4c7;
+    --right-menu-delete-button-normal-color: #BF5D57;
+    --right-menu-delete-button-hover-color: #E67069;
+    --right-menu-delete-button-focus-color: #BF5D57;
 }
 
 .home-logo {
@@ -642,6 +648,36 @@ li {
     margin-left: 40px;
 }
 
+.right-float-menu-normal-button {
+    color: var(--right-menu-normal-button-normal-color);
+    margin-left: 16px;
+}
+
+.right-float-menu-normal-button:hover {
+    color: var(--right-menu-normal-button-hover-color);
+}
+
+.right-float-menu-normal-button:focus {
+    color: var(--right-menu-normal-button-focus-color);
+    border: none;
+    outline: none;
+}
+
+.right-float-menu-delete-button {
+    color: var(--right-menu-delete-button-normal-color);
+    margin-left: 16px;
+}
+
+.right-float-menu-delete-button:hover {
+    color: var(--right-menu-delete-button-hover-color);
+}
+
+.right-float-menu-delete-button:focus {
+    color: var(--right-menu-delete-button-focus-color);
+    border: none;
+    outline: none;
+}
+
 .right-float-menu-parent {
     position: relative;
 }
@@ -859,4 +895,44 @@ input[type="checkbox"]:disabled + label::before {
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-left: 10px solid var(--tooltip-color);
+}
+
+.dialog-confirm-button {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    background-color: var(--button-color);
+    height: 28px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.dialog-confirm-button:hover {
+    color: #fff;
+    background-color: var(--hover-color);
+}
+
+// CSS to make modal dialog at center of screen.
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+	display: inline-block;
+	vertical-align: middle;
+	content: " ";
+	height: 100%;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    width: 400px;
 }

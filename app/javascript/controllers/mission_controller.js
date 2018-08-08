@@ -234,4 +234,16 @@ export default class extends Controller {
 	// Hide tooltip after duration.
 	tooltip.delay(tooltipHideTimeout).fadeOut(tooltipHideDuration)
     }
+
+    editMissionList(event) {
+	event.preventDefault()
+
+	console.log("edit missoin list")
+    }
+
+    deleteMissionList(event) {
+	event.preventDefault()
+
+	console.log("delete mission list")
+    }
 }
