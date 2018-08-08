@@ -13,7 +13,21 @@
     <% end %>
 
     <div data-controller="mission"
-	 class="board-box">
+         class="board-box right-float-menu-parent">
+      <div class="right-float-menu-box">
+        <div class="right-float-menu"
+             data-target="mission.missionListArea"
+             data-action="scroll@window->mission#onScroll">
+          <ul class="right-float-menu-scrollarea">
+            <li class="right-float-menu-item">
+              编辑
+            </li>
+            <li class="right-float-menu-item">
+              删除
+            </li>
+          </ul>
+        </div>
+      </div>
       <%= render "mission_lists/create_mission_list", mission_list: @mission_list %>
     </div>
 

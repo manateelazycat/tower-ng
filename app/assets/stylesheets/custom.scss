@@ -642,19 +642,28 @@ li {
     margin-left: 40px;
 }
 
-.mission-list-area-parent {
+.right-float-menu-parent {
+    position: relative;
+}
+
+.right-float-menu-box {
     position: absolute;
     right: 0;
     width: 180px;
 }
 
-.mission-list-area {
+.right-float-menu {
     position: fixed;
     color: #666;
     width: 180px;
 }
 
-.mission-list {
+.right-float-menu-scrollarea {
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.right-float-menu-item {
     display: inline-block;
     font-size: 13px;
     font-weight: 350;
@@ -821,7 +830,7 @@ input[type="checkbox"]:disabled + label::before {
     background: var(--background-color);
 }
 
-.mission-list-input-tooltip {
+.input-tooltip {
     filter: drop-shadow(0 1px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
     position: absolute;
@@ -840,7 +849,7 @@ input[type="checkbox"]:disabled + label::before {
     text-align: center;
 }
 
-.mission-list-input-tooltip:before {
+.input-tooltip:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -850,9 +859,4 @@ input[type="checkbox"]:disabled + label::before {
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-left: 10px solid var(--tooltip-color);
-}
-
-.mission-list-scrollarea {
-    overflow-y: auto;
-    max-height: 600px;
 }

@@ -5,24 +5,24 @@
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
-    <div class="board-box min-board-height position-relative"
+    <div class="board-box min-board-height right-float-menu-parent"
          data-controller="mission"
          data-mission-mission-list-top="36">
       <div class="project-title"><%= @project.name %> </div>
       <div class="project-splitter"></div>
 
-      <div class="mission-list-area-parent">
-        <div class="mission-list-area"
+      <div class="right-float-menu-box">
+        <div class="right-float-menu"
              data-target="mission.missionListArea"
              data-action="scroll@window->mission#onScroll">
-          <ul class="mission-list-scrollarea">
+          <ul class="right-float-menu-scrollarea">
 	    <% if @project.mission_lists.length > 0 %>
               <% @project.mission_lists.each do |mission_list| %>
                 <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
               <% end %>
             <% else %>
               <li id="mission-list-0"
-		  class="mission-list">
+		  class="right-float-menu-item">
 		默认任务列表
 	      </li>
 	    <% end %>

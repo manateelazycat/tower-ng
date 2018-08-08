@@ -30,8 +30,8 @@ export default class extends Controller {
 	}
 
 	// Hide tooltip element if it exists.
-	if ($(".mission-list-input-tooltip").length) {
-	    var tooltip = $(".mission-list-input-tooltip")
+	if ($(".input-tooltip").length) {
+	    var tooltip = $(".input-tooltip")
 	    tooltip.hide()
 	}
     }
@@ -81,8 +81,8 @@ export default class extends Controller {
 		    success: function(result) {
 			if (result["status"] == "created") {
 			    // Update new mission list at mission list area.
-			    $(".mission-list-scrollarea").append(result["mission_list_item_html"])
-			    $(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+			    $(".right-float-menu-scrollarea").append(result["mission_list_item_html"])
+			    $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
 
 			    // Update mission list title id.
 			    closestMissionListTitle.attr("id", result["mission_list_id"])
@@ -165,7 +165,7 @@ export default class extends Controller {
 	} else {
 	    var self = this
 
-	    if ($(".mission-list").first().attr("id") == "mission-list-0") {
+	    if ($(".right-float-menu-item").first().attr("id") == "mission-list-0") {
 		$.ajax({
 		    type: "POST",
 		    url: "/projects/" + projectId + "/mission_lists",
@@ -176,9 +176,9 @@ export default class extends Controller {
 		    success: function(result) {
 			if (result["status"] == "created") {
 			    // Update default mission list id and text.
-			    $(".mission-list").first().attr("id", result["mission_list_id"])
-			    $(".mission-list").first().text(missionListInput.val())
-			    $(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+			    $(".right-float-menu-item").first().attr("id", result["mission_list_id"])
+			    $(".right-float-menu-item").first().text(missionListInput.val())
+			    $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
 
 			    // Update default mission list id and text.
 			    $($(".mission-list-title").children()[0]).text(missionListInput.val())
@@ -200,8 +200,8 @@ export default class extends Controller {
 	    	    success: function(result) {
 	    		if (result["status"] == "created") {
 	    		    // Update new mission list at mission list area.
-	    		    $(".mission-list-scrollarea").append(result["mission_list_item_html"])
-	    		    $(".mission-list-scrollarea").animate({scrollTop: $(".mission-list-scrollarea").prop("scrollHeight")}, 500)
+	    		    $(".right-float-menu-scrollarea").append(result["mission_list_item_html"])
+	    		    $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
 
 	    		    // Update new mission list at mission area.
 	    		    $(".mission-list-title").last().append(result["mission_list_html"])
@@ -223,15 +223,15 @@ export default class extends Controller {
 	var tooltip
 
 	// Fade in tooltip element if it exists.
-	if ($(".mission-list-input-tooltip").length) {
-	    tooltip = $(".mission-list-input-tooltip")
+	if ($(".input-tooltip").length) {
+	    tooltip = $(".input-tooltip")
 	    tooltip.text(text)
 	    tooltip.fadeIn(0)
 	}
 	// Otherwise create tooltip element.
 	else {
 	    tooltip = $("<div />")
-	    tooltip.attr({class: 'mission-list-input-tooltip'});
+	    tooltip.attr({class: "input-tooltip"});
 	    tooltip.text(text)
 	    $("body").append(tooltip)
 	}
