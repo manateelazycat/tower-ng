@@ -21,7 +21,7 @@
                 <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
               <% end %>
             <% else %>
-              <li id="mission-list-0"
+              <li id="mission-list-default"
 		  class="right-float-menu-item">
 		默认任务列表
 	      </li>
@@ -67,7 +67,7 @@
           <%= render "mission_lists/create_mission_list", mission_list: mission_list %>
         <% end %>
       <% else %>
-        <ul id="mission-list-title-0"
+        <ul id="mission-list-title-default"
             class="mission-list-title"
             data-target="mission.missionListTitle">
           <span>默认任务列表</span>

@@ -65,7 +65,7 @@ export default class extends Controller {
 	if (missionNewInput.val().trim() == "") {
 	    this.updateTooltip(this.createTooltip("请输入任务标题"), missionNewInput)
 	} else {
-	    if (closestMissionListTitle.attr("id") == "mission-list-title-0") {
+	    if (closestMissionListTitle.attr("id") == "mission-list-title-default") {
 		var url = $(location).attr('href')
 		var projectId = url.substring(url.lastIndexOf('/') + 1)
 
@@ -165,7 +165,7 @@ export default class extends Controller {
 	} else {
 	    var self = this
 
-	    if ($(".right-float-menu-item").first().attr("id") == "mission-list-0") {
+	    if ($(".right-float-menu-item").first().attr("id") == "mission-list-default") {
 		$.ajax({
 		    type: "POST",
 		    url: "/projects/" + projectId + "/mission_lists",
