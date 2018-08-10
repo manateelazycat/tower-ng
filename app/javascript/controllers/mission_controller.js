@@ -238,7 +238,55 @@ export default class extends Controller {
     editMissionList(event) {
 	event.preventDefault()
 
-	console.log("edit missoin list")
+	var missionListTitle = $(".mission-list-title span")
+
+	console.log(missionListTitle.text())
+
+	$(".mission-save-form").show()
+	$(".mission-save-input").val(missionListTitle.text().trim())
+	missionListTitle.hide()
+    }
+
+    enterEditMissionList(event) {
+	if (event.which == 13) {
+	    this.clickEditMissionListSubmitButton(event)
+	}
+    }
+
+    clickEditMissionListSubmitButton(event) {
+	event.preventDefault()
+
+	var missionSaveInput = $(".mission-save-input")
+
+	if (missionSaveInput.val().trim() == "") {
+	    this.updateTooltip(this.createTooltip("请输入任务清单名称"), missionSaveInput)
+	} else {
+	    var url = $(location).attr('href')
+	    var urlParams = url.split("/")
+
+	    $.ajax({
+		type: "GET",
+		url: "/projects/" + urlParams[4] + "/mission_lists/" + urlParams[6] + "/edit",
+		data: {
+		    name: missionSaveInput.val().trim(),
+		},
+		success: function(result) {
+		    $(".mission-list-title span").show()
+		    $(".mission-save-form").hide()
+
+		    $(".mission-list-title span").text(missionSaveInput.val().trim())
+		}
+	    })
+
+	    console.log(missionSaveInput.val().trim())
+	}
+    }
+
+    cancelEditMissionList(event) {
+	event.preventDefault()
+
+	$(".mission-list-title span").show()
+	$(".mission-save-form").hide()
     }
 
     deleteMissionList(event) {

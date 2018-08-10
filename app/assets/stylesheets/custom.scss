@@ -909,13 +909,13 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .dialog-confirm-button {
-    margin-left: 5px;
-    margin-right: 5px;
     font-size: 13px;
     font-weight: 300;
     color: #fff;
     background-color: var(--button-color);
     height: 28px;
+    margin-left: 5px;
+    margin-right: 5px;
     border: var(--button-border);
     border-radius: var(--button-radius);
     box-shadow: none !important;
@@ -934,27 +934,27 @@ input[type="checkbox"]:disabled + label::before {
 
 @media screen and (min-width: 768px) {
     .modal:before {
-	display: inline-block;
-	vertical-align: middle;
-	content: " ";
-	height: 100%;
+        content: " ";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
     }
 }
 
 .modal-dialog {
     display: inline-block;
-    text-align: left;
-    vertical-align: middle;
     width: 400px;
+    vertical-align: middle;
+    text-align: left;
 }
 
 .loading-dialog-background {
     position: fixed;
+    background: rgba(0, 0, 0, 0.3);
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
     z-index: 9999;
 }
 
@@ -972,14 +972,14 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .loading-dialog {
-    background: white;
-    border-radius: var(--button-radius);
-    border: var(--button-border);
-    box-shadow: 0px 3px 10px #333333;
-    padding: 15px;
     display: flex;
+    background: white;
+    padding: 15px;
     flex-direction: row;
     margin: auto;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    box-shadow: 0px 3px 10px #333333;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -991,11 +991,46 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 @keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.mission-save-input {
+    font-size: 15px;
+    font-weight: 350;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+}
+
+.mission-save-button {
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    background-color: var(--button-color);
+    height: 28px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.mission-save-form {
+    display: none;
 }

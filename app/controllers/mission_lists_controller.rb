@@ -62,4 +62,22 @@ class MissionListsController < ApplicationController
                }}
     end
   end
+
+  def edit
+
+    mission_list = MissionList.find_by_hashid(params[:id])
+
+    if mission_list then
+      mission_list.name = params[:name]
+      mission_list.save
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "update",
+               }
+      }
+    end
+  end
 end

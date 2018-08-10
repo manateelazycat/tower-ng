@@ -1,11 +1,32 @@
 <ul id=<%= mission_list.hashid %>
     class="mission-list-title"
     data-target="mission.missionListTitle">
-  <%= link_to project_mission_list_url(@project.hashid, mission_list.hashid) do %>
-    <div>
-      <%= mission_list.name %>
+  <div>
+    <div class="mission-save-form">
+      <div class="flex-vcenter">
+        <input type="text"
+               class="mission-save-input"
+               placeholder="请输入任务清单名称"
+	       data-action="keydown->mission#enterEditMissionList">
+      </div>
+      <div>
+        <button class="btn-sm mission-save-button"
+		data-action="mission#clickEditMissionListSubmitButton">
+          保存
+        </button>
+        <a href="#"
+           class="link-button-small"
+	   data-action="mission#cancelEditMissionList">
+          取消
+        </a>
+      </div>
     </div>
-  <% end %>
+    <%= link_to project_mission_list_url(@project.hashid, mission_list.hashid) do %>
+      <span>
+        <%= mission_list.name %>
+      </span>
+    <% end %>
+  </div>
   <% mission_list.missions.each do |mission| %>
     <%= render "missions/create_mission", mission: mission %>
   <% end %>
@@ -21,16 +42,16 @@
         <button type="button" class="btn mission-distributor">未指派</button>
       </div>
       <div>
-	<button class="btn-sm mission-new-submit-button"
-		data-action="mission#clickMissionSubmitButton">
-	  添加任务
-	</button>
+        <button class="btn-sm mission-new-submit-button"
+                data-action="mission#clickMissionSubmitButton">
+          添加任务
+        </button>
         <a href="#"
            class="link-button-small"
            data-target="mission.missionCancelButton"
            data-action="mission#clickMissionCancelButton">
           取消
-	</a>
+        </a>
       </div>
     </div>
   </li>
