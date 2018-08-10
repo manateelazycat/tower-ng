@@ -41,4 +41,11 @@ class ProjectsController < ApplicationController
 
     @project = Project.find_by_hashid(params[:id])
   end
+
+  def edit
+    team = Team.find_by(creator: current_user.email)
+    params[:team_id] = team.hashid
+
+    @project = Project.find_by_hashid(params[:id])
+  end
 end

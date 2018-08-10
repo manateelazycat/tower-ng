@@ -345,6 +345,22 @@ li {
     margin-bottom: 20px;
 }
 
+.project-setting {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    color: #666;
+}
+
+.project-setting-icon {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
 .project-splitter {
     background: linear-gradient(var(--project-splitter-color) 50%, white 50%, white 90%, var(--project-splitter-color) 90%);
     width: 100%;
@@ -1033,4 +1049,47 @@ input[type="checkbox"]:disabled + label::before {
 
 .mission-save-form {
     display: none;
+}
+
+.project-setting-action {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: auto;
+}
+
+.project-setting-action-title {
+    margin-top: 40px;
+}
+
+.project-setting-action-summary {
+    color: #666;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.project-delete-button {
+    color: #F13A3E;
+    border: 1px solid #F13A3E;
+    border-radius: var(--button-radius);
+    width: 200px;
+}
+
+.project-delete-button:hover {
+    color: #FF696D;
+    background: #fff;
+    border: 1px solid #FF696D;
+    border-radius: var(--button-radius);
+    width: 200px;
+}
+
+.project-delete-button:active,
+.project-delete-button:active:hover,
+.project-delete-button:active:focus,
+.project-delete-button:focus {
+    color: #F13A3E;
+    background: #fff;
+    border: 1px solid #F13A3E;
+    border-radius: var(--button-radius);
+    width: 200px;
 }

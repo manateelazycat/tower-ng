@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= javascript_pack_tag "application" %>
+  </head>
+  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <div id="loading-dialog">
+      <div class="loading-dialog-background">
+        <div class="flex-hcenter">
+          <div class="loading-dialog">
+            <div class="loading-dialog-spinner glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
+            <div class="loading-dialog-content">正在删除项目...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render 'layouts/header' %>
+
+    <%= link_to project_url(@project.hashid) do %>
+      <div class="bread-crumbs-big">
+        <%= @project.name %>
+      </div>
+    <% end %>
+
+    <div class="board-box min-board-height">
+      <h3>项目设置</h3>
+      <div class="project-setting-action">
+	<h4 class="project-setting-action-title">删除项目</h4>
+	<span class="project-setting-action-summary">项目删除后，所有的内容也将被立刻删除，请谨慎操作。</span>
+	<button class="btn btn-default project-delete-button">了解风险, 删除这个项目</button>
+      </div>
+    </div>
+  </body>
+</html>
