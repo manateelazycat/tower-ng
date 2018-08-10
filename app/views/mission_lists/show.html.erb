@@ -4,6 +4,17 @@
     <%= javascript_pack_tag "application" %>
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <div id="loading-dialog">
+      <div class="loading-dialog-background">
+	<div class="flex-hcenter">
+	  <div class="loading-dialog">
+            <div class="loading-dialog-spinner glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
+            <div class="loading-dialog-content">正在删除任务列表...</div>
+	  </div>
+	</div>
+      </div>
+    </div>
+
     <%= render 'layouts/header' %>
 
     <%= link_to project_url(@project.hashid) do %>
@@ -15,8 +26,8 @@
     <div class="right-float-menu-top"></div>
 
     <div data-controller="mission rightfloatmenu"
-	 data-rightfloatmenu-top-offset="80"
-         class="board-box right-float-menu-parent">
+         data-rightfloatmenu-top-offset="80"
+         class="board-box min-board-height right-float-menu-parent">
       <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -53,18 +64,18 @@
           <ul class="right-float-menu-scrollarea">
             <li class="right-float-menu-item">
               <a href="#"
-		 class="right-float-menu-normal-button"
-		 data-action="mission#editMissionList">
-		编辑
-	      </a>
+                 class="right-float-menu-normal-button"
+                 data-action="mission#editMissionList">
+                编辑
+              </a>
             </li>
             <li class="right-float-menu-item">
               <a href="#"
-		 class="right-float-menu-delete-button"
-		 data-toggle="modal"
- 		 data-target="#confirm-dialog">
+                 class="right-float-menu-delete-button"
+                 data-toggle="modal"
+                 data-target="#confirm-dialog">
                 删除
-	      </a>
+              </a>
             </li>
           </ul>
         </div>

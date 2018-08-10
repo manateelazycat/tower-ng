@@ -46,4 +46,20 @@ class MissionListsController < ApplicationController
 
     @project = Project.find_by_hashid(params[:project_id])
   end
+
+  def destroy
+    mission_list = MissionList.find_by_hashid(params[:id])
+
+    if mission_list then
+      mission_list.destroy
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "destroy",
+                 :redirect => project_url(params[:project_id])
+               }}
+    end
+  end
 end
