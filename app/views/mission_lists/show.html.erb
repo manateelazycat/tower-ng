@@ -4,16 +4,7 @@
     <%= javascript_pack_tag "application" %>
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <div id="loading-dialog">
-      <div class="loading-dialog-background">
-	<div class="flex-hcenter">
-	  <div class="loading-dialog">
-            <div class="loading-dialog-spinner glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
-            <div class="loading-dialog-content">正在删除任务列表...</div>
-	  </div>
-	</div>
-      </div>
-    </div>
+    <%= render "layouts/loading_dialog", message: "正在删除任务列表..." %>
 
     <%= render 'layouts/header' %>
 
@@ -28,34 +19,7 @@
     <div data-controller="mission rightfloatmenu"
          data-rightfloatmenu-top-offset="80"
          class="board-box min-board-height right-float-menu-parent">
-      <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                &times;
-              </button>
-              <h4 class="modal-title">
-                确定要删除这个任务清单吗?
-              </h4>
-            </div>
-            <div class="modal-footer">
-              <div class="flex-vcenter">
-                <button
-                    type="button"
-                    class="btn-sm dialog-confirm-button float-left"
-                    data-action="mission#deleteMissionList">
-                  确定
-                </button>
-                <a href="#"
-                   class="link-button-small float-left">
-                  取消
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render "layouts/confirm_dialog", message: "确定要删除这个任务清单吗?", controller: "mission", action: "mission#deleteMissionList" %>
 
       <div class="right-float-menu-box">
         <div class="right-float-menu"
