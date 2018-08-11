@@ -24,11 +24,46 @@
     <% end %>
 
     <div class="board-box min-board-height">
+
+      <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;
+              </button>
+              <h4 class="modal-title">
+                确定要删除这个项目吗?
+              </h4>
+            </div>
+            <div class="modal-footer">
+              <div class="flex-vcenter">
+                <button
+                    type="button"
+                    class="btn-sm dialog-confirm-button float-left"
+		    data-controller="project"
+                    data-action="project#deleteProject">
+                  确定
+                </button>
+                <a href="#"
+                   class="link-button-small float-left">
+                  取消
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <h3>项目设置</h3>
       <div class="project-setting-action">
 	<h4 class="project-setting-action-title">删除项目</h4>
 	<span class="project-setting-action-summary">项目删除后，所有的内容也将被立刻删除，请谨慎操作。</span>
-	<button class="btn btn-default project-delete-button">了解风险, 删除这个项目</button>
+	<button class="btn btn-default project-delete-button"
+	        data-toggle="modal"
+                data-target="#confirm-dialog">
+	  了解风险, 删除这个项目
+	</button>
       </div>
     </div>
   </body>

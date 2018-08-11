@@ -4,4 +4,5 @@ class Project < ApplicationRecord
   belongs_to :team
 
   has_many :mission_lists, dependent: :destroy
+
 end

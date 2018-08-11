@@ -48,4 +48,22 @@ class ProjectsController < ApplicationController
 
     @project = Project.find_by_hashid(params[:id])
   end
+
+  def destroy
+    project = Project.find_by_hashid(params[:id])
+
+    if project then
+      project.destroy
+    end
+
+    team = Team.find_by(creator: current_user.email)
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "destroy",
+                 :redirect => team_projects_url(team.hashid)
+               }}
+    end
+  end
 end
