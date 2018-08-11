@@ -9,12 +9,17 @@
          data-controller="mission rightfloatmenu"
          data-rightfloatmenu-top-offset="36">
       <div class="flex-hcenter">
-	<div class="project-title">
-	  <%= @project.name %>
+	<div class="project-header">
+	  <div class="project-title" align="left">
+	    <%= @project.name %>
+	  </div>
+	  <div class="project-summary" align="left">
+	    <%= @project.summary %>
+	  </div>
 	</div>
 	<%= link_to edit_project_path(@project.hashid), class: "project-setting" do %>
           <span class="project-setting-icon glyphicon glyphicon-cog"></span>
-          <span class="">设置</span>
+          <span class="project-setting-name">设置</span>
 	<% end %>
       </div>
       <div class="project-splitter"></div>
