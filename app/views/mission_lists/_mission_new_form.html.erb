@@ -1,0 +1,33 @@
+<li class="mission-new-form-item">
+  <div class="mission-new-form"
+       data-target="mission.missionNewForm">
+    <div class="flex-vcenter">
+      <label class="mission-new-rectangle"></label>
+      <input type="text"
+             class="mission-new-input"
+             placeholder="新的任务"
+             data-action="keydown->mission#enterMissionNew">
+      <button type="button" class="btn mission-distributor">未指派</button>
+    </div>
+    <div>
+      <button class="btn-sm mission-new-submit-button"
+              data-action="mission#clickMissionSubmitButton">
+        添加任务
+      </button>
+      <a href="#"
+         class="link-button-small"
+         data-target="mission.missionCancelButton"
+         data-action="mission#clickMissionCancelButton">
+        取消
+      </a>
+    </div>
+  </div>
+</li>
+<li>
+  <a href="#"
+     class="mission-add-button"
+     data-target="mission.missionNewButton"
+     data-action="mission#clickMissionNewButton">
+    添加新任务
+  </a>
+</li>
