@@ -14,4 +14,17 @@ class MissionsController < ApplicationController
                           :layout => false}
     end
   end
+
+  def destroy
+    mission = Mission.find_by_hashid(params[:id])
+
+    if mission then
+      mission.destroy
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {:status => "destroy"}}
+    end
+  end
 end

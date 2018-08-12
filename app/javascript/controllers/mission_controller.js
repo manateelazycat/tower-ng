@@ -303,4 +303,75 @@ export default class extends Controller {
 
 	deleteAndRedirect("/projects/" + urlParams[4] + "/mission_lists/" + urlParams[6])
     }
+
+    clickDeleteMissionButton(event) {
+	event.preventDefault()
+
+	$(".mission-toolbar").hide()
+	$("#confirm-dialog").modal("show")
+    }
+
+    deleteMission(event) {
+	var missionToolbar = $(".mission-toolbar")
+
+	var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+	console.log(urlParams)
+
+	$.ajax({
+	    type: "DELETE",
+	    url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("id"),
+	    success: function(result) {
+		$("#confirm-dialog").modal("hide")
+		$("#" + missionToolbar.attr("id") + ".mission-title-link").parents("li").fadeOut(500)
+	    }
+	})
+    }
+
+    clickEditMissionButton(event) {
+	event.preventDefault()
+
+	console.log("#########3")
+    }
+
+    mouseOverMission(event) {
+	// Show mission toolbar.
+        var currentTarget = event.currentTarget
+	var missionToolbar = $(".mission-toolbar")
+	var xOffset = 40
+
+	var toolbarX = currentTarget.getBoundingClientRect().left - missionToolbar.outerWidth(true) - xOffset
+	var toolbarY = currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height / 2 - missionToolbar.outerHeight(true) / 2
+
+	missionToolbar.css({
+	    left: toolbarX,
+	    top: toolbarY,
+	})
+
+	missionToolbar.show()
+
+	// Assgin mission id to mission toolbar.
+	missionToolbar.attr("id", $(currentTarget).attr("id"))
+    }
+
+    mouseOutMission(event) {
+	// Just hide mission toolbar when mouse out of are with y direction.
+	var missionToolbar = $(".mission-toolbar")
+        var currentTarget = event.currentTarget
+
+	if (!(event.pageY > currentTarget.getBoundingClientRect().top
+	      && event.pageY < currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height)) {
+	    missionToolbar.hide()
+	}
+    }
+
+    mouseOutMissionToolbar(event) {
+	// Just hide mission toolbar when mouse at left of mission toolbar.
+	var missionToolbar = $(".mission-toolbar")
+
+	if (event.pageX < missionToolbar[0].offsetLeft) {
+	    missionToolbar.hide()
+	}
+    }
 }
