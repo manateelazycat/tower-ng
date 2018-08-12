@@ -41,8 +41,9 @@ export default class extends Controller {
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
         var missionNewInput = closestMissionListTitle.find(".mission-new-input")
         var missionNewFormItem = closestMissionListTitle.find(".mission-new-form-item")
+        var missionName = missionNewInput.val().trim()
 
-        if (missionNewInput.val().trim() == "") {
+        if (missionName == "") {
             this.updateTooltip(this.createTooltip("请输入任务标题"), missionNewInput)
         } else {
             if (closestMissionListTitle.attr("id") == "mission-list-title-default") {
@@ -60,15 +61,23 @@ export default class extends Controller {
                     },
                     success: function(result) {
                         if (result["status"] == "created") {
-                            // Update new mission list at mission list area.
-                            $(".right-float-menu-scrollarea").append(result["mission_list_item_html"])
+                            // Replace new mission list in scroll area and scroll to bottom.
+                            $("#mission-list-default").replaceWith(result["mission_list_item_html"])
                             $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
 
-                            // Update mission list title id.
-                            closestMissionListTitle.attr("id", result["mission_list_id"])
+                            // Replace new mission list in mission list area.
+                            $("#mission-list-title-default").replaceWith(result["mission_list_html"])
 
-                            // Add mission in mission list.
-                            self.addMissionInMissionList(closestMissionListTitle.attr("id"), missionNewFormItem, missionNewInput)
+                            // Add new mission.
+                            $(".mission-new-input").val(missionName)
+                            self.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".mission-new-input"))
+
+                            // Show mission new form.
+                            $(".mission-new-form").show()
+                            $(".mission-add-button").hide()
+
+			    // Focus input.
+			    $(".mission-new-input").focus()
                         }
                     }
                 })
@@ -160,9 +169,8 @@ export default class extends Controller {
                             $(".right-float-menu-item").first().text(missionListInput.val())
                             $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
 
-                            // Update default mission list id and text.
-                            $(".mission-list-title span").text(missionListInput.val())
-                            $(".mission-list-title").attr("id", result["mission_list_id"])
+                            // Replace new mission list in mission list area.
+                            $("#mission-list-title-default").replaceWith(result["mission_list_html"])
 
                             // Clean mission list input after add new mission list.
                             missionListInput.val('')
