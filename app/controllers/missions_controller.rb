@@ -27,4 +27,21 @@ class MissionsController < ApplicationController
         render :json => {:status => "destroy"}}
     end
   end
+
+  def edit
+    mission = Mission.find_by_hashid(params[:id])
+
+    if mission then
+      mission.name = params[:name]
+      mission.save
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "update",
+               }
+      }
+    end
+  end
 end

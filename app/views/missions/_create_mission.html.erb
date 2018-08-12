@@ -1,6 +1,7 @@
 <li id=<%= mission.hashid %>>
   <input type="checkbox" class="mission-checkbox" id=<%= mission.hashid %>>
-  <label for=<%= mission.hashid %> class="mission-title">
+  <label for=<%= mission.hashid %>
+	 class="mission-title">
     <a href="#"
        id=<%= mission.hashid %>
        class="mission-title-link"
@@ -10,3 +11,4 @@
   </label>
   <button type="button" class="btn mission-distributor">未指派</button>
 </li>
+<%= render "mission_lists/mission_edit_form" %>

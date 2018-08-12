@@ -283,8 +283,6 @@ export default class extends Controller {
                     $(".mission-list-title span").text(missionSaveInput.val().trim())
                 }
             })
-
-            console.log(missionSaveInput.val().trim())
         }
     }
 
@@ -332,7 +330,67 @@ export default class extends Controller {
     clickEditMissionButton(event) {
 	event.preventDefault()
 
-	console.log("#########3")
+	var missionToolbar = $(".mission-toolbar")
+	var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
+	var mission = missionTitleLink.parents("li")
+	var missionEditInput = mission.next().find(".mission-edit-input")
+
+	missionToolbar.hide()
+	mission.fadeOut(0)
+	
+	mission.next().show()
+	missionEditInput.val(missionTitleLink.text().trim())
+	missionEditInput.focus()
+    }
+
+    clickMissionEditCancelButton(event) {
+	event.preventDefault()
+
+	var missionToolbar = $(".mission-toolbar")
+	var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
+	var mission = missionTitleLink.parents("li")
+
+	mission.fadeIn(0)
+	mission.next().hide()
+    }
+
+    enterMissionEdit(event) {
+        if (event.which == 13) {
+            this.clickMissionEditSubmitButton(event)
+        }
+    }
+
+    clickMissionEditSubmitButton(event) {
+	event.preventDefault()
+
+        var currentTarget = event.currentTarget
+	var missionEditInput = $(currentTarget).parents("li").find(".mission-edit-input")
+	var missionName = missionEditInput.val().trim()
+
+	if (missionName == "") {
+            this.updateTooltip(this.createTooltip("请输入任务标题"), missionEditInput)
+	} else {
+            var url = $(location).attr('href')
+            var urlParams = url.split("/")
+
+	    var missionToolbar = $(".mission-toolbar")
+	    var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
+	    var mission = missionTitleLink.parents("li")
+
+            $.ajax({
+                type: "GET",
+                url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("id") + "/edit",
+                data: {
+                    name: missionName,
+                },
+                success: function(result) {
+		    mission.fadeIn(0)
+		    mission.next().hide()
+
+		    missionTitleLink.text(missionName)
+                }
+            })
+	}
     }
 
     mouseOverMission(event) {

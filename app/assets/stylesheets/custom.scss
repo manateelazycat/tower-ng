@@ -805,6 +805,53 @@ li {
     margin-top: 10px;
 }
 
+.mission-edit-form-item {
+    display: none;
+}
+
+.mission-edit-form {
+    margin-top: 10px;
+}
+
+.mission-edit-rectangle {
+    background-color: #eee;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    margin-left: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.mission-edit-input {
+    font-size: 15px;
+    font-weight: 350;
+    margin-left: 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+}
+
+.mission-edit-submit-button {
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    background-color: var(--button-color);
+    height: 28px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.mission-edit-submit-button:hover {
+    color: #fff;
+    background-color: var(--hover-color);
+}
+
 .mission-list-new-form {
     display: none;
 }
