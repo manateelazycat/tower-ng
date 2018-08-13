@@ -47,7 +47,8 @@
       <%= link_to project_mission_list_url(@project.hashid, @mission_list.hashid), class: "mission-list-link" do %>
 	<%= @mission_list.name %>
       <% end %>
-      <li id=<%= @mission.hashid %>>
+      <li id=<%= @mission.hashid %>
+	  class="margin-top-normal">
         <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
         <label for=<%= @mission.hashid %>
                class="mission-title">

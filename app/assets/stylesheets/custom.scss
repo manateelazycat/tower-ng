@@ -1206,3 +1206,7 @@ input[type="checkbox"]:disabled + label::before {
 .mission-list-link:focus {
     color: var(--focus-color);
 }
+
+.margin-top-normal {
+    margin-top: 24px;
+}
