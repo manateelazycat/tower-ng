@@ -1243,3 +1243,42 @@ input[type="checkbox"]:disabled + label::before {
 .mission-add-summary-button {
     margin-left: 50px;
 }
+
+.mission-comment-textarea {
+    resize: none;
+    width: 550px;
+    margin-top: 30px;
+    margin-left: 50px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    rows: 1;
+}
+
+textarea {
+    padding: 10px;
+}
+
+.mission-comment-submit-button {
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    background-color: var(--button-color);
+    height: 28px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.mission-comment-button-area {
+    display: none;
+}
+
+.mission-comment-splitter {
+    background: #eee;
+    width: 75%;
+    height: 1px;
+}

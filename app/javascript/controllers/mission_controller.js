@@ -525,4 +525,25 @@ export default class extends Controller {
 	    $(".mission-add-summary-button").show()
 	}
     }
+
+    clickCommentArea(event) {
+	event.preventDefault()
+
+	$(".mission-comment-button-area").show()
+	$(".mission-comment-textarea").attr("rows", 8)
+    }
+
+    clickCommentSubmitButton(event) {
+	event.preventDefault()
+
+	$(".mission-comment-textarea").attr("rows", 1)
+	console.log("******")
+    }
+
+    clickCommentCancelButton(event) {
+	event.preventDefault()
+
+	$(".mission-comment-button-area").hide()
+	$(".mission-comment-textarea").attr("rows", 1)
+    }
 }
