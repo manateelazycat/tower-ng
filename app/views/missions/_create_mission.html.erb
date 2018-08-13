@@ -1,11 +1,12 @@
-<li id=<%= mission.hashid %>>
+<li id=<%= mission.hashid %>
+    data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
   <input type="checkbox" class="mission-checkbox" id=<%= mission.hashid %>>
   <label for=<%= mission.hashid %>
-	 class="mission-title">
+         class="mission-title">
     <a href="#"
        id=<%= mission.hashid %>
        class="mission-title-link"
-       data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
+       data-action="mission#jumpToMissionPage">
       <%= mission.name %>
     </a>
   </label>

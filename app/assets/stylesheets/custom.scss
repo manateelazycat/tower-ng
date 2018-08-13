@@ -1187,3 +1187,22 @@ input[type="checkbox"]:disabled + label::before {
     margin-right: 5px;
     color: #666;
 }
+
+.mission-list-link {
+    font-size: 14px;
+    color: #888;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.mission-list-link:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.mission-list-link:active,
+.mission-list-link:active:hover,
+.mission-list-link:active:focus,
+.mission-list-link:focus {
+    color: var(--focus-color);
+}

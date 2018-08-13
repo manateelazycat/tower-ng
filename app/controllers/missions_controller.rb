@@ -44,4 +44,30 @@ class MissionsController < ApplicationController
       }
     end
   end
+
+  def show
+    team = Team.find_by(creator: current_user.email)
+    params[:team_id] = team.hashid
+
+    @mission = Mission.find_by_hashid(params[:id])
+    @project = Project.find_by_hashid(params[:project_id])
+    @mission_list = MissionList.find(@mission.mission_list_id)
+  end
+
+  def destroy
+    mission = Mission.find_by_hashid(params[:id])
+
+    if mission then
+      mission.destroy
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "destroy",
+                 :redirect => project_url(params[:project_id])
+               }}
+    end
+  end
+
 end

@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= javascript_pack_tag "application" %>
+  </head>
+  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
+
+    <%= render 'layouts/header' %>
+
+    <%= link_to project_url(@project.hashid) do %>
+      <div class="bread-crumbs-big">
+        <%= @project.name %>
+      </div>
+    <% end %>
+
+    <div class="right-float-menu-top"></div>
+
+    <div data-controller="mission rightfloatmenu"
+         data-rightfloatmenu-top-offset="80"
+         class="board-box min-board-height right-float-menu-parent">
+      <%= render "layouts/confirm_dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMissionPage" %>
+
+      <div class="right-float-menu-box">
+        <div class="right-float-menu"
+             data-target="rightfloatmenu.rightMenuArea"
+             data-action="scroll@window->rightfloatmenu#onScroll">
+          <ul class="right-float-menu-scrollarea">
+            <li class="right-float-menu-item">
+              <a href="#"
+                 class="right-float-menu-normal-button"
+                 data-action="mission#editMissionList">
+                编辑
+              </a>
+            </li>
+            <li class="right-float-menu-item">
+              <a href="#"
+                 class="right-float-menu-delete-button"
+                 data-toggle="modal"
+                 data-target="#confirm-dialog">
+                删除
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <%= link_to project_mission_list_url(@project.hashid, @mission_list.hashid), class: "mission-list-link" do %>
+	<%= @mission_list.name %>
+      <% end %>
+      <li id=<%= @mission.hashid %>>
+        <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
+        <label for=<%= @mission.hashid %>
+               class="mission-title">
+          <span
+              id=<%= @mission.hashid %>
+              class="mission-title-link h4"
+              data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
+            <%= @mission.name %>
+          </span>
+        </label>
+        <button type="button" class="btn mission-distributor">未指派</button>
+      </li>
+    </div>
+
+  </body>
+</html>

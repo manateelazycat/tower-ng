@@ -327,6 +327,15 @@ export default class extends Controller {
 	})
     }
 
+    deleteMissionPage(event) {
+        event.preventDefault()
+
+        var url = $(location).attr('href')
+        var urlParams = url.split("/")
+
+	deleteAndRedirect("/projects/" + urlParams[4] + "/missions/" + urlParams[6])
+    }
+
     clickEditMissionButton(event) {
 	event.preventDefault()
 
@@ -337,7 +346,7 @@ export default class extends Controller {
 
 	missionToolbar.hide()
 	mission.fadeOut(0)
-	
+
 	mission.next().show()
 	missionEditInput.val(missionTitleLink.text().trim())
 	missionEditInput.focus()
@@ -397,9 +406,8 @@ export default class extends Controller {
 	// Show mission toolbar.
         var currentTarget = event.currentTarget
 	var missionToolbar = $(".mission-toolbar")
-	var xOffset = 40
 
-	var toolbarX = currentTarget.getBoundingClientRect().left - missionToolbar.outerWidth(true) - xOffset
+	var toolbarX = currentTarget.getBoundingClientRect().left - missionToolbar.outerWidth(true)
 	var toolbarY = currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height / 2 - missionToolbar.outerHeight(true) / 2
 
 	missionToolbar.css({
@@ -431,5 +439,16 @@ export default class extends Controller {
 	if (event.pageX < missionToolbar[0].offsetLeft) {
 	    missionToolbar.hide()
 	}
+    }
+
+    jumpToMissionPage(event) {
+	event.preventDefault()
+
+        var currentTarget = event.currentTarget
+
+        var url = $(location).attr('href')
+        var urlParams = url.split("/")
+
+	window.location.href = "/projects/" + urlParams[4] + "/missions/" + $(currentTarget).attr("id")
     }
 }
