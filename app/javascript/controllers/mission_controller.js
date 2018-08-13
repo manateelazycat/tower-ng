@@ -501,6 +501,8 @@ export default class extends Controller {
 
 		    if (summary.length == 0) {
 			$(".mission-add-summary-button").show()
+		    } else {
+			$(".mission-add-summary-button").hide()
 		    }
 
 		    $(".mission-title-item span").text(missionName)
