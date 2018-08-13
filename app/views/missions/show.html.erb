@@ -8,6 +8,17 @@
 
     <%= render 'layouts/header' %>
 
+    <div class="mission-toolbar"
+         data-controller="mission"
+         data-action="mouseout->mission#mouseOutMissionToolbar">
+      <a href="#"
+         class="mission-toolbar-item glyphicon glyphicon-trash"
+         data-action="mission#clickDeleteMissionButton"></a>
+      <a href="#"
+         class="mission-toolbar-item glyphicon glyphicon-pencil"
+         data-action="mission#clickEditMissionButton"></a>
+    </div>
+
     <%= link_to project_url(@project.hashid) do %>
       <div class="bread-crumbs-big">
         <%= @project.name %>
@@ -45,17 +56,17 @@
         </div>
       </div>
       <%= link_to project_mission_list_url(@project.hashid, @mission_list.hashid), class: "mission-list-link" do %>
-	<%= @mission_list.name %>
+        <%= @mission_list.name %>
       <% end %>
       <li id=<%= @mission.hashid %>
-	  class="margin-top-normal">
+          class="margin-top-normal"
+	  data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
         <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
         <label for=<%= @mission.hashid %>
                class="mission-title">
           <span
               id=<%= @mission.hashid %>
-              class="mission-title-link h4"
-              data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
+              class="mission-title-link h4">
             <%= @mission.name %>
           </span>
         </label>
