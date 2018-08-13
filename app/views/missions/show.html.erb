@@ -70,7 +70,9 @@
                    data-action="keydown->mission#enterMissionPageEdit">
             <button type="button" class="btn mission-distributor">未指派</button>
           </div>
-	  <textarea class="mission-edit-textarea" placeholder="任务描述"></textarea>
+	  <textarea class="mission-edit-textarea" placeholder="任务描述">
+	    <%= @mission.summary %>
+	  </textarea>
           <div>
             <button class="btn-sm mission-edit-submit-button"
                     data-action="mission#clickMissionPageEditSubmitButton">
@@ -100,6 +102,18 @@
         </label>
         <button type="button" class="btn mission-distributor">未指派</button>
       </li>
+      <% if (not @mission.summary) or (@mission.summary.length == 0) %>
+	<div class="mission-add-summary-button">
+	  <a href="#"
+             class="btn"
+             data-action="mission#clickMissionPageEditButton">
+            添加检查项
+          </a>
+        </div>
+      <% end %>
+      <span class="mission-summary">
+        <%= @mission.summary %>
+      </span>
     </div>
 
   </body>

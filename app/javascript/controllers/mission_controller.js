@@ -457,8 +457,13 @@ export default class extends Controller {
 
 	$(".mission-edit-form-header").show()
 	$(".mission-title-item").hide()
+	$(".mission-summary").hide()
+	$(".mission-add-summary-button").hide()
 
 	$(".mission-edit-form-header input").val($(".mission-title-item span").text().trim())
+
+	var missionSummary = $(".mission-edit-form-header textarea")
+	missionSummary.attr("data-summary", missionSummary.val().trim())
     }
 
     enterMissionPageEdit(event) {
@@ -480,17 +485,26 @@ export default class extends Controller {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
 
-            $.ajax({
+	    var summary = $(".mission-edit-form-header textarea").val().trim()
+
+	    $.ajax({
                 type: "GET",
                 url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/edit",
                 data: {
                     name: missionName,
-                },
+		    summary: summary
+		},
                 success: function(result) {
 		    $(".mission-edit-form-header").hide()
 		    $(".mission-title-item").show()
+		    $(".mission-summary").show()
+
+		    if (summary.length == 0) {
+			$(".mission-add-summary-button").show()
+		    }
 
 		    $(".mission-title-item span").text(missionName)
+		    $(".mission-summary").text(summary)
                 }
             })
 	}
@@ -501,5 +515,12 @@ export default class extends Controller {
 
 	$(".mission-edit-form-header").hide()
 	$(".mission-title-item").show()
+	$(".mission-summary").show()
+
+	var summary = $(".mission-edit-form-header textarea").data("summary")
+
+	if (summary.length == 0) {
+	    $(".mission-add-summary-button").show()
+	}
     }
 }

@@ -33,6 +33,11 @@ class MissionsController < ApplicationController
 
     if mission then
       mission.name = params[:name]
+
+      if params.key?(:summary)
+        mission.summary = params[:summary]
+      end
+
       mission.save
     end
 

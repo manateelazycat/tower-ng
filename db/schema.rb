@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_27_062106) do
+ActiveRecord::Schema.define(version: 2018_08_13_062150) do
 
   create_table "mission_lists", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_07_27_062106) do
     t.integer "mission_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "summary"
     t.index ["mission_list_id"], name: "index_missions_on_mission_list_id"
   end
 
