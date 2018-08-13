@@ -1282,3 +1282,34 @@ textarea {
     width: 75%;
     height: 1px;
 }
+
+.mission-comment {
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mission-comment-user {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    font-weight: 800;
+    float: left;
+}
+
+.mission-comment-date {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    color: #666;
+    float: left;
+    margin-left: 10px;
+}
+
+.mission-comment-content {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    float: left;
+    width: 100%;
+}

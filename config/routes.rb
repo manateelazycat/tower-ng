@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :mission_lists
-    resources :missions
+    resources :missions do
+
+      resources :comments
+    end
   end
+
 end

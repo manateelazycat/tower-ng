@@ -1,0 +1,11 @@
+<li class="mission-comment">
+  <div class="mission-comment-user">
+    <%= User.find(comment.user_id).name %>
+  </div>
+  <div class="mission-comment-date">
+    <%= comment.created_at %>
+  </div>
+  <div class="mission-comment-content">
+    <%= comment.content %>
+  </div>
+</li>

@@ -121,6 +121,8 @@
 
       <div class="mission-comment-splitter"></div>
 
+      <%= render "comments/create_comment_list", mission: @mission %>
+
       <textarea class="mission-comment-textarea"
 		placeholder="点击发表评论"
 		data-action="mouseup->mission#clickCommentArea"></textarea>

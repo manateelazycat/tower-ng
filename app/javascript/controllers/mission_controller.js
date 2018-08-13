@@ -536,8 +536,23 @@ export default class extends Controller {
     clickCommentSubmitButton(event) {
 	event.preventDefault()
 
+        var url = $(location).attr('href')
+        var urlParams = url.split("/")
+
+	$.ajax({
+	    type: "POST",
+	    url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/comments",
+	    data: {
+		mission_id: urlParams[6],
+		content: $(".mission-comment-textarea").val(),
+	    },
+	    success: function(result) {
+		$(".mission-comment-list").append(result)
+	    }
+	})
+
+	$(".mission-comment-textarea").val("")
 	$(".mission-comment-textarea").attr("rows", 1)
-	console.log("******")
     }
 
     clickCommentCancelButton(event) {
