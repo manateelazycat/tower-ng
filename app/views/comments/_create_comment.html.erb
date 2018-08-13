@@ -3,7 +3,7 @@
     <%= User.find(comment.user_id).name %>
   </div>
   <div class="mission-comment-date">
-    <%= comment.created_at %>
+    <%= comment.get_format_date() %>
   </div>
   <div class="mission-comment-content">
     <%= comment.content %>

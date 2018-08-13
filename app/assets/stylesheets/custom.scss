@@ -1246,12 +1246,12 @@ input[type="checkbox"]:disabled + label::before {
 
 .mission-comment-textarea {
     resize: none;
+    rows: 1;
     width: 550px;
     margin-top: 30px;
     margin-left: 50px;
     border: var(--button-border);
     border-radius: var(--button-radius);
-    rows: 1;
 }
 
 textarea {
@@ -1284,32 +1284,34 @@ textarea {
 }
 
 .mission-comment {
-    margin-left: 50px;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 50px;
 }
 
 .mission-comment-user {
     display: flex;
-    height: 100%;
-    flex-direction: column;
     font-weight: 800;
+    height: 100%;
     float: left;
+    flex-direction: column;
 }
 
 .mission-comment-date {
     display: flex;
-    height: 100%;
-    flex-direction: column;
+    font-size: 10px;
     color: #666;
+    height: 100%;
     float: left;
+    flex-direction: column;
+    margin-top: 3px;
     margin-left: 10px;
 }
 
 .mission-comment-content {
     font-size: 16px;
+    width: 100%;
+    float: left;
     margin-top: 10px;
     margin-bottom: 30px;
-    float: left;
-    width: 100%;
 }
