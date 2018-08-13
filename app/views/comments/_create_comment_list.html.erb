@@ -1,5 +1,4 @@
-<ul id=<%= mission.hashid %>
-    class="mission-comment-list">
+<ul class="mission-comment-list">
   <% mission.comments.each do |comment| %>
     <%= render "comments/create_comment", comment: comment %>
   <% end %>

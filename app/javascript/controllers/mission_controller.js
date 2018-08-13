@@ -529,8 +529,14 @@ export default class extends Controller {
     clickCommentArea(event) {
 	event.preventDefault()
 
+	// Show comment button.
 	$(".mission-comment-button-area").show()
+
+	// Expand comment text area.
 	$(".mission-comment-textarea").attr("rows", 8)
+
+	// Scroll to bottom of page.
+	$("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 200);
     }
 
     clickCommentSubmitButton(event) {
@@ -547,12 +553,19 @@ export default class extends Controller {
 		content: $(".mission-comment-textarea").val(),
 	    },
 	    success: function(result) {
-		$(".mission-comment-list").append(result)
+		// Shark comment area.
+		$(".mission-comment-textarea").val("")
+		$(".mission-comment-textarea").attr("rows", 1)
+
+		// Hide comment first.
+		var comment = $(result)
+		comment.hide()
+
+		// Add to comment list area and show comemnt with animation.
+		$(".mission-comment-list").append(comment)
+		comment.fadeIn(500)
 	    }
 	})
-
-	$(".mission-comment-textarea").val("")
-	$(".mission-comment-textarea").attr("rows", 1)
     }
 
     clickCommentCancelButton(event) {

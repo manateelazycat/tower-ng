@@ -1290,22 +1290,15 @@ textarea {
 }
 
 .mission-comment-user {
-    display: flex;
     font-weight: 800;
-    height: 100%;
-    float: left;
-    flex-direction: column;
+    display: inline;
 }
 
 .mission-comment-date {
-    display: flex;
     font-size: 10px;
     color: #666;
-    height: 100%;
-    float: left;
-    flex-direction: column;
-    margin-top: 3px;
-    margin-left: 10px;
+    display: inline;
+    margin-left: 2px;
 }
 
 .mission-comment-content {
