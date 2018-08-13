@@ -16,7 +16,7 @@
          data-action="mission#clickDeleteMissionButton"></a>
       <a href="#"
          class="mission-toolbar-item glyphicon glyphicon-pencil"
-         data-action="mission#clickEditMissionButton"></a>
+         data-action="mission#clickMissionPageEditButton"></a>
     </div>
 
     <%= link_to project_url(@project.hashid) do %>
@@ -40,7 +40,7 @@
             <li class="right-float-menu-item">
               <a href="#"
                  class="right-float-menu-normal-button"
-                 data-action="mission#editMissionList">
+                 data-action="mission#clickMissionPageEditButton">
                 编辑
               </a>
             </li>
@@ -58,8 +58,36 @@
       <%= link_to project_mission_list_url(@project.hashid, @mission_list.hashid), class: "mission-list-link" do %>
         <%= @mission_list.name %>
       <% end %>
+
+      <li class="mission-edit-form-header">
+        <div class="mission-edit-form"
+             data-target="mission.missionNewForm">
+          <div class="flex-vcenter">
+            <label class="mission-edit-rectangle"></label>
+            <input type="text"
+                   class="mission-page-edit-input"
+                   placeholder="新的任务"
+                   data-action="keydown->mission#enterMissionPageEdit">
+            <button type="button" class="btn mission-distributor">未指派</button>
+          </div>
+	  <textarea class="mission-edit-textarea"></textarea>
+          <div>
+            <button class="btn-sm mission-edit-submit-button"
+                    data-action="mission#clickMissionPageEditSubmitButton">
+	      保存
+            </button>
+            <a href="#"
+	       class="link-button-small"
+	       data-target="mission.missionCancelButton"
+	       data-action="mission#clickMissionPageEditCancelButton">
+	      取消
+            </a>
+          </div>
+        </div>
+      </li>
+
       <li id=<%= @mission.hashid %>
-          class="margin-top-normal"
+          class="mission-title-item margin-top-normal"
 	  data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
         <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
         <label for=<%= @mission.hashid %>

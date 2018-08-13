@@ -451,4 +451,55 @@ export default class extends Controller {
 
 	window.location.href = "/projects/" + urlParams[4] + "/missions/" + $(currentTarget).attr("id")
     }
+
+    clickMissionPageEditButton(event) {
+	event.preventDefault()
+
+	$(".mission-edit-form-header").show()
+	$(".mission-title-item").hide()
+
+	$(".mission-edit-form-header input").val($(".mission-title-item span").text().trim())
+    }
+
+    enterMissionPageEdit(event) {
+        if (event.which == 13) {
+            this.clickMissionPageEditSubmitButton(event)
+        }
+    }
+
+    clickMissionPageEditSubmitButton(event) {
+	event.preventDefault()
+
+        var currentTarget = event.currentTarget
+	var missionEditInput = $(currentTarget).parents("li").find(".mission-page-edit-input")
+	var missionName = missionEditInput.val().trim()
+
+	if (missionName == "") {
+            this.updateTooltip(this.createTooltip("请输入任务标题"), missionEditInput)
+	} else {
+            var url = $(location).attr('href')
+            var urlParams = url.split("/")
+
+            $.ajax({
+                type: "GET",
+                url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/edit",
+                data: {
+                    name: missionName,
+                },
+                success: function(result) {
+		    $(".mission-edit-form-header").hide()
+		    $(".mission-title-item").show()
+
+		    $(".mission-title-item span").text(missionName)
+                }
+            })
+	}
+    }
+
+    clickMissionPageEditCancelButton(event) {
+	event.preventDefault()
+
+	$(".mission-edit-form-header").hide()
+	$(".mission-title-item").show()
+    }
 }

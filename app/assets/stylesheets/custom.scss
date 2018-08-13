@@ -318,6 +318,21 @@ li {
     color: var(--focus-color);
 }
 
+.mission-edit-form-header {
+    display: none;
+}
+
+.mission-edit-textarea {
+    resize: none;
+    width: 550px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+}
+
 .form-control:focus {
     border-color: var(--focus-color);
     box-shadow: none;
@@ -348,17 +363,17 @@ li {
 .project-title {
     font-size: 26px;
     font-weight: 400;
-    margin-top: 20px;
-    float: left;
     width: 100%;
+    float: left;
+    margin-top: 20px;
 }
 
 .project-summary {
     font-size: 16px;
     font-weight: 400;
+    color: #999;
     margin-top: 10px;
     margin-bottom: 20px;
-    color: #999;
 }
 
 .project-setting {
@@ -832,6 +847,15 @@ li {
     outline: none;
 }
 
+.mission-page-edit-input {
+    font-size: 18px;
+    font-weight: 350;
+    margin-left: 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+}
+
 .mission-edit-submit-button {
     font-size: 13px;
     font-weight: 300;
@@ -1135,17 +1159,17 @@ input[type="checkbox"]:disabled + label::before {
 
 .project-delete-button {
     color: #F13A3E;
+    width: 200px;
     border: 1px solid #F13A3E;
     border-radius: var(--button-radius);
-    width: 200px;
 }
 
 .project-delete-button:hover {
     color: #FF696D;
     background: #fff;
+    width: 200px;
     border: 1px solid #FF696D;
     border-radius: var(--button-radius);
-    width: 200px;
 }
 
 .project-delete-button:active,
@@ -1154,20 +1178,22 @@ input[type="checkbox"]:disabled + label::before {
 .project-delete-button:focus {
     color: #F13A3E;
     background: #fff;
+    width: 200px;
     border: 1px solid #F13A3E;
     border-radius: var(--button-radius);
-    width: 200px;
 }
 
 .mission-toolbar {
-    display: none;
     filter: drop-shadow(-4px 1px 2px rgba(0, 0, 0, .3));
     box-sizing: borderQ-box;
+    display: none;
     position: absolute;
     font-size: 13px;
     font-weight: 350;
     color: #222;
     background: white;
+    top: 270px;
+    left: 460px;
     width: 100%;
     width: max-content;
     height: auto;
@@ -1177,15 +1203,13 @@ input[type="checkbox"]:disabled + label::before {
     padding-right: 12px;
     border-radius: 12px 0 3px 12px;
     text-align: center;
-    top: 270px;
-    left: 460px;
     z-index: 9999;
 }
 
 .mission-toolbar-item {
+    color: #666;
     margin-left: 5px;
     margin-right: 5px;
-    color: #666;
 }
 
 .mission-list-link {
