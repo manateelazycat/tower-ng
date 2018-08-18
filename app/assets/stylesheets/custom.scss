@@ -1183,18 +1183,27 @@ input[type="checkbox"]:disabled + label::before {
     border-radius: var(--button-radius);
 }
 
+.comment-edit-button {
+    display: none;
+    position: absolute;
+    font-size: 13px;
+    font-weight: 350;
+    color: #666;
+    background: white;
+    height: auto;
+    height: 24px;
+    z-index: 9999;
+}
+
 .mission-toolbar {
     filter: drop-shadow(-4px 1px 2px rgba(0, 0, 0, .3));
-    box-sizing: borderQ-box;
+    box-sizing: border-box;
     display: none;
     position: absolute;
     font-size: 13px;
     font-weight: 350;
     color: #222;
     background: white;
-    top: 270px;
-    left: 460px;
-    width: 100%;
     width: max-content;
     height: auto;
     height: 24px;
@@ -1290,14 +1299,14 @@ textarea {
 }
 
 .mission-comment-user {
-    font-weight: 800;
     display: inline;
+    font-weight: 800;
 }
 
 .mission-comment-date {
+    display: inline;
     font-size: 10px;
     color: #666;
-    display: inline;
     margin-left: 2px;
 }
 

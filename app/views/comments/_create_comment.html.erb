@@ -1,4 +1,5 @@
-<li class="mission-comment">
+<li class="mission-comment"
+    data-action="mouseover->comment#mouseOverComment mouseout->comment#mouseOutComment">
   <div class="mission-comment-user">
     <%= User.find(comment.user_id).name %>
   </div>

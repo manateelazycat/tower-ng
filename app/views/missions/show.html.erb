@@ -19,6 +19,12 @@
          data-action="mission#clickMissionPageEditButton"></a>
     </div>
 
+    <a href="#"
+       class="comment-edit-button glyphicon glyphicon-align-justify"
+       data-controller="comment"
+       data-action="comment#clickEditButton">
+    </a>
+    
     <%= link_to project_url(@project.hashid) do %>
       <div class="bread-crumbs-big">
         <%= @project.name %>
@@ -124,8 +130,8 @@
       <%= render "comments/create_comment_list", mission: @mission %>
 
       <textarea class="mission-comment-textarea"
-		placeholder="点击发表评论"
-		data-action="mouseup->mission#clickCommentArea"></textarea>
+		       placeholder="点击发表评论"
+		       data-action="mouseup->mission#clickCommentArea"></textarea>
 
       <div class="mission-comment-button-area">
         <button class="btn-sm mission-comment-submit-button"
