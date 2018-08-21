@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-    mouseOverComment(event) {
+    mouseEnterComment(event) {
         var currentTarget = event.currentTarget
 	var currentRect = currentTarget.getBoundingClientRect()
 	var commentEditButton = $(".comment-edit-button")
@@ -10,29 +10,18 @@ export default class extends Controller {
 	var offsetY = 40
 	var offsetX = 10
 
-	console.log("over", $(currentTarget).index())
-
-	var toolbarX = commentRect.left + commentRect.width - commentEditButton.outerWidth(true) - offsetX
-	var toolbarY
-
-	if ($(currentTarget).index() == 0) {
-	    toolbarY = currentRect.top
-	} else {
-	    toolbarY = currentRect.top + offsetY
-	}
-
 	commentEditButton.css({
-	    left: toolbarX,
-	    top: toolbarY,
+	    left: commentRect.left + commentRect.width - commentEditButton.outerWidth(true) - offsetX,
+	    top: currentRect.top,
 	})
 
 	commentEditButton.show()
-
-
     }
 
-    mouseOutComment(event) {
-	console.log("out")
+    mouseLeaveComment(event) {
+	if ($(event.relatedTarget).attr("class").indexOf("comment-edit-button") == -1) {
+	    $(".comment-edit-button").hide()
+	}
     }
 
     clickEditButton(event) {

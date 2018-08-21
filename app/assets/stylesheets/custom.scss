@@ -1296,6 +1296,7 @@ textarea {
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 50px;
+    overflow: hidden;           // make parent div expand height when have 'float' child div in it
 }
 
 .mission-comment-user {
