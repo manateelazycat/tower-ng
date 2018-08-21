@@ -19,7 +19,7 @@ export default class extends Controller {
     }
 
     mouseLeaveComment(event) {
-	if ($(event.relatedTarget).attr("class").indexOf("comment-edit-button") == -1) {
+	if (event.relatedTarget && $(event.relatedTarget).attr("class").indexOf("comment-edit-button") == -1) {
 	    $(".comment-edit-button").hide()
 	}
     }
