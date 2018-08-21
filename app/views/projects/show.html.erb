@@ -5,19 +5,8 @@
   </head>
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
-
     <%= render "layouts/confirm_dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
-
-    <div class="mission-toolbar"
-	 data-controller="mission"
-	 data-action="mouseleave->mission#mouseLeaveMissionToolbar">
-      <a href="#"
-	 class="mission-toolbar-item glyphicon glyphicon-trash"
-	 data-action="mission#clickDeleteMissionButton"></a>
-      <a href="#"
-	 class="mission-toolbar-item glyphicon glyphicon-pencil"
-	 data-action="mission#clickEditMissionButton"></a>
-    </div>
+    <%= render "layouts/mission_toolbar" %>
 
     <div class="board-box min-board-height right-float-menu-parent"
          data-controller="mission rightfloatmenu"
