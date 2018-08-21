@@ -10,7 +10,7 @@
 
     <div class="mission-toolbar"
          data-controller="mission"
-         data-action="mouseout->mission#mouseOutMissionToolbar">
+         data-action="mouseleave->mission#mouseLeaveMissionToolbar">
       <a href="#"
          class="mission-toolbar-item glyphicon glyphicon-trash"
          data-action="mission#clickDeleteMissionButton"></a>
@@ -24,7 +24,7 @@
        data-controller="comment"
        data-action="comment#clickEditButton">
     </a>
-    
+
     <%= link_to project_url(@project.hashid) do %>
       <div class="bread-crumbs-big">
         <%= @project.name %>
@@ -100,7 +100,7 @@
 
       <li id=<%= @mission.hashid %>
           class="mission-title-item margin-top-normal"
-	  data-action="mouseover->mission#mouseOverMission mouseout->mission#mouseOutMission">
+	  data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
         <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
         <label for=<%= @mission.hashid %>
                class="mission-title">

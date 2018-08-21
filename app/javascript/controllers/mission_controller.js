@@ -402,7 +402,7 @@ export default class extends Controller {
 	}
     }
 
-    mouseOverMission(event) {
+    mouseEnterMission(event) {
 	// Show mission toolbar.
         var currentTarget = event.currentTarget
 	var missionToolbar = $(".mission-toolbar")
@@ -421,7 +421,7 @@ export default class extends Controller {
 	missionToolbar.attr("id", $(currentTarget).attr("id"))
     }
 
-    mouseOutMission(event) {
+    mouseLeaveMission(event) {
 	// Just hide mission toolbar when mouse out of are with y direction.
 	var missionToolbar = $(".mission-toolbar")
         var currentTarget = event.currentTarget
@@ -432,7 +432,7 @@ export default class extends Controller {
 	}
     }
 
-    mouseOutMissionToolbar(event) {
+    mouseLeaveMissionToolbar(event) {
 	// Just hide mission toolbar when mouse at left of mission toolbar.
 	var missionToolbar = $(".mission-toolbar")
 
