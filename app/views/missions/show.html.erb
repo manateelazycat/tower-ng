@@ -3,10 +3,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_pack_tag "application" %>
   </head>
-  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <body class="content-page-body"
+               id="<%= controller.controller_name %>-<%= controller.action_name %>">
+
+    <div class="background-eventarea"
+         data-controller="comment"
+         data-action="click@window->comment#onClick">
+    </div>
+
     <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
     <%= render 'layouts/header' %>
     <%= render "layouts/mission_toolbar" %>
+
+    <div class="comment-edit-menu arrow-menu">
+      <ul>
+        <li class="arrow-menu-item">
+          <a href="#"
+	     class="arrow-menu-item-text"
+	     data-controller="comment"
+	     data-action="comment#editComment">
+            编辑
+          </a>
+        </li>
+        <li class="arrow-menu-item">
+          <a href="#"
+             class="arrow-menu-item-text"
+	     data-controller="comment"
+	     data-action="comment#deleteComment">
+            删除
+          </a>
+        </li>
+      </ul>
+    </div>
 
     <a href="#"
        class="comment-edit-button glyphicon glyphicon-align-justify"
@@ -66,22 +94,22 @@
             <button type="button" class="btn mission-distributor">未指派</button>
           </div>
           <% if @mission.summary and @mission.summary.length > 0 %>
-	    <textarea class="mission-edit-textarea" placeholder="任务描述">
-	      <%= @mission.summary %>
-	    </textarea>
-	  <% else %>
+            <textarea class="mission-edit-textarea" placeholder="任务描述">
+              <%= @mission.summary %>
+            </textarea>
+          <% else %>
             <textarea class="mission-edit-textarea" placeholder="任务描述"></textarea>
-	  <% end %>
+          <% end %>
           <div>
             <button class="btn-sm mission-edit-submit-button"
                     data-action="mission#clickMissionPageEditSubmitButton">
-	      保存
+              保存
             </button>
             <a href="#"
-	       class="link-button-small"
-	       data-target="mission.missionCancelButton"
-	       data-action="mission#clickMissionPageEditCancelButton">
-	      取消
+               class="link-button-small"
+               data-target="mission.missionCancelButton"
+               data-action="mission#clickMissionPageEditCancelButton">
+              取消
             </a>
           </div>
         </div>
@@ -89,7 +117,7 @@
 
       <li id=<%= @mission.hashid %>
           class="mission-title-item margin-top-normal"
-	  data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
+          data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
         <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
         <label for=<%= @mission.hashid %>
                class="mission-title">
@@ -102,8 +130,8 @@
         <button type="button" class="btn mission-distributor">未指派</button>
       </li>
       <% if (not @mission.summary) or (@mission.summary.length == 0) %>
-	<div class="mission-add-summary-button">
-	  <a href="#"
+        <div class="mission-add-summary-button">
+          <a href="#"
              class="btn"
              data-action="mission#clickMissionPageEditButton">
             添加任务描述
@@ -119,19 +147,19 @@
       <%= render "comments/create_comment_list", mission: @mission %>
 
       <textarea class="mission-comment-textarea"
-		       placeholder="点击发表评论"
-		       data-action="mouseup->mission#clickCommentArea"></textarea>
+                placeholder="点击发表评论"
+                data-action="mouseup->mission#clickCommentArea"></textarea>
 
       <div class="mission-comment-button-area">
         <button class="btn-sm mission-comment-submit-button"
                 data-action="mission#clickCommentSubmitButton">
-	  发表评论
+          发表评论
         </button>
         <a href="#"
-	   class="link-button-small"
-	   data-target="mission.missionCancelButton"
-	   data-action="mission#clickCommentCancelButton">
-	  取消
+           class="link-button-small"
+           data-target="mission.missionCancelButton"
+           data-action="mission#clickCommentCancelButton">
+          取消
         </a>
       </div>
     </div>

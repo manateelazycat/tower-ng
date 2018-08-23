@@ -19,6 +19,7 @@
     --top-bar-shadow: #aaa;
     --bottom-bar-shadow: #ccc;
     --tooltip-color: #FFFCBB;
+    --menu-color: #ffffff;
     --right-menu-normal-button-normal-color: #5bc4c7;
     --right-menu-normal-button-hover-color: #69E3E6;
     --right-menu-normal-button-focus-color: #5bc4c7;
@@ -1317,4 +1318,63 @@ textarea {
     float: left;
     margin-top: 10px;
     margin-bottom: 30px;
+}
+
+.arrow-menu {
+    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
+    box-sizing: border-box;
+    display: none;
+    position: absolute;
+    font-size: 13px;
+    font-weight: 350;
+    background: var(--menu-color);
+    width: max-content;
+    height: auto;
+    padding-top: 10px;
+    border-radius: 3px 3px 3px 3px;
+    text-align: center;
+    z-index: 9999;
+}
+
+.arrow-menu:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    bottom: 0;
+    left: calc(50% - 10px);
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid var(--menu-color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+
+.arrow-menu-item {
+    font-size: 13px;
+    color: #222;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.arrow-menu-item:hover {
+    color: var(--hover-color);
+    background: #eee;
+}
+
+.arrow-menu-item-text {
+    color: #222;
+}
+
+.arrow-menu-item-text:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.background-eventarea {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -9999;
 }

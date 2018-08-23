@@ -1,6 +1,13 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
+    onClick(event) {
+	if ($(event.target).closest(".comment-edit-menu").length === 0
+	    && $(event.target).closest(".comment-edit-button").length === 0) {
+	    $(".comment-edit-menu").hide()
+	}
+    }
+
     mouseEnterComment(event) {
         var currentTarget = event.currentTarget
 	var currentRect = currentTarget.getBoundingClientRect()
@@ -27,6 +34,29 @@ export default class extends Controller {
     clickEditButton(event) {
 	event.preventDefault()
 
-	console.log("*************")
+        var currentTarget = event.currentTarget
+	var currentRect = currentTarget.getBoundingClientRect()
+
+	var menuTriangleWidth = 10
+	var commentEditMenu = $(".comment-edit-menu")
+
+	commentEditMenu.css({
+	    left: currentRect.left + currentRect.width / 2 - commentEditMenu.width() / 2,
+	    top: currentRect.bottom + menuTriangleWidth
+	})
+
+	commentEditMenu.show()
+    }
+
+    editComment(event) {
+	event.preventDefault()
+
+	console.log("edit comment")
+    }
+
+    deleteComment(event) {
+	event.preventDefault()
+	
+	console.log("delete comment")
     }
 }
