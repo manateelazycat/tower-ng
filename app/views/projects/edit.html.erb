@@ -16,7 +16,7 @@
 
     <div class="board-box min-board-height">
 
-      <%= render "layouts/confirm_dialog", message: "确定要删除这个项目吗?", controller: "project", action: "project#deleteProject" %>
+      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个项目吗?", controller: "project", action: "project#deleteProject" %>
 
       <h3>项目设置</h3>
       <div class="project-setting-action">

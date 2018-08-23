@@ -19,7 +19,7 @@
     <div data-controller="mission rightfloatmenu"
          data-rightfloatmenu-top-offset="80"
          class="board-box min-board-height right-float-menu-parent">
-      <%= render "layouts/confirm_dialog", message: "确定要删除这个任务清单吗?", controller: "mission", action: "mission#deleteMissionList" %>
+      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务清单吗?", controller: "mission", action: "mission#deleteMissionList" %>
 
       <div class="right-float-menu-box">
         <div class="right-float-menu"

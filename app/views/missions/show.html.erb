@@ -15,6 +15,8 @@
     <%= render 'layouts/header' %>
     <%= render "layouts/mission_toolbar" %>
 
+    <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
+
     <div class="comment-edit-menu arrow-menu">
       <ul>
         <li class="arrow-menu-item">
@@ -53,7 +55,7 @@
     <div data-controller="mission rightfloatmenu"
          data-rightfloatmenu-top-offset="80"
          class="board-box min-board-height right-float-menu-parent">
-      <%= render "layouts/confirm_dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMissionPage" %>
+      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMissionPage" %>
 
       <div class="right-float-menu-box">
         <div class="right-float-menu"

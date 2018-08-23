@@ -14,4 +14,19 @@ class CommentsController < ApplicationController
                           :layout => false}
     end
   end
+
+  def destroy
+    comment = Comment.find_by_hashid(params[:id])
+
+    if comment then
+      comment.destroy
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "destroy",
+               }}
+    end
+  end
 end

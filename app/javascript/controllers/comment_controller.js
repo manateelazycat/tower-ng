@@ -9,25 +9,31 @@ export default class extends Controller {
     }
 
     mouseEnterComment(event) {
-        var currentTarget = event.currentTarget
-	var currentRect = currentTarget.getBoundingClientRect()
-	var commentEditButton = $(".comment-edit-button")
-	var commentSplitter = $(".mission-comment-splitter")[0]
-	var commentRect = commentSplitter.getBoundingClientRect()
-	var offsetY = 40
-	var offsetX = 10
+	if (!$(".comment-edit-menu").is(":visible")) {
+            var currentTarget = event.currentTarget
+	    var currentRect = currentTarget.getBoundingClientRect()
+	    var commentEditButton = $(".comment-edit-button")
+	    var commentSplitter = $(".mission-comment-splitter")[0]
+	    var commentRect = commentSplitter.getBoundingClientRect()
+	    var offsetY = 40
+	    var offsetX = 10
 
-	commentEditButton.css({
-	    left: commentRect.left + commentRect.width - commentEditButton.outerWidth(true) - offsetX,
-	    top: currentRect.top,
-	})
+	    commentEditButton.css({
+		left: commentRect.left + commentRect.width - commentEditButton.outerWidth(true) - offsetX,
+		top: currentRect.top,
+	    })
 
-	commentEditButton.show()
+	    commentEditButton.show()
+
+	    commentEditButton.attr("data-comment-id", $(currentTarget).closest(".mission-comment").attr("id"))
+	}
     }
 
     mouseLeaveComment(event) {
-	if (event.relatedTarget && $(event.relatedTarget).attr("class").indexOf("comment-edit-button") == -1) {
-	    $(".comment-edit-button").hide()
+	if (!$(".comment-edit-menu").is(":visible")) {
+	    if (event.relatedTarget && $(event.relatedTarget).attr("class").indexOf("comment-edit-button") == -1) {
+		$(".comment-edit-button").hide()
+	    }
 	}
     }
 
@@ -56,7 +62,28 @@ export default class extends Controller {
 
     deleteComment(event) {
 	event.preventDefault()
-	
+
+	$(".comment-edit-button").hide()
+	$(".comment-edit-menu").hide()
+	$("#comment-confirm-dialog").modal("show")
+
 	console.log("delete comment")
+    }
+
+    confirmDeleteComment(event) {
+
+	var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+	var commentId = $(".comment-edit-button").data("comment-id")
+
+	$.ajax({
+	    type: "DELETE",
+	    url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/comments/" + commentId,
+	    success: function(result) {
+		$("#comment-confirm-dialog").modal("hide")
+		$("#" + commentId).fadeOut(800)
+	    }
+	})
     }
 }
