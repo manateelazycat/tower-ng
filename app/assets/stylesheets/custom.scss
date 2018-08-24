@@ -1394,3 +1394,46 @@ textarea {
     border: var(--button-border);
     border-radius: var(--button-radius);
 }
+
+.member-title {
+    display: inline-block;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.member-count {
+    display: inline-block;
+    font-size: 15px;
+    color: #666;
+    margin-left: 10px;
+}
+
+.member-item {
+    height: 80px;
+    border-top: 1px solid #eee;
+}
+
+.member-item-icon {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.member-item-name {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.member-item-status {
+    display: inline-block;
+    font-size: 13px;
+    color: #666;
+    width: 300px;
+    margin-left: 5px;
+}
+
+.member-item-email {
+    display: inline-block;
+    font-size: 16px;
+    color: #666;
+}
