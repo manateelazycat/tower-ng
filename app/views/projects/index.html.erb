@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="grid-container min-board-height" id="sortableContainer">
+      <div class="grid-container" id="sortableContainer">
         <% Team.find_by_hashid(params[:team_id]).projects.each do |project| %>
 	  <%= link_to project_url(project.hashid) do %>
             <div class="project-item">
