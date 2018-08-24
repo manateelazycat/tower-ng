@@ -29,4 +29,22 @@ class CommentsController < ApplicationController
                }}
     end
   end
+
+  def edit
+    comment = Comment.find_by_hashid(params[:id])
+
+    if comment then
+      comment.content = params[:content]
+
+      comment.save
+    end
+
+    respond_to do |format|
+      format.json {
+        render :json => {
+                 :status => "update",
+               }
+      }
+    end
+  end
 end

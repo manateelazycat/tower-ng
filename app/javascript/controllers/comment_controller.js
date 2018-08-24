@@ -57,7 +57,16 @@ export default class extends Controller {
     editComment(event) {
 	event.preventDefault()
 
-	console.log("edit comment")
+	var commentId = $(".comment-edit-button").data("comment-id")
+	var commentEditForm = $("#" + commentId + ".comment-edit-form-item")
+	var comment = $("#" + commentId + ".mission-comment")
+
+	$(".comment-edit-button").hide()
+	$(".comment-edit-menu").hide()
+	comment.hide()
+	commentEditForm.show()
+
+	commentEditForm.find(".comment-edit-textarea").val(comment.find(".mission-comment-content").text().trim())
     }
 
     deleteComment(event) {
@@ -66,12 +75,9 @@ export default class extends Controller {
 	$(".comment-edit-button").hide()
 	$(".comment-edit-menu").hide()
 	$("#comment-confirm-dialog").modal("show")
-
-	console.log("delete comment")
     }
 
     confirmDeleteComment(event) {
-
 	var url = $(location).attr('href')
 	var urlParams = url.split("/")
 
@@ -85,5 +91,43 @@ export default class extends Controller {
 		$("#" + commentId).fadeOut(800)
 	    }
 	})
+    }
+
+    clickCommentEditSubmitButton(event) {
+	event.preventDefault()
+
+        var currentTarget = event.currentTarget
+	var commentEditForm = $(currentTarget).parents(".comment-edit-form-item")
+	var commentId = commentEditForm.attr("id")
+	var comment = $("#" + commentId + ".mission-comment")
+	var commentTextarea = commentEditForm.find(".comment-edit-textarea")
+
+	var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+	$.ajax({
+	    type: "GET",
+	    url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/comments/" + commentId + "/edit",
+	    data: {
+		content: commentTextarea.val(),
+	    },
+	    success: function(result) {
+		commentEditForm.hide()
+		comment.find(".mission-comment-content").text(commentTextarea.val())
+
+		comment.show()
+	    }
+	})
+    }
+
+    clickCommentEditCancelButton(event) {
+	event.preventDefault()
+
+        var currentTarget = event.currentTarget
+	var commentEditForm = $(currentTarget).parents(".comment-edit-form-item")
+	var comment = $("#" + commentEditForm.attr("id") + ".mission-comment")
+
+	commentEditForm.hide()
+	comment.show()
     }
 }

@@ -1,6 +1,6 @@
 <li id=<%= comment.hashid %>
     class="mission-comment"
-  data-action="mouseenter->comment#mouseEnterComment">
+    data-action="mouseenter->comment#mouseEnterComment">
   <div class="mission-comment-user">
     <%= User.find(comment.user_id).name %>
   </div>
@@ -11,3 +11,4 @@
     <%= comment.content %>
   </div>
 </li>
+<%= render "comments/comment_edit_form", commentid: comment.hashid %>

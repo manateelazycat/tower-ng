@@ -1378,3 +1378,18 @@ textarea {
     height: 100%;
     z-index: -9999;
 }
+
+.comment-edit-form-item {
+    display: none;
+}
+
+.comment-edit-textarea {
+    resize: none;
+    width: 550px;
+    height: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+}
