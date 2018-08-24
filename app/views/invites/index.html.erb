@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= javascript_pack_tag "application" %>
+  </head>
+  <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+    <%= render 'layouts/header' %>
+
+    <%= link_to team_members_path do %>
+      <div class="bread-crumbs-big">
+        团队
+      </div>
+    <% end %>
+
+    <div class="board-box"
+	 data-controller="invite">
+      <h3 class="invite-title">添加新成员</h3>
+      <ul class="invite-email-list">
+	<li class="invite-email-item">
+	  <input type="text"
+		 class="invite-edit-input"
+		 placeholder="请输入新成员的邮箱">
+	  <select>
+	    <option value="member">成员</option>
+	    <option value="admin">管理员</option>
+	  </select>
+	</li>
+	<li class="invite-email-item">
+          <input type="text"
+                 class="invite-edit-input"
+                 placeholder="请输入新成员的邮箱">
+          <select>
+            <option value="member">成员</option>
+            <option value="admin">管理员</option>
+          </select>
+        </li>
+	<li class="invite-email-item">
+          <input type="text"
+                 class="invite-edit-input"
+                 placeholder="请输入新成员的邮箱">
+          <select>
+            <option value="member">成员</option>
+            <option value="admin">管理员</option>
+          </select>
+        </li>
+      </ul>
+
+      <a href="#"
+         class="add-link-button invite-link-button"
+	 data-action="invite#addNewInviteItem">
+        再增加一个
+      </a>
+
+      <button class="btn-sm invite-submit-button break-inline-block"
+	      data-action="invite#clickSubmitButton">
+        发送邀请
+      </button>
+    </div>
+
+  </body>
+</html>

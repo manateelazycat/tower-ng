@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :teams, :shallow => true do
     resources :projects
     resources :members
+    resources :invites
   end
 
   resources :account_activations, only: [:edit]

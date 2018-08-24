@@ -430,6 +430,10 @@ li {
     overflow: hidden;           // make parent div expand height when have 'float' child div in it
 }
 
+.break-inline-block {
+    display: block;
+}
+
 .bread-crumbs-big:hover {
     background-color: #fff;
 }
@@ -1436,4 +1440,53 @@ textarea {
     display: inline-block;
     font-size: 16px;
     color: #666;
+}
+
+.member-invite-button {
+    margin-top: 20px;
+}
+
+.add-link-button {
+    font-size: 14px;
+    font-weight: 350;
+    color: var(--logo-color);
+}
+
+.invite-email-item {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.invite-title {
+    margin-left: 10px;
+    margin-bottom: 40px;
+}
+
+.invite-link-button {
+    margin-left: 10px;
+}
+
+.invite-submit-button {
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    background-color: var(--button-color);
+    height: 28px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: var(--button-border);
+    border-radius: var(--button-radius);
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.invite-edit-input {
+    font-size: 15px;
+    font-weight: 350;
+    margin-left: 10px;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+    width: 300px;
 }
