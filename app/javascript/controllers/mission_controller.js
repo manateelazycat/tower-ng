@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import deleteAndRedirect from "./delete_and_redirect"
+import { createTooltip, updateTooltip, hideTooltip } from "./show_tooltip"
 
 export default class extends Controller {
     static targets = [ "missionNewForm", "missionNewButton", "missionCancelButton",
@@ -8,10 +9,7 @@ export default class extends Controller {
 
     onScroll() {
         // Hide tooltip element if it exists.
-        if ($(".input-tooltip").length) {
-            var tooltip = $(".input-tooltip")
-            tooltip.hide()
-        }
+	hideTooltip()
     }
 
     enterMissionNew(event) {
@@ -42,7 +40,7 @@ export default class extends Controller {
         var missionName = missionNewInput.val().trim()
 
         if (missionName == "") {
-            this.updateTooltip(this.createTooltip("请输入任务标题"), missionNewInput)
+            updateTooltip(createTooltip("请输入任务标题"), missionNewInput)
         } else {
             if (closestMissionListTitle.attr("id") == "mission-list-title-default") {
                 var url = $(location).attr('href')
@@ -148,7 +146,7 @@ export default class extends Controller {
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
         if (missionListInput.val().trim() == "") {
-            this.updateTooltip(this.createTooltip("请输入任务清单名字"), missionListInput)
+            updateTooltip(createTooltip("请输入任务清单名字"), missionListInput)
         } else {
             var self = this
 
@@ -196,49 +194,13 @@ export default class extends Controller {
                             missionListInput.val('')
                         } else {
                             var msg = "名字 '" + missionListInput.val() + "' 已经存在"
-                            self.updateTooltip(self.createTooltip(msg), missionListInput)
+                            updateTooltip(createTooltip(msg), missionListInput)
                         }
                     }
                 })
             }
 
         }
-    }
-
-    createTooltip(text) {
-        var tooltip
-
-        // Fade in tooltip element if it exists.
-        if ($(".input-tooltip").length) {
-            tooltip = $(".input-tooltip")
-            tooltip.text(text)
-            tooltip.fadeIn(0)
-        }
-        // Otherwise create tooltip element.
-        else {
-            tooltip = $("<div />")
-            tooltip.attr({class: "input-tooltip"});
-            tooltip.text(text)
-            $("body").append(tooltip)
-        }
-
-        return tooltip
-    }
-
-    updateTooltip(tooltip, input) {
-        var scrollOffset = window.scrollY
-        var tooltipHideTimeout = 3000
-        var tooltipHideDuration = 400
-        var tooltipArrowWidth = 20
-
-        // Adjust tooltip coordinate.
-        tooltip.css({
-            top: scrollOffset + input[0].getBoundingClientRect().top,
-            left: input[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
-        })
-
-        // Hide tooltip after duration.
-        tooltip.delay(tooltipHideTimeout).fadeOut(tooltipHideDuration)
     }
 
     editMissionList(event) {
@@ -265,7 +227,7 @@ export default class extends Controller {
         var missionSaveInput = $(".mission-save-input")
 
         if (missionSaveInput.val().trim() == "") {
-            this.updateTooltip(this.createTooltip("请输入任务清单名称"), missionSaveInput)
+            updateTooltip(createTooltip("请输入任务清单名称"), missionSaveInput)
         } else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
@@ -377,7 +339,7 @@ export default class extends Controller {
 	var missionName = missionEditInput.val().trim()
 
 	if (missionName == "") {
-            this.updateTooltip(this.createTooltip("请输入任务标题"), missionEditInput)
+            updateTooltip(createTooltip("请输入任务标题"), missionEditInput)
 	} else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
@@ -480,7 +442,7 @@ export default class extends Controller {
 	var missionName = missionEditInput.val().trim()
 
 	if (missionName == "") {
-            this.updateTooltip(this.createTooltip("请输入任务标题"), missionEditInput)
+            updateTooltip(createTooltip("请输入任务标题"), missionEditInput)
 	} else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")

@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { hideTooltip } from "./show_tooltip"
 
 export default class extends Controller {
     static targets = [ "rightMenuArea"]
@@ -16,5 +17,7 @@ export default class extends Controller {
 	var areaOffset = Math.max(this.rightFloatMenuTopY + this.topOffset - scrollOffset, this.topOffset)
 
 	this.rightMenuAreaTarget.style.top = areaOffset.toString() + "px"
+
+	hideTooltip()
     }
 }

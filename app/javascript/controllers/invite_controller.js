@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import { createTooltip, updateTooltip } from "./show_tooltip"
 
 export default class extends Controller {
     addNewInviteItem(event) {
@@ -41,43 +42,7 @@ export default class extends Controller {
 		}
 	    })
 	} else {
-            this.updateTooltip(this.createTooltip("请输入邮箱"), inviteEmailItems.first())
+            updateTooltip(createTooltip("请输入邮箱"), inviteEmailItems.first())
 	}
-    }
-
-    createTooltip(text) {
-        var tooltip
-
-        // Fade in tooltip element if it exists.
-        if ($(".input-tooltip").length) {
-            tooltip = $(".input-tooltip")
-            tooltip.text(text)
-            tooltip.fadeIn(0)
-        }
-        // Otherwise create tooltip element.
-        else {
-            tooltip = $("<div />")
-            tooltip.attr({class: "input-tooltip"});
-            tooltip.text(text)
-            $("body").append(tooltip)
-        }
-
-        return tooltip
-    }
-
-    updateTooltip(tooltip, input) {
-        var scrollOffset = window.scrollY
-        var tooltipHideTimeout = 3000
-        var tooltipHideDuration = 400
-        var tooltipArrowWidth = 20
-
-        // Adjust tooltip coordinate.
-        tooltip.css({
-            top: scrollOffset + input[0].getBoundingClientRect().top,
-            left: input[0].getBoundingClientRect().left - tooltip.outerWidth(true) - tooltipArrowWidth
-        })
-
-        // Hide tooltip after duration.
-        tooltip.delay(tooltipHideTimeout).fadeOut(tooltipHideDuration)
     }
 }
