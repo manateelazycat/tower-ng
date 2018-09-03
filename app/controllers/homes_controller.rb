@@ -3,6 +3,6 @@
 # Home controller.
 class HomesController < ApplicationController
   def new
-    logged_in? && jump_to_team_homepage
+    jump_to_team_homepage if logged_in?
   end
 end
