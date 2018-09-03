@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Mission.
 class Mission < ApplicationRecord
   include Hashid::Rails
 

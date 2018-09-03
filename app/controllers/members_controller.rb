@@ -1,57 +1,50 @@
-# coding: utf-8
+# frozen_string_literal: true
+
+# Control team member.
 class MembersController < ApplicationController
   def index
     # Create memeber array.
-    @member_array = Array.new
+    @member_array = []
 
     # Push creator at first.
     team = Team.find_by_hashid(params[:team_id])
     team_creator = User.find_by_email(team.creator)
 
-    @member_array.push(
-      {user_hashid: team_creator.hashid,
-       name: team_creator.name,
-       type: "超级管理员",
-       email: team_creator.email,
-       color: "member-type-super-admin"
-      }
-    )
+    @member_array.push(user_hashid: team_creator.hashid,
+                       name: team_creator.name,
+                       type: "超级管理员",
+                       email: team_creator.email,
+                       color: "member-type-super-admin")
 
     # Push team members.
-    TeamAdmin.select{|t| t.team_id == team.id}.each do |team_admin|
+    TeamAdmin.select { |t| t.team_id == team.id }.each do |team_admin|
       user = User.find_by_id(team_admin.user_id)
 
       member_type = team_admin.is_administrator ? "管理员" : "成员"
       member_color = team_admin.is_administrator ? "member-type-admin" : "member-type-member"
 
       if user.activated?
-        @member_array.push(
-          {user_hashid: user.hashid,
-           name: user.name,
-           type: member_type,
-           email: user.email,
-           color: member_color
-          }
-        )
+        @member_array.push(user_hashid: user.hashid,
+                           name: user.name,
+                           type: member_type,
+                           email: user.email,
+                           color: member_color)
+
       else
-        @member_array.push(
-          {user_hashid: user.hashid,
-           name: user.email.split("@")[0],
-           type: "已邀请",
-           email: user.email,
-           color: member_color
-          }
-        )
+        @member_array.push(user_hashid: user.hashid,
+                           name: user.email.split("@")[0],
+                           type: "已邀请",
+                           email: user.email,
+                           color: member_color)
+
       end
     end
   end
 
-  def new
-
-  end
+  def new; end
 
   def show
-    team = get_current_team
+    team = current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
@@ -66,7 +59,7 @@ class MembersController < ApplicationController
   end
 
   def create
-    params[:members].values().reverse.uniq{|m| m[0]}.reverse.each do |member|
+    params[:members].values.reverse.uniq { |m| m[0] }.reverse_each do |member|
       user = User.find_by_email(member[0])
 
       unless user
@@ -80,7 +73,6 @@ class MembersController < ApplicationController
 
       team_admin = TeamAdmin.new(team_id: team.id, user_id: user.id, is_administrator: member[1] == "admin")
       team_admin.save
-
     end
 
     redirect_to team_members_path
@@ -95,20 +87,18 @@ class MembersController < ApplicationController
         redirect_to user_path(user.id)
       else
         team_admin = TeamAdmin.find_by_user_id(user.id)
-        team_admin.destroy
+        team_admin&.destroy
 
-        user.destroy
+        user&.destroy
 
-        team = get_current_team
+        team = current_team
         params[:team_id] = team.hashid
 
         respond_to do |format|
-          format.json {
-            render :json => {
-                     :status => "successful",
-                     :redirect => team_members_url(team.hashid),
-                   }
-          }
+          format.json do
+            render json: { status: "successful",
+                           redirect: team_members_url(team.hashid) }
+          end
         end
       end
 
@@ -123,17 +113,15 @@ class MembersController < ApplicationController
         user_activation_digest = User.digest(user_activation_token)
         user.update_attribute(:activation_digest, user_activation_digest)
 
-        team = get_current_team
+        team = current_team
         params[:team_id] = team.hashid
 
         print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: params[:team_id]), "\n")
 
         respond_to do |format|
-          format.json {
-            render :json => {
-                     :status => "successful",
-                   }
-          }
+          format.json do
+            render json: { status: "successful" }
+          end
         end
       end
 

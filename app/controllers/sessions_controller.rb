@@ -1,11 +1,12 @@
-# coding: utf-8
+# frozen_string_literal: true
+
+# Session manage.
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticated?(:password, params[:session][:password])
+    if user&.authenticated?(:password, params[:session][:password])
       if user.activated?
         log_in user
         params[:session][:remeber_me] == "1" ? remeber(user) : forget(user)

@@ -1,7 +1,9 @@
-# -*- coding: utf-8 -*-
+# frozen_string_literal: true
+
+# User controller.
 class UsersController < ApplicationController
   def show
-    team = get_current_team
+    team = current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
@@ -23,8 +25,8 @@ class UsersController < ApplicationController
         flash[:info] = message
         redirect_to root_url
       end
-    elsif
- # Create team when user first sign up.
+    else
+      # Create team when user first sign up.
       team = Team.new(name: params[:team_name], creator: params[:user][:email])
       team.save
 

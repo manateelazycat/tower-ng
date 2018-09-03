@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
-class JoinsController < ApplicationController
-  def new
+# frozen_string_literal: true
 
-  end
+# Join controller.
+class JoinsController < ApplicationController
+  def new; end
 
   def create
     if params[:join][:name].empty?

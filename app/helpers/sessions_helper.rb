@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Session helper functions.
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
@@ -14,7 +17,7 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(:remember, cookies[:remember_token])
+      if user&.authenticated?(:remember, cookies[:remember_token])
         log_in user
         @current_user = user
       end
@@ -38,44 +41,38 @@ module SessionsHelper
   end
 
   def jump_to_team_homepage
-    team = get_current_team
-    if team
-      redirect_to team_projects_url(team.hashid)
-    end
+    team = current_team
+    redirect_to team_projects_url(team.hashid) if team
   end
 
-  def get_current_team
-    if current_user
-      if current_user.team_id
-        return Team.find(current_user.team_id)
-      else
-        teams = get_current_teams
+  def current_team
+    return unless current_user
 
-        if teams.length > 0
-          first_team = teams[0]
-          current_user.team_id = first_team.id
-
-          return first_team
-        else
-          return nil
-        end
-      end
+    if current_user.team_id
+      Team.find(current_user.team_id)
     else
-      return nil
-    end
-  end
-
-  def get_current_teams
-    if current_user
-      teams = Team.select{|t| t.creator == current_user.email}
+      teams = current_temas
 
       if teams.length > 0
-        return teams
+        first_team = teams[0]
+        current_user.team_id = first_team.id
+
+        first_team
+      end
+    end
+  end
+
+  def current_temas
+    if current_user
+      teams = Team.select { |t| t.creator == current_user.email }
+
+      if teams.length > 0
+        teams
       else
-        return TeamAdmin.select{|t| t.user_id == current_user.id}.map{|team_admin| Team.find(team_admin.team_id)}
+        TeamAdmin.select { |t| t.user_id == current_user.id }.map { |team_admin| Team.find(team_admin.team_id) }
       end
     else
-      return []
+      []
     end
   end
 

@@ -495,7 +495,7 @@ export default class extends Controller {
 	$(".mission-comment-button-area").show()
 
 	// Expand comment text area.
-	$(".mission-comment-textarea").attr("rows", 8)
+     	$(".mission-comment-textarea").attr("rows", 8)
 
 	// Scroll to bottom of page.
 	$("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 200);
@@ -512,12 +512,12 @@ export default class extends Controller {
 	    url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/comments",
 	    data: {
 		mission_id: urlParams[6],
-		content: $(".mission-comment-textarea").val(),
+	       	content: $(".mission-comment-textarea").val(),
 	    },
 	    success: function(result) {
 		// Shark comment area.
-		$(".mission-comment-textarea").val("")
-		$(".mission-comment-textarea").attr("rows", 1)
+      		$(".mission-comment-textarea").val("")
+      		$(".mission-comment-textarea").attr("rows", 1)
 
 		// Hide comment first.
 		var comment = $(result)
@@ -525,7 +525,9 @@ export default class extends Controller {
 
 		// Add to comment list area and show comemnt with animation.
 		$(".mission-comment-list").append(comment)
-		comment.fadeIn(500)
+
+		// Just show comment, don't show comment edit form.
+		$(comment[0]).fadeIn(500)
 	    }
 	})
     }
@@ -534,6 +536,6 @@ export default class extends Controller {
 	event.preventDefault()
 
 	$(".mission-comment-button-area").hide()
-	$(".mission-comment-textarea").attr("rows", 1)
+     	$(".mission-comment-textarea").attr("rows", 1)
     }
 }

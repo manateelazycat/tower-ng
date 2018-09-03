@@ -1,4 +1,6 @@
-# coding: utf-8
+# frozen_string_literal: true
+
+# Project controller.
 class ProjectsController < ApplicationController
   @@glyphicon_list = ["glyphicon-inbox",
                       "glyphicon-time",
@@ -14,8 +16,7 @@ class ProjectsController < ApplicationController
                       "glyphicon-flash",
                       "glyphicon-stats"]
 
-  def new
-  end
+  def new; end
 
   def create
     # Get team.
@@ -26,7 +27,7 @@ class ProjectsController < ApplicationController
       team_id: params[:team_id],
       name: params[:project][:name],
       summary: params[:project][:summary],
-      icon: @@glyphicon_list.sample,
+      icon: @@glyphicon_list.sample
     )
     project.save
 
@@ -36,14 +37,14 @@ class ProjectsController < ApplicationController
 
   def show
     # Get team id, make view can access params[:team_id]
-    team = get_current_team
+    team = current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
   end
 
   def edit
-    team = get_current_team
+    team = current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
@@ -52,18 +53,15 @@ class ProjectsController < ApplicationController
   def destroy
     project = Project.find_by_hashid(params[:id])
 
-    if project then
-      project.destroy
-    end
+    project&.destroy
 
-    team = get_current_team
+    team = current_team
 
     respond_to do |format|
-      format.json {
-        render :json => {
-                 :status => "destroy",
-                 :redirect => team_projects_url(team.hashid)
-               }}
+      format.json do
+        render json: { status: "destroy",
+                       redirect: team_projects_url(team.hashid) }
+      end
     end
   end
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
+# Home controller.
 class HomesController < ApplicationController
   def new
-    if logged_in?
-      jump_to_team_homepage
-    end
+    logged_in? && jump_to_team_homepage
   end
 end

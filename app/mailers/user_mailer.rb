@@ -1,4 +1,6 @@
-# coding: utf-8
+# frozen_string_literal: true
+
+# User mailer.
 class UserMailer < ApplicationMailer
 
   # Subject can be set in your I18n file at config/locales/en.yml

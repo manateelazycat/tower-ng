@@ -5,7 +5,7 @@
     <%= User.find(comment.user_id).name %>
   </div>
   <div class="mission-comment-date">
-    <%= comment.get_format_date %>
+    <%= comment.format_comment_date %>
   </div>
   <div class="mission-comment-content">
     <%= comment.content %>

@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
+# User.
 class User < ApplicationRecord
   include Hashid::Rails
 
   has_many :team_admins
-  has_many :teams, :through => :team_admins
+  has_many :teams, through: :team_admins
 
   attr_accessor :remember_token
   attr_accessor :activation_token
@@ -18,9 +21,9 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email,
             presence: true,
-            length: {maximum: 255},
-            format: {with: VALID_EMAIL_REGEX},
-            uniqueness: {case_sensitive: false}
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
 
   # has_secure_password
   # validates :password, presence: true, length: {minimum: 6}
@@ -53,7 +56,7 @@ class User < ApplicationRecord
 
     update_attribute(:password_digest, digest)
 
-    return true
+    true
   end
 
   def forget

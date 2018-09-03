@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Comment controller.
 class CommentsController < ApplicationController
   def create
     mission = Mission.find_by_hashid(params[:mission_id])
@@ -9,42 +12,39 @@ class CommentsController < ApplicationController
     )
 
     respond_to do |format|
-      format.html {render '_create_comment',
-                          :locals => {:comment => comment},
-                          :layout => false}
+      format.html do
+        render "_create_comment",
+               locals: { comment: comment },
+               layout: false
+      end
     end
   end
 
   def destroy
     comment = Comment.find_by_hashid(params[:id])
 
-    if comment then
-      comment.destroy
-    end
+    comment&.destroy
 
     respond_to do |format|
-      format.json {
-        render :json => {
-                 :status => "destroy",
-               }}
+      format.json do
+        render json: { status: "destroy" }
+      end
     end
   end
 
   def edit
     comment = Comment.find_by_hashid(params[:id])
 
-    if comment then
+    if comment
       comment.content = params[:content]
 
       comment.save
     end
 
     respond_to do |format|
-      format.json {
-        render :json => {
-                 :status => "update",
-               }
-      }
+      format.json do
+        render json: { status: "update" }
+      end
     end
   end
 end

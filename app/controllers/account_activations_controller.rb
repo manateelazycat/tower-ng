@@ -1,9 +1,11 @@
-# coding: utf-8
+# frozen_string_literal: true
+
+# User for account activation.
 class AccountActivationsController < ApplicationController
   def edit
     user = User.find_by(email: params[:email])
     if user && !user.activated? && user.authenticated?(:activation, params[:id])
-      if params.has_key?(:team_id)
+      if params.key?(:team_id)
         redirect_to new_join_url(email: params[:email], user_id: user.hashid, team_id: params[:team_id])
       else
         user.activate

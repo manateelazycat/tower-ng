@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Mission list controller.
 class MissionListsController < ApplicationController
   def create
     name = params[:name]
@@ -5,11 +8,10 @@ class MissionListsController < ApplicationController
     @project = Project.find_by_hashid(project_id)
 
     respond_to do |format|
-      if @project.mission_lists.map { |m| m.name }.include?(name)
-        format.json {
-          render :json => {
-                   :status => "duplicated"
-                 }}
+      if @project.mission_lists.map(&:name).include?(name)
+        format.json do
+          render json: { status: "duplicated" }
+        end
       else
         mission_list = @project.mission_lists.create(
           name: name,
@@ -17,29 +19,28 @@ class MissionListsController < ApplicationController
         )
         mission_list.save
 
-        format.json {
-          render :json => {
-                   :status => "created",
-                   :mission_list_id => mission_list.hashid,
-                   :mission_list_item_html => render_to_string(
-                     :template => "mission_lists/_create_mission_list_item.html.erb",
-                     :formats => :html,
-                     :layout => false,
-                     :locals => {:mission_list => mission_list}
-                   ),
-                   :mission_list_html => render_to_string(
-                     :template => "mission_lists/_create_mission_list.html.erb",
-                     :formats => :html,
-                     :layout => false,
-                     :locals => {:mission_list => mission_list}
-                   )
-                 }}
+        format.json do
+          render json: { status: "created",
+                         mission_list_id: mission_list.hashid,
+                         mission_list_item_html: render_to_string(
+                           template: "mission_lists/_create_mission_list_item.html.erb",
+                           formats: :html,
+                           layout: false,
+                           locals: { mission_list: mission_list }
+                         ),
+                         mission_list_html: render_to_string(
+                           template: "mission_lists/_create_mission_list.html.erb",
+                           formats: :html,
+                           layout: false,
+                           locals: { mission_list: mission_list }
+                         ) }
+        end
       end
     end
   end
 
   def show
-    team = get_current_team
+    team = current_team
     params[:team_id] = team.hashid
 
     @mission_list = MissionList.find_by_hashid(params[:id])
@@ -50,34 +51,28 @@ class MissionListsController < ApplicationController
   def destroy
     mission_list = MissionList.find_by_hashid(params[:id])
 
-    if mission_list then
-      mission_list.destroy
-    end
+    mission_list&.destroy
 
     respond_to do |format|
-      format.json {
-        render :json => {
-                 :status => "destroy",
-                 :redirect => project_url(params[:project_id])
-               }}
+      format.json do
+        render json: { status: "destroy",
+                       redirect: project_url(params[:project_id]) }
+      end
     end
   end
 
   def edit
-
     mission_list = MissionList.find_by_hashid(params[:id])
 
-    if mission_list then
+    if mission_list
       mission_list.name = params[:name]
       mission_list.save
     end
 
     respond_to do |format|
-      format.json {
-        render :json => {
-                 :status => "update",
-               }
-      }
+      format.json do
+        render json: { status: "update" }
+      end
     end
   end
 end
