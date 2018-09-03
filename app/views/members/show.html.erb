@@ -14,6 +14,9 @@
 
     <div class="board-box"
          data-controller="member">
+
+      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要取消邀请吗?", controller: "member", action: "member#cancelInivte" %>
+
       <div>
 	<div class="member-icon">Icon</div>
 	<div class="member-name-and-email">
@@ -29,8 +32,7 @@
 	<span class="setting-page-action-summary">如果 <%= @user_name %> 没有收到邀请邮件，请点击下面按钮重新发送激活邮件：</span>
 	<div>
 	  <button class="btn btn-default setting-page-normal-button"
-                  data-toggle="modal"
-                  data-target="#confirm-dialog">
+		  data-action="member#resendActivationMail">
             重新发送激活邮件
           </button>
 	</div>
@@ -39,9 +41,12 @@
       <div class="setting-page-action">
 	<h4 class="setting-page-action-title">取消对 <%= @user_name %> 的邀请</h4>
 	<span class="setting-page-action-summary">取消邀请后，发送给他的邀请链接将失效，无法激活账号。</span>
-	<div class="setting-page-delete-link">
+	<a href="#"
+	   class="setting-page-delete-link"
+	   data-toggle="modal"
+           data-target="#confirm-dialog">
           了解, 取消邀请
-        </div>
+        </a>
       </div>
     </div>
 

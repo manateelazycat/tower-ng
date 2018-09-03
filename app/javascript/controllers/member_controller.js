@@ -34,7 +34,7 @@ export default class extends Controller {
 	    $.ajax({
 		type: "POST",
 		url: "/teams/" + urlParams[4] + "/members",
-		data: {
+  		data: {
 		    members: members,
 		},
 		success: function(result) {
@@ -44,5 +44,29 @@ export default class extends Controller {
 	} else {
             updateTooltip(createTooltip("请输入邮箱"), inviteEmailItems.first())
 	}
+    }
+
+    resendActivationMail(event) {
+	event.preventDefault()
+
+	console.log("######")
+    }
+
+    cancelInivte(event) {
+	event.preventDefault()
+
+	var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+	$.ajax({
+	    type: "GET",
+	    url: "/members/" + urlParams[4] + "/edit",
+     	    data: {
+		action_type: "cancel",
+	    },
+	    success: function(result) {
+                window.location.href = result["redirect"]
+	    }
+	})
     }
 }

@@ -59,7 +59,7 @@ class MembersController < ApplicationController
     @user = User.find_by_hashid(params[:id])
 
     if @user.activated?
-      redirect_to user_path(params[:id])
+      redirect_to user_path(@user.id)
     else
       @user_name = @user.email.split("@")[0]
     end
@@ -84,5 +84,34 @@ class MembersController < ApplicationController
     end
 
     redirect_to team_members_path
+  end
+
+  def edit
+    if params[:action_type] == "cancel"
+
+      user = User.find_by_hashid(params[:id])
+
+      if user.activated?
+        redirect_to user_path(user.id)
+      else
+        team_admin = TeamAdmin.find_by_user_id(user.id)
+        team_admin.destroy
+
+        user.destroy
+
+        team = Team.find_by(creator: current_user.email)
+        params[:team_id] = team.hashid
+
+        respond_to do |format|
+          format.json {
+            render :json => {
+                     :status => "successful",
+                     :redirect => team_members_url(team.hashid),
+                   }
+          }
+        end
+      end
+
+    end
   end
 end
