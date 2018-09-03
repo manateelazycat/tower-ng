@@ -27,7 +27,7 @@ class PasswordResetsController < ApplicationController
     if params[:user][:password].empty?
       @user.errors.add(:password, "密码不能为空")
       render "edit"
-    elsif @user.update_attributes(user_params)
+    elsif @user.update_password(params[:user][:password])
       log_in @user
       flash[:success] = "密码重设成功, 自动登录"
       jump_to_team_homepage(@user)

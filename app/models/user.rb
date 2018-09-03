@@ -47,6 +47,15 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
+  def update_password(password)
+    digest = User.digest(password)
+    return false if digest.nil?
+
+    update_attribute(:password_digest, digest)
+
+    return true
+  end
+
   def forget
     update_attribute(:remember_digest, nil)
   end

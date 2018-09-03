@@ -73,7 +73,7 @@ class MembersController < ApplicationController
         user = User.new(email: member[0])
         user.save
 
-        print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: params[:team_id]))
+        print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: params[:team_id]), "\n")
       end
 
       team = Team.find_by_hashid(params[:team_id])
@@ -126,7 +126,7 @@ class MembersController < ApplicationController
         team = Team.find_by(creator: current_user.email)
         params[:team_id] = team.hashid
 
-        print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: params[:team_id]))
+        print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: params[:team_id]), "\n")
 
         respond_to do |format|
           format.json {

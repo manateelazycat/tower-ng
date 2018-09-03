@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body class="fullscreen-body default-background-color">
+    <div class="flex-center">
+      <h1 class="logo">Tower</h1>
+      <div class="sign-box">
+        <h3 class="margin-bottom-normal">加入[ <%= Team.find_by_hashid(params[:team_id]).name %> ]</h3>
+
+        <%= form_for(:join, url: joins_path) do |f| %>
+	  <%= hidden_field_tag :user_id, params[:user_id] %>
+	  <%= hidden_field_tag :team_id, params[:team_id] %>
+          <p><%= f.text_field :name, class: "form-control", placeholder: "你的名字", autocomplete: "new-password"  %></p>
+          <p><%= f.email_field :email, class: "form-control", placeholder: "邮箱,例如: qq号码@qq.com", value: params[:email], readonly: true %></p>
+          <p><%= f.password_field :password, class: "form-control", placeholder: "密码， 至少包含6位字符", autocomplete: "new-password" %></p>
+          <p><%= f.submit "注册", class: "btn btn-primary margin-top-normal sign-button-width sign-button-vertical-margins" %></p>
+        <% end %>
+
+      </div>
+    </div>
+  </body>
+</html>
