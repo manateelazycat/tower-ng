@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_095145) do
+ActiveRecord::Schema.define(version: 2018_09_03_124819) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_095145) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer "team_id"
   end
 
 end

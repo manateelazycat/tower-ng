@@ -31,19 +31,19 @@ class ProjectsController < ApplicationController
     project.save
 
     # Redirect to project home page after create new project.
-    jump_to_team_homepage(current_user)
+    jump_to_team_homepage
   end
 
   def show
     # Get team id, make view can access params[:team_id]
-    team = Team.find_by(creator: current_user.email)
+    team = get_current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
   end
 
   def edit
-    team = Team.find_by(creator: current_user.email)
+    team = get_current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
       project.destroy
     end
 
-    team = Team.find_by(creator: current_user.email)
+    team = get_current_team
 
     respond_to do |format|
       format.json {

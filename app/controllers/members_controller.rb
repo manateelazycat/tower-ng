@@ -51,7 +51,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    team = Team.find_by(creator: current_user.email)
+    team = get_current_team
     params[:team_id] = team.hashid
 
     @project = Project.find_by_hashid(params[:id])
@@ -99,7 +99,7 @@ class MembersController < ApplicationController
 
         user.destroy
 
-        team = Team.find_by(creator: current_user.email)
+        team = get_current_team
         params[:team_id] = team.hashid
 
         respond_to do |format|
@@ -123,7 +123,7 @@ class MembersController < ApplicationController
         user_activation_digest = User.digest(user_activation_token)
         user.update_attribute(:activation_digest, user_activation_digest)
 
-        team = Team.find_by(creator: current_user.email)
+        team = get_current_team
         params[:team_id] = team.hashid
 
         print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: params[:team_id]), "\n")

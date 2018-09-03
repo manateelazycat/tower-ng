@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if user.activated?
         log_in user
         params[:session][:remeber_me] == "1" ? remeber(user) : forget(user)
-        jump_to_team_homepage(user)
+        jump_to_team_homepage
       else
         message = "账户还未激活"
         message += "请检查邮件以激活账户"

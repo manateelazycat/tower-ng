@@ -12,7 +12,7 @@
           <p><input class="form-control" placeholder="团队名称" name="team_name"></p>
           <p><%= f.text_field :name, class: "form-control", placeholder: "你的名字" %></p>
           <p><%= f.email_field :email, class: "form-control", placeholder: "邮箱,例如: qq号码@qq.com" %></p>
-          <p><%= f.password_field :password, class: "form-control", placeholder: "密码， 至少包含6位字符" %></p>
+          <p><%= f.password_field :password, class: "form-control", placeholder: "密码， 至少包含6位字符", autocomplete: "new-password" %></p>
           <p><%= f.submit "注册", class: "btn btn-primary margin-top-normal sign-button-width sign-button-vertical-margins" %></p>
           <p><%= link_to "已有账号？直接登录", sign_in_path, :class => "link-button-small" %></p>
         <% end %>

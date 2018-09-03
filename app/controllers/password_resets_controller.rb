@@ -30,7 +30,7 @@ class PasswordResetsController < ApplicationController
     elsif @user.update_password(params[:user][:password])
       log_in @user
       flash[:success] = "密码重设成功, 自动登录"
-      jump_to_team_homepage(@user)
+      jump_to_team_homepage
     else
       render "edit"
     end
@@ -46,10 +46,6 @@ class PasswordResetsController < ApplicationController
     unless (@user && @user.activated? && @user.authenticated?(:reset, params[:id]))
       redirect_to root_url
     end
-  end
-
-  def user_params
-    params.require(:user).permit(:password)
   end
 
   def check_expiration

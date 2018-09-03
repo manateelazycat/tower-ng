@@ -51,7 +51,7 @@ class MissionsController < ApplicationController
   end
 
   def show
-    team = Team.find_by(creator: current_user.email)
+    team = get_current_team
     params[:team_id] = team.hashid
 
     @mission = Mission.find_by_hashid(params[:id])
