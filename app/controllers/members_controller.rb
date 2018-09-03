@@ -67,8 +67,14 @@ class MembersController < ApplicationController
 
   def create
     params[:members].values().reverse.uniq{|m| m[0]}.reverse.each do |member|
-      user = User.new(email: member[0])
-      user.save
+      user = User.find_by_email(member[0])
+
+      unless user
+        user = User.new(email: member[0])
+        user.save
+
+        print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: params[:team_id]))
+      end
 
       team = Team.find_by_hashid(params[:team_id])
 

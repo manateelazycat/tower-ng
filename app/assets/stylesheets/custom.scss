@@ -1189,6 +1189,33 @@ input[type="checkbox"]:disabled + label::before {
     border-radius: var(--button-radius);
 }
 
+.setting-page-normal-button {
+    color: var(--button-color);
+    width: 200px;
+    border: 1px solid var(--button-color);
+    border-radius: var(--button-radius);
+    margin-top: 10px;
+}
+
+.setting-page-normal-button:hover {
+    color: var(--hover-color);
+    background: #fff;
+    width: 200px;
+    border: 1px solid var(--hover-color);
+    border-radius: var(--button-radius);
+}
+
+.setting-page-normal-button:active,
+.setting-page-normal-button:active:hover,
+.setting-page-normal-button:active:focus,
+.setting-page-normal-button:focus {
+    color: var(--focus-color);
+    background: #fff;
+    width: 200px;
+    border: 1px solid var(--focus-color);
+    border-radius: var(--button-radius);
+}
+
 .comment-edit-button {
     display: none;
     position: absolute;
