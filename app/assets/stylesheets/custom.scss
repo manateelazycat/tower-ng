@@ -1426,12 +1426,14 @@ textarea {
 .member-item-name {
     display: inline-block;
     font-size: 20px;
+    width: 300px;
 }
 
 .member-item-email {
     display: inline-block;
     font-size: 16px;
     color: #666;
+    margin-right: auto;
 }
 
 .member-invite-button {
@@ -1488,6 +1490,7 @@ textarea {
     font-size: 13px;
     color: orange;
     margin-left: 5px;
+    width: 200px;
 }
 
 .member-type-admin {
@@ -1495,6 +1498,7 @@ textarea {
     font-size: 13px;
     color: #666;
     margin-left: 5px;
+    width: 200px;
 }
 
 .member-type-member {
@@ -1502,4 +1506,5 @@ textarea {
     font-size: 13px;
     color: #666;
     margin-left: 5px;
+    width: 200px;
 }

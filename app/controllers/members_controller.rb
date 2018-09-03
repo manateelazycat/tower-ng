@@ -20,7 +20,7 @@ class MembersController < ApplicationController
     TeamAdmin.select{|t| t.team_id == team.id}.each do |team_admin|
       user = User.find_by_id(team_admin.user_id)
 
-      member_type = team_admin.is_administrator ? "管理器" : "成员"
+      member_type = team_admin.is_administrator ? "管理员" : "成员"
       member_color = team_admin.is_administrator ? "member-type-admin" : "member-type-member"
 
       if user.activated?
@@ -34,7 +34,7 @@ class MembersController < ApplicationController
       else
         @member_array.push(
           {name: user.email.split("@")[0],
-           type: member_type,
+           type: "已邀请",
            email: user.email,
            color: member_color
           }
