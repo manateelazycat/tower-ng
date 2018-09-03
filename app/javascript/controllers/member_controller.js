@@ -33,7 +33,7 @@ export default class extends Controller {
 
 	    $.ajax({
 		type: "POST",
-		url: "/teams/" + urlParams[4] + "/invites",
+		url: "/teams/" + urlParams[4] + "/members",
 		data: {
 		    members: members,
 		},

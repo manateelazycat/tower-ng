@@ -13,7 +13,7 @@
     <% end %>
 
     <div class="board-box"
-         data-controller="invite">
+         data-controller="member">
       <h3 class="invite-title">添加新成员</h3>
       <ul class="invite-email-list">
         <li class="invite-email-item">
@@ -48,12 +48,12 @@
 
       <a href="#"
          class="add-link-button invite-link-button"
-         data-action="invite#addNewInviteItem">
+         data-action="member#addNewInviteItem">
         再增加一个
       </a>
 
       <button class="btn-sm invite-submit-button break-inline-block"
-              data-action="invite#clickSubmitButton">
+              data-action="member#clickSubmitButton">
         发送邀请
       </button>
     </div>

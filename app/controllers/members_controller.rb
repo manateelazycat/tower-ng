@@ -41,7 +41,24 @@ class MembersController < ApplicationController
         )
       end
     end
+  end
 
-    print(@member_array)
+  def new
+
+  end
+
+  def create
+    params[:members].values().reverse.uniq{|m| m[0]}.reverse.each do |member|
+      user = User.new(email: member[0])
+      user.save
+
+      team = Team.find_by_hashid(params[:team_id])
+
+      team_admin = TeamAdmin.new(team_id: team.id, user_id: user.id, is_administrator: member[1] == "admin")
+      team_admin.save
+
+    end
+    
+    redirect_to team_members_path
   end
 end
