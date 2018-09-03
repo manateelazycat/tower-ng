@@ -87,7 +87,7 @@ class MembersController < ApplicationController
   end
 
   def edit
-    if params[:action_type] == "cancel"
+    if params[:action_type] == "cancel_invite"
 
       user = User.find_by_hashid(params[:id])
 
@@ -107,6 +107,31 @@ class MembersController < ApplicationController
             render :json => {
                      :status => "successful",
                      :redirect => team_members_url(team.hashid),
+                   }
+          }
+        end
+      end
+
+    elsif params[:action_type] == "resend_invite_email"
+
+      user = User.find_by_hashid(params[:id])
+
+      if user.activated?
+        redirect_to user_path(user.id)
+      else
+        user_activation_token = User.new_token
+        user_activation_digest = User.digest(user_activation_token)
+        user.update_attribute(:activation_digest, user_activation_digest)
+
+        team = Team.find_by(creator: current_user.email)
+        params[:team_id] = team.hashid
+
+        print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: params[:team_id]))
+
+        respond_to do |format|
+          format.json {
+            render :json => {
+                     :status => "successful",
                    }
           }
         end

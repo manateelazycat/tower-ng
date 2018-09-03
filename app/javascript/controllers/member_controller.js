@@ -49,7 +49,25 @@ export default class extends Controller {
     resendActivationMail(event) {
 	event.preventDefault()
 
-	console.log("######")
+	var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+	$.ajax({
+	    type: "GET",
+	    url: "/members/" + urlParams[4] + "/edit",
+     	    data: {
+		action_type: "resend_invite_email",
+	    },
+	    success: function(result) {
+		var inviteButton = $("#resend-inivite-button")
+
+		inviteButton.text("激活邮件已经重新发送")
+		inviteButton.css({
+		    color: "#aaa",
+		    border: "1px solid #aaa",
+		})
+	    }
+	})
     }
 
     cancelInivte(event) {
@@ -62,7 +80,7 @@ export default class extends Controller {
 	    type: "GET",
 	    url: "/members/" + urlParams[4] + "/edit",
      	    data: {
-		action_type: "cancel",
+		action_type: "cancel_invite",
 	    },
 	    success: function(result) {
                 window.location.href = result["redirect"]
