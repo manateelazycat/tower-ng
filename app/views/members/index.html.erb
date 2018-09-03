@@ -9,24 +9,22 @@
       <div class="member-count">(共 10 人)</div>
       <%= link_to "添加新成员", new_team_invite_path, :class => "float-right add-link-button member-invite-button" %>
       <ul>
-	<li class="member-item flex-vcenter">
-	  <div class="member-item-icon">Icon</div>
-	  <div class="member-item-name">王勇</div>
-	  <div class="member-item-status">超级管理员</div>
-	  <div class="member-item-email">wangyong@deepin.com</div>
-	</li>
-        <li class="member-item flex-vcenter">
-          <div class="member-item-icon">Icon</div>
-          <div class="member-item-name">王勇</div>
-          <div class="member-item-status">超级管理员</div>
-          <div class="member-item-email">wangyong@deepin.com</div>
-        </li>
-        <li class="member-item flex-vcenter">
-          <div class="member-item-icon">Icon</div>
-          <div class="member-item-name">王勇</div>
-          <div class="member-item-status">超级管理员</div>
-          <div class="member-item-email">wangyong@deepin.com</div>
-        </li>
+        <% @member_array.each do |member| %>
+          <li class="member-item flex-vcenter">
+            <div class="member-item-icon">
+              Icon
+            </div>
+            <div class="member-item-name">
+              <%= member[:name] %>
+            </div>
+            <div class= <%= member[:color] %>>
+              <%= member[:type] %>
+            </div>
+            <div class="member-item-email">
+              <%= member[:email] %>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
   </body>

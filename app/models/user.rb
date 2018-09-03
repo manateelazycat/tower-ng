@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include Hashid::Rails
-  
+
   has_many :team_admins
   has_many :teams, :through => :team_admins
 
@@ -10,9 +10,9 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest
 
-  validates :name,
-            presence: true,
-            length: {maximum: 100}
+  # validates :name,
+  #           presence: true,
+  #           length: {maximum: 100}
 
   before_save { self.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -22,8 +22,8 @@ class User < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
 
-  has_secure_password
-  validates :password, presence: true, length: {minimum: 6}
+  # has_secure_password
+  # validates :password, presence: true, length: {minimum: 6}
 
   class << self
     def digest(string)
