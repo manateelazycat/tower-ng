@@ -1163,14 +1163,14 @@ input[type="checkbox"]:disabled + label::before {
     margin-bottom: 10px;
 }
 
-.project-delete-button {
+.setting-page-delete-button {
     color: #F13A3E;
     width: 200px;
     border: 1px solid #F13A3E;
     border-radius: var(--button-radius);
 }
 
-.project-delete-button:hover {
+.setting-page-delete-button:hover {
     color: #FF696D;
     background: #fff;
     width: 200px;
@@ -1178,10 +1178,10 @@ input[type="checkbox"]:disabled + label::before {
     border-radius: var(--button-radius);
 }
 
-.project-delete-button:active,
-.project-delete-button:active:hover,
-.project-delete-button:active:focus,
-.project-delete-button:focus {
+.setting-page-delete-button:active,
+.setting-page-delete-button:active:hover,
+.setting-page-delete-button:active:focus,
+.setting-page-delete-button:focus {
     color: #F13A3E;
     background: #fff;
     width: 200px;
@@ -1533,4 +1533,24 @@ textarea {
     background: #eee;
     width: 100%;
     height: 1px;
+}
+
+.setting-page-delete-link {
+    color: #F13A3E;
+    border: none;
+}
+
+.setting-page-delete-link:hover {
+    color: #FF696D;
+    background: #fff;
+    border: none;
+}
+
+.setting-page-delete-link:active,
+.setting-page-delete-link:active:hover,
+.setting-page-delete-link:active:focus,
+.setting-page-delete-link:focus {
+    color: #F13A3E;
+    background: #fff;
+    border: none;
 }
