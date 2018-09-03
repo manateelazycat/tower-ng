@@ -9,7 +9,8 @@ class MembersController < ApplicationController
     team_creator = User.find_by_email(team.creator)
 
     @member_array.push(
-      {name: team_creator.name,
+      {user_hashid: team_creator.hashid,
+       name: team_creator.name,
        type: "超级管理员",
        email: team_creator.email,
        color: "member-type-super-admin"
@@ -25,7 +26,8 @@ class MembersController < ApplicationController
 
       if user.activated?
         @member_array.push(
-          {name: user.name,
+          {user_hashid: user.hashid,
+           name: user.name,
            type: member_type,
            email: user.email,
            color: member_color
@@ -33,7 +35,8 @@ class MembersController < ApplicationController
         )
       else
         @member_array.push(
-          {name: user.email.split("@")[0],
+          {user_hashid: user.hashid,
+           name: user.email.split("@")[0],
            type: "已邀请",
            email: user.email,
            color: member_color
@@ -47,6 +50,21 @@ class MembersController < ApplicationController
 
   end
 
+  def show
+    team = Team.find_by(creator: current_user.email)
+    params[:team_id] = team.hashid
+
+    @project = Project.find_by_hashid(params[:id])
+
+    @user = User.find_by_hashid(params[:id])
+
+    if @user.activated?
+      redirect_to user_path(params[:id])
+    else
+      @user_name = @user.email.split("@")[0]
+    end
+  end
+
   def create
     params[:members].values().reverse.uniq{|m| m[0]}.reverse.each do |member|
       user = User.new(email: member[0])
@@ -58,7 +76,7 @@ class MembersController < ApplicationController
       team_admin.save
 
     end
-    
+
     redirect_to team_members_path
   end
 end

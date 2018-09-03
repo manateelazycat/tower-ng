@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   def show
+    team = Team.find_by(creator: current_user.email)
+    params[:team_id] = team.hashid
+
+    @project = Project.find_by_hashid(params[:id])
   end
 
   def new

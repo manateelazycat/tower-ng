@@ -15,7 +15,9 @@
               Icon
             </div>
             <div class="member-item-name">
-              <%= member[:name] %>
+              <%= link_to member_path(member[:user_hashid]) do %>
+		<%= member[:name] %>
+	      <% end %>
             </div>
             <div class= <%= member[:color] %>>
               <%= member[:type] %>

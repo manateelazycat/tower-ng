@@ -1146,18 +1146,18 @@ input[type="checkbox"]:disabled + label::before {
     display: none;
 }
 
-.project-setting-action {
+.setting-page-action {
     display: flex;
     width: 100%;
     flex-direction: column;
     margin: auto;
 }
 
-.project-setting-action-title {
+.setting-page-action-title {
     margin-top: 40px;
 }
 
-.project-setting-action-summary {
+.setting-page-action-summary {
     color: #666;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -1507,4 +1507,30 @@ textarea {
     color: #666;
     margin-left: 5px;
     width: 200px;
+}
+
+.member-icon {
+    display: inline-block;
+    font-size: 50px;
+    justify-content: center;
+}
+
+.member-name-and-email {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.member-name {
+    font-weight: 350;
+    font-size: 30px;
+}
+
+.member-email {
+    color: #666;
+}
+
+.member-splitter {
+    background: #eee;
+    width: 100%;
+    height: 1px;
 }
