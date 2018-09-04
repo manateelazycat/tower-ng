@@ -1,6 +1,8 @@
 <ul class="mission-comment-list"
     data-controller="comment"
-    data-action="mouseleave->comment#mouseLeaveComment">
+    <% if team_administrator? %>
+    data-action="mouseleave->comment#mouseLeaveComment"
+    <% end %> >
   <% mission.comments.each do |comment| %>
   <%= render "comments/create_comment", comment: comment %>
   <% end %>

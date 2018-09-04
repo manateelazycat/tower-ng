@@ -76,4 +76,7 @@ module SessionsHelper
     end
   end
 
+  def team_administrator?
+    current_team.creator == current_user.email || !TeamAdmin.select { |team_admin| team_admin.team_id == current_team.id && team_admin.user_id == current_user.id && team_admin.is_administrator }.empty?
+  end
 end

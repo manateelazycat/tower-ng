@@ -1,6 +1,8 @@
 <li id=<%= comment.hashid %>
     class="mission-comment"
-    data-action="mouseenter->comment#mouseEnterComment">
+    <% if team_administrator? %>
+    data-action="mouseenter->comment#mouseEnterComment"
+    <% end %>>
   <div class="mission-comment-user">
     <%= User.find(comment.user_id).name %>
   </div>

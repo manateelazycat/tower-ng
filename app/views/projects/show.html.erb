@@ -12,18 +12,20 @@
          data-controller="mission rightfloatmenu"
          data-rightfloatmenu-top-offset="36">
       <div class="flex-hcenter">
-	<div class="project-header">
-	  <div class="project-title" align="left">
-	    <%= @project.name %>
-	  </div>
-	  <div class="project-summary" align="left">
-	    <%= @project.summary %>
-	  </div>
-	</div>
-	<%= link_to edit_project_path(@project.hashid), class: "project-setting" do %>
-          <span class="project-setting-icon glyphicon glyphicon-cog"></span>
-          <span class="project-setting-name">设置</span>
-	<% end %>
+        <div class="project-header">
+          <div class="project-title" align="left">
+            <%= @project.name %>
+          </div>
+          <div class="project-summary" align="left">
+            <%= @project.summary %>
+          </div>
+        </div>
+        <% if team_administrator? %>
+          <%= link_to edit_project_path(@project.hashid), class: "project-setting" do %>
+            <span class="project-setting-icon glyphicon glyphicon-cog"></span>
+            <span class="project-setting-name">设置</span>
+          <% end %>
+        <% end %>
       </div>
       <div class="project-splitter"></div>
 
@@ -32,26 +34,26 @@
              data-target="rightfloatmenu.rightMenuArea"
              data-action="scroll@window->rightfloatmenu#onScroll">
           <ul class="right-float-menu-scrollarea">
-	    <% if @project.mission_lists.length > 0 %>
-	      <% @project.mission_lists.each do |mission_list| %>
+            <% if @project.mission_lists.length > 0 %>
+              <% @project.mission_lists.each do |mission_list| %>
                 <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
-	      <% end %>
+              <% end %>
             <% else %>
-	      <li id="mission-list-default"
-		  class="right-float-menu-item">
-		默认任务列表
-	      </li>
-	    <% end %>
+              <li id="mission-list-default"
+                  class="right-float-menu-item">
+                默认任务列表
+              </li>
+            <% end %>
           </ul>
-	  <ul>
+          <ul>
             <li class="mission-list-new-form-item">
-	      <div class="mission-list-new-form"
+              <div class="mission-list-new-form"
                    data-target="mission.missionListNewForm">
                 <div class="flex-vcenter">
                   <input type="text"
-			 class="mission-list-new-input"
-			 placeholder="新的任务清单"
-			 data-action="keydown->mission#enterMissionListAdd">
+                         class="mission-list-new-input"
+                         placeholder="新的任务清单"
+                         data-action="keydown->mission#enterMissionListAdd">
                 </div>
                 <div>
                   <a href="#"
@@ -64,17 +66,17 @@
                      data-action="mission#clickMissionListCancelButton">
                     取消</a>
                 </div>
-	      </div>
+              </div>
             </li>
             <li>
-	      <a href="#"
+              <a href="#"
                  class="mission-list-add-button"
                  data-target="mission.missionListNewButton"
                  data-action="mission#clickMissionListNewButton">
                 添加新任务清单
-	      </a>
+              </a>
             </li>
-	  </ul>
+          </ul>
         </div>
       </div>
 

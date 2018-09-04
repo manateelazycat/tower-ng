@@ -33,14 +33,16 @@
                 编辑
               </a>
             </li>
-            <li class="right-float-menu-item">
-              <a href="#"
-                 class="right-float-menu-delete-button"
-                 data-toggle="modal"
-                 data-target="#confirm-dialog">
-                删除
-              </a>
-            </li>
+	    <% if team_administrator? %>
+              <li class="right-float-menu-item">
+		<a href="#"
+                   class="right-float-menu-delete-button"
+                   data-toggle="modal"
+                   data-target="#confirm-dialog">
+                  删除
+		</a>
+              </li>
+	    <% end %>
           </ul>
         </div>
       </div>

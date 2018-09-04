@@ -88,7 +88,7 @@ class MembersController < ApplicationController
         respond_to do |format|
           format.json do
             render json: { status: "successful",
-                           redirect: team_members_url(team.hashid) }
+                           redirect: team_members_url(current_team.hashid) }
           end
         end
       end
