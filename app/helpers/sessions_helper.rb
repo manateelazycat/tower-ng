@@ -48,31 +48,25 @@ module SessionsHelper
   def current_team
     return unless current_user
 
-    if current_user.team_id
-      Team.find(current_user.team_id)
-    else
-      teams = current_temas
+    return Team.find(current_user.team_id) if current_user.team_id
 
-      unless teams.empty?
-        first_team = teams[0]
-        current_user.team_id = first_team.id
+    return if current_temas.empty?
 
-        first_team
-      end
-    end
+    first_team = current_teams[0]
+    current_user.team_id = first_team.id
+
+    first_team
   end
 
   def current_temas
-    if current_user
-      teams = Team.select { |t| t.creator == current_user.email }
+    return [] unless current_user
 
-      if !teams.empty?
-        teams
-      else
-        TeamAdmin.select { |t| t.user_id == current_user.id }.map { |team_admin| Team.find(team_admin.team_id) }
-      end
+    teams = Team.select { |t| t.creator == current_user.email }
+
+    if teams.empty?
+      TeamAdmin.select { |t| t.user_id == current_user.id }.map { |team_admin| Team.find(team_admin.team_id) }
     else
-      []
+      teams
     end
   end
 
