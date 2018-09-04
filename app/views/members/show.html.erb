@@ -6,7 +6,7 @@
   <body class="content-page-body" id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <%= render 'layouts/header' %>
 
-    <%= link_to team_members_url(params[:team_id]) do %>
+    <%= link_to team_members_url(current_team.hashid) do %>
       <div class="bread-crumbs-big">
 	团队
       </div>

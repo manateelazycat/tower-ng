@@ -6,7 +6,7 @@
   <body>
     <div class="phone-page-box col-xs-12">
       <div class="phone-page-top-bar flex-vcenter">
-        <%= link_to team_projects_url(params[:team_id]), class: "flex-vcenter" do %>
+        <%= link_to team_projects_url(current_team.id), class: "flex-vcenter" do %>
           <span class="glyphicon glyphicon-menu-left phone-top-item-icon"></span>
         <% end %>
         <span class="phone-top-title">

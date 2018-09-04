@@ -19,12 +19,9 @@ class ProjectsController < ApplicationController
   def new; end
 
   def create
-    # Get team.
-    team = Team.find_by_hashid(params[:team_id])
-
     # Create project.
-    project = team.projects.create(
-      team_id: params[:team_id],
+    project = current_team.projects.create(
+      team_id: current_team.id,
       name: params[:project][:name],
       summary: params[:project][:summary],
       icon: @@glyphicon_list.sample
@@ -36,17 +33,10 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    # Get team id, make view can access params[:team_id]
-    team = current_team
-    params[:team_id] = team.hashid
-
     @project = Project.find_by_hashid(params[:id])
   end
 
   def edit
-    team = current_team
-    params[:team_id] = team.hashid
-
     @project = Project.find_by_hashid(params[:id])
   end
 

@@ -7,7 +7,7 @@ class MembersController < ApplicationController
     @member_array = []
 
     # Push creator at first.
-    team = Team.find_by_hashid(params[:team_id])
+    team = current_team
     team_creator = User.find_by_email(team.creator)
 
     @member_array.push(user_hashid: team_creator.hashid,
@@ -23,7 +23,7 @@ class MembersController < ApplicationController
       member_type = team_admin.is_administrator ? "管理员" : "成员"
       member_color = team_admin.is_administrator ? "member-type-admin" : "member-type-member"
 
-      if user.activated?
+      if user&.activated?
         @member_array.push(user_hashid: user.hashid,
                            name: user.name,
                            type: member_type,
@@ -44,14 +44,10 @@ class MembersController < ApplicationController
   def new; end
 
   def show
-    team = current_team
-    params[:team_id] = team.hashid
-
     @project = Project.find_by_hashid(params[:id])
-
     @user = User.find_by_hashid(params[:id])
 
-    if @user.activated?
+    if @user&.activated?
       redirect_to user_path(@user.id)
     else
       @user_name = @user.email.split("@")[0]
@@ -66,12 +62,10 @@ class MembersController < ApplicationController
         user = User.new(email: member[0])
         user.save
 
-        print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: params[:team_id]), "\n")
+        print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: current_team.hashid), "\n")
       end
 
-      team = Team.find_by_hashid(params[:team_id])
-
-      team_admin = TeamAdmin.new(team_id: team.id, user_id: user.id, is_administrator: member[1] == "admin")
+      team_admin = TeamAdmin.new(team_id: current_team.id, user_id: user.id, is_administrator: member[1] == "admin")
       team_admin.save
     end
 
@@ -83,16 +77,13 @@ class MembersController < ApplicationController
 
       user = User.find_by_hashid(params[:id])
 
-      if user.activated?
+      if user&.activated?
         redirect_to user_path(user.id)
       else
         team_admin = TeamAdmin.find_by_user_id(user.id)
         team_admin&.destroy
 
         user&.destroy
-
-        team = current_team
-        params[:team_id] = team.hashid
 
         respond_to do |format|
           format.json do
@@ -106,17 +97,14 @@ class MembersController < ApplicationController
 
       user = User.find_by_hashid(params[:id])
 
-      if user.activated?
+      if user&.activated?
         redirect_to user_path(user.id)
       else
         user_activation_token = User.new_token
         user_activation_digest = User.digest(user_activation_token)
         user.update_attribute(:activation_digest, user_activation_digest)
 
-        team = current_team
-        params[:team_id] = team.hashid
-
-        print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: params[:team_id]), "\n")
+        print("Send activation mail: ", edit_account_activation_url(user_activation_token, email: user.email, team_id: current_team.hashid), "\n")
 
         respond_to do |format|
           format.json do

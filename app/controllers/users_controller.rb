@@ -3,9 +3,6 @@
 # User controller.
 class UsersController < ApplicationController
   def show
-    team = current_team
-    params[:team_id] = team.hashid
-
     @project = Project.find_by_hashid(params[:id])
   end
 

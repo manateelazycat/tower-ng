@@ -1,10 +1,10 @@
 <nav class="navbar">
   <div class="container top-header">
     <ul class="nav navbar-nav navbar-left">
-      <li><%= link_to Team.find_by_hashid(params[:team_id]).name, root_path, :class => "team-name"%></li>
-      <li><%= link_to "项目", team_projects_url(params[:team_id]), :class => "top-header-item" %></li>
+      <li><%= link_to current_team.name, root_path, :class => "team-name"%></li>
+      <li><%= link_to "项目", team_projects_url(current_team.hashid), :class => "top-header-item" %></li>
       <li><%= link_to "动态", root_path, :class => "top-header-item" %></li>
-      <li><%= link_to "团队", team_members_url(params[:team_id]), :class => "top-header-item" %></li>
+      <li><%= link_to "团队", team_members_url(current_team.hashid), :class => "top-header-item" %></li>
       <li><%= link_to "我自己", user_path(current_user.id), :class => "top-header-item" %></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
