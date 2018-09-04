@@ -521,7 +521,7 @@ export default class extends Controller {
 
 		// Hide comment first.
 		var comment = $(result)
-		comment.hide()
+	      	comment.hide()
 
 		// Add to comment list area and show comemnt with animation.
 		$(".mission-comment-list").append(comment)
