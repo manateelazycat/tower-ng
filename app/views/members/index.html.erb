@@ -6,7 +6,9 @@
     <%= render 'layouts/header' %>
     <div class="board-box">
       <div class="member-title">成员</div>
-      <div class="member-count">(共 10 人)</div>
+      <div class="member-count">
+	(共 <%= @member_array.length %> 人)
+      </div>
       <%= link_to "添加新成员", new_team_member_path, :class => "float-right add-link-button member-invite-button" %>
       <ul>
         <% @member_array.each do |member| %>
