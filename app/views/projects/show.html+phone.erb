@@ -10,7 +10,7 @@
           <span class="glyphicon glyphicon-menu-left phone-top-item-icon"></span>
         <% end %>
         <span class="phone-top-title">
-	  <%= Project.find_by_hashid(params[:id]).name %>
+       	  <%= Project.find_by_hashid(params[:id]).name %>
 	</span>
         <%= link_to "#", class: "flex-align-right" do %>
           <span class="glyphicon glyphicon-plus phone-top-item-icon"></span>
