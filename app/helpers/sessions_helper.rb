@@ -50,7 +50,7 @@ module SessionsHelper
 
     return Team.find(current_user.team_id) if current_user.team_id
 
-    return if current_temas.empty?
+    return if current_teams.empty?
 
     first_team = current_teams[0]
     current_user.team_id = first_team.id
@@ -58,7 +58,7 @@ module SessionsHelper
     first_team
   end
 
-  def current_temas
+  def current_teams
     return [] unless current_user
 
     teams = Team.select { |t| t.creator == current_user.email }
