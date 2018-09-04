@@ -3,8 +3,7 @@
 # Mission list controller.
 class MissionListsController < ApplicationController
   def create
-    name = params[:name]
-    project_id = params[:project_id]
+    name, project_id = params.values_at(:name, :project_id)
     @project = Project.find_by_hashid(project_id)
 
     respond_to do |format|
