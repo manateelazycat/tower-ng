@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
     onClick(event) {
-	if ($(event.target).closest(".comment-edit-menu").length === 0
+ 	if ($(event.target).closest(".comment-edit-menu").length === 0
 	    && $(event.target).closest(".comment-edit-button").length === 0) {
 	    $(".comment-edit-menu").hide()
 	}

@@ -20,6 +20,5 @@ class JoinsController < ApplicationController
 
       redirect_to team_projects_url(params[:team_id])
     end
-
   end
 end

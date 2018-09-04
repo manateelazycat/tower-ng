@@ -22,12 +22,12 @@ export default class extends Controller {
 	$.each(inviteEmailItems, function(index, item) {
 	    var email = $(item).find(".invite-edit-input").val().trim()
 
-	    if (email.length > 0) {
+     	    if (email.length > 0) {
 		members.push([email, $(item).find("select").val()])
 	    }
 	})
 
-	if (members.length > 0) {
+ 	if (members.length > 0) {
 	    var url = $(location).attr('href')
 	    var urlParams = url.split("/")
 

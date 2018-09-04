@@ -7,7 +7,7 @@
     <div class="board-box">
 
       <div class="link-button-group">
-	<% if team_administrator? %>
+    	<% if team_administrator? %>
           <span class="glyphicon glyphicon-plus"></span>
           <%= link_to "新建项目", new_team_project_path, :class => "link-button" %>
 	<% end %>
