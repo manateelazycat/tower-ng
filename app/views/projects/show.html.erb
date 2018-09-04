@@ -34,7 +34,7 @@
              data-target="rightfloatmenu.rightMenuArea"
              data-action="scroll@window->rightfloatmenu#onScroll">
           <ul class="right-float-menu-scrollarea">
-            <% if @project.mission_lists.length > 0 %>
+            <% if !@project.mission_lists.empty? %>
               <% @project.mission_lists.each do |mission_list| %>
                 <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
               <% end %>
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <% if @project.mission_lists.length > 0 %>
+      <% if !@project.mission_lists.empty? %>
         <% @project.mission_lists.each do |mission_list| %>
           <%= render "mission_lists/create_mission_list", mission_list: mission_list %>
         <% end %>

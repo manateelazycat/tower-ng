@@ -97,7 +97,7 @@
                    data-action="keydown->mission#enterMissionPageEdit">
             <button type="button" class="btn mission-distributor">未指派</button>
           </div>
-          <% if @mission.summary && @mission.summary.length > 0 %>
+          <% if @mission.summary && !@mission.summary.empty? %>
             <textarea class="mission-edit-textarea" placeholder="任务描述">
               <%= @mission.summary %>
             </textarea>
@@ -133,7 +133,7 @@
         </label>
         <button type="button" class="btn mission-distributor">未指派</button>
       </li>
-      <% if (not @mission.summary) || (@mission.summary.length == 0) %>
+      <% if !@mission.summary || @mission.summary.empty? %>
         <div class="mission-add-summary-button">
           <a href="#"
              class="btn"

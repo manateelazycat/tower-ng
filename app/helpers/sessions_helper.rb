@@ -53,7 +53,7 @@ module SessionsHelper
     else
       teams = current_temas
 
-      if teams.length > 0
+      unless teams.empty?
         first_team = teams[0]
         current_user.team_id = first_team.id
 
@@ -66,7 +66,7 @@ module SessionsHelper
     if current_user
       teams = Team.select { |t| t.creator == current_user.email }
 
-      if teams.length > 0
+      if !teams.empty?
         teams
       else
         TeamAdmin.select { |t| t.user_id == current_user.id }.map { |team_admin| Team.find(team_admin.team_id) }
