@@ -1,43 +1,45 @@
-<nav class="navbar">
-  <div class="container top-header">
-    <ul class="nav navbar-nav navbar-left">
-      <li><%= link_to current_team.name, root_path, :class => "team-name"%></li>
-      <li><%= link_to "项目", team_projects_url(current_team.hashid), :class => "top-header-item" %></li>
-      <li><%= link_to "动态", root_path, :class => "top-header-item" %></li>
-      <li><%= link_to "团队", team_members_url(current_team.hashid), :class => "top-header-item" %></li>
-      <li><%= link_to "我自己", user_path(current_user.id), :class => "top-header-item" %></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <div class="col-sm-3 col-md-3">
-          <form class="navbar-form" role="search">
-            <div class="input-group input-group-sm mb-3 top-search-bar-group">
-              <input type="text" class="form-control top-search-bar-input" placeholder="搜索任务">
-              <div class="input-group-btn">
-                <button class="btn btn-default top-search-bar-button" type="submit">
-                  <span class="glyphicon glyphicon-search top-search-bar-icon"></span>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+<div class="top-header">
+  <div><%= link_to current_team.name, root_path, :class => "team-name"%></div>
+  <div><%= link_to "项目", team_projects_url(current_team.hashid), :class => "top-header-item" %></div>
+  <div><%= link_to "动态", root_path, :class => "top-header-item" %></div>
+  <div><%= link_to "团队", team_members_url(current_team.hashid), :class => "top-header-item" %></div>
+  <div><%= link_to "我自己", user_path(current_user.id), :class => "top-header-item" %></div>
+  <div class="top-header-blank"></div>
+  <form class="navbar-form" role="search">
+    <div class="input-group input-group-sm mb-3 top-search-bar-group">
+      <input type="text" class="form-control top-search-bar-input" placeholder="搜索任务">
+      <div class="input-group-btn">
+	<button class="btn btn-default top-search-bar-button" type="submit">
+	  <span class="glyphicon glyphicon-search top-search-bar-icon"></span>
+	</button>
+      </div>
+    </div>
+  </form>
+  <div class="glyphicon glyphicon-bell top-header-item"></div>
+  <div class="inline-block">
+    <%= current_user.name %>
+  </div>
+  <div class="glyphicon glyphicon-triangle-bottom top-header-item"></div>
+
+  <div class="top-header-menu">
+    <ul>
+      <li class="top-header-menu-user-item">
+	<%= current_user.name %>
       </li>
-      <li><a><span class="glyphicon glyphicon-bell phone-bottom-item-icon top-header-item"></span></a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle link-button-small" data-toggle="dropdown">
-          <span class="top-header-item">
-	    <%= current_user.name %>
-	  </span>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "设置", '#' %></li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to "退出", sign_out_path, method: :delete %>
-          </li>
-        </ul>
+      <li class="splitter"></li>
+      <li class="top-header-menu-item">
+        <div><%= link_to "个人设置", sign_out_path, method: :delete, class: "float-left" %></div>
+	<div class="float-left">头像、名字、密码、通知等</div>
+      </li>
+      <li class="splitter"></li>
+      <li class="top-header-menu-item">
+        <div><%= link_to "+创建新团队", sign_out_path, method: :delete, class: "float-left" %></div>
+        <div class="float-left">切换到...</div>
+      </li>
+      <li class="splitter"></li>
+      <li class="top-header-menu-item">
+        <%= link_to "退出登录", sign_out_path, method: :delete, class: "float-left" %>
       </li>
     </ul>
   </div>
-</nav>
+</div>
