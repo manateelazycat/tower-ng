@@ -23,22 +23,37 @@
 
   <div class="top-header-menu">
     <ul>
-      <li class="top-header-menu-user-item">
-	<%= current_user.name %>
+      <li class="top-header-menu-item-user">
+	<div class="top-header-menu-user-name">
+	  <div class="inline-block">
+	    <%= current_user.name %>
+	  </div>
+	  <span class="glyphicon glyphicon-tower inline-block"></span>
+          <div class="inline-block">
+            <%= current_team.name %>
+          </div>
+	</div>
+        <div class="top-header-menu-item-text top-header-menu-email">
+          <%= current_user.email %>
+        </div>
       </li>
       <li class="splitter"></li>
       <li class="top-header-menu-item">
-        <div><%= link_to "个人设置", sign_out_path, method: :delete, class: "float-left" %></div>
-	<div class="float-left">头像、名字、密码、通知等</div>
+	<div class="top-header-menu-item-title">个人设置</div>
+	<div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
+      </li>
+      <li class="splitter"></li>
+      <li class="top-header-menu-item-no-hover">
+        <div class="top-header-menu-item-text">切换到...</div>
+      </li>
+      <li class="top-header-menu-item">
+        <div class="top-header-menu-item-title">+创建新团队</div>
       </li>
       <li class="splitter"></li>
       <li class="top-header-menu-item">
-        <div><%= link_to "+创建新团队", sign_out_path, method: :delete, class: "float-left" %></div>
-        <div class="float-left">切换到...</div>
-      </li>
-      <li class="splitter"></li>
-      <li class="top-header-menu-item">
-        <%= link_to "退出登录", sign_out_path, method: :delete, class: "float-left" %>
+	<%= link_to sign_out_path, method: :delete do %>
+          <div class="top-header-menu-item-button">退出登录</div>
+	<% end %>
       </li>
     </ul>
   </div>

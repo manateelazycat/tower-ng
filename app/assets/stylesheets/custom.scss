@@ -489,9 +489,9 @@ li {
 
 .top-header {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 60px;
+    align-items: center;
+    justify-content: center;
 }
 
 .top-header-blank {
@@ -1205,9 +1205,9 @@ input[type="checkbox"]:disabled + label::before {
 .setting-page-normal-button {
     color: var(--button-color);
     width: 200px;
+    margin-top: 10px;
     border: 1px solid var(--button-color);
     border-radius: var(--button-radius);
-    margin-top: 10px;
 }
 
 .setting-page-normal-button:hover {
@@ -1492,8 +1492,8 @@ textarea {
 }
 
 .invite-title {
-    margin-left: 10px;
     margin-bottom: 40px;
+    margin-left: 10px;
 }
 
 .invite-link-button {
@@ -1518,35 +1518,35 @@ textarea {
 .invite-edit-input {
     font-size: 15px;
     font-weight: 350;
+    width: 300px;
     margin-left: 10px;
     border: none;
     border-bottom: 1px solid #eee;
     outline: none;
-    width: 300px;
 }
 
 .member-type-super-admin {
     display: inline-block;
     font-size: 13px;
     color: orange;
-    margin-left: 5px;
     width: 200px;
+    margin-left: 5px;
 }
 
 .member-type-admin {
     display: inline-block;
     font-size: 13px;
     color: #666;
-    margin-left: 5px;
     width: 200px;
+    margin-left: 5px;
 }
 
 .member-type-member {
     display: inline-block;
     font-size: 13px;
     color: #666;
-    margin-left: 5px;
     width: 200px;
+    margin-left: 5px;
 }
 
 .member-icon {
@@ -1561,8 +1561,8 @@ textarea {
 }
 
 .member-name {
-    font-weight: 350;
     font-size: 30px;
+    font-weight: 350;
 }
 
 .member-email {
@@ -1604,20 +1604,17 @@ textarea {
 .top-header-menu {
     filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
-    // display: none;
+    background: linear-gradient(rgb(245, 245, 245) 82px, var(--menu-color) 82px, var(--menu-color) 100%);
     position: absolute;
     font-size: 13px;
     font-weight: 350;
-    background: var(--menu-color);
-    width: 200px;
+    top: 200px;
+    left: 200px;
+    width: 280px;
     height: auto;
     padding-top: 10px;
     border-radius: 3px 3px 3px 3px;
-    text-align: center;
     z-index: 9999;
-
-    top: 200px;
-    left: 200px;
 }
 
 .top-header-menu:before {
@@ -1628,38 +1625,82 @@ textarea {
     left: calc(90% - 10px);
     width: 0;
     height: 0;
-    border-bottom: 10px solid var(--menu-color);
+    border-bottom: 10px solid rgb(245, 245, 245);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
 }
 
-.top-header-menu-user-item {
-    min-height: 32px;
+.top-header-menu-item-user {
+    font-size: 13px;
+    color: #222;
+    width: 280px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;           // make parent div expand height when have 'float' child div in it
+}
+
+.top-header-menu-user-name {
+    font-size: 18px;
+}
+
+.top-header-menu-email {
+    font-size: 14px;
+    color: #666;
 }
 
 .top-header-menu-item {
     font-size: 13px;
     color: #222;
+    width: 280px;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-top: 3px;
+    overflow: hidden;           // make parent div expand height when have 'float' child div in it
+}
+
+.top-header-menu-item-no-hover {
+    font-size: 13px;
+    color: #222;
+    width: 280px;
+    padding-top: 4px;
     padding-bottom: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 200px;
-    min-height: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;           // make parent div expand height when have 'float' child div in it
 }
 
 .top-header-menu-item:hover {
-    color: var(--hover-color);
-    background: #eee;
+    background: rgb(245, 245, 245);
+}
+
+.top-header-menu-item-title {
+    display: block;
+    text-align: left;
+    color: var(--logo-color);
+    font-size: 16px;
+    font-weight: 350;
 }
 
 .top-header-menu-item-text {
-    color: #222;
+    display: block;
+    text-align: left;
+    color: #666;
+    font-weight: 350;
 }
 
-.top-header-menu-item-text:hover {
-    color: var(--hover-color);
-    text-decoration: none;
+.top-header-menu-item-button {
+    display: block;
+    text-align: left;
+    color: var(--logo-color);
+    font-size: 14px;
+    font-weight: 350;
 }
