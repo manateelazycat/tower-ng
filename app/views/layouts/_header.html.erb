@@ -1,4 +1,10 @@
-<div class="top-header">
+<div class="background-eventarea"
+     data-controller="header"
+     data-action="click@window->header#onClick">
+</div>
+
+<div class="top-header"
+     data-controller="header">
   <div><%= link_to current_team.name, root_path, :class => "team-name"%></div>
   <div><%= link_to "项目", team_projects_url(current_team.hashid), :class => "top-header-item" %></div>
   <div><%= link_to "动态", root_path, :class => "top-header-item" %></div>
@@ -19,42 +25,44 @@
   <div class="inline-block">
     <%= current_user.name %>
   </div>
-  <div class="glyphicon glyphicon-triangle-bottom top-header-item"></div>
+  <a href="#"
+     class="glyphicon glyphicon-triangle-bottom top-header-item top-header-menu-button"
+     data-action="header#popMenu"></a>
+</div>
 
-  <div class="top-header-menu">
-    <ul>
-      <li class="top-header-menu-item-user">
-	<div class="top-header-menu-user-name">
-	  <div class="inline-block">
-	    <%= current_user.name %>
-	  </div>
-	  <span class="glyphicon glyphicon-tower inline-block"></span>
-          <div class="inline-block">
-            <%= current_team.name %>
-          </div>
+<div class="top-header-menu">
+  <ul>
+    <li class="top-header-menu-item-user">
+      <div class="top-header-menu-user-name">
+	<div class="inline-block">
+	  <%= current_user.name %>
 	</div>
-        <div class="top-header-menu-item-text top-header-menu-email">
-          <%= current_user.email %>
+	<span class="glyphicon glyphicon-tower inline-block"></span>
+        <div class="inline-block">
+          <%= current_team.name %>
         </div>
-      </li>
-      <li class="splitter"></li>
-      <li class="top-header-menu-item">
-	<div class="top-header-menu-item-title">个人设置</div>
-	<div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
-      </li>
-      <li class="splitter"></li>
-      <li class="top-header-menu-item-no-hover">
-        <div class="top-header-menu-item-text">切换到...</div>
-      </li>
-      <li class="top-header-menu-item">
-        <div class="top-header-menu-item-title">+创建新团队</div>
-      </li>
-      <li class="splitter"></li>
-      <li class="top-header-menu-item">
-	<%= link_to sign_out_path, method: :delete do %>
-          <div class="top-header-menu-item-button">退出登录</div>
-	<% end %>
-      </li>
-    </ul>
-  </div>
+      </div>
+      <div class="top-header-menu-item-text top-header-menu-email">
+        <%= current_user.email %>
+      </div>
+    </li>
+    <li class="splitter"></li>
+    <li class="top-header-menu-item">
+      <div class="top-header-menu-item-title">个人设置</div>
+      <div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
+    </li>
+    <li class="splitter"></li>
+    <li class="top-header-menu-item-no-hover">
+      <div class="top-header-menu-item-text">切换到...</div>
+    </li>
+    <li class="top-header-menu-item">
+      <div class="top-header-menu-item-title">+创建新团队</div>
+    </li>
+    <li class="splitter"></li>
+    <li class="top-header-menu-item">
+      <%= link_to sign_out_path, method: :delete do %>
+        <div class="top-header-menu-item-button">退出登录</div>
+      <% end %>
+    </li>
+  </ul>
 </div>

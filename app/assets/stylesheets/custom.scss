@@ -1604,12 +1604,11 @@ textarea {
 .top-header-menu {
     filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
-    background: linear-gradient(rgb(245, 245, 245) 82px, var(--menu-color) 82px, var(--menu-color) 100%);
+    display: none;
     position: absolute;
     font-size: 13px;
     font-weight: 350;
-    top: 200px;
-    left: 200px;
+    background: linear-gradient(rgb(245, 245, 245) 82px, var(--menu-color) 82px, var(--menu-color) 100%);
     width: 280px;
     height: auto;
     padding-top: 10px;
@@ -1684,23 +1683,23 @@ textarea {
 
 .top-header-menu-item-title {
     display: block;
-    text-align: left;
-    color: var(--logo-color);
     font-size: 16px;
     font-weight: 350;
+    color: var(--logo-color);
+    text-align: left;
 }
 
 .top-header-menu-item-text {
     display: block;
-    text-align: left;
-    color: #666;
     font-weight: 350;
+    color: #666;
+    text-align: left;
 }
 
 .top-header-menu-item-button {
     display: block;
-    text-align: left;
-    color: var(--logo-color);
     font-size: 14px;
     font-weight: 350;
+    color: var(--logo-color);
+    text-align: left;
 }
