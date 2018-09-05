@@ -1,3 +1,5 @@
+<%= javascript_pack_tag "application" %>
+
 <div class="background-eventarea"
      data-controller="header"
      data-action="click@window->header#onClick">
@@ -9,7 +11,7 @@
   <div><%= link_to "项目", team_projects_url(current_team.hashid), :class => "top-header-item" %></div>
   <div><%= link_to "动态", root_path, :class => "top-header-item" %></div>
   <div><%= link_to "团队", team_members_url(current_team.hashid), :class => "top-header-item" %></div>
-  <div><%= link_to "我自己", user_path(current_user.id), :class => "top-header-item" %></div>
+  <div><%= link_to "我自己", user_path(current_user.hashid), :class => "top-header-item" %></div>
   <div class="top-header-blank"></div>
   <form class="navbar-form" role="search">
     <div class="input-group input-group-sm mb-3 top-search-bar-group">
@@ -48,8 +50,10 @@
     </li>
     <li class="splitter"></li>
     <li class="top-header-menu-item">
-      <div class="top-header-menu-item-title">个人设置</div>
-      <div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
+      <%= link_to user_settings_path(current_user.hashid) do%>
+	<div class="top-header-menu-item-title">个人设置</div>
+	<div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
+      <% end %>
     </li>
     <li class="splitter"></li>
     <li class="top-header-menu-item-no-hover">

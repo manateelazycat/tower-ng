@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
   delete 'sign_out', to: 'sessions#destroy'
-  resources :users
+
+  resources :users do
+    resources :settings
+  end
 
   resources :teams, :shallow => true do
     resources :projects
