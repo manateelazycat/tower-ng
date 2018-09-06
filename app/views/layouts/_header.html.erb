@@ -17,29 +17,31 @@
     <div class="input-group input-group-sm mb-3 top-search-bar-group">
       <input type="text" class="form-control top-search-bar-input" placeholder="搜索任务">
       <div class="input-group-btn">
-	<button class="btn btn-default top-search-bar-button" type="submit">
-	  <span class="glyphicon glyphicon-search top-search-bar-icon"></span>
-	</button>
+        <button class="btn btn-default top-search-bar-button" type="submit">
+          <span class="glyphicon glyphicon-search top-search-bar-icon"></span>
+        </button>
       </div>
     </div>
   </form>
-  <div class="glyphicon glyphicon-bell top-header-item"></div>
+  <div class="glyphicon glyphicon-bell top-header-bell"></div>
   <div class="top-header-icon inline-block">
     <%= image_tag current_user.avatar_thumb_url %>
   </div>
   <a href="#"
      class="glyphicon glyphicon-triangle-bottom top-header-item top-header-menu-button"
-     data-action="header#popMenu"></a>
+     data-action="header#popMenu">
+
+  </a>
 </div>
 
 <div class="top-header-menu">
   <ul>
     <li class="top-header-menu-item-user">
       <div class="top-header-menu-user-name">
-	<div class="inline-block">
-	  <%= current_user.name %>
-	</div>
-	<span class="glyphicon glyphicon-tower inline-block"></span>
+        <div class="inline-block">
+          <%= current_user.name %>
+        </div>
+        <span class="glyphicon glyphicon-tower inline-block"></span>
         <div class="inline-block">
           <%= current_team.name %>
         </div>
@@ -51,8 +53,8 @@
     <li class="splitter"></li>
     <li class="top-header-menu-item">
       <%= link_to user_settings_path(current_user.hashid) do%>
-	<div class="top-header-menu-item-title">个人设置</div>
-	<div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
+        <div class="top-header-menu-item-title">个人设置</div>
+        <div class="top-header-menu-item-text">头像、名字、密码、通知等</div>
       <% end %>
     </li>
     <li class="splitter"></li>

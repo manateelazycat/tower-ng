@@ -498,6 +498,13 @@ li {
     width: 200px;
 }
 
+.top-header-bell {
+    color: var(--link-text-color);
+    margin-left: 5px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
 .top-header-item {
     font-size: 16px;
     color: var(--link-text-color);
@@ -1704,6 +1711,12 @@ textarea {
     border-bottom: 10px solid rgb(245, 245, 245);
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
+}
+
+.top-header-menu-button {
+    font-size: 10px;
+    margin: 0;
+    margin-left: 5px;
 }
 
 .top-header-menu-item-user {
