@@ -24,8 +24,8 @@
     </div>
   </form>
   <div class="glyphicon glyphicon-bell top-header-item"></div>
-  <div class="inline-block">
-    Icon
+  <div class="top-header-icon inline-block">
+    <%= image_tag current_user.photo.url(:thumb_24) if current_user.photo? %>
   </div>
   <a href="#"
      class="glyphicon glyphicon-triangle-bottom top-header-item top-header-menu-button"

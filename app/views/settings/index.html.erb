@@ -6,15 +6,28 @@
     <%= render 'layouts/header' %>
 
     <div class="board-box"
-         data-controller="member">
+         data-controller="setting">
       <div class="setting-title">个人设置</div>
-      <div class="setting-item">
-        <div class="setting-icon">Icon</div>
-        <div class="inline-block">
-          <a href="#"
-             class="text-link-button">
-            选择新头像
-          </a>
+      <div class="setting-item flex-vcenter">
+        <div class="setting-icon"
+	     id="user-photo">
+          <%= image_tag current_user.photo.url if current_user.photo? %>
+        </div>
+        <div class="setting-icon-form">
+	  <%= form_for current_user, :html => {:multipart => true, id: "user-photo-form"}, :remote => true do |f| %>
+
+	    <div class="setting-icon-upload-button">
+              <label for="attachment-input">
+                选择新头像
+              </label>
+
+              <%= f.file_field :photo, id: "attachment-input", class: "setting-icon-upload-button", data: {
+                  action: "change->setting#finishUpload"
+              } %>
+	    </div>
+
+            <%= f.submit class: "hide" %>
+	  <% end %>
           <div class="setting-description">你可以选择 png/jpg 图片作为头像</div>
         </div>
       </div>

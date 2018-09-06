@@ -4,6 +4,8 @@
 class User < ApplicationRecord
   include Hashid::Rails
 
+  mount_uploader :photo, PhotoUploader
+
   has_many :team_admins
   has_many :teams, through: :team_admins
 

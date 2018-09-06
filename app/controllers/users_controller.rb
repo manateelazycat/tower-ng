@@ -40,4 +40,18 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def update
+    current_user.photo = params[:user][:photo]
+    current_user.save!
+
+    @photo_url = current_user.photo.url
+    @photo_thumb_url = current_user.photo.thumb_24.url
+
+    respond_to do |format|
+      format.js {
+        render "update_user_photo.js.erb"
+      }
+    end
+  end
 end

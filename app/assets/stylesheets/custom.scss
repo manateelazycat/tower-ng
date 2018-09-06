@@ -789,6 +789,22 @@ li {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.setting-icon-upload-button {
+    font-size: 13px;
+    font-weight: 350;
+    color: var(--logo-color);
+}
+
+.setting-icon-upload-button > input {
+    display: none;
+}
+
+.setting-icon-upload-button > label {
+    font-size: 14px;
+    font-weight: 350;
+    cursor: pointer;
+}
+
 .text-link-button {
     font-size: 13px;
     font-weight: 350;
@@ -1562,9 +1578,13 @@ textarea {
 
 .setting-icon {
     display: inline-block;
-    font-size: 32px;
-    justify-content: center;
+    text-align: right;
     margin-right: 16px;
+    width: 60px;
+}
+
+.setting-icon-form {
+    display: inline-block;
 }
 
 .setting-entry {
@@ -1741,4 +1761,8 @@ textarea {
     font-weight: 350;
     color: var(--logo-color);
     text-align: left;
+}
+
+.hide {
+    display: none;
 }
