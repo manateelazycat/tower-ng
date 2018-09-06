@@ -1326,8 +1326,8 @@ input[type="checkbox"]:disabled + label::before {
     resize: none;
     rows: 1;
     width: 550px;
-    margin-top: 30px;
-    margin-left: 50px;
+    margin-top: 10px;
+    margin-left: 10px;
     border: var(--button-border);
     border-radius: var(--button-radius);
 }
@@ -1344,7 +1344,7 @@ textarea {
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 50px;
+    margin-left: 10px;
     border: var(--button-border);
     border-radius: var(--button-radius);
     box-shadow: none !important;
@@ -1374,6 +1374,12 @@ textarea {
 }
 
 .mission-comment-edit-icon {
+    width: 48px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.mission-comment-edit-current-icon {
     width: 48px;
     display: inline-block;
     margin-top: 10px;

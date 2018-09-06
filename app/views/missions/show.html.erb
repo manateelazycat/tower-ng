@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body class="content-page-body"
-               id="<%= controller.controller_name %>-<%= controller.action_name %>">
+        id="<%= controller.controller_name %>-<%= controller.action_name %>">
 
     <div class="background-eventarea"
          data-controller="comment"
@@ -149,21 +149,28 @@
 
       <%= render "comments/create_comment_list", mission: @mission %>
 
-      <textarea class="mission-comment-textarea"
-                placeholder="点击发表评论"
-                data-action="mouseup->mission#clickCommentArea"></textarea>
+      <div class="comment-edit-form-wrap">
+	<div class="mission-comment-edit-current-icon">
+          <%= image_tag current_user.avatar_url %>
+	</div>
+	<div>
+	  <textarea class="mission-comment-textarea"
+                    placeholder="点击发表评论"
+                    data-action="mouseup->mission#clickCommentArea"></textarea>
 
-      <div class="mission-comment-button-area">
-        <button class="btn-sm mission-comment-submit-button"
-                data-action="mission#clickCommentSubmitButton">
-          发表评论
-        </button>
-        <a href="#"
-           class="link-button-small"
-           data-target="mission.missionCancelButton"
-           data-action="mission#clickCommentCancelButton">
-          取消
-        </a>
+	  <div class="mission-comment-button-area">
+	    <button class="btn-sm mission-comment-submit-button"
+                    data-action="mission#clickCommentSubmitButton">
+              发表评论
+            </button>
+            <a href="#"
+               class="link-button-small"
+               data-target="mission.missionCancelButton"
+               data-action="mission#clickCommentCancelButton">
+              取消
+            </a>
+	  </div>
+	</div>
       </div>
     </div>
 
