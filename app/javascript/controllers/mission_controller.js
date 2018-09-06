@@ -208,8 +208,6 @@ export default class extends Controller {
 
         var missionListTitle = $(".mission-list-title span")
 
-        console.log(missionListTitle.text())
-
         $(".mission-save-form").show()
         $(".mission-save-input").val(missionListTitle.text().trim())
         missionListTitle.hide()
@@ -276,8 +274,6 @@ export default class extends Controller {
 
 	var url = $(location).attr('href')
 	var urlParams = url.split("/")
-
-	console.log(urlParams)
 
 	$.ajax({
 	    type: "DELETE",

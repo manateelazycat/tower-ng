@@ -22,8 +22,6 @@ export default class extends Controller {
 	    top: currentRect.bottom + menuTriangleWidth
 	})
 
-	console.log(currentRect)
-
 	topHeaderMenu.show()
     }
 }
