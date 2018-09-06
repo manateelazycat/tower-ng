@@ -8,8 +8,45 @@
     <div class="board-box"
          data-controller="member">
       <div class="setting-title">个人设置</div>
+      <div class="setting-item">
+        <div class="setting-icon">Icon</div>
+        <div class="inline-block">
+          <a href="#"
+             class="text-link-button">
+            选择新头像
+          </a>
+          <div class="setting-description">你可以选择 png/jpg 图片作为头像</div>
+        </div>
+      </div>
 
-    </div>
+      <%= form_for(:setting, url: user_setting_path(id: current_user.hashid)) do |f| %>
+        <div class="setting-item">
+          <div class="setting-segment-title">名字</div>
+          <%= f.text_field :name, class: "setting-entry", placeholder: "你的名字", value: current_user.name %>
+        </div>
 
+        <div class="setting-item">
+          <div class="setting-segment-title">邮箱</div>
+          <%= f.email_field :email, class: "setting-entry", value: current_user.email, readonly: true %>
+        </div>
+
+	<div class="setting-item">
+          <div class="setting-segment-title">密码</div>
+	  <a href="#"
+             class="text-link-button">
+            修改密码
+          </a>
+	  <a href="#"
+             class="text-link-button">
+            找回密码
+          </a>
+        </div>
+
+	<div class="setting-item">
+          <div class="setting-segment-title"></div>
+	  <%= f.submit "保存", class: "btn btn-primary" %>
+        </div>
+
+      <% end %>
   </body>
 </html>
