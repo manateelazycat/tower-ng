@@ -1512,8 +1512,24 @@ textarea {
 
 .member-item-name {
     display: inline-block;
-    font-size: 20px;
     width: 300px;
+}
+
+.member-item-name-button {
+    font-size: 18px;
+    color: black;
+}
+
+.member-item-name-button:hover {
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.member-item-name-button:active,
+.member-item-name-button:active:hover,
+.member-item-name-button:active:focus,
+.member-item-name-button:focus {
+    color: var(--focus-color);
 }
 
 .member-item-email {

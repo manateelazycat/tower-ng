@@ -17,7 +17,7 @@
               <%= image_tag member[:photo_url] %>
             </div>
             <div class="member-item-name">
-              <%= link_to member_path(member[:user_hashid]) do %>
+              <%= link_to member_path(member[:user_hashid]), class: "member-item-name-button" do %>
 		<%= member[:name] %>
 	      <% end %>
             </div>
