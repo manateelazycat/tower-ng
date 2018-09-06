@@ -14,7 +14,8 @@ class MembersController < ApplicationController
                        name: team_creator.name,
                        type: "超级管理员",
                        email: team_creator.email,
-                       color: "member-type-super-admin")
+                       color: "member-type-super-admin",
+                       photo_url: current_user.photo.url)
 
     # Push team members.
     TeamAdmin.select { |t| t.team_id == team.id }.each do |team_admin|
@@ -28,14 +29,16 @@ class MembersController < ApplicationController
                            name: user.name,
                            type: member_type,
                            email: user.email,
-                           color: member_color)
+                           color: member_color,
+                           photo_url: user.photo.url)
 
       else
         @member_array.push(user_hashid: user.hashid,
                            name: user.email.split("@")[0],
                            type: "已邀请",
                            email: user.email,
-                           color: member_color)
+                           color: member_color,
+                           photo_url: user.photo.url)
 
       end
     end

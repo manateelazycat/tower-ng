@@ -14,7 +14,7 @@
         <% @member_array.each do |member| %>
           <li class="member-item flex-vcenter">
             <div class="member-item-icon">
-              Icon
+              <%= image_tag member[:photo_url] unless member[:photo_url].nil? %>
             </div>
             <div class="member-item-name">
               <%= link_to member_path(member[:user_hashid]) do %>

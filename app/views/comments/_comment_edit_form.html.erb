@@ -1,20 +1,27 @@
 <li id=<%= commentid %>
     class="comment-edit-form-item">
-  <div class="comment-edit-form">
-    <div class="flex-vcenter">
-      <textarea class="comment-edit-textarea">
-      </textarea>
+  <div class="comment-edit-form-wrap">
+    <div class="mission-comment-edit-icon">
+      <%= image_tag User.find(userid).photo.url if User.find(userid).photo? %>
     </div>
-    <div>
-      <button class="btn-sm mission-edit-submit-button"
-              data-action="comment#clickCommentEditSubmitButton">
-        保存
-      </button>
-      <a href="#"
-         class="link-button-small"
-         data-action="comment#clickCommentEditCancelButton">
-        取消
-      </a>
+    <div class="inline-block">
+      <div class="comment-edit-form">
+        <div class="flex-vcenter">
+          <textarea class="comment-edit-textarea">
+          </textarea>
+        </div>
+        <div>
+          <button class="btn-sm mission-edit-submit-button"
+                  data-action="comment#clickCommentEditSubmitButton">
+            保存
+          </button>
+          <a href="#"
+             class="link-button-small"
+             data-action="comment#clickCommentEditCancelButton">
+            取消
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </li>

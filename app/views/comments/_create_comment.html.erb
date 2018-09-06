@@ -1,16 +1,21 @@
 <li id=<%= comment.hashid %>
-    class="mission-comment"
+    class="mission-comment flex-vcenter"
     <% if team_administrator? %>
     data-action="mouseenter->comment#mouseEnterComment"
     <% end %>>
-  <div class="mission-comment-user">
-    <%= User.find(comment.user_id).name %>
+  <div class="mission-comment-icon">
+    <%= image_tag User.find(comment.user_id).photo.url if User.find(comment.user_id).photo? %>
   </div>
-  <div class="mission-comment-date">
-    <%= comment.format_comment_date %>
-  </div>
-  <div class="mission-comment-content">
-    <%= comment.content %>
+  <div class="inline-block">
+    <div class="mission-comment-user">
+      <%= User.find(comment.user_id).name %>
+    </div>
+    <div class="mission-comment-date">
+      <%= comment.format_comment_date %>
+    </div>
+    <div class="mission-comment-content">
+      <%= comment.content %>
+    </div>
   </div>
 </li>
-<%= render "comments/comment_edit_form", commentid: comment.hashid %>
+<%= render "comments/comment_edit_form", commentid: comment.hashid, userid: comment.user_id %>

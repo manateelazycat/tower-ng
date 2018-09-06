@@ -899,7 +899,7 @@ li {
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 40px;
+    margin-left: 10px;
     border: var(--button-border);
     border-radius: var(--button-radius);
     box-shadow: none !important;
@@ -1357,8 +1357,19 @@ textarea {
 .mission-comment {
     margin-top: 30px;
     margin-bottom: 30px;
-    margin-left: 50px;
     overflow: hidden;           // make parent div expand height when have 'float' child div in it
+}
+
+.mission-comment-icon {
+    width: 60px;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.mission-comment-edit-icon {
+    width: 48px;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .mission-comment-user {
@@ -1444,13 +1455,19 @@ textarea {
     display: none;
 }
 
+.comment-edit-form-wrap {
+    display: flex;
+    height: 100%;
+    align-items: top;
+}
+
 .comment-edit-textarea {
     resize: none;
     width: 550px;
     height: 150px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left: 40px;
+    margin-left: 10px;
     border: var(--button-border);
     border-radius: var(--button-radius);
 }
@@ -1483,6 +1500,7 @@ textarea {
     display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
+    width: 60px;
 }
 
 .member-item-name {
