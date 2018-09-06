@@ -14,6 +14,7 @@ class User < ApplicationRecord
   attr_accessor :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
+  before_create :create_avatar
 
   # validates :name,
   #           presence: true,
@@ -93,5 +94,42 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
+  end
+
+  def generate_avatar_name
+    @avatar_list = [
+      "1.jpg",
+      "2.jpg",
+      "3.jpg",
+      "4.jpg",
+      "5.jpg",
+      "6.jpg",
+      "7.jpg"
+    ]
+
+    @avatar_list.sample
+  end
+
+  def create_avatar
+    avatar_name = generate_avatar_name
+
+    self.avatar = format("avatar/normal/%<name>s", name: avatar_name)
+    self.avatar_thumb = format("avatar/thumb/%<name>s", name: avatar_name)
+  end
+
+  def avatar_url
+    return photo.url if photo?
+
+    return avatar if avatar?
+
+    "avatar/normal/1.jpg"
+  end
+
+  def avatar_thumb_url
+    return photo.url(:thumb_24) if photo?
+
+    return avatar_thumb if avatar_thumb?
+
+    "avatar/thumb/1.jpg"
   end
 end

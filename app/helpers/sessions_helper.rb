@@ -25,7 +25,7 @@ module SessionsHelper
   end
 
   def logged_in?
-    !current_user.nil?
+    !current_user.nil? && current_user.activated?
   end
 
   def forget(user)

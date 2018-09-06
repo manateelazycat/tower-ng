@@ -28,7 +28,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process round: []
 
   version :thumb_24 do
-    process clip_photo: [24, 24]
+    process clip_photo: [32, 32]
     process round: []
   end
 
