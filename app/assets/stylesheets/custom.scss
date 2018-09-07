@@ -65,12 +65,11 @@ $right-menu-delete-button-focus-color: #BF5D57;
     position: relative;
 }
 
-@mixin link-button-base {
-    font-size: 14px;
-
-    color: $link-text-color;
-    margin-left: 10px;
-    margin-right: 10px;
+@mixin text-link-button-mixin($size, $normal-color: $link-text-color, $margin: 10px) {
+    font-size: $size;
+    color: $normal-color;
+    margin-left: $margin;
+    margin-right: $margin;
 
     &:hover {
 	color: $hover-color;
@@ -86,18 +85,15 @@ $right-menu-delete-button-focus-color: #BF5D57;
 }
 
 .link-button {
-    font-size: 14px;
-    @include link-button-base
+    @include text-link-button-mixin(14px)
 }
 
 .link-button-small {
-    font-size: 12px;
-    @include link-button-base
+    @include text-link-button-mixin(12px)
 }
 
 .link-button-big {
-    font-size: 16px;
-    @include link-button-base
+    @include text-link-button-mixin(16px)
 }
 
 .remove-textarea-resize-button {
@@ -264,20 +260,7 @@ li {
 }
 
 .btn-link {
-    font-size: 16px;
-    color: $logo-text-color;
-}
-
-.btn-link:hover {
-    color: $hover-color;
-    text-decoration: none;
-}
-
-.btn-link:active,
-.btn-link:active:hover,
-.btn-link:active:focus,
-.btn-link:focus {
-    color: $focus-color;
+    @include text-link-button-mixin(16px, $logo-text-color, 0px)
 }
 
 .mission-edit-form-header {
@@ -467,22 +450,7 @@ li {
 }
 
 .top-header-item {
-    font-size: 16px;
-    color: $link-text-color;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-.top-header-item:hover {
-    color: $hover-color;
-    text-decoration: none;
-}
-
-.top-header-item:active,
-.top-header-item:active:hover,
-.top-header-item:active:focus,
-.top-header-item:focus {
-    color: $focus-color;
+    @include text-link-button-mixin(16px, $link-text-color, 15px)
 }
 
 .top-header-search {
@@ -1252,22 +1220,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-list-link {
-    font-size: 14px;
-    color: #888;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.mission-list-link:hover {
-    color: $hover-color;
-    text-decoration: none;
-}
-
-.mission-list-link:active,
-.mission-list-link:active:hover,
-.mission-list-link:active:focus,
-.mission-list-link:focus {
-    color: $focus-color;
+    @include text-link-button-mixin(14px, #888, 10px)
 }
 
 .margin-top-normal {
@@ -1483,20 +1436,7 @@ textarea {
 }
 
 .member-item-name-button {
-    font-size: 18px;
-    color: black;
-}
-
-.member-item-name-button:hover {
-    color: $hover-color;
-    text-decoration: none;
-}
-
-.member-item-name-button:active,
-.member-item-name-button:active:hover,
-.member-item-name-button:active:focus,
-.member-item-name-button:focus {
-    color: $focus-color;
+    @include text-link-button-mixin(18px, black, 0px)
 }
 
 .member-item-email {
