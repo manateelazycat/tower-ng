@@ -150,7 +150,7 @@ $action-button-focus-color: #F13A3E;
     border-radius: $button-radius;
 }
 
-@mixin arrow-menu-mixin($background, $arrow-color, $arrow-left) {
+@mixin arrow-menu-mixin($background, $arrow-color, $arrow-left, $default-z-index: 9999) {
     filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
     display: none;
@@ -163,7 +163,7 @@ $action-button-focus-color: #F13A3E;
     padding-top: 10px;
     border-radius: 3px 3px 3px 3px;
     text-align: center;
-    z-index: 9999;
+    z-index: $default-z-index;
 
     &:before {
 	content: "";
@@ -1519,7 +1519,8 @@ input[type="checkbox"]:disabled + label::before {
     @include arrow-menu-mixin(
 	linear-gradient(rgb(245, 245, 245) 82px, $menu-color 82px, $menu-color 100%),
 	rgb(245, 245, 245),
-	calc(90% - 10px)
+	calc(90% - 10px),
+	10000
     )
 }
 
