@@ -1082,17 +1082,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-save-button {
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: $button-border;
-    border-radius: $button-radius;
-    box-shadow: none !important;
-    outline: none !important;
+    @include submit-button-mixin(0px);
 }
 
 .mission-save-form {
@@ -1194,18 +1184,7 @@ textarea {
 }
 
 .mission-comment-submit-button {
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border: $button-border;
-    border-radius: $button-radius;
-    box-shadow: none !important;
-    outline: none !important;
+    @include submit-button-mixin(10px);
 }
 
 .mission-comment-button-area {
@@ -1414,18 +1393,7 @@ textarea {
 }
 
 .invite-submit-button {
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-top: 40px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border: $button-border;
-    border-radius: $button-radius;
-    box-shadow: none !important;
-    outline: none !important;
+    @include submit-button-mixin(10px);
 }
 
 .invite-edit-input {
