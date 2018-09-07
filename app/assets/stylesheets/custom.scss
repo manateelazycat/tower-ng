@@ -150,6 +150,35 @@ $action-button-focus-color: #F13A3E;
     border-radius: $button-radius;
 }
 
+@mixin arrow-menu-mixin($background, $arrow-color, $arrow-left) {
+    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
+    box-sizing: border-box;
+    display: none;
+    position: absolute;
+    font-size: 13px;
+    font-weight: 350;
+    background: $background;
+    width: max-content;
+    height: auto;
+    padding-top: 10px;
+    border-radius: 3px 3px 3px 3px;
+    text-align: center;
+    z-index: 9999;
+
+    &:before {
+	content: "";
+	position: absolute;
+	top: -10px;
+	bottom: 0;
+	left: $arrow-left;
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid $arrow-color;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+    }
+}
+
 .link-button {
     @include text-link-button-mixin(14px)
 }
@@ -1246,32 +1275,11 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .arrow-menu {
-    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
-    box-sizing: border-box;
-    display: none;
-    position: absolute;
-    font-size: 13px;
-    font-weight: 350;
-    background: $menu-color;
-    width: max-content;
-    height: auto;
-    padding-top: 10px;
-    border-radius: 3px 3px 3px 3px;
-    text-align: center;
-    z-index: 9999;
-}
-
-.arrow-menu:before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    bottom: 0;
-    left: calc(50% - 10px);
-    width: 0;
-    height: 0;
-    border-bottom: 10px solid $menu-color;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    @include arrow-menu-mixin(
+	$menu-color,
+	$menu-color,
+	calc(50% - 10px)
+    )
 }
 
 .arrow-menu-item {
@@ -1501,31 +1509,11 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .top-header-menu {
-    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
-    box-sizing: border-box;
-    display: none;
-    position: absolute;
-    font-size: 13px;
-    font-weight: 350;
-    background: linear-gradient(rgb(245, 245, 245) 82px, $menu-color 82px, $menu-color 100%);
-    width: 280px;
-    height: auto;
-    padding-top: 10px;
-    border-radius: 3px 3px 3px 3px;
-    z-index: 9999;
-}
-
-.top-header-menu:before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    bottom: 0;
-    left: calc(90% - 10px);
-    width: 0;
-    height: 0;
-    border-bottom: 10px solid rgb(245, 245, 245);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
+    @include arrow-menu-mixin(
+	linear-gradient(rgb(245, 245, 245) 82px, $menu-color 82px, $menu-color 100%),
+	rgb(245, 245, 245),
+	calc(90% - 10px)
+    )
 }
 
 .top-header-menu-button {
