@@ -197,6 +197,15 @@ $action-button-focus-color: #F13A3E;
     height: $height;
 }
 
+@mixin input-mixin($font-size: 15px, $margin-left: 10px) {
+    font-size: $font-size;
+    font-weight: 350;
+    border: none;
+    border-bottom: 1px solid #eee;
+    outline: none;
+    margin-left: $margin-left;
+}
+
 .link-button {
     @include text-link-button-mixin(14px)
 }
@@ -848,15 +857,6 @@ li {
     border-radius: 5px;
 }
 
-.mission-new-input {
-    font-size: 15px;
-    font-weight: 350;
-    margin-left: 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
-}
-
 .mission-new-submit-button {
     @include submit-button-mixin(40px);
 }
@@ -884,22 +884,8 @@ li {
     border-radius: 5px;
 }
 
-.mission-edit-input {
-    font-size: 15px;
-    font-weight: 350;
-    margin-left: 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
-}
-
-.mission-page-edit-input {
-    font-size: 18px;
-    font-weight: 350;
-    margin-left: 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
+.edit-input {
+    @include input-mixin
 }
 
 .mission-edit-submit-button {
@@ -915,12 +901,8 @@ li {
 }
 
 .mission-list-new-input {
-    font-size: 13px;
-    font-weight: 350;
+    @include input-mixin(13px, 0px);
     margin-bottom: 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
 }
 
 .mission-list-new-submit-button {
@@ -1119,12 +1101,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-save-input {
-    font-size: 15px;
-    font-weight: 350;
-    width: 300px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
+    @include input-mixin(15px, 0px);
 }
 
 .mission-save-button {
@@ -1390,16 +1367,6 @@ input[type="checkbox"]:disabled + label::before {
 
 .invite-submit-button {
     @include submit-button-mixin(10px);
-}
-
-.invite-edit-input {
-    font-size: 15px;
-    font-weight: 350;
-    width: 300px;
-    margin-left: 10px;
-    border: none;
-    border-bottom: 1px solid #eee;
-    outline: none;
 }
 
 .member-type-super-admin {

@@ -35,7 +35,7 @@ export default class extends Controller {
 
         var currentTarget = event.currentTarget
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
-        var missionNewInput = closestMissionListTitle.find(".mission-new-input")
+        var missionNewInput = closestMissionListTitle.find(".edit-input")
         var missionNewFormItem = closestMissionListTitle.find(".mission-new-form-item")
         var missionName = missionNewInput.val().trim()
 
@@ -65,15 +65,15 @@ export default class extends Controller {
                             $("#mission-list-title-default").replaceWith(result["mission_list_html"])
 
                             // Add new mission.
-                            $(".mission-new-input").val(missionName)
-                            self.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".mission-new-input"))
+                            $(".edit-input").val(missionName)
+                            self.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".edit-input"))
 
                             // Show mission new form.
                             $(".mission-new-form").show()
                             $(".mission-add-button").hide()
 
 			    // Focus input.
-			    $(".mission-new-input").focus()
+			    $(".edit-input").focus()
                         }
                     }
                 })
@@ -300,7 +300,7 @@ export default class extends Controller {
 	var missionToolbar = $(".mission-toolbar")
 	var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
 	var mission = missionTitleLink.parents("li")
-	var missionEditInput = mission.next().find(".mission-edit-input")
+	var missionEditInput = mission.next().find(".edit-input")
 
 	missionToolbar.hide()
 	mission.fadeOut(0)
@@ -331,7 +331,7 @@ export default class extends Controller {
 	event.preventDefault()
 
         var currentTarget = event.currentTarget
-	var missionEditInput = $(currentTarget).parents("li").find(".mission-edit-input")
+	var missionEditInput = $(currentTarget).parents("li").find(".edit-input")
 	var missionName = missionEditInput.val().trim()
 
 	if (missionName == "") {
@@ -434,7 +434,7 @@ export default class extends Controller {
 	event.preventDefault()
 
         var currentTarget = event.currentTarget
-	var missionEditInput = $(currentTarget).parents("li").find(".mission-page-edit-input")
+	var missionEditInput = $(currentTarget).parents("li").find(".edit-input")
 	var missionName = missionEditInput.val().trim()
 
 	if (missionName == "") {

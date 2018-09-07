@@ -10,7 +10,7 @@ export default class extends Controller {
 
 	newEmailItem.appendTo(lastEmailItem)
 
-	newEmailItem.find(".invite-edit-input").val("")
+	newEmailItem.find(".edit-input").val("")
     }
 
     clickSubmitButton(event) {
@@ -20,7 +20,7 @@ export default class extends Controller {
 	var inviteEmailItems = $(".invite-email-item")
 
 	$.each(inviteEmailItems, function(index, item) {
-	    var email = $(item).find(".invite-edit-input").val().trim()
+	    var email = $(item).find(".edit-input").val().trim()
 
      	    if (email.length > 0) {
 		members.push([email, $(item).find("select").val()])
