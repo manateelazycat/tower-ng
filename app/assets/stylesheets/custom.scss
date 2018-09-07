@@ -179,6 +179,24 @@ $action-button-focus-color: #F13A3E;
     }
 }
 
+@mixin arrow-menu-item-mixin($margin-vertical: 0px, $enable-hover: true) {
+    font-size: 13px;
+    color: #222;
+    padding-top: 4px;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: $margin-vertical;
+    margin-bottom: $margin-vertical;
+    overflow: hidden;           // make parent div expand height when have 'float' child div in it
+
+    @if $enable-hover {
+	&:hover {
+	    background: rgb(245, 245, 245);
+	}
+    }
+}
+
 .link-button {
     @include text-link-button-mixin(14px)
 }
@@ -1283,17 +1301,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .arrow-menu-item {
-    font-size: 13px;
-    color: #222;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.arrow-menu-item:hover {
-    color: $hover-color;
-    background: #eee;
+    @include arrow-menu-item-mixin
 }
 
 .arrow-menu-item-text {
@@ -1522,19 +1530,6 @@ input[type="checkbox"]:disabled + label::before {
     margin-left: 5px;
 }
 
-.top-header-menu-item-user {
-    font-size: 13px;
-    color: #222;
-    width: 280px;
-    padding-top: 4px;
-    padding-bottom: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;           // make parent div expand height when have 'float' child div in it
-}
-
 .top-header-menu-user-name {
     font-size: 18px;
 }
@@ -1545,33 +1540,11 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .top-header-menu-item {
-    font-size: 13px;
-    color: #222;
-    width: 280px;
-    padding-top: 4px;
-    padding-bottom: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;           // make parent div expand height when have 'float' child div in it
+    @include arrow-menu-item-mixin(10px);
 }
 
 .top-header-menu-item-no-hover {
-    font-size: 13px;
-    color: #222;
-    width: 280px;
-    padding-top: 4px;
-    padding-bottom: 3px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;           // make parent div expand height when have 'float' child div in it
-}
-
-.top-header-menu-item:hover {
-    background: rgb(245, 245, 245);
+    @include arrow-menu-item-mixin(10px, false);
 }
 
 .top-header-menu-item-title {
