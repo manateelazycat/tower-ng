@@ -84,6 +84,27 @@ $right-menu-delete-button-focus-color: #BF5D57;
     }
 }
 
+@mixin submit-button-mixin($margin-left, $margin-vertical: 10px) {
+    font-size: 13px;
+    font-weight: 300;
+    color: #fff;
+    background-color: $button-color;
+    height: 28px;
+    margin-top: $margin-vertical;
+    margin-bottom: $margin-vertical;
+    margin-left: $margin-left;
+    border: $button-border;
+    border-radius: $button-radius;
+    box-shadow: none !important;
+    outline: none !important;
+
+    &:hover {
+	color: #fff;
+	background-color: $hover-color;
+    }
+}
+
+
 .link-button {
     @include text-link-button-mixin(14px)
 }
@@ -767,23 +788,7 @@ li {
 }
 
 .mission-new-submit-button {
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 40px;
-    border: $button-border;
-    border-radius: $button-radius;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-.mission-new-submit-button:hover {
-    color: #fff;
-    background-color: $hover-color;
+    @include submit-button-mixin(40px);
 }
 
 .mission-new-form {
@@ -828,23 +833,7 @@ li {
 }
 
 .mission-edit-submit-button {
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    border: $button-border;
-    border-radius: $button-radius;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-.mission-edit-submit-button:hover {
-    color: #fff;
-    background-color: $hover-color;
+    @include submit-button-mixin(10px);
 }
 
 .mission-list-new-form {
@@ -861,21 +850,7 @@ li {
 }
 
 .mission-list-new-submit-button {
-    font-size: 12px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: $button-border;
-    border-radius: $button-radius;
-    text-decoration: none;
-}
-
-.mission-list-new-submit-button:hover {
-    color: #fff;
-    background-color: $hover-color;
+    @include submit-button-mixin(0px);
 }
 
 .mission-list-new-submit-button:focus {
@@ -985,22 +960,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .dialog-confirm-button {
-    font-size: 13px;
-    font-weight: 300;
-    color: #fff;
-    background-color: $button-color;
-    height: 28px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border: $button-border;
-    border-radius: $button-radius;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-.dialog-confirm-button:hover {
-    color: #fff;
-    background-color: $hover-color;
+    @include submit-button-mixin(5px, 0px);
 }
 
 // CSS to make modal dialog at center of screen.
