@@ -68,7 +68,7 @@ $action-button-focus-color: #F13A3E;
     position: relative;
 }
 
-@mixin text-link-button-mixin($size, $normal-color: $link-text-color, $margin: 10px) {
+@mixin text-link-button-mixin($size, $margin: 10px, $normal-color: $link-text-color, $hover-color: $hover-color, $focus-color: $focus-color) {
     font-size: $size;
     color: $normal-color;
     margin-left: $margin;
@@ -309,7 +309,7 @@ li {
 }
 
 .btn-link {
-    @include text-link-button-mixin(16px, $logo-text-color, 0px)
+    @include text-link-button-mixin(16px, 0px, $logo-text-color)
 }
 
 .mission-edit-form-header {
@@ -499,7 +499,7 @@ li {
 }
 
 .top-header-item {
-    @include text-link-button-mixin(16px, $link-text-color, 15px)
+    @include text-link-button-mixin(16px, 15px, $link-text-color)
 }
 
 .top-header-search {
@@ -1163,7 +1163,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-list-link {
-    @include text-link-button-mixin(14px, #888, 10px)
+    @include text-link-button-mixin(14px, 10px, #888)
 }
 
 .margin-top-normal {
@@ -1379,7 +1379,7 @@ textarea {
 }
 
 .member-item-name-button {
-    @include text-link-button-mixin(18px, black, 0px)
+    @include text-link-button-mixin(18px, 0px, black)
 }
 
 .member-item-email {
@@ -1532,23 +1532,7 @@ textarea {
 }
 
 .setting-page-delete-link {
-    color: #F13A3E;
-    border: none;
-}
-
-.setting-page-delete-link:hover {
-    color: #FF696D;
-    background: #fff;
-    border: none;
-}
-
-.setting-page-delete-link:active,
-.setting-page-delete-link:active:hover,
-.setting-page-delete-link:active:focus,
-.setting-page-delete-link:focus {
-    color: #F13A3E;
-    background: #fff;
-    border: none;
+    @include text-link-button-mixin(14px, 0px, $action-button-normal-color, $action-button-hover-color, $action-button-focus-color);
 }
 
 .top-header-menu {
