@@ -1,44 +1,43 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-:root {
-    // Color variables.
-    --background-color: #f4f7ed;
-    --button-color: #3ccefd;
-    --focus-color: #3cbefd;
-    --hover-color: #3cbefd;
-    --link-text-color: #aaa;
-    --logo-color: #5bc4c7;
-    --logo-text-color: #fff;
-    --phone-bottom-text-color: #666;
-    --phone-page-bottom-bar-height: 54px;
-    --phone-page-top-bar-height: 54px;
-    --project-splitter-color: #BDC8CB;
-    --button-border: 1px solid rgba(0, 0, 0, 0.1);
-    --button-radius: 4px;
-    --check-button-radius: 5px;
-    --top-bar-shadow: #aaa;
-    --bottom-bar-shadow: #ccc;
-    --tooltip-color: #FFFCBB;
-    --menu-color: #ffffff;
-    --right-menu-normal-button-normal-color: #5bc4c7;
-    --right-menu-normal-button-hover-color: #69E3E6;
-    --right-menu-normal-button-focus-color: #5bc4c7;
-    --right-menu-delete-button-normal-color: #BF5D57;
-    --right-menu-delete-button-hover-color: #E67069;
-    --right-menu-delete-button-focus-color: #BF5D57;
-}
+
+$background-color: #f4f7ed;
+
+$button-color: #3ccefd;
+$focus-color: #3cbefd;
+$hover-color: #3cbefd;
+$link-text-color: #aaa;
+$logo-color: #5bc4c7;
+$logo-text-color: #fff;
+$phone-bottom-text-color: #666;
+$phone-page-bottom-bar-height: 54px;
+$phone-page-top-bar-height: 54px;
+$project-splitter-color: #BDC8CB;
+$button-border: 1px solid rgba(0, 0, 0, 0.1);
+$button-radius: 4px;
+$check-button-radius: 5px;
+$top-bar-shadow: #aaa;
+$bottom-bar-shadow: #ccc;
+$tooltip-color: #FFFCBB;
+$menu-color: #ffffff;
+$right-menu-normal-button-normal-color: #5bc4c7;
+$right-menu-normal-button-hover-color: #69E3E6;
+$right-menu-normal-button-focus-color: #5bc4c7;
+$right-menu-delete-button-normal-color: #BF5D57;
+$right-menu-delete-button-hover-color: #E67069;
+$right-menu-delete-button-focus-color: #BF5D57;
 
 .home-logo {
     font-size: 600%;
     font-weight: bold;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
     opacity: 0.9;
 }
 
 .solgan {
     font-size: 260%;
     font-weight: bold;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
     opacity: 0.9;
     margin-bottom: 140px;
 }
@@ -49,8 +48,8 @@
     padding-bottom: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: 0px 10px 50px #eeeeee;
 }
 
@@ -75,7 +74,7 @@
 }
 
 .link-button:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -83,7 +82,7 @@
 .link-button:active:hover,
 .link-button:active:focus,
 .link-button:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .link-button-small {
@@ -94,7 +93,7 @@
 }
 
 .link-button-small:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -102,16 +101,16 @@
 .link-button-small:active:hover,
 .link-button-small:active:focus,
 .link-button-small:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .link-button-big {
     font-size: 16px;
-    color: var(--link-text-color);
+    color: $link-text-color;
 }
 
 .link-button-big:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -119,16 +118,16 @@
 .link-button-big:active:hover,
 .link-button-big:active:focus,
 .link-button-big:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .link-button-small {
     font-size: 12px;
-    color: var(--link-text-color);
+    color: $link-text-color;
 }
 
 .link-button-small:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -136,7 +135,7 @@
 .link-button-small:active:hover,
 .link-button-small:active:focus,
 .link-button-small:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .remove-textarea-resize-button {
@@ -265,7 +264,7 @@ li {
 .logo {
     font-size: 450%;
     font-weight: bold;
-    color: var(--logo-color);
+    color: $logo-color;
     margin-bottom: 40px;
 }
 
@@ -283,14 +282,14 @@ li {
 .btn-primary {
     font-size: 18px;
     color: rgba(255, 255, 255, 0.9);
-    background-color: var(--button-color);
-    border-color: var(--button-color);
+    background-color: $button-color;
+    border-color: $button-color;
 }
 
 .btn-primary:hover {
     color: rgba(255, 255, 255, 0.9);
-    background: var(--hover-color);
-    border-color: var(--hover-color);
+    background: $hover-color;
+    border-color: $hover-color;
 }
 
 .btn-primary:active,
@@ -298,17 +297,17 @@ li {
 .btn-primary:active:focus,
 .btn-primary:focus {
     color: rgba(255, 255, 255, 0.9);
-    background: var(--focus-color);
-    border-color: var(--focus-color);
+    background: $focus-color;
+    border-color: $focus-color;
 }
 
 .btn-link {
     font-size: 16px;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
 }
 
 .btn-link:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -316,7 +315,7 @@ li {
 .btn-link:active:hover,
 .btn-link:active:focus,
 .btn-link:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .mission-edit-form-header {
@@ -330,23 +329,23 @@ li {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 40px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
 }
 
 .form-control:focus {
-    border-color: var(--focus-color);
+    border-color: $focus-color;
     box-shadow: none;
 }
 
 .form-check-label {
     font-size: 12px;
-    color: var(--link-text-color);
+    color: $link-text-color;
 }
 
 // Desktop page CSS.
 .content-page-body {
-    background-color: var(--background-color);
+    background-color: $background-color;
 }
 
 .new-mission-title {
@@ -396,7 +395,7 @@ li {
 }
 
 .project-splitter {
-    background: linear-gradient(var(--project-splitter-color) 50%, white 50%, white 90%, var(--project-splitter-color) 90%);
+    background: linear-gradient($project-splitter-color 50%, white 50%, white 90%, $project-splitter-color 90%);
     width: 100%;
     height: 10px;
     margin-bottom: 30px;
@@ -422,8 +421,8 @@ li {
     padding-right: 30px;
     margin-left: auto;
     margin-right: auto;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     border-bottom-style: none;
     box-shadow: 0px 10px 50px #eee;
     cursor: pointer;
@@ -456,8 +455,8 @@ li {
     margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: 0px 10px 50px #eee;
     overflow: hidden;           // make parent div expand height when have 'float' child div in it
 }
@@ -471,12 +470,12 @@ li {
 .team-name {
     font-size: 20px;
     font-weight: 500;
-    color: var(--logo-color);
+    color: $logo-color;
     margin-right: 20px;
 }
 
 .team-name:hover {
-    color: var(--logo-color);
+    color: $logo-color;
     text-decoration: none;
 }
 
@@ -484,7 +483,7 @@ li {
 .team-name:active:hover,
 .team-name:active:focus,
 .team-name:focus {
-    color: var(--logo-color);
+    color: $logo-color;
 }
 
 .top-header {
@@ -499,7 +498,7 @@ li {
 }
 
 .top-header-bell {
-    color: var(--link-text-color);
+    color: $link-text-color;
     margin-left: 5px;
     margin-right: 20px;
     font-size: 20px;
@@ -507,13 +506,13 @@ li {
 
 .top-header-item {
     font-size: 16px;
-    color: var(--link-text-color);
+    color: $link-text-color;
     margin-left: 15px;
     margin-right: 15px;
 }
 
 .top-header-item:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -521,11 +520,11 @@ li {
 .top-header-item:active:hover,
 .top-header-item:active:focus,
 .top-header-item:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .top-header-search {
-    background-color: var(--background-color);
+    background-color: $background-color;
     height: 24px;
     margin-top: 15px;
     text-align: center;
@@ -536,11 +535,11 @@ li {
 }
 
 .top-search-bar-input {
-    background-color: var(--background-color);
+    background-color: $background-color;
 }
 
 .top-search-bar-button {
-    background-color: var(--background-color);
+    background-color: $background-color;
 }
 
 .top-search-bar-icon {
@@ -562,13 +561,13 @@ li {
 }
 
 .project-item:hover {
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
 }
 
 .project-icon {
     font-size: 48px;
-    color: var(--logo-color);
+    color: $logo-color;
     margin-bottom: 16px;
 }
 
@@ -614,26 +613,26 @@ li {
     overflow-y: scroll;
     background-color: rgba(252, 252, 252, 255);
     width: 100%;
-    height: calc(100% - var(--phone-page-top-bar-height) - var(--phone-page-bottom-bar-height));
+    height: calc(100% - $phone-page-top-bar-height - $phone-page-bottom-bar-height);
     float: left;
-    margin-top: var(--phone-page-top-bar-height);
+    margin-top: $phone-page-top-bar-height;
 }
 
 .phone-page-top-bar {
     position: absolute;
-    background-color: var(--logo-color);
+    background-color: $logo-color;
     top: 0;
     width: 100%;
-    height: var(--phone-page-top-bar-height);
-    box-shadow: 0 -3px 4px 4px var(--top-bar-shadow);
+    height: $phone-page-top-bar-height;
+    box-shadow: 0 -3px 4px 4px $top-bar-shadow;
 }
 
 .phone-page-bottom-bar {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: var(--phone-page-bottom-bar-height);
-    box-shadow: 0 3px 4px 4px var(--bottom-bar-shadow);
+    height: $phone-page-bottom-bar-height;
+    box-shadow: 0 3px 4px 4px $bottom-bar-shadow;
 }
 
 .phone-project-item-box {
@@ -644,7 +643,7 @@ li {
 
 .phone-project-icon {
     font-size: 32px;
-    color: var(--logo-color);
+    color: $logo-color;
     margin-left: 24px;
     margin-right: 18px;
 }
@@ -665,7 +664,7 @@ li {
 .phone-top-name {
     font-size: 18px;
     font-weight: bold;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
     padding-top: 6px;
     padding-left: 24px;
 }
@@ -673,20 +672,20 @@ li {
 .phone-text-button {
     font-size: 18px;
     font-weight: bold;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
     padding-right: 24px;
 }
 
 .phone-top-title {
     font-size: 18px;
     font-weight: bold;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
     padding-top: 6px;
 }
 
 .phone-top-item-icon {
     font-size: 18px;
-    color: var(--logo-text-color);
+    color: $logo-text-color;
     padding-left: 24px;
     padding-right: 24px;
 }
@@ -722,44 +721,44 @@ li {
     padding-right: 1px;
     margin-top: 0px;
     margin-left: 10px;
-    border: var(--button-border);
+    border: $button-border;
     border-radius: 20px;
 }
 
 .mission-add-button {
     font-size: 14px;
     font-weight: 350;
-    color: var(--logo-color);
+    color: $logo-color;
     margin-top: 10px;
     margin-left: 40px;
 }
 
 .right-float-menu-normal-button {
-    color: var(--right-menu-normal-button-normal-color);
+    color: $right-menu-normal-button-normal-color;
     margin-left: 16px;
 }
 
 .right-float-menu-normal-button:hover {
-    color: var(--right-menu-normal-button-hover-color);
+    color: $right-menu-normal-button-hover-color;
 }
 
 .right-float-menu-normal-button:focus {
-    color: var(--right-menu-normal-button-focus-color);
+    color: $right-menu-normal-button-focus-color;
     border: none;
     outline: none;
 }
 
 .right-float-menu-delete-button {
-    color: var(--right-menu-delete-button-normal-color);
+    color: $right-menu-delete-button-normal-color;
     margin-left: 16px;
 }
 
 .right-float-menu-delete-button:hover {
-    color: var(--right-menu-delete-button-hover-color);
+    color: $right-menu-delete-button-hover-color;
 }
 
 .right-float-menu-delete-button:focus {
-    color: var(--right-menu-delete-button-focus-color);
+    color: $right-menu-delete-button-focus-color;
     border: none;
     outline: none;
 }
@@ -799,7 +798,7 @@ li {
 .setting-icon-upload-button {
     font-size: 13px;
     font-weight: 350;
-    color: var(--logo-color);
+    color: $logo-color;
 }
 
 .setting-icon-upload-button > input {
@@ -815,7 +814,7 @@ li {
 .text-link-button {
     font-size: 13px;
     font-weight: 350;
-    color: var(--logo-color);
+    color: $logo-color;
 }
 
 .mission-new-rectangle {
@@ -841,20 +840,20 @@ li {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 40px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: none !important;
     outline: none !important;
 }
 
 .mission-new-submit-button:hover {
     color: #fff;
-    background-color: var(--hover-color);
+    background-color: $hover-color;
 }
 
 .mission-new-form {
@@ -902,20 +901,20 @@ li {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: none !important;
     outline: none !important;
 }
 
 .mission-edit-submit-button:hover {
     color: #fff;
-    background-color: var(--hover-color);
+    background-color: $hover-color;
 }
 
 .mission-list-new-form {
@@ -935,23 +934,23 @@ li {
     font-size: 12px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     text-decoration: none;
 }
 
 .mission-list-new-submit-button:hover {
     color: #fff;
-    background-color: var(--hover-color);
+    background-color: $hover-color;
 }
 
 .mission-list-new-submit-button:focus {
     color: #fff;
-    background-color: var(--focus-color);
+    background-color: $focus-color;
 }
 
 // Hide default checkbox .
@@ -973,8 +972,8 @@ input[type="checkbox"] + label::before {
     margin-top: 10px;
     margin-bottom: 0px;
     margin-right: 10px;
-    border: var(--button-border);
-    border-radius: var(--check-button-radius);
+    border: $button-border;
+    border-radius: $check-button-radius;
 }
 
 // Customize checkbox check status.
@@ -982,7 +981,7 @@ input[type="checkbox"]:checked + label::before {
     transition: 0.2s;
     content: '✔';
     color: #fff;
-    background: var(--logo-color);
+    background: $logo-color;
 }
 
 // Customize checkbox disabled status.
@@ -1004,7 +1003,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-title-link:hover {
-    color: var(--logo-color);
+    color: $logo-color;
 }
 
 .fullscreen-body {
@@ -1021,7 +1020,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .default-background-color {
-    background: var(--background-color);
+    background: $background-color;
 }
 
 .input-tooltip {
@@ -1031,7 +1030,7 @@ input[type="checkbox"]:disabled + label::before {
     font-size: 13px;
     font-weight: 350;
     color: #222;
-    background: var(--tooltip-color);
+    background: $tooltip-color;
     width: 100%;
     width: max-content;
     height: auto;
@@ -1052,26 +1051,26 @@ input[type="checkbox"]:disabled + label::before {
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid var(--tooltip-color);
+    border-left: 10px solid $tooltip-color;
 }
 
 .dialog-confirm-button {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-left: 5px;
     margin-right: 5px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: none !important;
     outline: none !important;
 }
 
 .dialog-confirm-button:hover {
     color: #fff;
-    background-color: var(--hover-color);
+    background-color: $hover-color;
 }
 
 // CSS to make modal dialog at center of screen.
@@ -1124,8 +1123,8 @@ input[type="checkbox"]:disabled + label::before {
     padding: 15px;
     flex-direction: row;
     margin: auto;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: 0px 3px 10px #333333;
     text-align: center;
     align-items: center;
@@ -1168,12 +1167,12 @@ input[type="checkbox"]:disabled + label::before {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: none !important;
     outline: none !important;
 }
@@ -1203,7 +1202,7 @@ input[type="checkbox"]:disabled + label::before {
     color: #F13A3E;
     width: 200px;
     border: 1px solid #F13A3E;
-    border-radius: var(--button-radius);
+    border-radius: $button-radius;
 }
 
 .setting-page-delete-button:hover {
@@ -1211,7 +1210,7 @@ input[type="checkbox"]:disabled + label::before {
     background: #fff;
     width: 200px;
     border: 1px solid #FF696D;
-    border-radius: var(--button-radius);
+    border-radius: $button-radius;
 }
 
 .setting-page-delete-button:active,
@@ -1222,34 +1221,34 @@ input[type="checkbox"]:disabled + label::before {
     background: #fff;
     width: 200px;
     border: 1px solid #F13A3E;
-    border-radius: var(--button-radius);
+    border-radius: $button-radius;
 }
 
 .setting-page-normal-button {
-    color: var(--button-color);
+    color: $button-color;
     width: 200px;
     margin-top: 10px;
-    border: 1px solid var(--button-color);
-    border-radius: var(--button-radius);
+    border: 1px solid $button-color;
+    border-radius: $button-radius;
 }
 
 .setting-page-normal-button:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     background: #fff;
     width: 200px;
-    border: 1px solid var(--hover-color);
-    border-radius: var(--button-radius);
+    border: 1px solid $hover-color;
+    border-radius: $button-radius;
 }
 
 .setting-page-normal-button:active,
 .setting-page-normal-button:active:hover,
 .setting-page-normal-button:active:focus,
 .setting-page-normal-button:focus {
-    color: var(--focus-color);
+    color: $focus-color;
     background: #fff;
     width: 200px;
-    border: 1px solid var(--focus-color);
-    border-radius: var(--button-radius);
+    border: 1px solid $focus-color;
+    border-radius: $button-radius;
 }
 
 .comment-edit-button {
@@ -1298,7 +1297,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-list-link:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -1306,7 +1305,7 @@ input[type="checkbox"]:disabled + label::before {
 .mission-list-link:active:hover,
 .mission-list-link:active:focus,
 .mission-list-link:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .margin-top-normal {
@@ -1328,8 +1327,8 @@ input[type="checkbox"]:disabled + label::before {
     width: 550px;
     margin-top: 10px;
     margin-left: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
 }
 
 textarea {
@@ -1340,13 +1339,13 @@ textarea {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: none !important;
     outline: none !important;
 }
@@ -1412,7 +1411,7 @@ textarea {
     position: absolute;
     font-size: 13px;
     font-weight: 350;
-    background: var(--menu-color);
+    background: $menu-color;
     width: max-content;
     height: auto;
     padding-top: 10px;
@@ -1429,7 +1428,7 @@ textarea {
     left: calc(50% - 10px);
     width: 0;
     height: 0;
-    border-bottom: 10px solid var(--menu-color);
+    border-bottom: 10px solid $menu-color;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
 }
@@ -1444,7 +1443,7 @@ textarea {
 }
 
 .arrow-menu-item:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     background: #eee;
 }
 
@@ -1453,7 +1452,7 @@ textarea {
 }
 
 .arrow-menu-item-text:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -1481,8 +1480,8 @@ textarea {
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
 }
 
 .member-title {
@@ -1527,7 +1526,7 @@ textarea {
 }
 
 .member-item-name-button:hover {
-    color: var(--hover-color);
+    color: $hover-color;
     text-decoration: none;
 }
 
@@ -1535,7 +1534,7 @@ textarea {
 .member-item-name-button:active:hover,
 .member-item-name-button:active:focus,
 .member-item-name-button:focus {
-    color: var(--focus-color);
+    color: $focus-color;
 }
 
 .member-item-email {
@@ -1552,7 +1551,7 @@ textarea {
 .add-link-button {
     font-size: 14px;
     font-weight: 350;
-    color: var(--logo-color);
+    color: $logo-color;
 }
 
 .invite-email-item {
@@ -1573,13 +1572,13 @@ textarea {
     font-size: 13px;
     font-weight: 300;
     color: #fff;
-    background-color: var(--button-color);
+    background-color: $button-color;
     height: 28px;
     margin-top: 40px;
     margin-bottom: 10px;
     margin-left: 10px;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     box-shadow: none !important;
     outline: none !important;
 }
@@ -1636,8 +1635,8 @@ textarea {
 
 .setting-entry {
     display: inline-block;
-    border: var(--button-border);
-    border-radius: var(--button-radius);
+    border: $button-border;
+    border-radius: $button-radius;
     height: 32px;
     padding: 10px;
 }
@@ -1714,7 +1713,7 @@ textarea {
     position: absolute;
     font-size: 13px;
     font-weight: 350;
-    background: linear-gradient(rgb(245, 245, 245) 82px, var(--menu-color) 82px, var(--menu-color) 100%);
+    background: linear-gradient(rgb(245, 245, 245) 82px, $menu-color 82px, $menu-color 100%);
     width: 280px;
     height: auto;
     padding-top: 10px;
@@ -1797,7 +1796,7 @@ textarea {
     display: block;
     font-size: 16px;
     font-weight: 350;
-    color: var(--logo-color);
+    color: $logo-color;
     text-align: left;
 }
 
@@ -1812,7 +1811,7 @@ textarea {
     display: block;
     font-size: 14px;
     font-weight: 350;
-    color: var(--logo-color);
+    color: $logo-color;
     text-align: left;
 }
 
