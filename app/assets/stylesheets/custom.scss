@@ -25,6 +25,9 @@ $right-menu-normal-button-focus-color: #5bc4c7;
 $right-menu-delete-button-normal-color: #BF5D57;
 $right-menu-delete-button-hover-color: #E67069;
 $right-menu-delete-button-focus-color: #BF5D57;
+$action-button-normal-color: #F13A3E;
+$action-button-hover-color: #FF696D;
+$action-button-focus-color: #F13A3E;
 
 .home-logo {
     font-size: 600%;
@@ -104,6 +107,31 @@ $right-menu-delete-button-focus-color: #BF5D57;
     }
 }
 
+@mixin action-button-mixin($normal-color, $hover-color, $focus-color) {
+    color: $normal-color;
+    width: 200px;
+    border: 1px solid $normal-color;
+    border-radius: $button-radius;
+
+    &:hover {
+	color: $hover-color;
+	background: #fff;
+	width: 200px;
+	border: 1px solid $hover-color;
+	border-radius: $button-radius;
+    }
+
+    &:active,
+    &:active:hover,
+    &:active:focus,
+    &:focus {
+	color: $focus-color;
+	background: #fff;
+	width: 200px;
+	border: 1px solid $focus-color;
+	border-radius: $button-radius;
+    }
+}
 
 .link-button {
     @include text-link-button-mixin(14px)
@@ -1089,56 +1117,11 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .setting-page-delete-button {
-    color: #F13A3E;
-    width: 200px;
-    border: 1px solid #F13A3E;
-    border-radius: $button-radius;
-}
-
-.setting-page-delete-button:hover {
-    color: #FF696D;
-    background: #fff;
-    width: 200px;
-    border: 1px solid #FF696D;
-    border-radius: $button-radius;
-}
-
-.setting-page-delete-button:active,
-.setting-page-delete-button:active:hover,
-.setting-page-delete-button:active:focus,
-.setting-page-delete-button:focus {
-    color: #F13A3E;
-    background: #fff;
-    width: 200px;
-    border: 1px solid #F13A3E;
-    border-radius: $button-radius;
+    @include action-button-mixin($action-button-normal-color, $action-button-hover-color, $action-button-focus-color);
 }
 
 .setting-page-normal-button {
-    color: $button-color;
-    width: 200px;
-    margin-top: 10px;
-    border: 1px solid $button-color;
-    border-radius: $button-radius;
-}
-
-.setting-page-normal-button:hover {
-    color: $hover-color;
-    background: #fff;
-    width: 200px;
-    border: 1px solid $hover-color;
-    border-radius: $button-radius;
-}
-
-.setting-page-normal-button:active,
-.setting-page-normal-button:active:hover,
-.setting-page-normal-button:active:focus,
-.setting-page-normal-button:focus {
-    color: $focus-color;
-    background: #fff;
-    width: 200px;
-    border: 1px solid $focus-color;
-    border-radius: $button-radius;
+    @include action-button-mixin($button-color, $hover-color, $focus-color);
 }
 
 .comment-edit-button {
