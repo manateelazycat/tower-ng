@@ -55,19 +55,11 @@ $action-button-focus-color: #F13A3E;
     box-shadow: 0px 10px 50px #eeeeee;
 }
 
-.sign-error {
-    width: 256px;
-}
-
 .no-underline-link:hover {
     text-decoration: none;
 }
 
 // Generic page CSS.
-.position-relative {
-    position: relative;
-}
-
 @mixin text-link-button-mixin($size, $margin: 10px, $normal-color: $link-text-color, $hover-color: $hover-color, $focus-color: $focus-color) {
     font-size: $size;
     color: $normal-color;
@@ -87,23 +79,25 @@ $action-button-focus-color: #F13A3E;
     }
 }
 
-@mixin submit-button-mixin($margin-left, $margin-vertical: 10px) {
-    font-size: 13px;
+@mixin submit-button-mixin($margin-left, $margin-vertical: 10px, $font-size: 13px, $height: 28px) {
+    font-size: $font-size;
     font-weight: 300;
     color: #fff;
     background-color: $button-color;
-    height: 28px;
+    height: $height;
     margin-top: $margin-vertical;
     margin-bottom: $margin-vertical;
     margin-left: $margin-left;
     border: $button-border;
     border-radius: $button-radius;
+    border-color: $button-color;
     box-shadow: none !important;
     outline: none !important;
 
     &:hover {
 	color: #fff;
 	background-color: $hover-color;
+	border-color: $hover-color;
     }
 }
 
@@ -357,25 +351,7 @@ li {
 }
 
 .btn-primary {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.9);
-    background-color: $button-color;
-    border-color: $button-color;
-}
-
-.btn-primary:hover {
-    color: rgba(255, 255, 255, 0.9);
-    background: $hover-color;
-    border-color: $hover-color;
-}
-
-.btn-primary:active,
-.btn-primary:active:hover,
-.btn-primary:active:focus,
-.btn-primary:focus {
-    color: rgba(255, 255, 255, 0.9);
-    background: $focus-color;
-    border-color: $focus-color;
+    @include submit-button-mixin(0px, 10px, 18px, 40px);
 }
 
 .btn-link {
