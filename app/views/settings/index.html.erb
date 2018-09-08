@@ -8,7 +8,7 @@
     <div class="board-box"
          data-controller="setting">
       <div class="setting-title">个人设置</div>
-      <div class="setting-item flex-vcenter">
+      <div class="margin-vertical-15px flex-vcenter">
         <div class="setting-icon"
 	     id="user-photo">
           <%= image_tag current_user.avatar_url %>
@@ -33,17 +33,17 @@
       </div>
 
       <%= form_for(:setting, url: user_setting_path(id: current_user.hashid)) do |f| %>
-        <div class="setting-item">
+        <div class="margin-vertical-15px">
           <div class="setting-segment-title">名字</div>
           <%= f.text_field :name, class: "setting-entry", placeholder: "你的名字", value: current_user.name %>
         </div>
 
-        <div class="setting-item">
+        <div class="margin-vertical-15px">
           <div class="setting-segment-title">邮箱</div>
           <%= f.email_field :email, class: "setting-entry", value: current_user.email, readonly: true %>
         </div>
 
-	<div class="setting-item">
+	<div class="margin-vertical-15px">
           <div class="setting-segment-title">密码</div>
 	  <a href="#"
              class="text-link-button">
@@ -55,7 +55,7 @@
           </a>
         </div>
 
-	<div class="setting-item">
+	<div class="margin-vertical-15px">
           <div class="setting-segment-title"></div>
 	  <%= f.submit "保存", class: "btn btn-primary" %>
         </div>

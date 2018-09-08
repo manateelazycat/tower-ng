@@ -5,7 +5,7 @@ export default class extends Controller {
     addNewInviteItem(event) {
 	event.preventDefault()
 
-	var lastEmailItem = $(".invite-email-item").last()
+	var lastEmailItem = $(".margin-vertical-15px").last()
 	var newEmailItem = lastEmailItem.clone()
 
 	newEmailItem.appendTo(lastEmailItem)
@@ -17,7 +17,7 @@ export default class extends Controller {
 	event.preventDefault()
 
 	var members = []
-	var inviteEmailItems = $(".invite-email-item")
+	var inviteEmailItems = $(".margin-vertical-15px")
 
 	$.each(inviteEmailItems, function(index, item) {
 	    var email = $(item).find(".edit-input").val().trim()
