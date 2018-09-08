@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "base";
 
 $background-color: #f4f7ed;
 $button-color: #3ccefd;
@@ -263,10 +264,6 @@ $action-button-focus-color: #F13A3E;
     outline: none;
 }
 
-a:link {
-    text-decoration: none;
-}
-
 .alert {
     position: fixed;
     top: 0px;
@@ -274,16 +271,6 @@ a:link {
     width: 100%;
     border-radius: 0px;
     z-index: 9999;
-}
-
-ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-li {
-    padding: 0;
-    list-style-type: none;
 }
 
 .flex-vcenter {
