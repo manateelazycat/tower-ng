@@ -1146,28 +1146,24 @@ input[type="checkbox"]:disabled + label::before {
     @include submit-button-mixin(10px);
 }
 
-.member-type-super-admin {
+@mixin member-type-mixin($color) {
     display: inline-block;
     font-size: 13px;
-    color: orange;
+    color: $color;
     width: 200px;
     margin-left: 5px;
+}
+
+.member-type-super-admin {
+    @include member-type-mixin(orange);
 }
 
 .member-type-admin {
-    display: inline-block;
-    font-size: 13px;
-    color: #666;
-    width: 200px;
-    margin-left: 5px;
+    @include member-type-mixin(#666);
 }
 
 .member-type-member {
-    display: inline-block;
-    font-size: 13px;
-    color: #666;
-    width: 200px;
-    margin-left: 5px;
+    @include member-type-mixin(#666);
 }
 
 .setting-icon {
