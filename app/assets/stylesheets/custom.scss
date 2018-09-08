@@ -513,22 +513,8 @@ li {
 }
 
 .team-name {
-    font-size: 20px;
+    @include text-link-button-mixin(20px, 10px, $logo-color, $logo-color, $logo-color);
     font-weight: 500;
-    color: $logo-color;
-    margin-right: 20px;
-}
-
-.team-name:hover {
-    color: $logo-color;
-    text-decoration: none;
-}
-
-.team-name:active,
-.team-name:active:hover,
-.team-name:active:focus,
-.team-name:focus {
-    color: $logo-color;
 }
 
 .top-header {
