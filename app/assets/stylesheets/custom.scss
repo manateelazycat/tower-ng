@@ -333,6 +333,13 @@ $phone-page-top-bar-height: 54px;
     @include text-link-button-mixin(16px, 0px, $logo-text-color)
 }
 
+#loading-dialog,
+.hide,
+.comment-edit-form-item,
+.mission-save-form,
+.mission-comment-button-area,
+.mission-list-new-form,
+.mission-edit-form-item,
 .mission-edit-form-header {
     display: none;
 }
@@ -673,10 +680,6 @@ $phone-page-top-bar-height: 54px;
     margin-top: 10px;
 }
 
-.mission-edit-form-item {
-    display: none;
-}
-
 .mission-edit-form {
     margin-top: 10px;
 }
@@ -691,10 +694,6 @@ $phone-page-top-bar-height: 54px;
 
 .comment-edit-submit-button {
     @include submit-button-mixin(10px);
-}
-
-.mission-list-new-form {
-    display: none;
 }
 
 .mission-list-new-input {
@@ -856,10 +855,6 @@ input[type="checkbox"]:disabled + label::before {
     font-size: 18px;
 }
 
-#loading-dialog {
-    display: none;
-}
-
 .loading-dialog {
     display: flex;
     background: white;
@@ -903,10 +898,6 @@ input[type="checkbox"]:disabled + label::before {
 
 .mission-save-button {
     @include submit-button-mixin(0px);
-}
-
-.mission-save-form {
-    display: none;
 }
 
 .setting-page-action {
@@ -996,10 +987,6 @@ input[type="checkbox"]:disabled + label::before {
     @include submit-button-mixin(10px);
 }
 
-.mission-comment-button-area {
-    display: none;
-}
-
 .mission-comment-splitter {
     @include splitter-mixin(#eee, 1px, 75%);
 }
@@ -1073,10 +1060,6 @@ input[type="checkbox"]:disabled + label::before {
     width: 100%;
     height: 100%;
     z-index: -9999;
-}
-
-.comment-edit-form-item {
-    display: none;
 }
 
 .comment-edit-form-wrap {
@@ -1300,10 +1283,6 @@ input[type="checkbox"]:disabled + label::before {
     font-weight: 350;
     color: $logo-color;
     text-align: left;
-}
-
-.hide {
-    display: none;
 }
 
 // Phone page CSS.
