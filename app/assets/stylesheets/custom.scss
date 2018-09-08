@@ -27,6 +27,9 @@ $action-button-normal-color: #F13A3E;
 $action-button-hover-color: #FF696D;
 $action-button-focus-color: #F13A3E;
 
+$phone-page-bottom-bar-height: 54px;
+$phone-page-top-bar-height: 54px;
+
 .home-logo {
     font-size: 600%;
     font-weight: bold;
@@ -1336,4 +1339,128 @@ input[type="checkbox"]:disabled + label::before {
 
 .hide {
     display: none;
+}
+
+// Phone page CSS.
+.phone-input-group {
+    background-color: #fff;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.phone-input-title {
+    font-size: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.phone-input-area {
+    font-size: 16px;
+    border: none;
+}
+
+.phone-input-area:focus {
+    outline: none;
+}
+
+.phone-page-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 0;
+}
+
+.phone-page-scroll-area {
+    overflow-y: scroll;
+    background-color: rgba(252, 252, 252, 255);
+    width: 100%;
+    height: calc(100% - $phone-page-top-bar-height - $phone-page-bottom-bar-height);
+    float: left;
+    margin-top: $phone-page-top-bar-height;
+}
+
+.phone-page-top-bar {
+    position: absolute;
+    background-color: $logo-color;
+    top: 0;
+    width: 100%;
+    height: $phone-page-top-bar-height;
+    box-shadow: 0 -3px 4px 4px $top-bar-shadow;
+}
+
+.phone-page-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $phone-page-bottom-bar-height;
+    box-shadow: 0 3px 4px 4px $bottom-bar-shadow;
+}
+
+.phone-project-item-box {
+    background-color: #fff;
+    height: 54px;
+    border-bottom: 1px solid #eee;
+}
+
+.phone-project-icon {
+    font-size: 32px;
+    color: $logo-color;
+    margin-left: 24px;
+    margin-right: 18px;
+}
+
+.phone-project-item-name {
+    font-size: 18px;
+    font-weight: light;
+    color: #333;
+}
+
+.phone-project-item-handle {
+    font-size: 20px;
+    color: #ddd;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.phone-top-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: $logo-text-color;
+    padding-top: 6px;
+    padding-left: 24px;
+}
+
+.phone-text-button {
+    font-size: 18px;
+    font-weight: bold;
+    color: $logo-text-color;
+    padding-right: 24px;
+}
+
+.phone-top-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: $logo-text-color;
+    padding-top: 6px;
+}
+
+.phone-top-item-icon {
+    font-size: 18px;
+    color: $logo-text-color;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.phone-bottom-tab {
+    text-align: center;
+}
+
+.mission-list-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
