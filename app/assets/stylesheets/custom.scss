@@ -219,10 +219,6 @@ $phone-page-top-bar-height: 54px;
     @include text-link-button-mixin(16px)
 }
 
-.remove-textarea-resize-button {
-    resize: none;
-}
-
 .submit-button-width {
     width: 80px;
 }
