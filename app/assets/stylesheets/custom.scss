@@ -609,18 +609,12 @@ $phone-page-top-bar-height: 54px;
 }
 
 .right-float-menu-delete-button {
-    color: $right-menu-delete-button-normal-color;
-    margin-left: 16px;
-}
-
-.right-float-menu-delete-button:hover {
-    color: $right-menu-delete-button-hover-color;
-}
-
-.right-float-menu-delete-button:focus {
-    color: $right-menu-delete-button-focus-color;
-    border: none;
-    outline: none;
+    @include text-link-button-mixin(
+	14px,
+	16px,
+	$right-menu-delete-button-normal-color,
+	$right-menu-delete-button-hover-color,
+	$right-menu-delete-button-focus-color);
 }
 
 .right-float-menu-parent {
