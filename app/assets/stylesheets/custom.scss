@@ -236,11 +236,6 @@ $phone-page-top-bar-height: 54px;
     @include margin-vertical-mixin(5px);
 }
 
-.margins-horizontal-normal {
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
 .margin-bottom-normal {
     margin-bottom: 20px;
 }
@@ -328,17 +323,6 @@ $phone-page-top-bar-height: 54px;
     font-weight: bold;
     color: $logo-color;
     margin-bottom: 40px;
-}
-
-.btn {
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-.btn:focus,
-.btn:active {
-    box-shadow: none !important;
-    outline: none !important;
 }
 
 .btn-primary {

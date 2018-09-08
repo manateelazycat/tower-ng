@@ -15,3 +15,14 @@ li {
 textarea {
     resize: none;
 }
+
+.btn {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
