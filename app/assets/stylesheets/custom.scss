@@ -386,7 +386,7 @@ li {
 }
 
 // Desktop page CSS.
-.content-page-body {
+.fill-background-color {
     background-color: $background-color;
 }
 
@@ -539,23 +539,8 @@ li {
     @include text-link-button-mixin(16px, 15px, $link-text-color)
 }
 
-.top-header-search {
-    background-color: $background-color;
-    height: 24px;
-    margin-top: 15px;
-    text-align: center;
-}
-
 .top-search-bar-group {
     width: 200px;
-}
-
-.top-search-bar-input {
-    background-color: $background-color;
-}
-
-.top-search-bar-button {
-    background-color: $background-color;
 }
 
 .top-search-bar-icon {
