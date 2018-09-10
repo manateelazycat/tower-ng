@@ -212,6 +212,14 @@ $phone-page-top-bar-height: 54px;
     margin-bottom: $margin;
 }
 
+@mixin menu-item-mixin($size, $color) {
+    display: block;
+    font-size: $size;
+    font-weight: 350;
+    color: $color;
+    text-align: left;
+}
+
 .link-button {
     @include text-link-button-mixin(14px)
 }
@@ -1224,26 +1232,15 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .top-header-menu-item-title {
-    display: block;
-    font-size: 16px;
-    font-weight: 350;
-    color: $logo-color;
-    text-align: left;
+    @include menu-item-mixin(16px, $logo-color);
 }
 
 .top-header-menu-item-text {
-    display: block;
-    font-weight: 350;
-    color: #666;
-    text-align: left;
+    @include menu-item-mixin(14px, #666);
 }
 
 .top-header-menu-item-button {
-    display: block;
-    font-size: 14px;
-    font-weight: 350;
-    color: $logo-color;
-    text-align: left;
+    @include menu-item-mixin(14px, $logo-color);
 }
 
 // Phone page CSS.
