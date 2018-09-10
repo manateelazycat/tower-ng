@@ -1167,10 +1167,6 @@ input[type="checkbox"]:disabled + label::before {
     width: 60px;
 }
 
-.setting-icon-form {
-    display: inline-block;
-}
-
 .setting-entry {
     display: inline-block;
     border: $button-border;

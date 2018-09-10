@@ -13,7 +13,7 @@
 	     id="user-photo">
           <%= image_tag current_user.avatar_url %>
         </div>
-        <div class="setting-icon-form">
+        <div class="inline-block">
 	  <%= form_for current_user, :html => {:multipart => true, id: "user-photo-form"}, :remote => true do |f| %>
 
 	    <div class="setting-icon-upload-button">
