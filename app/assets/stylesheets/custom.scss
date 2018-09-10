@@ -749,12 +749,13 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-title-link {
-    font-weight: 350;
-    color: #222;
+    @include text-link-button-mixin(16px, 0px, #222, $logo-color, $logo-color);
 }
 
-.mission-title-link:hover {
-    color: $logo-color;
+.mission-big-title-link {
+    @include text-link-button-mixin(16px, 0px, #222, $logo-color, $logo-color);
+
+    font-size: 20px;
 }
 
 .fullscreen-body {
@@ -1020,12 +1021,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .arrow-menu-item-text {
-    color: #222;
-}
-
-.arrow-menu-item-text:hover {
-    color: $hover-color;
-    text-decoration: none;
+    @include text-link-button-mixin(13px, 0px, #222, $logo-color, $logo-color);
 }
 
 .menu-eventarea {
