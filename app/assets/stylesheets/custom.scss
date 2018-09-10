@@ -1043,13 +1043,7 @@ input[type="checkbox"]:disabled + label::before {
     @include textarea-mixin(150px, 10px);
 }
 
-.member-title {
-    display: inline-block;
-    font-size: 30px;
-    margin-bottom: 30px;
-}
-
-.setting-title {
+.page-title {
     display: inline-block;
     font-size: 30px;
     margin-bottom: 30px;
