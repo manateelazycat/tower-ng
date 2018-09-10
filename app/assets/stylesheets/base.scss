@@ -26,3 +26,24 @@ textarea {
     box-shadow: none !important;
     outline: none !important;
 }
+
+// CSS to make modal dialog at center of screen.
+.modal {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        content: " ";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+
+.modal-dialog {
+    display: inline-block;
+    width: 400px;
+    vertical-align: middle;
+    text-align: left;
+}
