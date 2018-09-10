@@ -534,4 +534,8 @@ export default class extends Controller {
 	$(".mission-comment-button-area").hide()
      	$(".mission-comment-textarea").attr("rows", 1)
     }
+
+    changeDistributor(event) {
+	console.log("*********")
+    }
 }

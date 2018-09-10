@@ -145,7 +145,7 @@ $phone-page-top-bar-height: 54px;
     border-radius: $button-radius;
 }
 
-@mixin arrow-menu-mixin($background, $arrow-color, $arrow-left, $default-z-index: 9999) {
+@mixin arrow-menu-mixin($background, $arrow-color, $arrow-offset,  $text-align: center, $default-z-index: 9999, $arrow-vertical: true) {
     filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
     display: none;
@@ -157,20 +157,32 @@ $phone-page-top-bar-height: 54px;
     height: auto;
     padding-top: 10px;
     border-radius: 3px 3px 3px 3px;
-    text-align: center;
+    text-align: $text-align;
     z-index: $default-z-index;
 
     &:before {
 	content: "";
 	position: absolute;
-	top: -10px;
-	bottom: 0;
-	left: $arrow-left;
 	width: 0;
 	height: 0;
-	border-bottom: 10px solid $arrow-color;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
+
+	@if $arrow-vertical {
+	    top: -10px;
+	    bottom: 0;
+	    left: $arrow-offset;
+
+	    border-bottom: 10px solid $arrow-color;
+	    border-left: 10px solid transparent;
+	    border-right: 10px solid transparent;
+	} @else {
+	    left: -10px;
+	    bottom: 0;
+	    top: $arrow-offset;
+
+	    border-right: 10px solid $arrow-color;
+	    border-top: 10px solid transparent;
+	    border-bottom: 10px solid transparent;
+	}
     }
 }
 
@@ -1015,7 +1027,33 @@ input[type="checkbox"]:disabled + label::before {
 	$menu-color,
 	$menu-color,
 	calc(50% - 10px)
-    )
+    );
+}
+
+.mission-distributor-menu {
+    @include arrow-menu-mixin(
+	$menu-color,
+	$menu-color,
+	calc(20% - 10px),
+	left,
+	9999,
+	false
+    );
+
+    left: 300px;
+    top: 300px;
+
+    display: block;
+}
+
+.mission-distributor-menu-item-title {
+    @include arrow-menu-item-mixin(0px, false);
+
+    font-size: 15px;
+}
+
+.mission-distributor-menu-item {
+    @include arrow-menu-item-mixin(0px, false);
 }
 
 .arrow-menu-item {
@@ -1192,8 +1230,9 @@ input[type="checkbox"]:disabled + label::before {
 	linear-gradient(rgb(245, 245, 245) 82px, $menu-color 82px, $menu-color 100%),
 	rgb(245, 245, 245),
 	calc(90% - 10px),
+	center,
 	10000
-    )
+    );
 }
 
 .top-header-menu-button {

@@ -16,6 +16,31 @@
 
     <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
 
+    <div class="mission-distributor-menu">
+      <ul>
+	<li class="mission-distributor-menu-item-title">
+	  将任务指派给
+	</li>
+	<li class="mission-distributor-menu-item">
+	  <div class="input-group-sm">
+	    <input type="text"
+		   class="form-control"
+                   placeholder="请输入成员姓名 (或拼音)" >
+	  </div>
+        </li>
+        <li class="mission-distributor-menu-item-title">
+          任务截止时间
+        </li>
+	<li class="mission-distributor-menu-item">
+          <div class="input-group-sm">
+	    <input type="text"
+		   class="form-control"
+                   placeholder="请选择截止日期" >
+	  </div>
+        </li>
+      </ul>
+    </div>
+
     <div class="comment-edit-menu arrow-menu">
       <ul>
         <li class="arrow-menu-item">
@@ -130,7 +155,11 @@
             <%= @mission.name %>
           </span>
         </label>
-        <button type="button" class="btn mission-distributor">未指派</button>
+        <button type="button"
+		class="btn mission-distributor"
+		data-action="mission#changeDistributor">
+	  未指派
+	</button>
       </li>
       <% if !@mission.summary || @mission.summary.empty? %>
         <div class="mission-add-summary-button">
