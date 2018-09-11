@@ -60,6 +60,54 @@ $phone-page-top-bar-height: 54px;
     text-decoration: none;
 }
 
+@function is-number($value) {
+    @return type-of($value) == 'number';
+}
+
+@function is-time($value) {
+    @return is-number($value) and index('ms' 's', unit($value)) != null;
+}
+
+@function is-duration($value) {
+    @return is-time($value);
+}
+
+@function is-angle($value) {
+    @return is-number($value) and index('deg' 'rad' 'grad' 'turn', unit($value)) != null;
+}
+
+@function is-frequency($value) {
+    @return is-number($value) and index('Hz' 'kHz', unit($value)) != null;
+}
+
+@function is-integer($value) {
+    @return is-number($value) and round($value) == $value;
+}
+
+@function is-relative-length($value) {
+    @return is-number($value) and index('em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax', unit($value)) != null;
+}
+
+@function is-absolute-length($value) {
+    @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+}
+
+@function is-percentage($value) {
+    @return is-number($value) and unit($value) == '%';
+}
+
+@function is-length($value) {
+    @return is-relative-length($value) or is-absolute-length($value);
+}
+
+@function is-resolution($value) {
+    @return is-number($value) and index('dpi' 'dpcm' 'dppx', unit($value)) != null;
+}
+
+@function is-position($value) {
+    @return is-length($value) or is-percentage($value) or index('top' 'right' 'bottom' 'left' 'center', $value) != null;
+}
+
 // Generic page CSS.
 @mixin text-link-button-mixin($size, $margin: 10px, $normal-color: $link-text-color, $hover-color: $hover-color, $focus-color: $focus-color) {
     font-size: $size;
@@ -133,10 +181,10 @@ $phone-page-top-bar-height: 54px;
     resize: none;
     width: 550px;
 
-    @if $rows == -1 {
+    @if is-absolute-length($height) {
 	height: $height;
     } @else {
-	rows: $rows;
+	rows: $height;
     }
     margin-top: 10px;
     margin-bottom: 10px;
@@ -974,7 +1022,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-comment-textarea {
-    @include textarea-mixin(150px, 10px, 1);
+    @include textarea-mixin(1, 10px);
 }
 
 .mission-comment-submit-button {
