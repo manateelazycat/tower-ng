@@ -193,7 +193,7 @@ $phone-page-top-bar-height: 54px;
     border-radius: $button-radius;
 }
 
-@mixin arrow-menu-mixin($background, $arrow-color, $arrow-offset,  $text-align: center, $default-z-index: 9999, $arrow-vertical: true) {
+@mixin menu-mixin($background, $text-align: center, $default-z-index: 9999, $padding-top: 0px) {
     filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
     display: none;
@@ -203,10 +203,14 @@ $phone-page-top-bar-height: 54px;
     background: $background;
     width: max-content;
     height: auto;
-    padding-top: 10px;
+    padding-top: $padding-top;
     border-radius: 3px 3px 3px 3px;
     text-align: $text-align;
     z-index: $default-z-index;
+}
+
+@mixin arrow-menu-mixin($background, $arrow-color, $arrow-offset,  $text-align: center, $default-z-index: 9999, $arrow-vertical: true) {
+    @include menu-mixin($background, $text-align, $default-z-index, 10px);
 
     &:before {
 	content: "";
@@ -1444,4 +1448,18 @@ input[type="checkbox"]:disabled + label::before {
     font-weight: 500;
     margin-top: 20px;
     margin-bottom: 40px;
+}
+
+.mission-member-menu {
+    @include menu-mixin(
+        $menu-color,
+	left,
+        19999,
+    );
+
+    display: block;
+}
+
+.mission-member-menu-item {
+    @include arrow-menu-item-mixin
 }

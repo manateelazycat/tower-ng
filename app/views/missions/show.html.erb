@@ -48,6 +48,17 @@
       </ul>
     </div>
 
+    <div>
+      <ul class="mission-member-menu">
+	<% @member_array.each do |member| %>
+	  <li class="mission-member-menu-item">
+	    <%= member[:name] %>
+	  </li>
+	  <li class="splitter"></li>
+	<% end %>
+      </ul>
+    </div>
+
     <div class="comment-edit-menu arrow-menu">
       <ul>
         <li class="arrow-menu-item">
