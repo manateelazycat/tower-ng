@@ -26,6 +26,7 @@ $right-menu-delete-button-focus-color: #BF5D57;
 $action-button-normal-color: #F13A3E;
 $action-button-hover-color: #FF696D;
 $action-button-focus-color: #F13A3E;
+$arrow-size: 10px;
 
 $phone-page-bottom-bar-height: 54px;
 $phone-page-top-bar-height: 54px;
@@ -210,7 +211,7 @@ $phone-page-top-bar-height: 54px;
 }
 
 @mixin arrow-menu-mixin($background, $arrow-color, $arrow-offset,  $text-align: center, $default-z-index: 9999, $arrow-vertical: true) {
-    @include menu-mixin($background, $text-align, $default-z-index, 10px);
+    @include menu-mixin($background, $text-align, $default-z-index, $arrow-size);
 
     &:before {
 	content: "";
@@ -219,21 +220,21 @@ $phone-page-top-bar-height: 54px;
 	height: 0;
 
 	@if $arrow-vertical {
-	    top: -10px;
+	    top: -$arrow-size;
 	    bottom: 0;
 	    left: $arrow-offset;
 
-	    border-bottom: 10px solid $arrow-color;
-	    border-left: 10px solid transparent;
-	    border-right: 10px solid transparent;
+	    border-bottom: $arrow-size solid $arrow-color;
+	    border-left: $arrow-size solid transparent;
+	    border-right: $arrow-size solid transparent;
 	} @else {
-	    left: -10px;
+	    left: -$arrow-size;
 	    bottom: 0;
 	    top: $arrow-offset;
 
-	    border-right: 10px solid $arrow-color;
-	    border-top: 10px solid transparent;
-	    border-bottom: 10px solid transparent;
+	    border-right: $arrow-size solid $arrow-color;
+	    border-top: $arrow-size solid transparent;
+	    border-bottom: $arrow-size solid transparent;
 	}
     }
 }
