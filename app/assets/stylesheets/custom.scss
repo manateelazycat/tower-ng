@@ -1056,6 +1056,10 @@ input[type="checkbox"]:disabled + label::before {
     @include arrow-menu-item-mixin(0px, false);
 }
 
+.mission-distributor-input {
+    width: 200px;
+}
+
 .arrow-menu-item {
     @include arrow-menu-item-mixin
 }
