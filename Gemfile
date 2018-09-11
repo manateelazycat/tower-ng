@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -5,6 +7,7 @@ ruby "2.5.1"
 
 gem "bcrypt"
 gem "bootsnap", ">= 1.1.0", require: false
+gem "bootstrap-datepicker-rails"
 gem "bootstrap-sass"
 gem "bootstrap-will_paginate", "1.0.0"
 gem "browser"
@@ -18,12 +21,12 @@ gem "pry"
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.0"
 gem "sass-rails", "~> 5.0"
+gem "solargraph"
 gem "sortable-rails"
 gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "webpacker", "~> 3.5"
-gem "solargraph"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

@@ -16,7 +16,10 @@
 //= require activestorage
 //= require turbolinks
 //= require sortable-rails
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN
 //= require_tree .
+
 $(document).on("turbolinks:load", function() {
     // Make teams page items sortable.
     if ($("#projects-index").length > 0) {

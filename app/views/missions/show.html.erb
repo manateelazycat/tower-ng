@@ -16,7 +16,8 @@
 
     <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
 
-    <div class="mission-distributor-menu">
+    <div class="mission-distributor-menu"
+	 data-controller="missiondistributor">
       <ul>
 	<li class="mission-distributor-menu-item-title">
 	  将任务指派给
@@ -39,7 +40,8 @@
 	<li class="mission-distributor-menu-item">
           <div class="input-group-sm">
 	    <input type="text"
-		   class="form-control"
+		   data-provide="datepicker"
+		   class="form-control mission-distributor-datepicker"
                    placeholder="请选择截止日期" >
 	  </div>
         </li>
