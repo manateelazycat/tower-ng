@@ -1274,7 +1274,7 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .splitter {
-    @include splitter-mixin
+    @include splitter-mixin;
 }
 
 .setting-page-delete-link {

@@ -54,7 +54,9 @@
 	  <li class="mission-member-menu-item">
 	    <%= member[:name] %>
 	  </li>
-	  <li class="splitter"></li>
+	  <% unless member == @member_array.last %>
+	    <li class="splitter"></li>
+	  <% end %>
 	<% end %>
       </ul>
     </div>
