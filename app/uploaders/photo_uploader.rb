@@ -27,11 +27,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   process clip_photo: [48, 48]
   process round: []
 
-  version :thumb_24 do
-    process clip_photo: [32, 32]
-    process round: []
-  end
-
   def clip_photo(width, height, gravity = "Center", combine_options: {})
     manipulate! do |img|
       cols, rows = img[:dimensions]

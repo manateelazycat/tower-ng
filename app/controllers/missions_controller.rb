@@ -51,7 +51,7 @@ class MissionsController < ApplicationController
     @member_array.push(user_hashid: team_creator.hashid,
                        name: team_creator.name,
                        pinyin: team_creator.pinyin,
-                       photo_url: team_creator.avatar_thumb_url)
+                       photo_url: team_creator.avatar_url)
 
     # Push team members.
     TeamAdmin.select { |t| t.team_id == team.id }.each do |team_admin|
@@ -62,7 +62,7 @@ class MissionsController < ApplicationController
       @member_array.push(user_hashid: user.hashid,
                          name: user.name,
                          pinyin: user.pinyin,
-                         photo_url: user.avatar_thumb_url)
+                         photo_url: user.avatar_url)
     end
   end
 

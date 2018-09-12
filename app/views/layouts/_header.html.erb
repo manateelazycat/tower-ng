@@ -25,7 +25,7 @@
   </form>
   <div class="glyphicon glyphicon-bell top-header-bell"></div>
   <div class="top-header-icon inline-block">
-    <%= image_tag current_user.avatar_thumb_url %>
+    <%= image_tag(current_user.avatar_url, width: 24, height: 24) %>
   </div>
   <a href="#"
      class="glyphicon glyphicon-triangle-bottom top-header-item top-header-menu-button"

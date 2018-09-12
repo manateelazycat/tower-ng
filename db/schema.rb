@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_023239) do
+ActiveRecord::Schema.define(version: 2018_09_12_091340) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2018_09_12_023239) do
     t.integer "team_id"
     t.string "photo"
     t.string "avatar"
-    t.string "avatar_thumb"
     t.string "pinyin"
   end
 

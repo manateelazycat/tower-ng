@@ -118,10 +118,7 @@ class User < ApplicationRecord
   end
 
   def create_avatar
-    avatar_name = generate_avatar_name
-
-    self.avatar = format("avatar/normal/%<name>s", name: avatar_name)
-    self.avatar_thumb = format("avatar/thumb/%<name>s", name: avatar_name)
+    self.avatar = format("avatar/normal/%<name>s", name: generate_avatar_name)
   end
 
   def avatar_url
@@ -130,13 +127,5 @@ class User < ApplicationRecord
     return avatar if avatar?
 
     "avatar/normal/1.jpg"
-  end
-
-  def avatar_thumb_url
-    return photo.url(:thumb_24) if photo?
-
-    return avatar_thumb if avatar_thumb?
-
-    "avatar/thumb/1.jpg"
   end
 end

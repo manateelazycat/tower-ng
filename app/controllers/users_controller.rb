@@ -47,7 +47,6 @@ class UsersController < ApplicationController
     current_user.save!
 
     @photo_url = current_user.photo.url
-    @photo_thumb_url = current_user.photo.thumb_24.url
 
     respond_to do |format|
       format.js {
