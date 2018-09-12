@@ -150,7 +150,12 @@
                    class="edit-input"
                    placeholder="新的任务"
                    data-action="keydown->mission#enterMissionPageEdit">
-            <button type="button" class="btn mission-distributor">未指派</button>
+            <button type="button"
+		    class="btn mission-distributor-button"
+		    data-controller="missiondistributor"
+		    data-action="missiondistributor#clickDistributorButton">
+	      未指派
+	    </button>
           </div>
           <% if @mission.summary && !@mission.summary.empty? %>
             <textarea class="mission-edit-textarea" placeholder="任务描述">
@@ -187,8 +192,9 @@
           </span>
         </label>
         <button type="button"
-		      class="btn mission-distributor"
-		      data-action="mission#changeDistributor">
+		class="btn mission-distributor-button"
+		data-controller="missiondistributor"
+                data-action="missiondistributor#clickDistributorButton">
 	  未指派
 	</button>
       </li>

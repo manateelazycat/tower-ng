@@ -13,12 +13,18 @@ export default class extends Controller {
     }
 
     onClick(event) {
- 	if ($(event.target).closest(".mission-member-menu").length === 0
-	    && $(event.target).closest(".mission-member-input").length === 0
-	    && $(event.target).closest(".mission-member-toggle-button").length === 0
-	   ) {
-	    $(".mission-member-menu").hide()
-	}
+        if ($(event.target).closest(".mission-member-menu").length === 0
+            && $(event.target).closest(".mission-member-input").length === 0
+            && $(event.target).closest(".mission-member-toggle-button").length === 0
+           ) {
+            $(".mission-member-menu").hide()
+        }
+
+        if ($(event.target).closest(".mission-distributor-menu").length === 0
+            && $(event.target).closest(".mission-distributor-button").length === 0
+           ) {
+            $(".mission-distributor-menu").hide()
+        }
     }
 
     clickMemberInput(event) {
@@ -39,7 +45,7 @@ export default class extends Controller {
     clickMemberMenuButton(event) {
         event.preventDefault()
 
-        var missionMemberInput = $(".mission-member-input")
+        var missionMemberInput = $(".mission-member-menu")
         var inputRect = missionMemberInput[0].getBoundingClientRect()
         var missionMemberMenu = $(".mission-member-menu")
 
@@ -62,26 +68,26 @@ export default class extends Controller {
         var memberName, memberPinyin, memberPinyinSimple, lastMatchMemberItem
 
         $.each(memberItems, function(i, val) {
-	    memberName = $(memberNames[i]).text().trim()
-	    memberPinyin = $(memberPinyins[i]).text().trim().replace(/\s+/g, "")
-	    memberPinyinSimple = $(memberPinyins[i]).text().trim().split(" ").map(pinyin => pinyin[0]).join("")
+            memberName = $(memberNames[i]).text().trim()
+            memberPinyin = $(memberPinyins[i]).text().trim().replace(/\s+/g, "")
+            memberPinyinSimple = $(memberPinyins[i]).text().trim().split(" ").map(pinyin => pinyin[0]).join("")
 
-	    if (memberName.includes(input) ||
-	    	memberPinyin.includes(input) ||
-	    	memberPinyinSimple.includes(input)) {
-	    	$(memberItems[i]).show()
-		$(memberItems[i]).find(".splitter").show()
+            if (memberName.includes(input) ||
+                memberPinyin.includes(input) ||
+                memberPinyinSimple.includes(input)) {
+                $(memberItems[i]).show()
+                $(memberItems[i]).find(".splitter").show()
 
-		lastMatchMemberItem = memberItems[i]
-	    } else {
-	    	$(memberItems[i]).hide()
-	    }
-	})
+                lastMatchMemberItem = memberItems[i]
+            } else {
+                $(memberItems[i]).hide()
+            }
+        })
 
-	// Hide splitter line under last match item.
-	if (lastMatchMemberItem) {
-	    $(lastMatchMemberItem).find(".splitter").hide()
-	}
+        // Hide splitter line under last match item.
+        if (lastMatchMemberItem) {
+            $(lastMatchMemberItem).find(".splitter").hide()
+        }
     }
 
     clickMemberName(event) {
@@ -89,8 +95,23 @@ export default class extends Controller {
         var missionMemberMenu = $(".mission-member-menu")
         var currentTarget = event.currentTarget
 
-	missionMemberInput.val($(currentTarget).find(".mission-member-name").text().trim())
+        missionMemberInput.val($(currentTarget).find(".mission-member-name").text().trim())
 
-	missionMemberMenu.hide()
+        missionMemberMenu.hide()
+    }
+
+    clickDistributorButton(event) {
+        event.preventDefault()
+
+        var missionDistributorMenu = $(".mission-distributor-menu")
+        var currentTarget = event.currentTarget
+        var rect = currentTarget.getBoundingClientRect()
+
+        missionDistributorMenu.css({
+            left: rect.left + rect.width + 20,
+            top: rect.top + rect.height / 2 - 30,
+        })
+
+        missionDistributorMenu.toggle()
     }
 }

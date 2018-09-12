@@ -632,7 +632,7 @@ $phone-page-top-bar-height: 54px;
     @include margin-vertical-mixin(10px);
 }
 
-.mission-distributor {
+.mission-distributor-button {
     font-size: 8px;
     color: #666;
     background: #fff;
@@ -1092,11 +1092,6 @@ input[type="checkbox"]:disabled + label::before {
 	9999,
 	false
     );
-
-    left: 300px;
-    top: 300px;
-
-    display: block;
 }
 
 .mission-distributor-menu-item-title {
