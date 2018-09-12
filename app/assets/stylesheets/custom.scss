@@ -194,7 +194,7 @@ $phone-page-top-bar-height: 54px;
     border-radius: $button-radius;
 }
 
-@mixin menu-mixin($background, $text-align: center, $default-z-index: 9999, $padding-top: 0px) {
+@mixin menu-mixin($background, $text-align: center, $default-z-index: 9999, $padding-top: 10px) {
     filter: drop-shadow(0 4px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
     display: none;
@@ -1109,7 +1109,7 @@ input[type="checkbox"]:disabled + label::before {
     @include arrow-menu-item-mixin(0px, false);
 }
 
-.mission-distributor-input {
+.mission-distributor-input-group {
     width: 200px;
 }
 
@@ -1457,8 +1457,6 @@ input[type="checkbox"]:disabled + label::before {
 	left,
         19999,
     );
-
-    display: block;
 }
 
 .mission-member-menu-item {

@@ -49,7 +49,8 @@ class MissionsController < ApplicationController
     team_creator = User.find_by_email(team.creator)
 
     @member_array.push(user_hashid: team_creator.hashid,
-                       name: team_creator.name)
+                       name: team_creator.name,
+                       photo_url: team_creator.avatar_thumb_url)
 
     # Push team members.
     TeamAdmin.select { |t| t.team_id == team.id }.each do |team_admin|
@@ -57,7 +58,8 @@ class MissionsController < ApplicationController
 
       if user&.activated?
         @member_array.push(user_hashid: user.hashid,
-                           name: user.name)
+                           name: user.name,
+                           photo_url: user.avatar_thumb_url)
       end
     end
   end

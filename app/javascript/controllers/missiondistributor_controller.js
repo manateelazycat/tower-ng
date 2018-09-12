@@ -11,4 +11,35 @@ export default class extends Controller {
 	    weekStart: 1,
 	})
     }
+
+    clickMemberInput(event) {
+	event.preventDefault()
+
+	var missionMemberInput = $(".mission-member-input")
+	var inputRect = missionMemberInput[0].getBoundingClientRect()
+	var missionMemberMenu = $(".mission-member-menu")
+
+	missionMemberMenu.css({
+	    top: inputRect.top + inputRect.height,
+	    left: inputRect.left,
+	    width: inputRect.width,
+	})
+	missionMemberMenu.show()
+    }
+
+    clickMemberMenuButton(event) {
+	event.preventDefault()
+
+	var missionMemberInput = $(".mission-member-input")
+	var inputRect = missionMemberInput[0].getBoundingClientRect()
+	var missionMemberMenu = $(".mission-member-menu")
+
+	missionMemberMenu.css({
+	    top: inputRect.top + inputRect.height,
+	    left: inputRect.left,
+	    width: inputRect.width,
+	})
+
+	missionMemberMenu.toggle()
+    }
 }
