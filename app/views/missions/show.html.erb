@@ -60,10 +60,13 @@
 	    <div class="mission-member-name inline-block">
 	      <%= member[:name] %>
 	    </div>
+	    <div class="mission-member-pinyin inline-block">
+              <%= member[:pinyin] %>
+            </div>
+            <% unless member == @member_array.last %>
+              <div class="splitter"></div>
+            <% end %>
 	  </li>
-	  <% unless member == @member_array.last %>
-	    <li class="splitter"></li>
-	  <% end %>
 	<% end %>
       </ul>
     </div>

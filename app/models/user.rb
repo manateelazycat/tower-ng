@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "ruby-pinyin"
+
 # User.
 class User < ApplicationRecord
   include Hashid::Rails
@@ -50,6 +52,7 @@ class User < ApplicationRecord
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
+
     BCrypt::Password.new(digest).is_password?(token)
   end
 
@@ -60,6 +63,10 @@ class User < ApplicationRecord
     update_attribute(:password_digest, digest)
 
     true
+  end
+
+  def update_pinyin
+    update_attribute(:pinyin, PinYin.of_string(name).join(" ").downcase)
   end
 
   def forget

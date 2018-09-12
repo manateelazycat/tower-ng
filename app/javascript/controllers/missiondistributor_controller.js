@@ -2,53 +2,76 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
     connect() {
-	$(".mission-distributor-datepicker").datepicker({
-	    todayHighlight: true,
-	    orientation: "bottom auto",
-	    language: "zh-CN",
-	    format: "yyyy/mm/dd",
-	    autoclose: true,
-	    weekStart: 1,
-	})
+        $(".mission-distributor-datepicker").datepicker({
+            todayHighlight: true,
+            orientation: "bottom auto",
+            language: "zh-CN",
+            format: "yyyy/mm/dd",
+            autoclose: true,
+            weekStart: 1,
+        })
     }
 
     clickMemberInput(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	var missionMemberInput = $(".mission-member-input")
-	var inputRect = missionMemberInput[0].getBoundingClientRect()
-	var missionMemberMenu = $(".mission-member-menu")
+        var missionMemberInput = $(".mission-member-input")
+        var inputRect = missionMemberInput[0].getBoundingClientRect()
+        var missionMemberMenu = $(".mission-member-menu")
 
-	missionMemberMenu.css({
-	    top: inputRect.top + inputRect.height,
-	    left: inputRect.left,
-	    width: inputRect.width,
-	})
-	missionMemberMenu.show()
+        missionMemberMenu.css({
+            top: inputRect.top + inputRect.height,
+            left: inputRect.left,
+            width: inputRect.width,
+        })
+        missionMemberMenu.show()
     }
 
     clickMemberMenuButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	var missionMemberInput = $(".mission-member-input")
-	var inputRect = missionMemberInput[0].getBoundingClientRect()
-	var missionMemberMenu = $(".mission-member-menu")
+        var missionMemberInput = $(".mission-member-input")
+        var inputRect = missionMemberInput[0].getBoundingClientRect()
+        var missionMemberMenu = $(".mission-member-menu")
 
-	missionMemberMenu.css({
-	    top: inputRect.top + inputRect.height,
-	    left: inputRect.left,
-	    width: inputRect.width,
-	})
+        missionMemberMenu.css({
+            top: inputRect.top + inputRect.height,
+            left: inputRect.left,
+            width: inputRect.width,
+        })
 
-	missionMemberMenu.toggle()
+        missionMemberMenu.toggle()
     }
 
     changeMemberInput(event) {
-	var memberItems = $(".mission-member-menu li")
-	var memberNames = $(".mission-member-menu .mission-member-name")
+        var missionMemberInput = $(".mission-member-input")
+        var memberItems = $(".mission-member-menu .mission-member-menu-item")
+        var memberNames = $(".mission-member-menu .mission-member-name")
+        var memberPinyins = $(".mission-member-menu .mission-member-pinyin")
 
-	$.each(memberItems, function(i, val) {
-	    console.log("******** ", i, $(memberNames[i]).text().trim())
+        var input = missionMemberInput.val()
+        var memberName, memberPinyin, memberPinyinSimple, lastMatchMemberItem
+
+        $.each(memberItems, function(i, val) {
+	    memberName = $(memberNames[i]).text().trim()
+	    memberPinyin = $(memberPinyins[i]).text().trim().replace(/\s+/g, "")
+	    memberPinyinSimple = $(memberPinyins[i]).text().trim().split(" ").map(pinyin => pinyin[0]).join("")
+
+	    if (memberName.includes(input) ||
+	    	memberPinyin.includes(input) ||
+	    	memberPinyinSimple.includes(input)) {
+	    	$(memberItems[i]).show()
+		$(memberItems[i]).find(".splitter").show()
+
+		lastMatchMemberItem = memberItems[i]
+	    } else {
+	    	$(memberItems[i]).hide()
+	    }
 	})
+
+	// Hide splitter line under last match item.
+	if (lastMatchMemberItem) {
+	    $(lastMatchMemberItem).find(".splitter").hide()
+	}
     }
 }

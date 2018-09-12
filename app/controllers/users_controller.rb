@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       team.save
 
       @user = User.new(name: params[:user][:name], email: params[:user][:email])
+      @user.update_pinyin
       @user.update_password(params[:user][:password])
 
       if @user.save

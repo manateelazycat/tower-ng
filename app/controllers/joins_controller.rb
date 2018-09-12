@@ -14,6 +14,7 @@ class JoinsController < ApplicationController
     else
       user = User.find_by_hashid(params[:user_id])
       user.update_attribute(:name, params[:join][:name])
+      user.update_pinyin
       user.update_password(params[:join][:password])
       user.activate
       log_in user

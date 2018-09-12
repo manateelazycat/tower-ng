@@ -1462,3 +1462,7 @@ input[type="checkbox"]:disabled + label::before {
 .mission-member-menu-item {
     @include arrow-menu-item-mixin
 }
+
+.mission-member-pinyin {
+    display: none;
+}
