@@ -22,6 +22,7 @@ export default class extends Controller {
 
         if ($(event.target).closest(".mission-distributor-menu").length === 0
             && $(event.target).closest(".mission-distributor-button").length === 0
+            && $(event.target).closest(".mission-member-menu").length === 0
            ) {
             $(".mission-distributor-menu").hide()
         }
