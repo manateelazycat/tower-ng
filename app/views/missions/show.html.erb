@@ -44,7 +44,7 @@
           <div class="input-group-sm">
 	    <input type="text"
 		   data-provide="datepicker"
-		   class="form-control mission-distributor-datepicker"
+		   class="form-control mission-date-input"
                    placeholder="请选择截止日期" >
 	  </div>
         </li>
@@ -63,6 +63,9 @@
 	    </div>
 	    <div class="mission-member-pinyin inline-block">
               <%= member[:pinyin] %>
+            </div>
+	    <div class="mission-member-userid inline-block">
+              <%= member[:user_hashid] %>
             </div>
             <% unless member == @member_array.last %>
               <div class="splitter"></div>

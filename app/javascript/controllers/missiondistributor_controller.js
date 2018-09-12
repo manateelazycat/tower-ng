@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
     connect() {
-        $(".mission-distributor-datepicker").datepicker({
+        $(".mission-date-input").datepicker({
             todayHighlight: true,
             orientation: "bottom auto",
             language: "zh-CN",
@@ -24,7 +24,14 @@ export default class extends Controller {
             && $(event.target).closest(".mission-distributor-button").length === 0
             && $(event.target).closest(".mission-member-menu").length === 0
            ) {
-            $(".mission-distributor-menu").hide()
+	    var missionDistributorMenu = $(".mission-distributor-menu")
+	    var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
+	    var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
+
+	    console.log("##### ", missionDistributorMenu.data("missionid"), missionMemberInput.data("userid"), missionMemberInput.val(), missionDateInput.val())
+
+	    // Hide distributor menu.
+	    missionDistributorMenu.hide()
         }
     }
 
@@ -96,9 +103,14 @@ export default class extends Controller {
         var missionMemberMenu = $(".mission-member-menu")
         var currentTarget = event.currentTarget
 
+	// Update name.
         missionMemberInput.val($(currentTarget).find(".mission-member-name").text().trim())
 
+	// Hide member menu.
         missionMemberMenu.hide()
+
+	// Save user id in member input
+	missionMemberInput.attr("data-userid", $(currentTarget).find(".mission-member-userid").text().trim())
     }
 
     clickDistributorButton(event) {
@@ -114,5 +126,8 @@ export default class extends Controller {
         })
 
         missionDistributorMenu.toggle()
+
+	// Save mission id in mission distributor menu.
+	missionDistributorMenu.attr("data-missionid", $(currentTarget).parent(".mission-title-item").attr("id"))
     }
 }
