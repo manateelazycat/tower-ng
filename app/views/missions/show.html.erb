@@ -55,7 +55,8 @@
 	 data-controller="missiondistributor">
       <ul>
 	<% @member_array.each do |member| %>
-	  <li class="mission-member-menu-item">
+	  <li class="mission-member-menu-item"
+	      data-action="click->missiondistributor#clickMemberName">
             <%= image_tag(member[:photo_url], width: 22, height: 22) %>
 	    <div class="mission-member-name inline-block">
 	      <%= member[:name] %>

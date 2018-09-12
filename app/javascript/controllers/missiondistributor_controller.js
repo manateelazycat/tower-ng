@@ -74,4 +74,14 @@ export default class extends Controller {
 	    $(lastMatchMemberItem).find(".splitter").hide()
 	}
     }
+
+    clickMemberName(event) {
+        var missionMemberInput = $(".mission-member-input")
+        var missionMemberMenu = $(".mission-member-menu")
+        var currentTarget = event.currentTarget
+
+	missionMemberInput.val($(currentTarget).find(".mission-member-name").text().trim())
+
+	missionMemberMenu.hide()
+    }
 }
