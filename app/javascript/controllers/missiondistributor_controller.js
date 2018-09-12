@@ -12,6 +12,13 @@ export default class extends Controller {
         })
     }
 
+    onClick(event) {
+ 	if ($(event.target).closest(".mission-member-menu").length === 0
+	    && $(event.target).closest(".mission-member-input").length === 0) {
+	    $(".mission-member-menu").hide()
+	}
+    }
+
     clickMemberInput(event) {
         event.preventDefault()
 

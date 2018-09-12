@@ -6,8 +6,8 @@
         id="<%= controller.controller_name %>-<%= controller.action_name %>">
 
     <div class="menu-eventarea"
-         data-controller="comment"
-         data-action="click@window->comment#onClick">
+         data-controller="comment missiondistributor"
+         data-action="click@window->comment#onClick click@window->missiondistributor#onClick">
     </div>
 
     <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
