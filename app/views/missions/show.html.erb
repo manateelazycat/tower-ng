@@ -27,7 +27,7 @@
             <input type="text"
 		   class="form-control mission-member-input"
 		   placeholder="请输入成员姓名 (或拼音)"
-		   data-action="click->missiondistributor#clickMemberInput">
+		   data-action="click->missiondistributor#clickMemberInput input->missiondistributor#changeMemberInput">
             <div class="input-group-btn">
               <button class="btn btn-default"
 		      type="submit"
@@ -57,7 +57,9 @@
 	<% @member_array.each do |member| %>
 	  <li class="mission-member-menu-item">
             <%= image_tag(member[:photo_url], width: 22, height: 22) %>
-	    <%= member[:name] %>
+	    <div class="mission-member-name inline-block">
+	      <%= member[:name] %>
+	    </div>
 	  </li>
 	  <% unless member == @member_array.last %>
 	    <li class="splitter"></li>

@@ -42,4 +42,13 @@ export default class extends Controller {
 
 	missionMemberMenu.toggle()
     }
+
+    changeMemberInput(event) {
+	var memberItems = $(".mission-member-menu li")
+	var memberNames = $(".mission-member-menu .mission-member-name")
+
+	$.each(memberItems, function(i, val) {
+	    console.log("******** ", i, $(memberNames[i]).text().trim())
+	})
+    }
 }
