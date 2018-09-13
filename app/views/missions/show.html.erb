@@ -17,21 +17,21 @@
     <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
 
     <div class="mission-distributor-menu"
-	 data-controller="missiondistributor">
+         data-controller="missiondistributor">
       <ul>
-	<li class="mission-distributor-menu-item-title">
-	  将任务指派给
-	</li>
-	<li class="mission-distributor-menu-item">
-	  <div class="input-group input-group-sm mb-3 mission-distributor-input-group">
+        <li class="mission-distributor-menu-item-title">
+          将任务指派给
+        </li>
+        <li class="mission-distributor-menu-item">
+          <div class="input-group input-group-sm mb-3 mission-distributor-input-group">
             <input type="text"
-		   class="form-control mission-member-input"
-		   placeholder="请输入成员姓名 (或拼音)"
-		   data-action="click->missiondistributor#clickMemberInput input->missiondistributor#changeMemberInput">
+                   class="form-control mission-member-input"
+                   placeholder="请输入成员姓名 (或拼音)"
+                   data-action="click->missiondistributor#clickMemberInput input->missiondistributor#changeMemberInput">
             <div class="input-group-btn">
               <button class="btn btn-default mission-member-toggle-button"
-		      type="submit"
-		      data-action="missiondistributor#clickMemberMenuButton">
+                      type="submit"
+                      data-action="missiondistributor#clickMemberMenuButton">
                 <span class="glyphicon glyphicon-triangle-bottom"></span>
               </button>
             </div>
@@ -40,38 +40,38 @@
         <li class="mission-distributor-menu-item-title">
           任务截止时间
         </li>
-	<li class="mission-distributor-menu-item">
+        <li class="mission-distributor-menu-item">
           <div class="input-group-sm">
-	    <input type="text"
-		   data-provide="datepicker"
-		   class="form-control mission-date-input"
+            <input type="text"
+                   data-provide="datepicker"
+                   class="form-control mission-date-input"
                    placeholder="请选择截止日期" >
-	  </div>
+          </div>
         </li>
       </ul>
     </div>
 
     <div class="mission-member-menu"
-	 data-controller="missiondistributor">
+         data-controller="missiondistributor">
       <ul>
-	<% @member_array.each do |member| %>
-	  <li class="mission-member-menu-item"
-	      data-action="click->missiondistributor#clickMemberName">
+        <% @member_array.each do |member| %>
+          <li class="mission-member-menu-item"
+              data-action="click->missiondistributor#clickMemberName">
             <%= image_tag(member[:photo_url], width: 22, height: 22) %>
-	    <div class="mission-member-name inline-block">
-	      <%= member[:name] %>
-	    </div>
-	    <div class="mission-member-pinyin inline-block">
+            <div class="mission-member-name inline-block">
+              <%= member[:name] %>
+            </div>
+            <div class="mission-member-pinyin inline-block">
               <%= member[:pinyin] %>
             </div>
-	    <div class="mission-member-userid inline-block">
+            <div class="mission-member-userid inline-block">
               <%= member[:user_hashid] %>
             </div>
             <% unless member == @member_array.last %>
               <div class="splitter"></div>
             <% end %>
-	  </li>
-	<% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
@@ -79,17 +79,17 @@
       <ul>
         <li class="arrow-menu-item">
           <a href="#"
-	     class="arrow-menu-item-text"
-	     data-controller="comment"
-	     data-action="comment#editComment">
+             class="arrow-menu-item-text"
+             data-controller="comment"
+             data-action="comment#editComment">
             编辑
           </a>
         </li>
         <li class="arrow-menu-item">
           <a href="#"
              class="arrow-menu-item-text"
-	     data-controller="comment"
-	     data-action="comment#deleteComment">
+             data-controller="comment"
+             data-action="comment#deleteComment">
             删除
           </a>
         </li>
@@ -127,16 +127,16 @@
                 编辑
               </a>
             </li>
-	    <% if team_administrator? %>
+            <% if team_administrator? %>
               <li class="right-float-menu-item">
-		<a href="#"
+                <a href="#"
                    class="right-float-menu-delete-button"
                    data-toggle="modal"
                    data-target="#confirm-dialog">
                   删除
-		</a>
+                </a>
               </li>
-	    <% end %>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -154,11 +154,11 @@
                    placeholder="新的任务"
                    data-action="keydown->mission#enterMissionPageEdit">
             <button type="button"
-		    class="btn mission-distributor-button"
-		    data-controller="missiondistributor"
-		    data-action="missiondistributor#clickDistributorButton">
-	      未指派
-	    </button>
+                    class="btn mission-distributor-button"
+                    data-controller="missiondistributor"
+                    data-action="missiondistributor#clickDistributorButton">
+              未指派
+            </button>
           </div>
           <% if @mission.summary && !@mission.summary.empty? %>
             <textarea class="mission-edit-textarea" placeholder="任务描述">
@@ -195,11 +195,14 @@
           </span>
         </label>
         <button type="button"
-		class="btn mission-distributor-button"
-		data-controller="missiondistributor"
-                data-action="missiondistributor#clickDistributorButton">
-	  未指派
-	</button>
+                class="btn mission-distributor-button"
+                data-controller="missiondistributor"
+                data-action="missiondistributor#clickDistributorButton"
+                data-userid=<%= @mission.user_id %>
+                data-username="<%= @mission.user_name %>"
+                data-date=<%= @mission.format_finish_time %> >
+	  <%= @mission.format_distributor_info %>
+        </button>
       </li>
       <% if !@mission.summary || @mission.summary.empty? %>
         <div class="mission-add-summary-button">
@@ -219,16 +222,16 @@
       <%= render "comments/create_comment_list", mission: @mission %>
 
       <div class="comment-edit-form-wrap">
-	<div class="mission-comment-edit-icon">
+        <div class="mission-comment-edit-icon">
           <%= image_tag current_user.avatar_url %>
-	</div>
-	<div>
-	  <textarea class="mission-comment-textarea"
+        </div>
+        <div>
+          <textarea class="mission-comment-textarea"
                     placeholder="点击发表评论"
                     data-action="mouseup->mission#clickCommentArea"></textarea>
 
-	  <div class="mission-comment-button-area">
-	    <button class="btn-sm mission-comment-submit-button"
+          <div class="mission-comment-button-area">
+            <button class="btn-sm mission-comment-submit-button"
                     data-action="mission#clickCommentSubmitButton">
               发表评论
             </button>
@@ -238,8 +241,8 @@
                data-action="mission#clickCommentCancelButton">
               取消
             </a>
-	  </div>
-	</div>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -6,7 +6,7 @@ export default class extends Controller {
             todayHighlight: true,
             orientation: "bottom auto",
             language: "zh-CN",
-            format: "yyyy/mm/dd",
+            format: "yyyy-mm-dd",
             autoclose: true,
             weekStart: 1,
         })
@@ -27,8 +27,31 @@ export default class extends Controller {
 	    var missionDistributorMenu = $(".mission-distributor-menu")
 	    var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
 	    var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
+	    var userid
 
-	    console.log("##### ", missionDistributorMenu.data("missionid"), missionMemberInput.data("userid"), missionMemberInput.val(), missionDateInput.val())
+	    if (missionMemberInput.val().trim() == "") {
+		userid = ""
+	    } else {
+		userid = missionMemberInput.data("userid") || ""
+	    }
+
+	    var url = $(location).attr('href')
+	    var urlParams = url.split("/")
+
+	    $.ajax({
+		type: "PATCH",
+		url: "/projects/" + urlParams[4] + "/missions/" + missionDistributorMenu.data("missionid"),
+		data: {
+		    action_type: "update_mission_distributor",
+		    user_id: userid,
+		    finish_date: missionDateInput.val(),
+		},
+		success: function(result) {
+		    var missionDistributorButton = $("#" + missionDistributorMenu.data("missionid") + " .mission-distributor-button")
+
+		    missionDistributorButton.text(result["distributor_info"])
+		}
+	    })
 
 	    // Hide distributor menu.
 	    missionDistributorMenu.hide()
@@ -117,8 +140,14 @@ export default class extends Controller {
         event.preventDefault()
 
         var missionDistributorMenu = $(".mission-distributor-menu")
+	var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
+        var missionMemberInput = $(".mission-member-input")
         var currentTarget = event.currentTarget
         var rect = currentTarget.getBoundingClientRect()
+
+	missionMemberInput.attr("data-userid", $(currentTarget).data("userid"))
+	missionMemberInput.val($(currentTarget).data("username"))
+	missionDateInput.val($(currentTarget).data("date"))
 
         missionDistributorMenu.css({
             left: rect.left + rect.width + 20,

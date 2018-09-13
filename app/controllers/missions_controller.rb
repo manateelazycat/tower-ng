@@ -36,6 +36,22 @@ class MissionsController < ApplicationController
     end
   end
 
+  def update
+    return unless params[:action_type] && params[:action_type] == "update_mission_distributor"
+
+    mission = Mission.find_by_hashid(params[:id])
+    mission.user_id = params[:user_id].empty? ? nil : User.find(params[:user_id]).id
+    mission.finish_time = params[:finish_date].empty? ? nil : DateTime.parse(params[:finish_date])
+
+    mission.save
+
+    respond_to do |format|
+      format.json do
+        render json: { distributor_info: mission.format_distributor_info }
+      end
+    end
+  end
+
   def show
     @mission = Mission.find_by_hashid(params[:id])
     @project = Project.find_by_hashid(params[:project_id])

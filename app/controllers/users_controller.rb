@@ -49,9 +49,7 @@ class UsersController < ApplicationController
     @photo_url = current_user.photo.url
 
     respond_to do |format|
-      format.js {
-        render "update_user_photo.js.erb"
-      }
+      format.js { render "update_user_photo.js.erb" }
     end
   end
 end
