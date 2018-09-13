@@ -50,6 +50,9 @@ export default class extends Controller {
 		    var missionDistributorButton = $("#" + missionDistributorMenu.data("missionid") + " .mission-distributor-button")
 
 		    missionDistributorButton.text(result["distributor_info"])
+		    missionDistributorButton.data("userid", result["userid"])
+		    missionDistributorButton.data("username", result["username"])
+		    missionDistributorButton.data("date", result["date"])
 		}
 	    })
 
@@ -133,7 +136,7 @@ export default class extends Controller {
         missionMemberMenu.hide()
 
 	// Save user id in member input
-	missionMemberInput.attr("data-userid", $(currentTarget).find(".mission-member-userid").text().trim())
+	missionMemberInput.data("userid", $(currentTarget).find(".mission-member-userid").text().trim())
     }
 
     clickDistributorButton(event) {
@@ -145,7 +148,9 @@ export default class extends Controller {
         var currentTarget = event.currentTarget
         var rect = currentTarget.getBoundingClientRect()
 
-	missionMemberInput.attr("data-userid", $(currentTarget).data("userid"))
+	var missionDistributorButton = $(".mission-title-item .mission-distributor-button")
+
+	missionMemberInput.data("userid", $(currentTarget).data("userid"))
 	missionMemberInput.val($(currentTarget).data("username"))
 	missionDateInput.val($(currentTarget).data("date"))
 
@@ -157,6 +162,6 @@ export default class extends Controller {
         missionDistributorMenu.toggle()
 
 	// Save mission id in mission distributor menu.
-	missionDistributorMenu.attr("data-missionid", $(currentTarget).parent(".mission-title-item").attr("id"))
+	missionDistributorMenu.data("missionid", $(currentTarget).parent(".mission-title-item").attr("id"))
     }
 }

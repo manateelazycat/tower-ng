@@ -421,7 +421,7 @@ export default class extends Controller {
 	$(".mission-edit-form-header input").val($(".mission-title-item span").text().trim())
 
 	var missionSummary = $(".mission-edit-form-header textarea")
-	missionSummary.attr("data-summary", missionSummary.val().trim())
+	missionSummary.data("summary", missionSummary.val().trim())
     }
 
     enterMissionPageEdit(event) {

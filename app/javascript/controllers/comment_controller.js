@@ -25,7 +25,7 @@ export default class extends Controller {
 
 	    commentEditButton.show()
 
-	    commentEditButton.attr("data-comment-id", $(currentTarget).closest(".mission-comment").attr("id"))
+	    commentEditButton.data("comment-id", $(currentTarget).closest(".mission-comment").attr("id"))
 	}
     }
 
