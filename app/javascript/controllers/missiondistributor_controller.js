@@ -169,15 +169,9 @@ export default class extends Controller {
         missionDistributorMenu.toggle()
 
 	// Save mission id in mission distributor menu.
-	var url = $(location).attr('href')
-	var urlParams = url.split("/")
-
-	missionDistributorMenu.data("missionid", urlParams[6])
-
 	if (missionDistributorMenu.is(":visible")) {
 	    missionDistributorMenu.data("buttonid", uniqueId)
-	} else {
-	    missionDistributorMenu.data("buttonid", "")
+	    missionDistributorMenu.data("missionid", $(currentTarget).data("missionid"))
 	}
     }
 

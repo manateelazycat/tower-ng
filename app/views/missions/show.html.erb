@@ -154,10 +154,14 @@
                    placeholder="新的任务"
                    data-action="keydown->mission#enterMissionPageEdit">
             <button type="button"
-                    class="mission-distributor-button"
+                    class="<%= @mission.mission_distributor_button_class %>"
                     data-controller="missiondistributor"
-                    data-action="missiondistributor#clickDistributorButton">
-              未指派
+                    data-action="missiondistributor#clickDistributorButton"
+                    data-missionid=<%= @mission.hashid %>
+                    data-userid=<%= @mission.user_id %>
+		    data-username=<%= @mission.user_name %>
+		    data-date=<%= @mission.format_finish_time %> >
+              <%= @mission.format_distributor_info %>
             </button>
           </div>
           <% if @mission.summary && !@mission.summary.empty? %>
@@ -198,10 +202,11 @@
                 class="<%= @mission.mission_distributor_button_class %>"
                 data-controller="missiondistributor"
                 data-action="missiondistributor#clickDistributorButton"
+                data-missionid=<%= @mission.hashid %>
                 data-userid=<%= @mission.user_id %>
-                data-username="<%= @mission.user_name %>"
+                data-username=<%= @mission.user_name %>
                 data-date=<%= @mission.format_finish_time %> >
-	  <%= @mission.format_distributor_info %>
+          <%= @mission.format_distributor_info %>
         </button>
       </li>
       <% if !@mission.summary || @mission.summary.empty? %>
