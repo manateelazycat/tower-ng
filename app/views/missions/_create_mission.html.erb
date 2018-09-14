@@ -10,6 +10,10 @@
       <%= mission.name %>
     </a>
   </label>
-  <button type="button" class="btn mission-distributor-button">未指派</button>
+  <%= render "layouts/mission_distributor_button",
+  mission: mission,
+  controller: "missiondistributor",
+  action: "missiondistributor#clickDistributorButton"
+  %>
 </li>
 <%= render "mission_lists/mission_edit_form" %>

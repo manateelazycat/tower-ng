@@ -1,10 +1,10 @@
 <button type="button"
         class="<%= mission.mission_distributor_button_class %>"
-        data-controller="missiondistributor"
-        data-action="missiondistributor#clickDistributorButton"
-        data-missionid=<%= mission.hashid %>
-        data-userid=<%= mission.user_id %>
-	      data-username=<%= mission.user_name %>
-	      data-date=<%= mission.format_finish_time %> >
+        data-controller=<%= controller %>
+        data-action=<%= action %>
+	data-missionid=<%= mission.hashid %>
+	data-userid=<%= mission.user_id %>
+	data-username=<%= mission.user_name %>
+	data-date=<%= mission.format_finish_time %> >
   <%= mission.format_distributor_info %>
 </button>

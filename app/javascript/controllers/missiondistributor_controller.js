@@ -143,6 +143,10 @@ export default class extends Controller {
 	missionMemberInput.data("userid", $(currentTarget).find(".mission-member-userid").text().trim())
     }
 
+    clickMissionListDistributorButton(event) {
+	
+    }
+
     clickDistributorButton(event) {
         event.preventDefault()
 

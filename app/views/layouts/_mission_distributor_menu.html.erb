@@ -1,0 +1,58 @@
+<div class="mission-distributor-menu"
+     data-controller="missiondistributor">
+  <ul>
+    <li class="mission-distributor-menu-item-title">
+      将任务指派给
+    </li>
+    <li class="mission-distributor-menu-item">
+      <div class="input-group input-group-sm mb-3 mission-distributor-input-group">
+        <input type="text"
+               class="form-control mission-member-input"
+               placeholder="请输入成员姓名 (或拼音)"
+               data-action="click->missiondistributor#clickMemberInput input->missiondistributor#changeMemberInput">
+        <div class="input-group-btn">
+          <button class="btn btn-default mission-member-toggle-button"
+                  type="submit"
+                  data-action="missiondistributor#clickMemberMenuButton">
+            <span class="glyphicon glyphicon-triangle-bottom"></span>
+          </button>
+        </div>
+      </div>
+    </li>
+    <li class="mission-distributor-menu-item-title">
+      任务截止时间
+    </li>
+    <li class="mission-distributor-menu-item">
+      <div class="input-group-sm">
+        <input type="text"
+               data-provide="datepicker"
+               class="form-control mission-date-input"
+               placeholder="请选择截止日期" >
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="mission-member-menu"
+     data-controller="missiondistributor">
+  <ul>
+    <% current_team.team_member_list.each do |member| %>
+      <li class="mission-member-menu-item"
+          data-action="click->missiondistributor#clickMemberName">
+        <%= image_tag(member[:photo_url], width: 22, height: 22) %>
+        <div class="mission-member-name inline-block">
+          <%= member[:name] %>
+        </div>
+        <div class="mission-member-pinyin inline-block">
+          <%= member[:pinyin] %>
+        </div>
+        <div class="mission-member-userid inline-block">
+          <%= member[:user_hashid] %>
+        </div>
+        <% unless member == current_team.team_member_list.last %>
+          <div class="splitter"></div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
