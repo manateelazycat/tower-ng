@@ -277,10 +277,10 @@ export default class extends Controller {
 
 	$.ajax({
 	    type: "DELETE",
-	    url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("id"),
+	    url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid"),
 	    success: function(result) {
 		$("#confirm-dialog").modal("hide")
-		$("#" + missionToolbar.attr("id") + ".mission-title-link").parents("li").fadeOut(500)
+		$("#" + missionToolbar.attr("missionid") + ".mission-title-link").parents("li").fadeOut(500)
 	    }
 	})
     }
@@ -298,7 +298,9 @@ export default class extends Controller {
 	event.preventDefault()
 
 	var missionToolbar = $(".mission-toolbar")
-	var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
+	missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
+
+	var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
 	var mission = missionTitleLink.parents("li")
 	var missionEditInput = mission.next().find(".edit-input")
 
@@ -314,8 +316,10 @@ export default class extends Controller {
 	event.preventDefault()
 
 	var missionToolbar = $(".mission-toolbar")
-	var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
+	var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
 	var mission = missionTitleLink.parents("li")
+
+	this.test(mission.find(".mission-distributor-button"))
 
 	mission.fadeIn(0)
 	mission.next().hide()
@@ -341,16 +345,20 @@ export default class extends Controller {
             var urlParams = url.split("/")
 
 	    var missionToolbar = $(".mission-toolbar")
-	    var missionTitleLink = $("#" + missionToolbar.attr("id") + ".mission-title-link")
+	    var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
 	    var mission = missionTitleLink.parents("li")
 
-            $.ajax({
+	    var self = this
+
+	    $.ajax({
                 type: "GET",
-                url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("id") + "/edit",
+                url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid") + "/edit",
                 data: {
                     name: missionName,
                 },
                 success: function(result) {
+		    self.test(mission.find(".mission-distributor-button"))
+
 		    mission.fadeIn(0)
 		    mission.next().hide()
 
@@ -376,7 +384,7 @@ export default class extends Controller {
 	missionToolbar.show()
 
 	// Assgin mission id to mission toolbar.
-	missionToolbar.attr("id", $(currentTarget).attr("id"))
+	missionToolbar.attr("hover_missionid", $(currentTarget).attr("id"))
     }
 
     mouseLeaveMission(event) {
@@ -455,7 +463,7 @@ export default class extends Controller {
 		    summary: summary
 		},
                 success: function(result) {
-		    self.updateDistributorButtonInfo()
+		    self.updateDistributorButtonInfo($(".mission-title-item").find("button"))
 
 		    $(".mission-edit-form-header").hide()
 		    $(".mission-title-item").show()
@@ -477,7 +485,7 @@ export default class extends Controller {
     clickMissionPageEditCancelButton(event) {
 	event.preventDefault()
 
-	this.updateDistributorButtonInfo()
+	this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
 
 	$(".mission-edit-form-header").hide()
 	$(".mission-title-item").show()
@@ -541,10 +549,9 @@ export default class extends Controller {
      	$(".mission-comment-textarea").attr("rows", 1)
     }
 
-    updateDistributorButtonInfo() {
+    updateDistributorButtonInfo(missionDistributorButton) {
 	var missionDistributorMenu = $(".mission-distributor-menu")
 	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
-	var missionDistributorButton = $(".mission-title-item").find("button")
 
 	missionDistributorButton.text(syncButton.text())
 	missionDistributorButton.data("userid", syncButton.data("userid"))
