@@ -15,7 +15,8 @@ class MembersController < ApplicationController
                        type: "超级管理员",
                        email: team_creator.email,
                        color: "member-type-super-admin",
-                       photo_url: current_user.avatar_url)
+                       photo_url: current_user.avatar_url,
+                       active: true)
 
     # Push team members.
     TeamAdmin.select { |t| t.team_id == team.id }.each do |team_admin|
@@ -30,7 +31,8 @@ class MembersController < ApplicationController
                            type: member_type,
                            email: user.email,
                            color: member_color,
-                           photo_url: user.avatar_url)
+                           photo_url: user.avatar_url,
+                           active: true)
 
       elsif !user.nil?
         @member_array.push(user_hashid: user.hashid,
@@ -38,7 +40,8 @@ class MembersController < ApplicationController
                            type: "已邀请",
                            email: user.email,
                            color: member_color,
-                           photo_url: user.avatar_url)
+                           photo_url: user.avatar_url,
+                           active: false)
 
       end
     end
@@ -59,17 +62,15 @@ class MembersController < ApplicationController
 
   def create
     params[:members].values.reverse.uniq { |m| m[0] }.reverse_each do |member|
-      user = User.find_by_email(member[0])
+      next if User.find_by_email(member[0])
 
-      unless user
-        user = User.new(email: member[0])
-        user.save
-
-        print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: current_team.hashid), "\n")
-      end
+      user = User.new(email: member[0])
+      user.save
 
       team_admin = TeamAdmin.new(team_id: current_team.id, user_id: user.id, is_administrator: member[1] == "admin")
       team_admin.save
+
+      print("Send activation mail: ", edit_account_activation_url(user.activation_token, email: user.email, team_id: current_team.hashid), "\n")
     end
 
     redirect_to team_members_path

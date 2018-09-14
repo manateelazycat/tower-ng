@@ -14,22 +14,24 @@
       <% end %>
       <ul>
         <% @member_array.each do |member| %>
-          <li class="member-item flex-vcenter">
-            <div class="member-item-icon">
-	      <%= image_tag member[:photo_url] %>
-            </div>
-            <div class="member-item-name">
-	      <%= link_to member_path(member[:user_hashid]), class: "member-item-name-button" do %>
-		<%= member[:name] %>
-	      <% end %>
-            </div>
-            <div class= <%= member[:color] %>>
-	      <%= member[:type] %>
-            </div>
-            <div class="member-item-email">
-	      <%= member[:email] %>
-            </div>
-          </li>
+	  <% if member[:active] || team_administrator? %>
+            <li class="member-item flex-vcenter">
+              <div class="member-item-icon">
+		<%= image_tag member[:photo_url] %>
+              </div>
+              <div class="member-item-name">
+		<%= link_to member_path(member[:user_hashid]), class: "member-item-name-button" do %>
+		  <%= member[:name] %>
+		<% end %>
+              </div>
+              <div class= <%= member[:color] %>>
+		<%= member[:type] %>
+              </div>
+              <div class="member-item-email">
+		<%= member[:email] %>
+              </div>
+            </li>
+	  <% end %>
         <% end %>
       </ul>
     </div>
