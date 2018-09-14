@@ -541,10 +541,6 @@ export default class extends Controller {
      	$(".mission-comment-textarea").attr("rows", 1)
     }
 
-    changeDistributor(event) {
-	console.log("*********")
-    }
-
     updateDistributorButtonInfo() {
 	var missionDistributorMenu = $(".mission-distributor-menu")
 	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
