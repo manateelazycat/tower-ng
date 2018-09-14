@@ -445,6 +445,8 @@ export default class extends Controller {
 
 	    var summary = $(".mission-edit-form-header textarea").val().trim()
 
+	    var self = this
+
 	    $.ajax({
                 type: "GET",
                 url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/edit",
@@ -453,6 +455,8 @@ export default class extends Controller {
 		    summary: summary
 		},
                 success: function(result) {
+		    self.updateDistributorButtonInfo()
+
 		    $(".mission-edit-form-header").hide()
 		    $(".mission-title-item").show()
 		    $(".mission-summary").show()
@@ -472,6 +476,8 @@ export default class extends Controller {
 
     clickMissionPageEditCancelButton(event) {
 	event.preventDefault()
+
+	this.updateDistributorButtonInfo()
 
 	$(".mission-edit-form-header").hide()
 	$(".mission-title-item").show()
@@ -537,5 +543,17 @@ export default class extends Controller {
 
     changeDistributor(event) {
 	console.log("*********")
+    }
+
+    updateDistributorButtonInfo() {
+	var missionDistributorMenu = $(".mission-distributor-menu")
+	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
+	var missionDistributorButton = $(".mission-title-item").find("button")
+
+	missionDistributorButton.text(syncButton.text())
+	missionDistributorButton.data("userid", syncButton.data("userid"))
+	missionDistributorButton.data("username", syncButton.data("username"))
+	missionDistributorButton.data("date", syncButton.data("date"))
+	missionDistributorButton.attr("class", syncButton.attr("class"))
     }
 }
