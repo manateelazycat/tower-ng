@@ -49,7 +49,7 @@ export default class extends Controller {
 			finish_date: missionDateInput.val(),
 		    },
 		    success: function(result) {
-			var missionDistributorButton = $("#" + missionDistributorMenu.data("missionid") + " .mission-distributor-button")
+			var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
 
 			missionDistributorButton.text(result["distributor_info"])
 			missionDistributorButton.data("userid", result["userid"])
@@ -154,6 +154,9 @@ export default class extends Controller {
 
 	var missionDistributorButton = $(".mission-title-item .mission-distributor-button")
 
+	var uniqueId = this.generateUniqueId()
+	$(currentTarget).attr("id", uniqueId)
+
 	missionMemberInput.data("userid", $(currentTarget).data("userid"))
 	missionMemberInput.val($(currentTarget).data("username"))
 	missionDateInput.val($(currentTarget).data("date"))
@@ -166,6 +169,19 @@ export default class extends Controller {
         missionDistributorMenu.toggle()
 
 	// Save mission id in mission distributor menu.
-	missionDistributorMenu.data("missionid", $(currentTarget).parent(".mission-title-item").attr("id"))
+	var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+	missionDistributorMenu.data("missionid", urlParams[6])
+
+	if (missionDistributorMenu.is(":visible")) {
+	    missionDistributorMenu.data("buttonid", uniqueId)
+	} else {
+	    missionDistributorMenu.data("buttonid", "")
+	}
+    }
+
+    generateUniqueId() {
+	return 'id-' + Math.random().toString(36).substr(2, 16);
     }
 }
