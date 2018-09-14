@@ -25,40 +25,43 @@ export default class extends Controller {
             && $(event.target).closest(".mission-member-menu").length === 0
            ) {
 	    var missionDistributorMenu = $(".mission-distributor-menu")
-	    var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
-	    var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
-	    var userid
 
-	    if (missionMemberInput.val().trim() == "") {
-		userid = ""
-	    } else {
-		userid = missionMemberInput.data("userid") || ""
-	    }
+	    if (missionDistributorMenu.is(":visible")) {
+		var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
+		var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
+		var userid
 
-	    var url = $(location).attr('href')
-	    var urlParams = url.split("/")
-
-	    $.ajax({
-		type: "PATCH",
-		url: "/projects/" + urlParams[4] + "/missions/" + missionDistributorMenu.data("missionid"),
-		data: {
-		    action_type: "update_mission_distributor",
-		    user_id: userid,
-		    finish_date: missionDateInput.val(),
-		},
-		success: function(result) {
-		    var missionDistributorButton = $("#" + missionDistributorMenu.data("missionid") + " .mission-distributor-button")
-
-		    missionDistributorButton.text(result["distributor_info"])
-		    missionDistributorButton.data("userid", result["userid"])
-		    missionDistributorButton.data("username", result["username"])
-		    missionDistributorButton.data("date", result["date"])
-		    missionDistributorButton.attr("class", result["css"])
+		if (missionMemberInput.val().trim() == "") {
+		    userid = ""
+		} else {
+		    userid = missionMemberInput.data("userid") || ""
 		}
-	    })
 
-	    // Hide distributor menu.
-	    missionDistributorMenu.hide()
+		var url = $(location).attr('href')
+		var urlParams = url.split("/")
+
+		$.ajax({
+		    type: "PATCH",
+		    url: "/projects/" + urlParams[4] + "/missions/" + missionDistributorMenu.data("missionid"),
+		    data: {
+			action_type: "update_mission_distributor",
+			user_id: userid,
+			finish_date: missionDateInput.val(),
+		    },
+		    success: function(result) {
+			var missionDistributorButton = $("#" + missionDistributorMenu.data("missionid") + " .mission-distributor-button")
+
+			missionDistributorButton.text(result["distributor_info"])
+			missionDistributorButton.data("userid", result["userid"])
+			missionDistributorButton.data("username", result["username"])
+			missionDistributorButton.data("date", result["date"])
+			missionDistributorButton.attr("class", result["css"])
+		    }
+		})
+
+		// Hide distributor menu.
+		missionDistributorMenu.hide()
+	    }
         }
     }
 
