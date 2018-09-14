@@ -10,6 +10,15 @@
       <%= mission.name %>
     </a>
   </label>
+  <% if mission.comments.length > 0 %>
+    <button type="button"
+            id=<%= mission.hashid %>
+            class="mission-distributor-button mission-distributor-confirm"
+            data-controller="mission"
+            data-action="mission#jumpToMissionPage">
+      <%= mission.comments.length %>条评论
+    </button>
+  <% end %>
   <%= render "layouts/mission_distributor_button",
   mission: mission,
   controller: "missiondistributor",
