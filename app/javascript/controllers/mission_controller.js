@@ -35,7 +35,7 @@ export default class extends Controller {
 
         var currentTarget = event.currentTarget
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
-        var missionNewInput = closestMissionListTitle.find(".edit-input")
+        var missionNewInput = closestMissionListTitle.find(".mission-edit-input")
         var missionNewFormItem = closestMissionListTitle.find(".mission-new-form-item")
         var missionName = missionNewInput.val().trim()
 
