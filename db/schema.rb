@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_091340) do
+ActiveRecord::Schema.define(version: 2018_09_14_151322) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_091340) do
     t.string "photo"
     t.string "avatar"
     t.string "pinyin"
+    t.integer "finish_by"
   end
 
 end
