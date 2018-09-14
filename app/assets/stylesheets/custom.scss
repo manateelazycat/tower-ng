@@ -635,14 +635,11 @@ $phone-page-top-bar-height: 54px;
 .mission-distributor-button {
     font-size: 8px;
     width: max-content;
-    height: 22px;
     padding-top: 2px;
-    padding-bottom: 2px;
     padding-left: 10px;
     padding-right: 10px;
-    margin-bottom: 5px;
     margin-left: 10px;
-    border: $button-border;
+    border: none;
     border-radius: 20px;
     outline: none !important;
 }
