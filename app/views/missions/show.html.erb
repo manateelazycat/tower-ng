@@ -5,10 +5,7 @@
   <body class="fill-background-color"
         id="<%= controller.controller_name %>-<%= controller.action_name %>">
 
-    <div class="menu-eventarea"
-         data-controller="comment missiondistributor"
-         data-action="click@window->comment#onClick click@window->missiondistributor#onClick">
-    </div>
+    <%= render "layouts/menu_eventarea" %>
 
     <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
     <%= render 'layouts/header' %>
