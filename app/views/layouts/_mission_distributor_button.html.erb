@@ -1,10 +1,22 @@
 <button type="button"
+        <% if mission %>
         class="<%= mission.mission_distributor_button_class %>"
+        data-missionid=<%= mission.hashid %>
+        data-userid=<%= mission.user_id %>
+        data-username=<%= mission.user_name %>
+        data-date=<%= mission.format_finish_time %>
+        <% else %>
+        class="mission-distributor-button mission-distributor-empty"
+        data-missionid=""
+        data-userid=""
+        data-username=""
+        data-date=""
+        <% end %>
         data-controller=<%= controller %>
-        data-action=<%= action %>
-	data-missionid=<%= mission.hashid %>
-	data-userid=<%= mission.user_id %>
-	data-username=<%= mission.user_name %>
-	data-date=<%= mission.format_finish_time %> >
-  <%= mission.format_distributor_info %>
+        data-action=<%= action %> >
+  <% if mission %>
+    <%= mission.format_distributor_info %>
+  <% else %>
+    未指派
+  <% end %>
 </button>

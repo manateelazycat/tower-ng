@@ -88,19 +88,26 @@ export default class extends Controller {
         var url = $(location).attr('href')
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
+        var missionDistributorMenu = $(".mission-distributor-menu")
+        var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
+
         $.ajax({
             type: "POST",
             url: "/projects/" + projectId + "/missions",
             data: {
                 mission_list_id: mission_list_id,
-                name: missionNewInput.val()
+                name: missionNewInput.val(),
+		user_id: missionDistributorButton.data("userid"),
+		finish_date: missionDistributorButton.data("date"),
             },
             success: function(result) {
                 // Insert mission template.
                 missionNewFormItem.before(result)
 
                 // Clean new mission input content.
-                missionNewInput.val('')
+                missionNewInput.val("")
+		missionDistributorButton.text("未指派")
+		missionDistributorButton.attr("class", "mission-distributor-button mission-distributor-empty")
             }
         })
     }

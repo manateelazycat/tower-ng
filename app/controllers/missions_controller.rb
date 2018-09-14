@@ -5,10 +5,14 @@ class MissionsController < ApplicationController
   def create
     mission_list = MissionList.find_by_hashid(params[:mission_list_id])
 
+    print(params)
+
     mission = mission_list.missions.create(
       name: params[:name],
       is_finish: false,
-      mission_list_id: params[:mission_list_id]
+      mission_list_id: params[:mission_list_id],
+      user_id: params[:user_id].empty? ? nil : User.find_by_hashid(params[:user_id]).id,
+      finish_time: params[:finish_date].empty? ? nil : DateTime.parse(params[:finish_date])
     )
 
     respond_to do |format|

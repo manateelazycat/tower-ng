@@ -7,7 +7,11 @@
              class="edit-input mission-edit-input"
              placeholder="新的任务"
              data-action="keydown->mission#enterMissionNew">
-      <button type="button" class="btn mission-distributor-button">未指派</button>
+      <%= render "layouts/mission_distributor_button",
+      mission: nil,
+      controller: "missiondistributor",
+      action: "missiondistributor#clickDistributorButton"
+      %>
     </div>
     <div>
       <button class="btn-sm mission-new-submit-button"
