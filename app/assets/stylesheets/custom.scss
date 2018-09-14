@@ -634,8 +634,6 @@ $phone-page-top-bar-height: 54px;
 
 .mission-distributor-button {
     font-size: 8px;
-    color: #666;
-    background: #fff;
     width: max-content;
     height: 22px;
     padding-top: 2px;
@@ -646,6 +644,21 @@ $phone-page-top-bar-height: 54px;
     margin-left: 10px;
     border: $button-border;
     border-radius: 20px;
+}
+
+.mission-distributor-empty {
+    color: #666;
+    background: #fff;
+}
+
+.mission-distributor-confirm {
+    color: #666;
+    background: #E7F2F2;
+}
+
+.mission-distributor-delay {
+    color: #F13A59;
+    background: #FFD8D7;
 }
 
 .mission-add-button {

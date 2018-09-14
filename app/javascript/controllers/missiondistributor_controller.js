@@ -53,6 +53,7 @@ export default class extends Controller {
 		    missionDistributorButton.data("userid", result["userid"])
 		    missionDistributorButton.data("username", result["username"])
 		    missionDistributorButton.data("date", result["date"])
+		    missionDistributorButton.attr("class", result["css"])
 		}
 	    })
 

@@ -154,7 +154,7 @@
                    placeholder="新的任务"
                    data-action="keydown->mission#enterMissionPageEdit">
             <button type="button"
-                    class="btn mission-distributor-button"
+                    class="mission-distributor-button"
                     data-controller="missiondistributor"
                     data-action="missiondistributor#clickDistributorButton">
               未指派
@@ -195,7 +195,7 @@
           </span>
         </label>
         <button type="button"
-                class="btn mission-distributor-button"
+                class="<%= @mission.mission_distributor_button_class %>"
                 data-controller="missiondistributor"
                 data-action="missiondistributor#clickDistributorButton"
                 data-userid=<%= @mission.user_id %>

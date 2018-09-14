@@ -40,7 +40,7 @@ class MissionsController < ApplicationController
     return unless params[:action_type] && params[:action_type] == "update_mission_distributor"
 
     mission = Mission.find_by_hashid(params[:id])
-    
+
     return unless mission
 
     mission.user_id = params[:user_id].empty? ? nil : User.find(params[:user_id]).id
@@ -53,7 +53,8 @@ class MissionsController < ApplicationController
         render json: { distributor_info: mission.format_distributor_info,
                        userid: mission.user_id,
                        username: mission.user_name,
-                       date: mission.format_finish_time }
+                       date: mission.format_finish_time,
+                       css: mission.mission_distributor_button_class }
       end
     end
   end

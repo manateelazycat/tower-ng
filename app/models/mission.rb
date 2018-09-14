@@ -27,4 +27,14 @@ class Mission < ApplicationRecord
       format_finish_time
     end
   end
+
+  def mission_distributor_button_class
+    if !user_id && !finish_time
+      "mission-distributor-button mission-distributor-empty"
+    elsif finish_time && Date.current > finish_time
+      "mission-distributor-button mission-distributor-delay"
+    else
+      "mission-distributor-button mission-distributor-confirm"
+    end
+  end
 end
