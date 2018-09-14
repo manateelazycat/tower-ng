@@ -639,7 +639,6 @@ $phone-page-top-bar-height: 54px;
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 10px;
-    border: none;
     border-radius: 20px;
     outline: none !important;
 }
@@ -647,16 +646,19 @@ $phone-page-top-bar-height: 54px;
 .mission-distributor-empty {
     color: #666;
     background: #fff;
+    border: $button-border;
 }
 
 .mission-distributor-confirm {
     color: #666;
     background: #E7F2F2;
+    border: none;
 }
 
 .mission-distributor-delay {
     color: #F13A59;
     background: #FFD8D7;
+    border: none;
 }
 
 .mission-add-button {
