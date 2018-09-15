@@ -46,8 +46,6 @@ export default class extends Controller {
                 var url = $(location).attr('href')
                 var projectId = url.substring(url.lastIndexOf('/') + 1)
 
-                var self = this
-
                 $.ajax({
                     type: "POST",
                     url: "/projects/" + projectId + "/mission_lists",
@@ -55,6 +53,7 @@ export default class extends Controller {
                         name: "默认任务列表",
                         project_id: projectId
                     },
+		    context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
                             // Replace new mission list in scroll area and scroll to bottom.
@@ -66,7 +65,7 @@ export default class extends Controller {
 
                             // Add new mission.
                             $(".edit-input").val(missionName)
-                            self.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".edit-input"))
+                            this.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".edit-input"))
 
                             // Show mission new form.
                             $(".mission-new-form").show()
@@ -155,8 +154,6 @@ export default class extends Controller {
         if (missionListInput.val().trim() == "") {
             updateTooltip(createTooltip("请输入任务清单名字"), missionListInput)
         } else {
-            var self = this
-
             if ($(".right-float-menu-item").first().attr("id") == "mission-list-default") {
                 $.ajax({
                     type: "POST",
@@ -165,6 +162,7 @@ export default class extends Controller {
                         name: missionListInput.val(),
                         project_id: projectId
                     },
+		    context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
                             // Update default mission list id and text.
@@ -355,16 +353,15 @@ export default class extends Controller {
 	    var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
 	    var mission = missionTitleLink.parents("li")
 
-	    var self = this
-
 	    $.ajax({
                 type: "GET",
                 url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid") + "/edit",
                 data: {
                     name: missionName,
                 },
+		context: this,
                 success: function(result) {
-		    self.test(mission.find(".mission-distributor-button"))
+		    this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
 
 		    mission.fadeIn(0)
 		    mission.next().hide()
@@ -460,8 +457,6 @@ export default class extends Controller {
 
 	    var summary = $(".mission-edit-form-header textarea").val().trim()
 
-	    var self = this
-
 	    $.ajax({
                 type: "GET",
                 url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/edit",
@@ -469,8 +464,9 @@ export default class extends Controller {
                     name: missionName,
 		    summary: summary
 		},
+		context: this,
                 success: function(result) {
-		    self.updateDistributorButtonInfo($(".mission-title-item").find("button"))
+		    this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
 
 		    $(".mission-edit-form-header").hide()
 		    $(".mission-title-item").show()
@@ -560,7 +556,7 @@ export default class extends Controller {
 	var missionDistributorMenu = $(".mission-distributor-menu")
 	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
 
-	missionDistributorButton.text(syncButton.val())
+	missionDistributorButton.text(syncButton.text())
 	missionDistributorButton.data("userid", syncButton.data("userid"))
 	missionDistributorButton.data("username", syncButton.data("username"))
 	missionDistributorButton.data("date", syncButton.data("date"))
