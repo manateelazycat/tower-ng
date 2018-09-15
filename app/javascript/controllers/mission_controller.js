@@ -326,7 +326,7 @@ export default class extends Controller {
 	var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
 	var mission = missionTitleLink.parents("li")
 
-	this.test(mission.find(".mission-distributor-button"))
+	this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
 
 	mission.fadeIn(0)
 	mission.next().hide()
