@@ -560,7 +560,7 @@ export default class extends Controller {
 	var missionDistributorMenu = $(".mission-distributor-menu")
 	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
 
-	missionDistributorButton.text(syncButton.text())
+	missionDistributorButton.text(syncButton.val())
 	missionDistributorButton.data("userid", syncButton.data("userid"))
 	missionDistributorButton.data("username", syncButton.data("username"))
 	missionDistributorButton.data("date", syncButton.data("date"))
