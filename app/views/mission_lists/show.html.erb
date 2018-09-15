@@ -24,31 +24,8 @@
          class="board-box min-board-height right-float-menu-parent">
       <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务清单吗?", controller: "mission", action: "mission#deleteMissionList" %>
 
-      <div class="right-float-menu-box">
-        <div class="right-float-menu"
-             data-target="rightfloatmenu.rightMenuArea"
-             data-action="scroll@window->rightfloatmenu#onScroll">
-          <ul class="right-float-menu-scrollarea">
-            <li class="right-float-menu-item">
-              <a href="#"
-                 class="right-float-menu-normal-button"
-                 data-action="mission#editMissionList">
-                编辑
-              </a>
-            </li>
-	    <% if team_administrator? %>
-              <li class="right-float-menu-item">
-		<a href="#"
-                   class="right-float-menu-delete-button"
-                   data-toggle="modal"
-                   data-target="#confirm-dialog">
-                  删除
-		</a>
-              </li>
-	    <% end %>
-          </ul>
-        </div>
-      </div>
+      <%= render "layouts/right_float_menu", edit_action: "mission#editMissionList" %>
+      
       <%= render "mission_lists/create_mission_list", mission_list: @mission_list %>
     </div>
 
