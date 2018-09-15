@@ -4,9 +4,20 @@
   <% if team_administrator? %>
     <a href="#"
        class="mission-toolbar-item glyphicon glyphicon-trash"
-       data-action="mission#clickDeleteMissionButton"></a>
+       <% if local_assigns.has_key? :delete_dialog %>
+       data-toggle="modal"
+       data-target="<%= delete_dialog %>"
+       <% else %>
+       data-action="mission#clickDeleteMissionButton"
+       <% end %> >
+    </a>
   <% end %>
   <a href="#"
      class="mission-toolbar-item glyphicon glyphicon-pencil"
-     data-action="mission#clickEditMissionButton"></a>
+     <% if local_assigns.has_key? :edit_action %>
+     data-action="<%= edit_action %>"
+     <% else %>
+     data-action="mission#clickEditMissionButton"
+     <% end %> >
+  </a>
 </div>

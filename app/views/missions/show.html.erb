@@ -9,7 +9,10 @@
 
     <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
     <%= render 'layouts/header' %>
-    <%= render "layouts/mission_toolbar" %>
+    <%= render "layouts/mission_toolbar",
+    edit_action: "mission#clickMissionPageEditButton",
+    delete_dialog: "#confirm-dialog"
+    %>
 
     <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
 
