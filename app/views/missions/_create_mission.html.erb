@@ -19,10 +19,6 @@
       <%= mission.comments.length %>条评论
     </button>
   <% end %>
-  <%= render "layouts/mission_distributor_button",
-  mission: mission,
-  controller: "missiondistributor",
-  action: "missiondistributor#clickDistributorButton"
-  %>
+  <%= render "layouts/mission_distributor_button", mission: mission %>
 </li>
 <%= render "mission_lists/mission_edit_form", mission: mission %>

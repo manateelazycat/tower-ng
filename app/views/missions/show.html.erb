@@ -93,11 +93,7 @@
                    class="edit-input"
                    placeholder="新的任务"
                    data-action="keydown->mission#enterMissionPageEdit">
-            <%= render "layouts/mission_distributor_button",
-            mission: @mission,
-            controller: "missiondistributor",
-            action: "missiondistributor#clickDistributorButton"
-	    %>
+            <%= render "layouts/mission_distributor_button", mission: @mission %>
           </div>
           <% if @mission.summary && !@mission.summary.empty? %>
             <textarea class="mission-edit-textarea" placeholder="任务描述">
@@ -133,11 +129,7 @@
             <%= @mission.name %>
           </span>
         </label>
-        <%= render "layouts/mission_distributor_button",
-	mission: @mission,
-	controller: "missiondistributor",
-	action: "missiondistributor#clickDistributorButton"
-	%>
+        <%= render "layouts/mission_distributor_button", mission: @mission %>
       </li>
       <% if !@mission.summary || @mission.summary.empty? %>
         <div class="mission-add-summary-button">

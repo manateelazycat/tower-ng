@@ -7,11 +7,7 @@
              class="edit-input"
              placeholder="新的任务"
              data-action="keydown->mission#enterMissionEdit">
-      <%= render "layouts/mission_distributor_button",
-      mission: mission,
-      controller: "missiondistributor",
-      action: "missiondistributor#clickDistributorButton"
-      %>
+      <%= render "layouts/mission_distributor_button", mission: mission %>
     </div>
     <div>
       <button class="btn-sm mission-edit-submit-button"
