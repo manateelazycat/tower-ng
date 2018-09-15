@@ -555,8 +555,12 @@ export default class extends Controller {
     updateDistributorButtonInfo(missionDistributorButton) {
 	var missionDistributorMenu = $(".mission-distributor-menu")
 	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
+	var syncButtonText = syncButton.text().trim()
+	if (syncButtonText == "") {
+	    syncButtonText = "未指派"
+	}
 
-	missionDistributorButton.text(syncButton.text())
+	missionDistributorButton.text(syncButtonText)
 	missionDistributorButton.data("userid", syncButton.data("userid"))
 	missionDistributorButton.data("username", syncButton.data("username"))
 	missionDistributorButton.data("date", syncButton.data("date"))
