@@ -6,7 +6,12 @@
 
     <%= render "layouts/menu_eventarea" %>
     <%= render "layouts/loading_dialog", message: "正在删除任务列表..." %>
-    <%= render "layouts/mission_toolbar" %>
+    <%= render "layouts/confirm_dialog", dialogid: "mission-confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
+
+    <%= render "layouts/mission_toolbar",
+    delete_dialog: "#mission-confirm-dialog",
+    dialog_id: "mission-confirm-dialog"
+    %>
     <%= render 'layouts/header' %>
 
     <%= render "layouts/mission_distributor_menu" %>
@@ -25,7 +30,7 @@
       <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务清单吗?", controller: "mission", action: "mission#deleteMissionList" %>
 
       <%= render "layouts/right_float_menu", edit_action: "mission#editMissionList" %>
-      
+
       <%= render "mission_lists/create_mission_list", mission_list: @mission_list %>
     </div>
 

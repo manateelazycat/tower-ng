@@ -270,8 +270,15 @@ export default class extends Controller {
     clickDeleteMissionButton(event) {
 	event.preventDefault()
 
+        var currentTarget = event.currentTarget
+	var toolbarDialog = "#" + $(currentTarget).data("dialog-id")
+
+	var missionToolbar = $(".mission-toolbar")
+	missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
+	missionToolbar.attr("toolbar_dialog", toolbarDialog)
+
 	$(".mission-toolbar").hide()
-	$("#confirm-dialog").modal("show")
+	$(toolbarDialog).modal("show")
     }
 
     deleteMission(event) {
@@ -280,11 +287,12 @@ export default class extends Controller {
 	var url = $(location).attr('href')
 	var urlParams = url.split("/")
 
+
 	$.ajax({
 	    type: "DELETE",
 	    url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid"),
 	    success: function(result) {
-		$("#confirm-dialog").modal("hide")
+		$($(".mission-toolbar").attr("toolbar_dialog")).modal("hide")
 		$("#" + missionToolbar.attr("missionid") + ".mission-title-link").parents("li").fadeOut(500)
 	    }
 	})

@@ -4,12 +4,8 @@
   <% if team_administrator? %>
     <a href="#"
        class="mission-toolbar-item glyphicon glyphicon-trash"
-       <% if local_assigns.has_key? :delete_dialog %>
-       data-toggle="modal"
-       data-target="<%= delete_dialog %>"
-       <% else %>
-       data-action="mission#clickDeleteMissionButton"
-       <% end %> >
+       data-dialog-id="<%= dialog_id %>"
+       data-action="mission#clickDeleteMissionButton" >
     </a>
   <% end %>
   <a href="#"
