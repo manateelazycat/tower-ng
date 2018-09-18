@@ -21,6 +21,8 @@ export default class extends Controller {
     clickMissionNewButton(event) {
         event.preventDefault()
 
+	console.log("******")
+
         var currentTarget = event.currentTarget
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
         var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form")
@@ -573,5 +575,64 @@ export default class extends Controller {
 	missionDistributorButton.data("username", syncButton.data("username"))
 	missionDistributorButton.data("date", syncButton.data("date"))
 	missionDistributorButton.attr("class", syncButton.attr("class"))
+    }
+
+    closeMission(event) {
+        var currentTarget = event.currentTarget
+	var mission = $(currentTarget).parents("li")
+        var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
+
+        var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+        $.ajax({
+            type: "PATCH",
+            url: "/projects/" + urlParams[4] + "/missions/" + mission.attr("id"),
+	    data: {
+                action_type: "close_mission",
+            },
+            success: function(result) {
+		// Remove open status mission after fade out animation.
+		mission.fadeOut(300, function() {
+		    mission.remove()
+		})
+
+		// Add closed status mission at last.
+		var closedMission = $(result)
+		closedMission.appendTo(closestMissionListTitle).show(300)
+            }
+        })
+    }
+
+    reopenMission(event) {
+        var currentTarget = event.currentTarget
+	var mission = $(currentTarget).parents("li")
+
+        var url = $(location).attr('href')
+	var urlParams = url.split("/")
+
+        $.ajax({
+            type: "PATCH",
+            url: "/projects/" + urlParams[4] + "/missions/" + mission.attr("id"),
+	    data: {
+                action_type: "reopen_mission",
+            },
+            success: function(result) {
+		// Remove closed status mission after fade out animation.
+		mission.fadeOut(300, function() {
+		    mission.remove()
+		})
+
+		// Insert open status mission before new form.
+		var openedMission = $(result)
+		var openedMissionId = openedMission.attr("id")
+		var closestNewFormItem = $(currentTarget).parents(".mission-list-title").find(".mission-new-form-item")
+
+		openedMission.hide()
+		openedMission.insertBefore(closestNewFormItem)
+
+		$("#" + openedMissionId).fadeIn(300)
+            }
+        })
     }
 }

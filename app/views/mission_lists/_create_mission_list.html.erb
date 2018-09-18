@@ -7,17 +7,17 @@
         <input type="text"
                class="mission-save-input"
                placeholder="请输入任务清单名称"
-	       autofocus="true"
-	       data-action="keydown->mission#enterEditMissionList">
+               autofocus="true"
+               data-action="keydown->mission#enterEditMissionList">
       </div>
       <div>
         <button class="btn-sm mission-save-button"
-		data-action="mission#clickEditMissionListSubmitButton">
+                data-action="mission#clickEditMissionListSubmitButton">
           保存
         </button>
         <a href="#"
            class="link-button-small"
-	   data-action="mission#cancelEditMissionList">
+           data-action="mission#cancelEditMissionList">
           取消
         </a>
       </div>
@@ -29,7 +29,14 @@
     <% end %>
   </div>
   <% mission_list.missions.each do |mission| %>
-    <%= render "missions/create_mission", mission: mission %>
+    <% if !mission.is_finish %>
+      <%= render "missions/create_mission", mission: mission %>
+    <% end %>
   <% end %>
   <%= render "mission_lists/mission_new_form" %>
+  <% mission_list.missions.each do |mission| %>
+    <% if mission.is_finish %>
+      <%= render "missions/create_mission", mission: mission %>
+    <% end %>
+  <% end %>
 </ul>

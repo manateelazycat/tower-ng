@@ -115,6 +115,7 @@ $phone-page-top-bar-height: 54px;
     color: $normal-color;
     margin-left: $margin;
     margin-right: $margin;
+    font-weight: 350;
 
     &:hover {
 	color: $hover-color;
@@ -805,10 +806,10 @@ input[type="checkbox"] + label::before {
     background: #fff;
     width: 20px;
     height: 20px;
-    padding-left: 2px;          // padding left for content
+    padding-left: 3px;          // padding left for content
     margin-top: 10px;
     margin-bottom: 0px;
-    margin-right: 10px;
+    margin-right: 5px;
     border: $button-border;
     border-radius: $check-button-radius;
 }
@@ -836,6 +837,10 @@ input[type="checkbox"]:disabled + label::before {
 
 .mission-title-link {
     @include text-link-button-mixin(16px, 0px, #222, $logo-color, $logo-color);
+}
+
+.mission-title-link-finished {
+    @include text-link-button-mixin(16px, 0px, #aaa, $logo-color, $logo-color);
 }
 
 .mission-big-title-link {

@@ -39,24 +39,57 @@ class MissionsController < ApplicationController
   end
 
   def update
-    return unless params[:action_type] && params[:action_type] == "update_mission_distributor"
+    return unless params[:action_type]
 
-    mission = Mission.find_by_hashid(params[:id])
+    case params[:action_type]
+    when "update_mission_distributor"
+      mission = Mission.find_by_hashid(params[:id])
 
-    return unless mission
+      return unless mission
 
-    mission.user_id = params[:user_id].empty? ? nil : User.find(params[:user_id]).id
-    mission.finish_time = params[:finish_date].empty? ? nil : DateTime.parse(params[:finish_date])
+      mission.user_id = params[:user_id].empty? ? nil : User.find(params[:user_id]).id
+      mission.finish_time = params[:finish_date].empty? ? nil : DateTime.parse(params[:finish_date])
 
-    mission.save
+      mission.save
 
-    respond_to do |format|
-      format.json do
-        render json: { distributor_info: mission.format_distributor_info,
-                       userid: mission.user_id,
-                       username: mission.user_name,
-                       date: mission.format_finish_time,
-                       css: mission.mission_distributor_button_class }
+      respond_to do |format|
+        format.json do
+          render json: { distributor_info: mission.format_distributor_info,
+                         userid: mission.user_id,
+                         username: mission.user_name,
+                         date: mission.format_finish_time,
+                         css: mission.mission_distributor_button_class }
+        end
+      end
+    when "close_mission"
+      mission = Mission.find_by_hashid(params[:id])
+
+      return unless mission
+
+      mission.is_finish = true
+      mission.save
+
+      respond_to do |format|
+        format.html do
+          render "_closed_mission",
+                 locals: { mission: mission },
+                 layout: false
+        end
+      end
+    when "reopen_mission"
+      mission = Mission.find_by_hashid(params[:id])
+
+      return unless mission
+
+      mission.is_finish = false
+      mission.save
+
+      respond_to do |format|
+        format.html do
+          render "_opened_mission",
+                 locals: { mission: mission },
+                 layout: false
+        end
       end
     end
   end

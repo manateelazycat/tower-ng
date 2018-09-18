@@ -1,0 +1,31 @@
+<li id=<%= mission.hashid %>
+    <% if local_assigns.has_key? :hide %>
+    class="hide"
+    <% end %>
+    data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
+  <input type="checkbox"
+         class="mission-checkbox"
+         data-action="mission#closeMission"
+         id="<%= mission.hashid %> opened_mission_checkbox">
+  <label for="<%= mission.hashid %> opened_mission_checkbox"
+         class="mission-title">
+  </label>
+  <a href="#"
+     id=<%= mission.hashid %>
+     class="mission-title-link"
+     data-action="mission#jumpToMissionPage">
+    <%= mission.name %>
+    </a>
+
+    <% if mission.comments.length > 0 %>
+    <button type="button"
+            id=<%= mission.hashid %>
+            class="mission-distributor-button mission-distributor-confirm"
+            data-controller="mission"
+            data-action="mission#jumpToMissionPage">
+      <%= mission.comments.length %>条评论
+    </button>
+  <% end %>
+  <%= render "layouts/mission_distributor_button", mission: mission %>
+</li>
+<%= render "mission_lists/mission_edit_form", mission: mission %>

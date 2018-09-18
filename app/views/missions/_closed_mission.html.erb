@@ -1,0 +1,17 @@
+<li id=<%= mission.hashid %>
+    data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
+  <input type="checkbox"
+         class="mission-checkbox"
+         data-action="mission#reopenMission"
+         id="<%= mission.hashid %> opened_mission_checkbox"
+         checked>
+  <label for="<%= mission.hashid %> opened_mission_checkbox"
+         class="mission-title">
+  </label>
+  <a href="#"
+     id=<%= mission.hashid %>
+     class="mission-title-link mission-title-link-finished"
+     data-action="mission#jumpToMissionPage">
+    <%= mission.name %>
+  </a>
+</li>
