@@ -1,7 +1,4 @@
 <li id=<%= mission.hashid %>
-    <% if local_assigns.has_key? :hide %>
-    class="hide"
-    <% end %>
     data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
   <input type="checkbox"
          class="mission-checkbox"

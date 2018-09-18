@@ -34,9 +34,11 @@
     <% end %>
   <% end %>
   <%= render "mission_lists/mission_new_form" %>
-  <% mission_list.missions.each do |mission| %>
-    <% if mission.is_finish %>
-      <%= render "missions/create_mission", mission: mission %>
+  <% if local_assigns.has_key? :show_finished_missions %>
+    <% mission_list.missions.each do |mission| %>
+      <% if mission.is_finish %>
+        <%= render "missions/create_mission", mission: mission %>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
