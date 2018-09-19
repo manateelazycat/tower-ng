@@ -9,7 +9,7 @@ export default class extends Controller {
 
     onScroll() {
         // Hide tooltip element if it exists.
-	hideTooltip()
+        hideTooltip()
     }
 
     enterMissionNew(event) {
@@ -21,7 +21,7 @@ export default class extends Controller {
     clickMissionNewButton(event) {
         event.preventDefault()
 
-	console.log("******")
+        console.log("******")
 
         var currentTarget = event.currentTarget
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
@@ -55,7 +55,7 @@ export default class extends Controller {
                         name: "默认任务列表",
                         project_id: projectId
                     },
-		    context: this,
+                    context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
                             // Replace new mission list in scroll area and scroll to bottom.
@@ -73,8 +73,8 @@ export default class extends Controller {
                             $(".mission-new-form").show()
                             $(".mission-add-button").hide()
 
-			    // Focus input.
-			    $(".edit-input").focus()
+                            // Focus input.
+                            $(".edit-input").focus()
                         }
                     }
                 })
@@ -98,8 +98,8 @@ export default class extends Controller {
             data: {
                 mission_list_id: mission_list_id,
                 name: missionNewInput.val(),
-		user_id: missionDistributorButton.data("userid"),
-		finish_date: missionDistributorButton.data("date"),
+                user_id: missionDistributorButton.data("userid"),
+                finish_date: missionDistributorButton.data("date"),
             },
             success: function(result) {
                 // Insert mission template.
@@ -107,8 +107,8 @@ export default class extends Controller {
 
                 // Clean new mission input content.
                 missionNewInput.val("")
-		missionDistributorButton.text("未指派")
-		missionDistributorButton.attr("class", "mission-distributor-button mission-distributor-empty")
+                missionDistributorButton.text("未指派")
+                missionDistributorButton.attr("class", "mission-distributor-button mission-distributor-empty")
             }
         })
     }
@@ -164,7 +164,7 @@ export default class extends Controller {
                         name: missionListInput.val(),
                         project_id: projectId
                     },
-		    context: this,
+                    context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
                             // Update default mission list id and text.
@@ -266,38 +266,38 @@ export default class extends Controller {
         var url = $(location).attr('href')
         var urlParams = url.split("/")
 
-	deleteAndRedirect("/projects/" + urlParams[4] + "/mission_lists/" + urlParams[6])
+        deleteAndRedirect("/projects/" + urlParams[4] + "/mission_lists/" + urlParams[6])
     }
 
     clickDeleteMissionButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
         var currentTarget = event.currentTarget
-	var toolbarDialog = "#" + $(currentTarget).data("dialog-id")
+        var toolbarDialog = "#" + $(currentTarget).data("dialog-id")
 
-	var missionToolbar = $(".mission-toolbar")
-	missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
-	missionToolbar.attr("toolbar_dialog", toolbarDialog)
+        var missionToolbar = $(".mission-toolbar")
+        missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
+        missionToolbar.attr("toolbar_dialog", toolbarDialog)
 
-	$(".mission-toolbar").hide()
-	$(toolbarDialog).modal("show")
+        $(".mission-toolbar").hide()
+        $(toolbarDialog).modal("show")
     }
 
     deleteMission(event) {
-	var missionToolbar = $(".mission-toolbar")
+        var missionToolbar = $(".mission-toolbar")
 
-	var url = $(location).attr('href')
-	var urlParams = url.split("/")
+        var url = $(location).attr('href')
+        var urlParams = url.split("/")
 
 
-	$.ajax({
-	    type: "DELETE",
-	    url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid"),
-	    success: function(result) {
-		$($(".mission-toolbar").attr("toolbar_dialog")).modal("hide")
-		$("#" + missionToolbar.attr("missionid") + ".mission-title-link").parents("li").fadeOut(500)
-	    }
-	})
+        $.ajax({
+            type: "DELETE",
+            url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid"),
+            success: function(result) {
+                $($(".mission-toolbar").attr("toolbar_dialog")).modal("hide")
+                $("#" + missionToolbar.attr("missionid") + ".mission-title-link").parents("li").fadeOut(500)
+            }
+        })
     }
 
     deleteMissionPage(event) {
@@ -306,38 +306,38 @@ export default class extends Controller {
         var url = $(location).attr('href')
         var urlParams = url.split("/")
 
-	deleteAndRedirect("/projects/" + urlParams[4] + "/missions/" + urlParams[6])
+        deleteAndRedirect("/projects/" + urlParams[4] + "/missions/" + urlParams[6])
     }
 
     clickEditMissionButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	var missionToolbar = $(".mission-toolbar")
-	missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
+        var missionToolbar = $(".mission-toolbar")
+        missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
 
-	var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
-	var mission = missionTitleLink.parents("li")
-	var missionEditInput = mission.next().find(".edit-input")
+        var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
+        var mission = missionTitleLink.parents("li")
+        var missionEditInput = mission.next().find(".edit-input")
 
-	missionToolbar.hide()
-	mission.fadeOut(0)
+        missionToolbar.hide()
+        mission.fadeOut(0)
 
-	mission.next().show()
-	missionEditInput.val(missionTitleLink.text().trim())
-	missionEditInput.focus()
+        mission.next().show()
+        missionEditInput.val(missionTitleLink.text().trim())
+        missionEditInput.focus()
     }
 
     clickMissionEditCancelButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	var missionToolbar = $(".mission-toolbar")
-	var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
-	var mission = missionTitleLink.parents("li")
+        var missionToolbar = $(".mission-toolbar")
+        var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
+        var mission = missionTitleLink.parents("li")
 
-	this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
+        this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
 
-	mission.fadeIn(0)
-	mission.next().hide()
+        mission.fadeIn(0)
+        mission.next().hide()
     }
 
     enterMissionEdit(event) {
@@ -347,103 +347,103 @@ export default class extends Controller {
     }
 
     clickMissionEditSubmitButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
         var currentTarget = event.currentTarget
-	var missionEditInput = $(currentTarget).parents("li").find(".edit-input")
-	var missionName = missionEditInput.val().trim()
+        var missionEditInput = $(currentTarget).parents("li").find(".edit-input")
+        var missionName = missionEditInput.val().trim()
 
-	if (missionName == "") {
+        if (missionName == "") {
             updateTooltip(createTooltip("请输入任务标题"), missionEditInput)
-	} else {
+        } else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
 
-	    var missionToolbar = $(".mission-toolbar")
-	    var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
-	    var mission = missionTitleLink.parents("li")
+            var missionToolbar = $(".mission-toolbar")
+            var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
+            var mission = missionTitleLink.parents("li")
 
-	    $.ajax({
+            $.ajax({
                 type: "GET",
                 url: "/projects/" + urlParams[4] + "/missions/" + missionToolbar.attr("missionid") + "/edit",
                 data: {
                     name: missionName,
                 },
-		context: this,
+                context: this,
                 success: function(result) {
-		    this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
+                    this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
 
-		    mission.fadeIn(0)
-		    mission.next().hide()
+                    mission.fadeIn(0)
+                    mission.next().hide()
 
-		    missionTitleLink.text(missionName)
+                    missionTitleLink.text(missionName)
                 }
             })
-	}
+        }
     }
 
     mouseEnterMission(event) {
-	// Show mission toolbar.
+        // Show mission toolbar.
         var currentTarget = event.currentTarget
-	var missionToolbar = $(".mission-toolbar")
+        var missionToolbar = $(".mission-toolbar")
 
-	var toolbarX = currentTarget.getBoundingClientRect().left - missionToolbar.outerWidth(true)
-	var toolbarY = currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height / 2 - missionToolbar.outerHeight(true) / 2
+        var toolbarX = currentTarget.getBoundingClientRect().left - missionToolbar.outerWidth(true)
+        var toolbarY = currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height / 2 - missionToolbar.outerHeight(true) / 2
 
-	missionToolbar.css({
-	    left: toolbarX,
-	    top: toolbarY,
-	})
+        missionToolbar.css({
+            left: toolbarX,
+            top: toolbarY,
+        })
 
-	missionToolbar.show()
+        missionToolbar.show()
 
-	// Assgin mission id to mission toolbar.
-	missionToolbar.attr("hover_missionid", $(currentTarget).attr("id"))
+        // Assgin mission id to mission toolbar.
+        missionToolbar.attr("hover_missionid", $(currentTarget).attr("id"))
     }
 
     mouseLeaveMission(event) {
-	// Just hide mission toolbar when mouse out of are with y direction.
-	var missionToolbar = $(".mission-toolbar")
+        // Just hide mission toolbar when mouse out of are with y direction.
+        var missionToolbar = $(".mission-toolbar")
         var currentTarget = event.currentTarget
 
-	if (!(event.pageY > currentTarget.getBoundingClientRect().top
-	      && event.pageY < currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height)) {
-	    missionToolbar.hide()
-	}
+        if (!(event.pageY > currentTarget.getBoundingClientRect().top
+              && event.pageY < currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height)) {
+            missionToolbar.hide()
+        }
     }
 
     mouseLeaveMissionToolbar(event) {
-	// Just hide mission toolbar when mouse at left of mission toolbar.
-	var missionToolbar = $(".mission-toolbar")
+        // Just hide mission toolbar when mouse at left of mission toolbar.
+        var missionToolbar = $(".mission-toolbar")
 
-	if (event.pageX < missionToolbar[0].offsetLeft) {
-	    missionToolbar.hide()
-	}
+        if (event.pageX < missionToolbar[0].offsetLeft) {
+            missionToolbar.hide()
+        }
     }
 
     jumpToMissionPage(event) {
-	event.preventDefault()
+        event.preventDefault()
 
         var currentTarget = event.currentTarget
 
         var url = $(location).attr('href')
         var urlParams = url.split("/")
 
-	window.location.href = "/projects/" + urlParams[4] + "/missions/" + $(currentTarget).attr("id")
+        window.location.href = "/projects/" + urlParams[4] + "/missions/" + $(currentTarget).attr("id")
     }
 
     clickMissionPageEditButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	$(".mission-edit-form-header").show()
-	$(".mission-title-item").hide()
-	$(".mission-summary").hide()
-	$(".mission-add-summary-button").hide()
+        $(".mission-edit-form-header").show()
+        $(".mission-title-item").hide()
+        $(".mission-summary").hide()
+        $(".mission-add-summary-button").hide()
 
-	$(".mission-edit-form-header input").val($(".mission-title-item span").text().trim())
+        $(".mission-edit-form-header input").val($(".mission-title-item span").text().trim())
 
-	var missionSummary = $(".mission-edit-form-header textarea")
-	missionSummary.data("summary", missionSummary.val().trim())
+        var missionSummary = $(".mission-edit-form-header textarea")
+        missionSummary.data("summary", missionSummary.val().trim())
     }
 
     enterMissionPageEdit(event) {
@@ -453,185 +453,189 @@ export default class extends Controller {
     }
 
     clickMissionPageEditSubmitButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
         var currentTarget = event.currentTarget
-	var missionEditInput = $(currentTarget).parents("li").find(".edit-input")
-	var missionName = missionEditInput.val().trim()
+        var missionEditInput = $(currentTarget).parents("li").find(".edit-input")
+        var missionName = missionEditInput.val().trim()
 
-	if (missionName == "") {
+        if (missionName == "") {
             updateTooltip(createTooltip("请输入任务标题"), missionEditInput)
-	} else {
+        } else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
 
-	    var summary = $(".mission-edit-form-header textarea").val().trim()
+            var summary = $(".mission-edit-form-header textarea").val().trim()
 
-	    $.ajax({
+            $.ajax({
                 type: "GET",
                 url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/edit",
                 data: {
                     name: missionName,
-		    summary: summary
-		},
-		context: this,
+                    summary: summary
+                },
+                context: this,
                 success: function(result) {
-		    this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
+                    this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
 
-		    $(".mission-edit-form-header").hide()
-		    $(".mission-title-item").show()
-		    $(".mission-summary").show()
+                    $(".mission-edit-form-header").hide()
+                    $(".mission-title-item").show()
+                    $(".mission-summary").show()
 
-		    if (summary.length == 0) {
-			$(".mission-add-summary-button").show()
-		    } else {
-			$(".mission-add-summary-button").hide()
-		    }
+                    if (summary.length == 0) {
+                        $(".mission-add-summary-button").show()
+                    } else {
+                        $(".mission-add-summary-button").hide()
+                    }
 
-		    $(".mission-title-item span").text(missionName)
-		    $(".mission-summary").text(summary)
+                    $(".mission-title-item span").text(missionName)
+                    $(".mission-summary").text(summary)
                 }
             })
-	}
+        }
     }
 
     clickMissionPageEditCancelButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
+        this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
 
-	$(".mission-edit-form-header").hide()
-	$(".mission-title-item").show()
-	$(".mission-summary").show()
+        $(".mission-edit-form-header").hide()
+        $(".mission-title-item").show()
+        $(".mission-summary").show()
 
-	var summary = $(".mission-edit-form-header textarea").data("summary")
+        var summary = $(".mission-edit-form-header textarea").data("summary")
 
-	if (summary.length == 0) {
-	    $(".mission-add-summary-button").show()
-	}
+        if (summary.length == 0) {
+            $(".mission-add-summary-button").show()
+        }
     }
 
     clickCommentArea(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	// Show comment button.
-	$(".mission-comment-button-area").show()
+        // Show comment button.
+        $(".mission-comment-button-area").show()
 
-	// Expand comment text area.
-     	$(".mission-comment-textarea").attr("rows", 8)
+        // Expand comment text area.
+        $(".mission-comment-textarea").attr("rows", 8)
 
-	// Scroll to bottom of page.
-	$("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 200);
+        // Scroll to bottom of page.
+        $("html, body").animate({ scrollTop: $(document).height()-$(window).height() }, 200);
     }
 
     clickCommentSubmitButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
         var url = $(location).attr('href')
         var urlParams = url.split("/")
 
-	$.ajax({
-	    type: "POST",
-	    url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/comments",
-	    data: {
-		mission_id: urlParams[6],
-	       	content: $(".mission-comment-textarea").val(),
-	    },
-	    success: function(result) {
-		// Shark comment area.
-      		$(".mission-comment-textarea").val("")
-      		$(".mission-comment-textarea").attr("rows", 1)
+        $.ajax({
+            type: "POST",
+            url: "/projects/" + urlParams[4] + "/missions/" + urlParams[6] + "/comments",
+            data: {
+                mission_id: urlParams[6],
+                content: $(".mission-comment-textarea").val(),
+            },
+            success: function(result) {
+                // Shark comment area.
+                $(".mission-comment-textarea").val("")
+                $(".mission-comment-textarea").attr("rows", 1)
 
-		// Hide comment first.
-		var comment = $(result)
-	      	comment.hide()
+                // Hide comment first.
+                var comment = $(result)
+                comment.hide()
 
-		// Add to comment list area and show comemnt with animation.
-		$(".mission-comment-list").append(comment)
+                // Add to comment list area and show comemnt with animation.
+                $(".mission-comment-list").append(comment)
 
-		// Just show comment, don't show comment edit form.
-		$(comment[0]).fadeIn(500)
-	    }
-	})
+                // Just show comment, don't show comment edit form.
+                $(comment[0]).fadeIn(500)
+            }
+        })
     }
 
     clickCommentCancelButton(event) {
-	event.preventDefault()
+        event.preventDefault()
 
-	$(".mission-comment-button-area").hide()
-     	$(".mission-comment-textarea").attr("rows", 1)
+        $(".mission-comment-button-area").hide()
+        $(".mission-comment-textarea").attr("rows", 1)
     }
 
     updateDistributorButtonInfo(missionDistributorButton) {
-	var missionDistributorMenu = $(".mission-distributor-menu")
-	var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
-	var syncButtonText = syncButton.text().trim()
-	if (syncButtonText == "") {
-	    syncButtonText = "未指派"
-	}
+        var missionDistributorMenu = $(".mission-distributor-menu")
+        var syncButton = $("#" + missionDistributorMenu.data("buttonid"))
+        var syncButtonText = syncButton.text().trim()
+        if (syncButtonText == "") {
+            syncButtonText = "未指派"
+        }
 
-	missionDistributorButton.text(syncButtonText)
-	missionDistributorButton.data("userid", syncButton.data("userid"))
-	missionDistributorButton.data("username", syncButton.data("username"))
-	missionDistributorButton.data("date", syncButton.data("date"))
-	missionDistributorButton.attr("class", syncButton.attr("class"))
+        missionDistributorButton.text(syncButtonText)
+        missionDistributorButton.data("userid", syncButton.data("userid"))
+        missionDistributorButton.data("username", syncButton.data("username"))
+        missionDistributorButton.data("date", syncButton.data("date"))
+        missionDistributorButton.attr("class", syncButton.attr("class"))
     }
 
     closeMission(event) {
         var currentTarget = event.currentTarget
-	var mission = $(currentTarget).parents("li")
+        var mission = $(currentTarget).parents("li")
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
 
         var url = $(location).attr('href')
-	var urlParams = url.split("/")
+        var urlParams = url.split("/")
 
         $.ajax({
             type: "PATCH",
             url: "/projects/" + urlParams[4] + "/missions/" + mission.attr("id"),
-	    data: {
+            data: {
                 action_type: "close_mission",
             },
             success: function(result) {
-		// Remove open status mission after fade out animation.
-		mission.fadeOut(300, function() {
-		    mission.remove()
-		})
+                // Remove open status mission after fade out animation.
+                mission.fadeOut(300, function() {
+                    mission.remove()
+                })
 
-		// Add closed status mission at last.
-		var closedMission = $(result)
-		closedMission.appendTo(closestMissionListTitle).show(300)
+                // Add closed status mission at last.
+                var closedMission = $(result)
+                closedMission.appendTo(closestMissionListTitle).show(300)
             }
         })
     }
 
     reopenMission(event) {
         var currentTarget = event.currentTarget
-	var mission = $(currentTarget).parents("li")
+        var mission = $(currentTarget).parents("li")
 
         var url = $(location).attr('href')
-	var urlParams = url.split("/")
+        var urlParams = url.split("/")
 
         $.ajax({
             type: "PATCH",
             url: "/projects/" + urlParams[4] + "/missions/" + mission.attr("id"),
-	    data: {
+            data: {
                 action_type: "reopen_mission",
             },
             success: function(result) {
-		// Remove closed status mission after fade out animation.
-		mission.fadeOut(300, function() {
-		    mission.remove()
-		})
+                // Remove closed status mission after fade out animation.
+                mission.fadeOut(300, function() {
+                    mission.remove()
+                })
 
-		// Insert open status mission before new form.
-		var openedMission = $(result)
-		var openedMissionId = openedMission.attr("id")
-		var closestNewFormItem = $(currentTarget).parents(".mission-list-title").find(".mission-new-form-item")
+                // Insert open status mission before new form.
+                var resultTarget = $(result)
+		var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
+                var closestNewFormItem = $(currentTarget).parents(".mission-list-title").find(".mission-new-form-item")
 
-		openedMission.hide()
-		openedMission.insertBefore(closestNewFormItem)
+		// Hide mision.
+                missionTarget.hide()
 
-		$("#" + openedMissionId).fadeIn(300)
+		// Insert mission and mission edit form.
+                resultTarget.insertBefore(closestNewFormItem)
+
+		// Show mission.
+                missionTarget.fadeIn(300)
             }
         })
     }
