@@ -1,30 +1,34 @@
-<li class="mission-new-form-item">
-  <div class="mission-new-form">
-    <div class="flex-vcenter">
-      <label class="mission-input-line"></label>
-      <input type="text"
-             class="edit-input mission-edit-input"
-             placeholder="新的任务"
-             data-action="keydown->mission#enterMissionNew">
-      <%= render "layouts/mission_distributor_button", mission: nil %>
+<div data-controller="mission">
+  <li class="mission-new-form-item">
+    <div class="mission-new-form"
+	 data-target="mission.missionNewForm">
+      <div class="flex-vcenter">
+	<label class="mission-input-line"></label>
+	<input type="text"
+               class="edit-input mission-edit-input"
+               placeholder="新的任务"
+               data-action="keydown->mission#enterMissionNew">
+	<%= render "layouts/mission_distributor_button", mission: nil %>
+      </div>
+      <div>
+	<button class="btn-sm mission-new-submit-button"
+		data-action="mission#clickMissionSubmitButton">
+          添加任务
+	</button>
+	<a href="#"
+           class="link-button-small"
+           data-action="mission#clickMissionCancelButton">
+          取消
+	</a>
+      </div>
     </div>
-    <div>
-      <button class="btn-sm mission-new-submit-button"
-              data-action="mission#clickMissionSubmitButton">
-        添加任务
-      </button>
-      <a href="#"
-         class="link-button-small"
-         data-action="mission#clickMissionCancelButton">
-        取消
-      </a>
-    </div>
-  </div>
-</li>
-<li>
-  <a href="#"
-     class="mission-add-button"
-     data-action="mission#clickMissionNewButton">
-    添加新任务
-  </a>
-</li>
+  </li>
+  <li>
+    <a href="#"
+       class="mission-add-button"
+       data-action="mission#clickMissionNewButton"
+       data-target="mission.missionNewButton">
+      添加新任务
+    </a>
+  </li>
+</div>

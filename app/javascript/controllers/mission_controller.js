@@ -3,7 +3,10 @@ import deleteAndRedirect from "./delete_and_redirect"
 import { createTooltip, updateTooltip, hideTooltip } from "./show_tooltip"
 
 export default class extends Controller {
-    static targets = [ "missionListNewForm", "missionListNewButton", ]
+    static targets = [
+	"missionListNewForm", "missionListNewButton",
+	"missionNewForm", "missionNewButton",
+    ]
 
     onScroll() {
         // Hide tooltip element if it exists.
@@ -19,15 +22,8 @@ export default class extends Controller {
     clickMissionNewButton(event) {
         event.preventDefault()
 
-        console.log("******")
-
-        var currentTarget = event.currentTarget
-        var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
-        var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form")
-        var closestAddButtonTargets = closestMissionListTitle.find(".mission-add-button")
-
-        $(closestNewFormTargets[0]).show()
-        $(closestAddButtonTargets[0]).hide()
+	$(this.missionNewFormTarget).show()
+	$(this.missionNewButtonTarget).hide()
     }
 
     clickMissionSubmitButton(event) {
@@ -68,8 +64,8 @@ export default class extends Controller {
                             this.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".edit-input"))
 
                             // Show mission new form.
-                            $(".mission-new-form").show()
-                            $(".mission-add-button").hide()
+			    $(this.missionNewFormTarget).show()
+			    $(this.missionNewButtonTarget).hide()
 
                             // Focus input.
                             $(".edit-input").focus()
@@ -114,13 +110,8 @@ export default class extends Controller {
     clickMissionCancelButton(event) {
         event.preventDefault()
 
-        var currentTarget = event.currentTarget
-        var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
-        var closestNewFormTargets = closestMissionListTitle.find(".mission-new-form")
-        var closestAddButtonTargets = closestMissionListTitle.find(".mission-add-button")
-
-        $(closestNewFormTargets[0]).hide()
-        $(closestAddButtonTargets[0]).show()
+	$(this.missionNewFormTarget).hide()
+	$(this.missionNewButtonTarget).show()
     }
 
     clickMissionListNewButton(event) {
