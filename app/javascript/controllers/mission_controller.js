@@ -3,9 +3,7 @@ import deleteAndRedirect from "./delete_and_redirect"
 import { createTooltip, updateTooltip, hideTooltip } from "./show_tooltip"
 
 export default class extends Controller {
-    static targets = [ "missionNewForm", "missionNewButton", "missionCancelButton",
-                       "missionListNewForm", "missionListNewButton", "missionListCancelButton",
-                     ]
+    static targets = [ "missionListNewForm", "missionListNewButton", ]
 
     onScroll() {
         // Hide tooltip element if it exists.

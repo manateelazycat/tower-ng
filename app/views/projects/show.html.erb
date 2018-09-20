@@ -67,7 +67,6 @@
                     添加任务清单</a>
                   <a href="#"
                      class="link-button-small"
-                     data-target="mission.missionListCancelButton"
                      data-action="mission#clickMissionListCancelButton">
                     取消</a>
                 </div>
@@ -91,8 +90,7 @@
         <% end %>
       <% else %>
         <ul id="mission-list-title-default"
-            class="mission-list-title"
-            data-target="mission.missionListTitle">
+            class="mission-list-title">
           <span>默认任务列表</span>
           <%= render "mission_lists/mission_new_form" %>
         </ul>
