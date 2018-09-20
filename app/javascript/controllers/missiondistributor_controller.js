@@ -24,46 +24,17 @@ export default class extends Controller {
             if (missionDistributorMenu.is(":visible")) {
                 var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
                 var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
-                var userid
+		var username = missionMemberInput.val().trim()
+		var date = missionDateInput.val().trim()
+		var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
+                var userid = this.generateUserIdWithName(username)
 
-                if (missionMemberInput.val().trim() == "") {
-                    userid = ""
-                } else {
-                    userid = missionMemberInput.data("userid") || ""
-                }
-
-		// Just change distributor button attributables if missionid is empty (create mission form)
+                // Just change distributor button attributables if missionid is empty (create mission form)
                 if (missionDistributorMenu.data("missionid") == "") {
-                    var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
-                    var username = missionMemberInput.val().trim()
-                    var date = missionDateInput.val().trim()
-                    var distributorInfo
-                    var classInfo = "mission-distributor-button mission-distributor-confirm"
-
-                    if (username == "" && date == "") {
-                        distributorInfo = "未指派"
-                        classInfo = "mission-distributor-button mission-distributor-empty"
-                    } else if (username != "" && date != "") {
-                        distributorInfo = username + " " + date
-                    } else if (username != "") {
-                        distributorInfo = username
-                    } else if (date != "") {
-                        distributorInfo = date
-                    }
-
-		    this.updateDistributorButtonInfo(
-			missionDistributorButton,
-			{
-			    "distributor_info": distributorInfo,
-			    "userid": userid,
-			    "username": username,
-			    "date": date,
-			    "class": classInfo,
-			}
-		    )
+                    this.updateDistributorButtonInfo(missionDistributorButton, this.generateDistributorInfo(username, date, userid))
                 }
-		// Post mission distributor information to server.
-		else {
+                // Post mission distributor information to server.
+                else {
                     var url = $(location).attr('href')
                     var urlParams = url.split("/")
 
@@ -73,13 +44,11 @@ export default class extends Controller {
                         data: {
                             action_type: "update_mission_distributor",
                             user_id: userid,
-                            finish_date: missionDateInput.val(),
+                            finish_date: date,
                         },
-			context: this,
+                        context: this,
                         success: function(result) {
-                            var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
-
-			    this.updateDistributorButtonInfo(missionDistributorButton, result)
+                            this.updateDistributorButtonInfo(missionDistributorButton, result)
                         }
                     })
                 }
@@ -210,5 +179,40 @@ export default class extends Controller {
         button.data("username", info["username"])
         button.data("date", info["date"])
         button.attr("class", info["css"])
+    }
+
+    generateUserIdWithName(username) {
+        var missionDistributorMenu = $(".mission-distributor-menu")
+        var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
+
+        if (username == "") {
+            return ""
+        } else {
+            return missionMemberInput.data("userid") || ""
+        }
+    }
+
+    generateDistributorInfo(username, date, userid) {
+        var distributorInfo
+        var classInfo = "mission-distributor-button mission-distributor-confirm"
+
+        if (username == "" && date == "") {
+            distributorInfo = "未指派"
+            classInfo = "mission-distributor-button mission-distributor-empty"
+        } else if (username != "" && date != "") {
+            distributorInfo = username + " " + date
+        } else if (username != "") {
+            distributorInfo = username
+        } else if (date != "") {
+            distributorInfo = date
+        }
+
+        return {
+            "distributor_info": distributorInfo,
+            "userid": userid,
+            "username": username,
+            "date": date,
+            "class": classInfo,
+        }
     }
 }
