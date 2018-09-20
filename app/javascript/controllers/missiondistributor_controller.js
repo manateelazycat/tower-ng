@@ -106,7 +106,7 @@ export default class extends Controller {
     clickMemberMenuButton(event) {
         event.preventDefault()
 
-        var missionMemberInput = $(".mission-member-menu")
+        var missionMemberInput = $(".mission-member-input")
         var inputRect = missionMemberInput[0].getBoundingClientRect()
         var missionMemberMenu = $(".mission-member-menu")
 
