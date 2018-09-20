@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import { clickOnElements } from "./utils"
+import { exclueMenuElements } from "./utils"
 
 export default class extends Controller {
     connect() {
@@ -14,11 +14,11 @@ export default class extends Controller {
     }
 
     onClick(event) {
-        if (clickOnElements(event, [".mission-member-menu", ".mission-member-input", ".mission-member-toggle-button"])) {
+        if (exclueMenuElements(event, [".mission-member-menu", ".mission-member-input", ".mission-member-toggle-button"])) {
             $(".mission-member-menu").hide()
         }
 
-        if (clickOnElements(event, [".mission-distributor-menu", ".mission-distributor-button", ".mission-member-menu"])) {
+        if (exclueMenuElements(event, [".mission-distributor-menu", ".mission-distributor-button", ".mission-member-menu"])) {
             var missionDistributorMenu = $(".mission-distributor-menu")
 
             if (missionDistributorMenu.is(":visible")) {

@@ -1,9 +1,9 @@
 import { Controller } from "stimulus"
-import { clickOnElements } from "./utils"
+import { exclueMenuElements } from "./utils"
 
 export default class extends Controller {
     onClick(event) {
- 	if (clickOnElements(event, [".comment-edit-menu", ".comment-edit-button"])) {
+ 	if (exclueMenuElements(event, [".comment-edit-menu", ".comment-edit-button"])) {
 	    $(".comment-edit-menu").hide()
 	}
     }

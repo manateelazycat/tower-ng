@@ -1,9 +1,9 @@
 import { Controller } from "stimulus"
-import { clickOnElements } from "./utils"
+import { exclueMenuElements } from "./utils"
 
 export default class extends Controller {
     onClick(event) {
- 	if (clickOnElements(event, [".top-header-menu", ".top-header-menu-button"])) {
+ 	if (exclueMenuElements(event, [".top-header-menu", ".top-header-menu-button"])) {
 	    $(".top-header-menu").hide()
 	}
     }
