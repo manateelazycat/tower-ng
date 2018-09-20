@@ -1,9 +1,9 @@
 import { Controller } from "stimulus"
+import { clickOnElements } from "./utils"
 
 export default class extends Controller {
     onClick(event) {
- 	if ($(event.target).closest(".comment-edit-menu").length === 0
-	    && $(event.target).closest(".comment-edit-button").length === 0) {
+ 	if (clickOnElements(event, [".comment-edit-menu", ".comment-edit-button"])) {
 	    $(".comment-edit-menu").hide()
 	}
     }

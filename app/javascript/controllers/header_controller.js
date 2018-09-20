@@ -1,9 +1,9 @@
 import { Controller } from "stimulus"
+import { clickOnElements } from "./utils"
 
 export default class extends Controller {
     onClick(event) {
- 	if ($(event.target).closest(".top-header-menu").length === 0
-	    && $(event.target).closest(".top-header-menu-button").length === 0) {
+ 	if (clickOnElements(event, [".top-header-menu", ".top-header-menu-button"])) {
 	    $(".top-header-menu").hide()
 	}
     }
