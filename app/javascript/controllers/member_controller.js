@@ -42,7 +42,7 @@ export default class extends Controller {
 		}
 	    })
 	} else {
-            updateTooltip(createTooltip("请输入邮箱"), inviteEmailItems.first())
+            updateTooltip("请输入邮箱", inviteEmailItems.first())
 	}
     }
 

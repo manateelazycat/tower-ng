@@ -3,9 +3,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-
-    <%= render "layouts/menu_eventarea" %>
     <%= render 'layouts/header' %>
+    <%= render "layouts/menu_eventarea" %>
     <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
     <%= render "layouts/mission_toolbar",
     dialog_id: "confirm-dialog"

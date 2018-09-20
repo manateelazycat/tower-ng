@@ -866,7 +866,9 @@ input[type="checkbox"]:disabled + label::before {
     background: $background-color;
 }
 
-.input-tooltip {
+#input-tooltip {
+    z-index: 19999;
+    display: none;
     filter: drop-shadow(0 1px 5px rgba(0, 0, 0, .5));
     box-sizing: border-box;
     position: absolute;
@@ -885,7 +887,7 @@ input[type="checkbox"]:disabled + label::before {
     text-align: center;
 }
 
-.input-tooltip:before {
+#input-tooltip:before {
     content: "";
     position: absolute;
     bottom: 0;

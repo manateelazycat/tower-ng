@@ -36,7 +36,7 @@ export default class extends Controller {
         var missionName = missionNewInput.val().trim()
 
         if (missionName == "") {
-            updateTooltip(createTooltip("请输入任务标题"), missionNewInput)
+            updateTooltip("请输入任务标题", missionNewInput)
         } else {
             if (closestMissionListTitle.attr("id") == "mission-list-title-default") {
                 var url = $(location).attr('href')
@@ -143,7 +143,7 @@ export default class extends Controller {
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
         if (missionListInput.val().trim() == "") {
-            updateTooltip(createTooltip("请输入任务清单名字"), missionListInput)
+            updateTooltip("请输入任务清单名字", missionListInput)
         } else {
             if ($(".right-float-menu-item").first().attr("id") == "mission-list-default") {
                 $.ajax({
@@ -190,7 +190,7 @@ export default class extends Controller {
                             missionListInput.val('')
                         } else {
                             var msg = "名字 '" + missionListInput.val() + "' 已经存在"
-                            updateTooltip(createTooltip(msg), missionListInput)
+                            updateTooltip(msg, missionListInput)
                         }
                     }
                 })
@@ -221,7 +221,7 @@ export default class extends Controller {
         var missionSaveInput = $(".mission-save-input")
 
         if (missionSaveInput.val().trim() == "") {
-            updateTooltip(createTooltip("请输入任务清单名称"), missionSaveInput)
+            updateTooltip("请输入任务清单名称", missionSaveInput)
         } else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
@@ -343,7 +343,7 @@ export default class extends Controller {
         var missionName = missionEditInput.val().trim()
 
         if (missionName == "") {
-            updateTooltip(createTooltip("请输入任务标题"), missionEditInput)
+            updateTooltip("请输入任务标题", missionEditInput)
         } else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
@@ -449,7 +449,7 @@ export default class extends Controller {
         var missionName = missionEditInput.val().trim()
 
         if (missionName == "") {
-            updateTooltip(createTooltip("请输入任务标题"), missionEditInput)
+            updateTooltip("请输入任务标题", missionEditInput)
         } else {
             var url = $(location).attr('href')
             var urlParams = url.split("/")
