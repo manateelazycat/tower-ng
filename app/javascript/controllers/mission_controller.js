@@ -32,7 +32,7 @@ export default class extends Controller {
         var currentTarget = event.currentTarget
         var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
         var missionNewInput = closestMissionListTitle.find(".mission-edit-input")
-        var missionNewFormItem = closestMissionListTitle.find(".mission-new-form-item")
+        var missionNewFormItem = this.missionFindNewFormItem(currentTarget)
         var missionName = missionNewInput.val().trim()
 
         if (missionName == "") {
@@ -606,6 +606,7 @@ export default class extends Controller {
             data: {
                 action_type: "reopen_mission",
             },
+	    context: this,
             success: function(result) {
                 // Remove closed status mission after fade out animation.
                 mission.fadeOut(300, function() {
@@ -615,7 +616,7 @@ export default class extends Controller {
                 // Insert open status mission before new form.
                 var resultTarget = $(result)
 		var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
-                var closestNewFormItem = $(currentTarget).closest(".mission-list-title").find(".mission-new-form-item")
+                var closestNewFormItem = this.missionFindNewFormItem(currentTarget)
 
 		// Hide mision.
                 missionTarget.hide()
@@ -627,5 +628,9 @@ export default class extends Controller {
                 missionTarget.fadeIn(300)
             }
         })
+    }
+
+    missionFindNewFormItem(element) {
+	return $(element).closest(".mission-list-title").find(".mission-new-form-item")
     }
 }
