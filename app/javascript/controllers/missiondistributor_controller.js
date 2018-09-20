@@ -51,11 +51,16 @@ export default class extends Controller {
                         distributorInfo = date
                     }
 
-                    missionDistributorButton.text(distributorInfo)
-                    missionDistributorButton.data("userid", userid)
-                    missionDistributorButton.data("username", username)
-                    missionDistributorButton.data("date", date)
-                    missionDistributorButton.attr("class", classInfo)
+		    this.updateDistributorButtonInfo(
+			missionDistributorButton,
+			{
+			    "distributor_info": distributorInfo,
+			    "userid": userid,
+			    "username": username,
+			    "date": date,
+			    "class": classInfo,
+			}
+		    )
                 }
 		// Post mission distributor information to server.
 		else {
@@ -70,14 +75,11 @@ export default class extends Controller {
                             user_id: userid,
                             finish_date: missionDateInput.val(),
                         },
+			context: this,
                         success: function(result) {
                             var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
 
-                            missionDistributorButton.text(result["distributor_info"])
-                            missionDistributorButton.data("userid", result["userid"])
-                            missionDistributorButton.data("username", result["username"])
-                            missionDistributorButton.data("date", result["date"])
-                            missionDistributorButton.attr("class", result["css"])
+			    this.updateDistributorButtonInfo(missionDistributorButton, result)
                         }
                     })
                 }
@@ -200,5 +202,13 @@ export default class extends Controller {
 
     generateUniqueId() {
         return 'id-' + Math.random().toString(36).substr(2, 16);
+    }
+
+    updateDistributorButtonInfo(button, info) {
+        button.text(info["distributor_info"])
+        button.data("userid", info["userid"])
+        button.data("username", info["username"])
+        button.data("date", info["date"])
+        button.attr("class", info["css"])
     }
 }
