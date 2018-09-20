@@ -19,3 +19,6 @@
 * 任务顺序拖拽
 * UI细节完善
 * 切换数据库后端
+
+* 优化性能
+http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html
