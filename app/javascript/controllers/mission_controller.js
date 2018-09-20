@@ -30,9 +30,9 @@ export default class extends Controller {
         event.preventDefault()
 
         var currentTarget = event.currentTarget
-        var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
+	var titleAndNewForm = this.missionFindTitleAndNewForm(currentTarget)
+        var closestMissionListTitle = titleAndNewForm.listTitle
         var missionNewInput = closestMissionListTitle.find(".mission-edit-input")
-        var missionNewFormItem = this.missionFindNewFormItem(currentTarget)
         var missionName = missionNewInput.val().trim()
 
         if (missionName == "") {
@@ -74,7 +74,7 @@ export default class extends Controller {
                 })
             } else {
                 // Add mission in mission list.
-                this.addMissionInMissionList(closestMissionListTitle.attr("id"), missionNewFormItem, missionNewInput)
+                this.addMissionInMissionList(closestMissionListTitle.attr("id"), titleAndNewForm.newFormItem, missionNewInput)
             }
         }
     }
@@ -569,7 +569,7 @@ export default class extends Controller {
     closeMission(event) {
         var currentTarget = event.currentTarget
         var mission = $(currentTarget).parents("li")
-        var closestMissionListTitle = $(currentTarget).closest(".mission-list-title")
+        var closestMissionListTitle = this.missionFindTitleAndNewForm(currentTarget).listTitle
 
         var url = $(location).attr('href')
         var urlParams = url.split("/")
@@ -616,7 +616,7 @@ export default class extends Controller {
                 // Insert open status mission before new form.
                 var resultTarget = $(result)
 		var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
-                var closestNewFormItem = this.missionFindNewFormItem(currentTarget)
+                var closestNewFormItem = this.missionFindTitleAndNewForm(currentTarget).newFormItem
 
 		// Hide mision.
                 missionTarget.hide()
@@ -630,7 +630,12 @@ export default class extends Controller {
         })
     }
 
-    missionFindNewFormItem(element) {
-	return $(element).closest(".mission-list-title").find(".mission-new-form-item")
+    missionFindTitleAndNewForm(element) {
+	var missionListTitle = $(element).closest(".mission-list-title")
+
+	return {
+	    listTitle: missionListTitle,
+	    newFormItem: missionListTitle.find(".mission-new-form-item")
+	}
     }
 }
