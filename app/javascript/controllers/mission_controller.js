@@ -615,7 +615,7 @@ export default class extends Controller {
                 // Insert open status mission before new form.
                 var resultTarget = $(result)
 		var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
-                var closestNewFormItem = $(currentTarget).parents(".mission-list-title").find(".mission-new-form-item")
+                var closestNewFormItem = $(currentTarget).closest(".mission-list-title").find(".mission-new-form-item")
 
 		// Hide mision.
                 missionTarget.hide()
