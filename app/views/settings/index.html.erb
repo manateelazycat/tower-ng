@@ -21,11 +21,7 @@
                 选择新头像
               </label>
 
-              <%= f.file_field
-	      :photo,
-	      id: "attachment-input",
-	      class: "setting-icon-upload-button",
-	      data: {
+              <%= f.file_field :photo, id: "attachment-input", class: "setting-icon-upload-button", data: {
                   action: "change->setting#finishUpload"
               }
 	      %>
