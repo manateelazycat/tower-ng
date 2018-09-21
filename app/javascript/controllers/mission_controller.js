@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 import deleteAndRedirect from "./delete_and_redirect"
 import { createTooltip, updateTooltip, hideTooltip } from "./show_tooltip"
-import { getUrlParams } from "./utils"
+import { getUrlParams, pressEnter } from "./utils"
 
 export default class extends Controller {
     static targets = [
@@ -15,7 +15,7 @@ export default class extends Controller {
     }
 
     enterMissionNew(event) {
-        if (event.which == 13) {
+        if (pressEnter(event)) {
             this.clickMissionSubmitButton(event)
         }
     }
@@ -130,7 +130,7 @@ export default class extends Controller {
     }
 
     enterMissionListAdd(event) {
-        if (event.which == 13) {
+        if (pressEnter(event)) {
             this.clickMissionListAddButton(event)
         }
     }
@@ -211,7 +211,7 @@ export default class extends Controller {
     }
 
     enterEditMissionList(event) {
-        if (event.which == 13) {
+        if (pressEnter(event)) {
             this.clickEditMissionListSubmitButton(event)
         }
     }
@@ -327,7 +327,7 @@ export default class extends Controller {
     }
 
     enterMissionEdit(event) {
-        if (event.which == 13) {
+        if (pressEnter(event)) {
             this.clickMissionEditSubmitButton(event)
         }
     }
@@ -431,7 +431,7 @@ export default class extends Controller {
     }
 
     enterMissionPageEdit(event) {
-        if (event.which == 13) {
+        if (pressEnter(event)) {
             this.clickMissionPageEditSubmitButton(event)
         }
     }

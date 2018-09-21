@@ -5,3 +5,7 @@ export function exclueMenuElements(event, elements) {
 export function getUrlParams() {
     return $(location).attr('href').split("/")
 }
+
+export function pressEnter(event) {
+    return event.which == 13
+}
