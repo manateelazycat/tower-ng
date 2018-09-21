@@ -90,29 +90,22 @@ export default class extends Controller {
     }
 
     changeMemberInput(event) {
-        var missionMemberInput = $(".mission-member-input")
         var memberItems = $(".mission-member-menu .mission-member-menu-item")
-        var memberNames = $(".mission-member-menu .mission-member-name")
-        var memberPinyins = $(".mission-member-menu .mission-member-pinyin")
-
-        var input = missionMemberInput.val()
-        var memberName, memberPinyin, memberPinyinSimple, lastMatchMemberItem
-
+        var input = $(".mission-member-input").val()
+        var lastMatchMemberItem
+	var self = this
+	
         $.each(memberItems, function(i, val) {
-            memberName = $(memberNames[i]).text().trim()
-            memberPinyin = $(memberPinyins[i]).text().trim().replace(/\s+/g, "")
-            memberPinyinSimple = $(memberPinyins[i]).text().trim().split(" ").map(pinyin => pinyin[0]).join("")
-
-            if (memberName.includes(input) ||
-                memberPinyin.includes(input) ||
-                memberPinyinSimple.includes(input)) {
-                $(memberItems[i]).show()
-                $(memberItems[i]).find(".splitter").show()
+	    if (self.nameMatchInput(i, input)) {
+                $(memberItems[i])
+		    .show()
+		    .find(".splitter")
+		    .show()
 
                 lastMatchMemberItem = memberItems[i]
-            } else {
+	    } else {
                 $(memberItems[i]).hide()
-            }
+	    }
         })
 
         // Hide splitter line under last match item.
@@ -213,5 +206,18 @@ export default class extends Controller {
             "date": date,
             "class": classInfo,
         }
+    }
+
+    nameMatchInput(i, input) {
+        var memberNames = $(".mission-member-menu .mission-member-name")
+        var memberPinyins = $(".mission-member-menu .mission-member-pinyin")
+
+        var memberName = $(memberNames[i]).text().trim()
+        var memberPinyin = $(memberPinyins[i]).text().trim().replace(/\s+/g, "")
+        var memberPinyinSimple = $(memberPinyins[i]).text().trim().split(" ").map(pinyin => pinyin[0]).join("")
+
+	return (memberName.includes(input) ||
+                memberPinyin.includes(input) ||
+                memberPinyinSimple.includes(input))
     }
 }
