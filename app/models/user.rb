@@ -14,6 +14,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   attr_accessor :activation_token
   attr_accessor :reset_token
+  attr_accessor :avatar_files
   before_save :downcase_email
   before_create :create_activation_digest
   before_create :create_avatar
@@ -104,17 +105,9 @@ class User < ApplicationRecord
   end
 
   def generate_avatar_name
-    @avatar_list = [
-      "1.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg",
-      "6.jpg",
-      "7.jpg"
-    ]
+    self.avatar_files ||= Dir.entries("app/assets/images/avatar/normal").reject { |f| File.directory? f }
 
-    @avatar_list.sample
+    self.avatar_files.sample
   end
 
   def create_avatar
@@ -126,6 +119,6 @@ class User < ApplicationRecord
 
     return avatar if avatar?
 
-    "avatar/normal/1.jpg"
+    "avatar/normal/" + self.avatar_files[0]
   end
 end

@@ -39,7 +39,7 @@
     <% current_team.team_member_list.each do |member| %>
       <li class="mission-member-menu-item"
           data-action="click->missiondistributor#clickMemberName">
-        <%= image_tag(member[:photo_url], width: 22, height: 22) %>
+        <%= image_tag(member[:photo_url], width: 22, height: 22, class: "avatar") %>
         <div class="mission-member-name inline-block">
           <%= member[:name] %>
         </div>

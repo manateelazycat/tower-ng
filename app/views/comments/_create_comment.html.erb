@@ -4,7 +4,7 @@
     data-action="mouseenter->comment#mouseEnterComment"
     <% end %>>
   <div class="mission-comment-icon">
-    <%= image_tag User.find(comment.user_id).avatar_url, width: 48, height: 48 %>
+    <%= image_tag User.find(comment.user_id).avatar_url, width: 48, height: 48, class: "avatar" %>
   </div>
   <div class="inline-block">
     <div class="mission-comment-user">

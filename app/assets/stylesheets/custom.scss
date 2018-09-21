@@ -1503,3 +1503,7 @@ input[type="checkbox"]:disabled + label::before {
 .mission-member-userid {
     display: none;
 }
+
+.avatar {
+    clip-path: circle(50% at 50% 50%);
+}

@@ -2,7 +2,7 @@
     class="comment-edit-form-item">
   <div class="comment-edit-form-wrap">
     <div class="mission-comment-edit-icon">
-      <%= image_tag User.find(userid).avatar_url %>
+      <%= image_tag User.find(userid).avatar_url, width: 48, height: 48, class: "avatar" %>
     </div>
     <div class="inline-block">
       <div class="comment-edit-form">

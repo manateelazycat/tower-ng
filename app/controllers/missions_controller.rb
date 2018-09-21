@@ -95,9 +95,9 @@ class MissionsController < ApplicationController
   end
 
   def show
-    # @mission = Mission.find_by_hashid(params[:id])
-    # @project = Project.find_by_hashid(params[:project_id])
-    # @mission_list = MissionList.find(@mission.mission_list_id)
+    @mission = Mission.find_by_hashid(params[:id])
+    @project = Project.find_by_hashid(params[:project_id])
+    @mission_list = MissionList.find(@mission.mission_list_id)
   end
 
   def destroy

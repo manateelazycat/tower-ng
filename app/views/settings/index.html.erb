@@ -11,7 +11,7 @@
       <div class="margin-vertical-15px flex-vcenter">
         <div class="setting-icon"
 	     id="user-photo">
-          <%= image_tag current_user.avatar_url, width: 48, height: 48 %>
+          <%= image_tag current_user.avatar_url, width: 48, height: 48, class: "avatar" %>
         </div>
         <div class="inline-block">
 	  <%= form_with model: current_user, :html => {multipart: true}, remote: true, data: {
