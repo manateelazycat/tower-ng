@@ -5,8 +5,8 @@ import { getUrlParams, pressEnter } from "./utils"
 
 export default class extends Controller {
     static targets = [
-	"missionListNewForm", "missionListNewButton",
-	"missionNewForm", "missionNewButton",
+        "missionListNewForm", "missionListNewButton",
+        "missionNewForm", "missionNewButton",
     ]
 
     onScroll() {
@@ -23,15 +23,15 @@ export default class extends Controller {
     clickMissionNewButton(event) {
         event.preventDefault()
 
-	$(this.missionNewFormTarget).show()
-	$(this.missionNewButtonTarget).hide()
+        $(this.missionNewFormTarget).show()
+        $(this.missionNewButtonTarget).hide()
     }
 
     clickMissionSubmitButton(event) {
         event.preventDefault()
 
         var currentTarget = event.currentTarget
-	var titleAndNewForm = this.missionFindTitleAndNewForm(currentTarget)
+        var titleAndNewForm = this.missionFindTitleAndNewForm(currentTarget)
         var closestMissionListTitle = titleAndNewForm.listTitle
         var missionNewInput = closestMissionListTitle.find(".mission-edit-input")
         var missionName = missionNewInput.val().trim()
@@ -40,7 +40,7 @@ export default class extends Controller {
             updateTooltip("请输入任务标题", missionNewInput)
         } else {
             if (closestMissionListTitle.attr("id") == "mission-list-title-default") {
-		var url = $(location).attr('href')
+                var url = $(location).attr('href')
                 var projectId = url.substring(url.lastIndexOf('/') + 1)
 
                 $.ajax({
@@ -53,11 +53,11 @@ export default class extends Controller {
                     context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
-			    var scrollArea = $(".right-float-menu-scrollarea")
-			    var editInput = $(".edit-input")
+                            var scrollArea = $(".right-float-menu-scrollarea")
+                            var editInput = $(".edit-input")
 
-			    // Replace new mission list in scroll area and scroll to bottom.
-			    $("#mission-list-default").replaceWith(result["mission_list_item_html"])
+                            // Replace new mission list in scroll area and scroll to bottom.
+                            $("#mission-list-default").replaceWith(result["mission_list_item_html"])
                             scrollArea.animate({scrollTop: scrollArea.prop("scrollHeight")}, 500)
 
                             // Replace new mission list in mission list area.
@@ -68,8 +68,8 @@ export default class extends Controller {
                             this.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), editInput)
 
                             // Show mission new form.
-			    $(this.missionNewFormTarget).show()
-			    $(this.missionNewButtonTarget).hide()
+                            $(this.missionNewFormTarget).show()
+                            $(this.missionNewButtonTarget).hide()
 
                             // Focus input.
                             editInput.focus()
@@ -84,7 +84,7 @@ export default class extends Controller {
     }
 
     addMissionInMissionList(mission_list_id, missionNewFormItem, missionNewInput) {
-	var url = $(location).attr('href')
+        var url = $(location).attr('href')
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
         var missionDistributorMenu = $(".mission-distributor-menu")
@@ -114,8 +114,8 @@ export default class extends Controller {
     clickMissionCancelButton(event) {
         event.preventDefault()
 
-	$(this.missionNewFormTarget).hide()
-	$(this.missionNewButtonTarget).show()
+        $(this.missionNewFormTarget).hide()
+        $(this.missionNewButtonTarget).show()
     }
 
     clickMissionListNewButton(event) {
@@ -143,7 +143,7 @@ export default class extends Controller {
 
         var missionListInput = $(".mission-list-new-input")
 
-	var url = $(location).attr('href')
+        var url = $(location).attr('href')
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
         if (missionListInput.val().trim() == "") {
@@ -160,10 +160,15 @@ export default class extends Controller {
                     context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
+                            var scrollArea = $(".right-float-menu-scrollarea")
+                            var menuItem = $(".right-float-menu-item")
+
                             // Update default mission list id and text.
-                            $(".right-float-menu-item").first().attr("id", result["mission_list_id"])
-                            $(".right-float-menu-item").first().text(missionListInput.val())
-                            $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
+                            menuItem
+                                .first().attr("id", result["mission_list_id"])
+                                .first().text(missionListInput.val())
+
+                            scrollArea.animate({scrollTop: scrollArea.prop("scrollHeight")}, 500)
 
                             // Replace new mission list in mission list area.
                             $("#mission-list-title-default").replaceWith(result["mission_list_html"])
@@ -183,9 +188,12 @@ export default class extends Controller {
                     },
                     success: function(result) {
                         if (result["status"] == "created") {
+                            var scrollArea = $(".right-float-menu-scrollarea")
+
                             // Update new mission list at mission list area.
-                            $(".right-float-menu-scrollarea").append(result["mission_list_item_html"])
-                            $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
+                            scrollArea
+                                .append(result["mission_list_item_html"])
+                                .animate({scrollTop: scrollArea.prop("scrollHeight")}, 500)
 
                             // Update new mission list at mission area.
                             $(".mission-list-title").last().append(result["mission_list_html"])
@@ -210,6 +218,7 @@ export default class extends Controller {
 
         $(".mission-save-form").show()
         $(".mission-save-input").val(missionListTitle.text().trim())
+
         missionListTitle.hide()
     }
 
@@ -236,10 +245,11 @@ export default class extends Controller {
                     name: missionSaveInput.val().trim(),
                 },
                 success: function(result) {
-                    $(".mission-list-title span").show()
-                    $(".mission-save-form").hide()
+                    $(".mission-list-title span")
+                        .show()
+                        .text(missionSaveInput.val().trim())
 
-                    $(".mission-list-title span").text(missionSaveInput.val().trim())
+                    $(".mission-save-form").hide()
                 }
             })
         }
@@ -270,7 +280,7 @@ export default class extends Controller {
         missionToolbar.attr("missionid", missionToolbar.attr("hover_missionid"))
         missionToolbar.attr("toolbar_dialog", toolbarDialog)
 
-        $(".mission-toolbar").hide()
+        missionToolbar.hide()
         $(toolbarDialog).modal("show")
     }
 
@@ -361,8 +371,10 @@ export default class extends Controller {
                 success: function(result) {
                     this.updateDistributorButtonInfo(mission.find(".mission-distributor-button"))
 
-                    mission.fadeIn(0)
-                    mission.next().hide()
+                    mission
+                        .fadeIn(0)
+                        .next()
+                        .hide()
 
                     missionTitleLink.text(missionName)
                 }
@@ -378,15 +390,11 @@ export default class extends Controller {
         var toolbarX = currentTarget.getBoundingClientRect().left - missionToolbar.outerWidth(true)
         var toolbarY = currentTarget.getBoundingClientRect().top + currentTarget.getBoundingClientRect().height / 2 - missionToolbar.outerHeight(true) / 2
 
-        missionToolbar.css({
-            left: toolbarX,
-            top: toolbarY,
-        })
-
-        missionToolbar.show()
-
-        // Assgin mission id to mission toolbar.
-        missionToolbar.attr("hover_missionid", $(currentTarget).attr("id"))
+        missionToolbar
+            .css({ left: toolbarX,
+                   top: toolbarY })
+            .show()
+            .attr("hover_missionid", $(currentTarget).attr("id"))
     }
 
     mouseLeaveMission(event) {
@@ -412,11 +420,7 @@ export default class extends Controller {
     jumpToMissionPage(event) {
         event.preventDefault()
 
-        var currentTarget = event.currentTarget
-
-        var urlParams = getUrlParams()
-
-        window.location.href = "/projects/" + urlParams[4] + "/missions/" + $(currentTarget).attr("id")
+        window.location.href = "/projects/" + getUrlParams[4] + "/missions/" + $(event.currentTarget).attr("id")
     }
 
     clickMissionPageEditButton(event) {
@@ -426,11 +430,9 @@ export default class extends Controller {
         $(".mission-title-item").hide()
         $(".mission-summary").hide()
         $(".mission-add-summary-button").hide()
-
         $(".mission-edit-form-header input").val($(".mission-title-item span").text().trim())
 
-        var missionSummary = $(".mission-edit-form-header textarea")
-        missionSummary.data("summary", missionSummary.val().trim())
+        missionSummary.data("summary", $(".mission-edit-form-header textarea").val().trim())
     }
 
     enterMissionPageEdit(event) {
@@ -462,11 +464,13 @@ export default class extends Controller {
                 },
                 context: this,
                 success: function(result) {
+                    var missionSummary = $(".mission-summary")
+
                     this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
 
                     $(".mission-edit-form-header").hide()
                     $(".mission-title-item").show()
-                    $(".mission-summary").show()
+                    missionSummary.show()
 
                     if (summary.length == 0) {
                         $(".mission-add-summary-button").show()
@@ -475,7 +479,7 @@ export default class extends Controller {
                     }
 
                     $(".mission-title-item span").text(missionName)
-                    $(".mission-summary").text(summary)
+                    missionSummary.text(summary)
                 }
             })
         }
@@ -484,10 +488,12 @@ export default class extends Controller {
     clickMissionPageEditCancelButton(event) {
         event.preventDefault()
 
-        this.updateDistributorButtonInfo($(".mission-title-item").find("button"))
+        var missionTitleItem = $(".mission-title-item")
+
+        this.updateDistributorButtonInfo(missionTitleItem.find("button"))
 
         $(".mission-edit-form-header").hide()
-        $(".mission-title-item").show()
+        missionTitleItem.show()
         $(".mission-summary").show()
 
         var summary = $(".mission-edit-form-header textarea").data("summary")
@@ -524,8 +530,9 @@ export default class extends Controller {
             },
             success: function(result) {
                 // Shark comment area.
-                $(".mission-comment-textarea").val("")
-                $(".mission-comment-textarea").attr("rows", 1)
+                $(".mission-comment-textarea")
+                    .val("")
+                    .attr("rows", 1)
 
                 // Hide comment first.
                 var comment = $(result)
@@ -555,11 +562,12 @@ export default class extends Controller {
             syncButtonText = "未指派"
         }
 
-        missionDistributorButton.text(syncButtonText)
-        missionDistributorButton.data("userid", syncButton.data("userid"))
-        missionDistributorButton.data("username", syncButton.data("username"))
-        missionDistributorButton.data("date", syncButton.data("date"))
-        missionDistributorButton.attr("class", syncButton.attr("class"))
+        missionDistributorButton
+            .text(syncButtonText)
+            .data("userid", syncButton.data("userid"))
+            .data("username", syncButton.data("username"))
+            .data("date", syncButton.data("date"))
+            .attr("class", syncButton.attr("class"))
     }
 
     closeMission(event) {
@@ -582,8 +590,7 @@ export default class extends Controller {
                 })
 
                 // Add closed status mission at last.
-                var closedMission = $(result)
-                closedMission.appendTo(closestMissionListTitle).show(300)
+                $(result).appendTo(closestMissionListTitle).show(300)
             }
         })
     }
@@ -600,7 +607,7 @@ export default class extends Controller {
             data: {
                 action_type: "reopen_mission",
             },
-	    context: this,
+            context: this,
             success: function(result) {
                 // Remove closed status mission after fade out animation.
                 mission.fadeOut(300, function() {
@@ -609,27 +616,27 @@ export default class extends Controller {
 
                 // Insert open status mission before new form.
                 var resultTarget = $(result)
-		var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
+                var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
                 var closestNewFormItem = this.missionFindTitleAndNewForm(currentTarget).newFormItem
 
-		// Hide mision.
+                // Hide mision.
                 missionTarget.hide()
 
-		// Insert mission and mission edit form.
+                // Insert mission and mission edit form.
                 resultTarget.insertBefore(closestNewFormItem)
 
-		// Show mission.
+                // Show mission.
                 missionTarget.fadeIn(300)
             }
         })
     }
 
     missionFindTitleAndNewForm(element) {
-	var missionListTitle = $(element).closest(".mission-list-title")
+        var missionListTitle = $(element).closest(".mission-list-title")
 
-	return {
-	    listTitle: missionListTitle,
-	    newFormItem: missionListTitle.find(".mission-new-form-item")
-	}
+        return {
+            listTitle: missionListTitle,
+            newFormItem: missionListTitle.find(".mission-new-form-item")
+        }
     }
 }
