@@ -53,23 +53,26 @@ export default class extends Controller {
                     context: this,
                     success: function(result) {
                         if (result["status"] == "created") {
-                            // Replace new mission list in scroll area and scroll to bottom.
-                            $("#mission-list-default").replaceWith(result["mission_list_item_html"])
-                            $(".right-float-menu-scrollarea").animate({scrollTop: $(".right-float-menu-scrollarea").prop("scrollHeight")}, 500)
+			    var scrollArea = $(".right-float-menu-scrollarea")
+			    var editInput = $(".edit-input")
+
+			    // Replace new mission list in scroll area and scroll to bottom.
+			    $("#mission-list-default").replaceWith(result["mission_list_item_html"])
+                            scrollArea.animate({scrollTop: scrollArea.prop("scrollHeight")}, 500)
 
                             // Replace new mission list in mission list area.
                             $("#mission-list-title-default").replaceWith(result["mission_list_html"])
 
                             // Add new mission.
-                            $(".edit-input").val(missionName)
-                            this.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), $(".edit-input"))
+                            editInput.val(missionName)
+                            this.addMissionInMissionList($(".mission-list-title").attr("id"), $(".mission-new-form-item"), editInput)
 
                             // Show mission new form.
 			    $(this.missionNewFormTarget).show()
 			    $(this.missionNewButtonTarget).hide()
 
                             // Focus input.
-                            $(".edit-input").focus()
+                            editInput.focus()
                         }
                     }
                 })
