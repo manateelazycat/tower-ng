@@ -17,11 +17,11 @@ export default class extends Controller {
 	var menuTriangleWidth = 10
 	var topHeaderMenu = $(".top-header-menu")
 
-	topHeaderMenu.css({
-	    left: currentRect.left + currentRect.width - topHeaderMenu.width() + menuTriangleWidth * 2,
-	    top: currentRect.bottom + menuTriangleWidth
-	})
-
-	topHeaderMenu.show()
+	topHeaderMenu
+	    .css({
+		left: currentRect.left + currentRect.width - topHeaderMenu.width() + menuTriangleWidth * 2,
+		top: currentRect.bottom + menuTriangleWidth
+	    })
+	    .show()
     }
 }
