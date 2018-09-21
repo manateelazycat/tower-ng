@@ -21,12 +21,19 @@
                 选择新头像
               </label>
 
-              <%= f.file_field :photo, id: "attachment-input", class: "setting-icon-upload-button", data: {
+              <%= f.file_field
+	      :photo,
+	      id: "attachment-input",
+	      class: "setting-icon-upload-button",
+	      data: {
                   action: "change->setting#finishUpload"
-              } %>
+              }
+	      %>
 	    </div>
 
-            <%= f.submit class: "hide" %>
+            <%= f.submit class: "hide", data: {
+		target: "setting.submit"
+	    } %>
 	  <% end %>
           <div class="setting-description">你可以选择 png/jpg 图片作为头像</div>
         </div>
