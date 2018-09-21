@@ -24,9 +24,9 @@ export default class extends Controller {
             if (missionDistributorMenu.is(":visible")) {
                 var missionMemberInput = $(missionDistributorMenu).find(".mission-member-input")
                 var missionDateInput = $(missionDistributorMenu).find(".mission-date-input")
-		var username = missionMemberInput.val().trim()
-		var date = missionDateInput.val().trim()
-		var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
+                var username = missionMemberInput.val().trim()
+                var date = missionDateInput.val().trim()
+                var missionDistributorButton = $("#" + missionDistributorMenu.data("buttonid"))
                 var userid = this.generateUserIdWithName(username)
 
                 // Just change distributor button attributables if missionid is empty (create mission form)
@@ -65,12 +65,13 @@ export default class extends Controller {
         var inputRect = missionMemberInput[0].getBoundingClientRect()
         var missionMemberMenu = $(".mission-member-menu")
 
-        missionMemberMenu.css({
-            top: inputRect.top + inputRect.height,
-            left: inputRect.left,
-            width: inputRect.width,
-        })
-        missionMemberMenu.show()
+        missionMemberMenu
+            .css({
+                top: inputRect.top + inputRect.height,
+                left: inputRect.left,
+                width: inputRect.width,
+            })
+            .show()
     }
 
     clickMemberMenuButton(event) {
@@ -80,32 +81,32 @@ export default class extends Controller {
         var inputRect = missionMemberInput[0].getBoundingClientRect()
         var missionMemberMenu = $(".mission-member-menu")
 
-        missionMemberMenu.css({
-            top: inputRect.top + inputRect.height,
-            left: inputRect.left,
-            width: inputRect.width,
-        })
-
-        missionMemberMenu.toggle()
+        missionMemberMenu
+            .css({
+                top: inputRect.top + inputRect.height,
+                left: inputRect.left,
+                width: inputRect.width,
+            })
+            .toggle()
     }
 
     changeMemberInput(event) {
         var memberItems = $(".mission-member-menu .mission-member-menu-item")
         var input = $(".mission-member-input").val()
         var lastMatchMemberItem
-	var self = this
-	
+        var self = this
+
         $.each(memberItems, function(i, val) {
-	    if (self.nameMatchInput(i, input)) {
+            if (self.nameMatchInput(i, input)) {
                 $(memberItems[i])
-		    .show()
-		    .find(".splitter")
-		    .show()
+                    .show()
+                    .find(".splitter")
+                    .show()
 
                 lastMatchMemberItem = memberItems[i]
-	    } else {
+            } else {
                 $(memberItems[i]).hide()
-	    }
+            }
         })
 
         // Hide splitter line under last match item.
@@ -147,12 +148,12 @@ export default class extends Controller {
         missionMemberInput.val($(currentTarget).data("username"))
         missionDateInput.val($(currentTarget).data("date"))
 
-        missionDistributorMenu.css({
-            left: rect.left + rect.width + 20,
-            top: rect.top + rect.height / 2 - 30,
-        })
-
-        missionDistributorMenu.toggle()
+        missionDistributorMenu
+            .css({
+                left: rect.left + rect.width + 20,
+                top: rect.top + rect.height / 2 - 30,
+            })
+            .toggle()
 
         // Save mission id in mission distributor menu.
         if (missionDistributorMenu.is(":visible")) {
@@ -216,7 +217,7 @@ export default class extends Controller {
         var memberPinyin = $(memberPinyins[i]).text().trim().replace(/\s+/g, "")
         var memberPinyinSimple = $(memberPinyins[i]).text().trim().split(" ").map(pinyin => pinyin[0]).join("")
 
-	return (memberName.includes(input) ||
+        return (memberName.includes(input) ||
                 memberPinyin.includes(input) ||
                 memberPinyinSimple.includes(input))
     }
