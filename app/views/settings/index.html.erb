@@ -14,7 +14,7 @@
           <%= image_tag current_user.avatar_url %>
         </div>
         <div class="inline-block">
-	  <%= form_with model: current_user, :html => {multipart: true, id: "user-photo-form", action: "update_avatar"}, remote: true, data: {
+	  <%= form_with model: current_user, :html => {multipart: true}, remote: true, data: {
 	      action: "ajax:success->setting#updateUserPhoto"
 	  } do |f| %>
 
