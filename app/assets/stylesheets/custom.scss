@@ -1313,6 +1313,24 @@ input[type="checkbox"]:disabled + label::before {
     margin-left: 5px;
 }
 
+.personal_page_header {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.personal_page_info {
+    margin-left: 20px;
+}
+
+.personal_page_username {
+    font-size: 24px;
+}
+
+.personal_page_email {
+    font-size: 16px;
+    color: #666;
+}
+
 .top-header-menu-user-name {
     font-size: 18px;
 }

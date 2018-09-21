@@ -17,7 +17,7 @@
 	  <% if member[:active] || team_administrator? %>
             <li class="member-item flex-vcenter">
               <div class="member-item-icon">
-		<%= image_tag member[:photo_url] %>
+		<%= image_tag member[:photo_url], width: 48, height: 48 %>
               </div>
               <div class="member-item-name">
 		<%= link_to member_path(member[:user_hashid]), class: "member-item-name-button" do %>

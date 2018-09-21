@@ -24,7 +24,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join("_")
   # end
 
-  process clip_photo: [48, 48]
+  process clip_photo: [80, 80]
   process round: []
 
   def clip_photo(width, height, gravity = "Center", combine_options: {})
