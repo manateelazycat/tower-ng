@@ -46,10 +46,10 @@ class UsersController < ApplicationController
     current_user.photo = params[:user][:photo]
     current_user.save!
 
-    @photo_url = current_user.photo.url
-
     respond_to do |format|
-      format.js { render "update_user_photo.js.erb" }
+      format.json do
+        render json: { photo_url: current_user.photo_url }
+      end
     end
   end
 end

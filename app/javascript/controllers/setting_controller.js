@@ -6,4 +6,12 @@ export default class extends Controller {
     finishUpload(event) {
 	this.submitTarget.click()
     }
+
+    updateUserPhoto(event) {
+	let [data, status, xhr] = event.detail;
+	var photo_url = $.parseJSON(xhr.response)["photo_url"]
+
+	$(".setting-icon img").attr("src", photo_url)
+	$(".top-header-icon img").attr("src", photo_url)
+    }
 }
