@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import { exclueMenuElements } from "./utils"
+import { exclueMenuElements, getUrlParams } from "./utils"
 
 export default class extends Controller {
     onClick(event) {
@@ -78,8 +78,7 @@ export default class extends Controller {
     }
 
     confirmDeleteComment(event) {
-	var url = $(location).attr('href')
-	var urlParams = url.split("/")
+	var urlParams = getUrlParams()
 
 	var commentId = $(".comment-edit-button").data("comment-id")
 
@@ -102,8 +101,7 @@ export default class extends Controller {
 	var comment = $("#" + commentId + ".mission-comment")
 	var commentTextarea = commentEditForm.find(".comment-edit-textarea")
 
-	var url = $(location).attr('href')
-	var urlParams = url.split("/")
+	var urlParams = getUrlParams()
 
 	$.ajax({
 	    type: "GET",

@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import { exclueMenuElements } from "./utils"
+import { exclueMenuElements, getUrlParams } from "./utils"
 
 export default class extends Controller {
     connect() {
@@ -35,8 +35,7 @@ export default class extends Controller {
                 }
                 // Post mission distributor information to server.
                 else {
-                    var url = $(location).attr('href')
-                    var urlParams = url.split("/")
+                    var urlParams = getUrlParams()
 
                     $.ajax({
                         type: "PATCH",

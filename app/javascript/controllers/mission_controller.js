@@ -1,6 +1,7 @@
 import { Controller } from "stimulus"
 import deleteAndRedirect from "./delete_and_redirect"
 import { createTooltip, updateTooltip, hideTooltip } from "./show_tooltip"
+import { getUrlParams } from "./utils"
 
 export default class extends Controller {
     static targets = [
@@ -39,7 +40,7 @@ export default class extends Controller {
             updateTooltip("请输入任务标题", missionNewInput)
         } else {
             if (closestMissionListTitle.attr("id") == "mission-list-title-default") {
-                var url = $(location).attr('href')
+		var url = $(location).attr('href')
                 var projectId = url.substring(url.lastIndexOf('/') + 1)
 
                 $.ajax({
@@ -80,7 +81,7 @@ export default class extends Controller {
     }
 
     addMissionInMissionList(mission_list_id, missionNewFormItem, missionNewInput) {
-        var url = $(location).attr('href')
+	var url = $(location).attr('href')
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
         var missionDistributorMenu = $(".mission-distributor-menu")
@@ -139,7 +140,7 @@ export default class extends Controller {
 
         var missionListInput = $(".mission-list-new-input")
 
-        var url = $(location).attr('href')
+	var url = $(location).attr('href')
         var projectId = url.substring(url.lastIndexOf('/') + 1)
 
         if (missionListInput.val().trim() == "") {
@@ -223,8 +224,7 @@ export default class extends Controller {
         if (missionSaveInput.val().trim() == "") {
             updateTooltip("请输入任务清单名称", missionSaveInput)
         } else {
-            var url = $(location).attr('href')
-            var urlParams = url.split("/")
+            var urlParams = getUrlParams()
 
             $.ajax({
                 type: "GET",
@@ -252,8 +252,7 @@ export default class extends Controller {
     deleteMissionList(event) {
         event.preventDefault()
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
         deleteAndRedirect("/projects/" + urlParams[4] + "/mission_lists/" + urlParams[6])
     }
@@ -275,8 +274,7 @@ export default class extends Controller {
     deleteMission(event) {
         var missionToolbar = $(".mission-toolbar")
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
 
         $.ajax({
@@ -292,8 +290,7 @@ export default class extends Controller {
     deleteMissionPage(event) {
         event.preventDefault()
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
         deleteAndRedirect("/projects/" + urlParams[4] + "/missions/" + urlParams[6])
     }
@@ -345,8 +342,7 @@ export default class extends Controller {
         if (missionName == "") {
             updateTooltip("请输入任务标题", missionEditInput)
         } else {
-            var url = $(location).attr('href')
-            var urlParams = url.split("/")
+            var urlParams = getUrlParams()
 
             var missionToolbar = $(".mission-toolbar")
             var missionTitleLink = $("#" + missionToolbar.attr("missionid") + ".mission-title-link")
@@ -415,8 +411,7 @@ export default class extends Controller {
 
         var currentTarget = event.currentTarget
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
         window.location.href = "/projects/" + urlParams[4] + "/missions/" + $(currentTarget).attr("id")
     }
@@ -451,8 +446,7 @@ export default class extends Controller {
         if (missionName == "") {
             updateTooltip("请输入任务标题", missionEditInput)
         } else {
-            var url = $(location).attr('href')
-            var urlParams = url.split("/")
+            var urlParams = getUrlParams()
 
             var summary = $(".mission-edit-form-header textarea").val().trim()
 
@@ -516,8 +510,7 @@ export default class extends Controller {
     clickCommentSubmitButton(event) {
         event.preventDefault()
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
         $.ajax({
             type: "POST",
@@ -571,8 +564,7 @@ export default class extends Controller {
         var mission = $(currentTarget).parents("li")
         var closestMissionListTitle = this.missionFindTitleAndNewForm(currentTarget).listTitle
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
         $.ajax({
             type: "PATCH",
@@ -597,8 +589,7 @@ export default class extends Controller {
         var currentTarget = event.currentTarget
         var mission = $(currentTarget).parents("li")
 
-        var url = $(location).attr('href')
-        var urlParams = url.split("/")
+        var urlParams = getUrlParams()
 
         $.ajax({
             type: "PATCH",

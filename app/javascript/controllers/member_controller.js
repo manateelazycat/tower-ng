@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import { createTooltip, updateTooltip } from "./show_tooltip"
+import { getUrlParams } from "./utils"
 
 export default class extends Controller {
     addNewInviteItem(event) {
@@ -28,8 +29,7 @@ export default class extends Controller {
 	})
 
  	if (members.length > 0) {
-	    var url = $(location).attr('href')
-	    var urlParams = url.split("/")
+	    var urlParams = getUrlParams()
 
 	    $.ajax({
 		type: "POST",
@@ -49,8 +49,7 @@ export default class extends Controller {
     resendActivationMail(event) {
 	event.preventDefault()
 
-	var url = $(location).attr('href')
-	var urlParams = url.split("/")
+	var urlParams = getUrlParams()
 
 	$.ajax({
 	    type: "GET",
@@ -73,8 +72,7 @@ export default class extends Controller {
     cancelInivte(event) {
 	event.preventDefault()
 
-	var url = $(location).attr('href')
-	var urlParams = url.split("/")
+	var urlParams = getUrlParams()
 
 	$.ajax({
 	    type: "GET",

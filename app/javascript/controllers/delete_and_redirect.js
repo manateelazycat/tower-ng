@@ -1,6 +1,7 @@
+import { getUrlParams } from "./utils"
+
 export default function deleteAndRedirect(delete_url) {
-    var url = $(location).attr('href')
-    var urlParams = url.split("/")
+    var urlParams = getUrlParams()
 
     // Hide confirm dialog.
     $("#confirm-dialog").modal("hide")
