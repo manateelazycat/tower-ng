@@ -16,6 +16,14 @@ class Mission < ApplicationRecord
     user_id.nil? ? "" : User.find(user_id).name
   end
 
+  def project_hashid
+    Project.find(MissionList.find(mission_list_id).project_id).hashid
+  end
+
+  def project_name
+    Project.find(MissionList.find(mission_list_id).project_id).name
+  end
+
   def format_distributor_info
     if !user_id && !finish_time
       "未指派"

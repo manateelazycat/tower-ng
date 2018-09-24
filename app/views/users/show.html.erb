@@ -24,7 +24,7 @@
         <% if @mission_list %>
           <% @mission_list.each do |mission| %>
             <% if !mission.is_finish %>
-              <%= render "missions/create_mission", mission: mission %>
+              <%= render "missions/create_mission", mission: mission, show_project: true %>
             <% end %>
           <% end %>
         <% end %>

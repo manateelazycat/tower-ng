@@ -29,14 +29,14 @@
   </div>
   <% mission_list.missions.each do |mission| %>
     <% if !mission.is_finish %>
-      <%= render "missions/create_mission", mission: mission %>
+      <%= render "missions/create_mission", mission: mission, show_project: false %>
     <% end %>
   <% end %>
   <%= render "mission_lists/mission_new_form" %>
   <% if local_assigns.has_key? :show_finished_missions %>
     <% mission_list.missions.each do |mission| %>
       <% if mission.is_finish %>
-        <%= render "missions/create_mission", mission: mission %>
+        <%= render "missions/create_mission", mission: mission, show_project: false %>
       <% end %>
     <% end %>
   <% end %>

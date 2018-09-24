@@ -12,9 +12,9 @@
      class="mission-title-link"
      data-action="mission#jumpToMissionPage">
     <%= mission.name %>
-    </a>
+  </a>
 
-    <% if mission.comments.length > 0 %>
+  <% if mission.comments.length > 0 %>
     <button type="button"
             id=<%= mission.hashid %>
             class="mission-distributor-button mission-distributor-confirm"
@@ -24,5 +24,14 @@
     </button>
   <% end %>
   <%= render "layouts/mission_distributor_button", mission: mission %>
+  <% if show_project %>
+    <%= link_to project_url(mission.project_hashid) do%>
+      <button type="button"
+              id=<%= mission.hashid %>
+              class="mission-distributor-button mission-distributor-confirm">
+        <%= mission.project_name %>
+      </button>
+    <% end %>
+  <% end %>
 </li>
 <%= render "mission_lists/mission_edit_form", mission: mission %>

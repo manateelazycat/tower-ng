@@ -1,5 +1,5 @@
 <% if mission.is_finish %>
   <%= render "missions/closed_mission", mission: mission %>
 <% else %>
-  <%= render "missions/opened_mission", mission: mission %>
+  <%= render "missions/opened_mission", mission: mission, show_project: show_project %>
 <% end %>
