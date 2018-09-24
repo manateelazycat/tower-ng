@@ -6,8 +6,9 @@
     <%= render 'layouts/header' %>
     <%= render "layouts/menu_eventarea" %>
     <%= render "layouts/mission_distributor_menu" %>
-    
-    <div class="board-box min-board-height">
+
+    <div class="board-box min-board-height"
+	 data-controller="mission">
       <div class="page-title"><%= current_user.name %> 创建的任务</div>
 
       <% if @mission_list %>

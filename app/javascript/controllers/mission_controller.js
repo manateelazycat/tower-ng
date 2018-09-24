@@ -565,6 +565,8 @@ export default class extends Controller {
     }
 
     closeMission(event) {
+	console.log("**********")
+
         var currentTarget = event.currentTarget
         var mission = $(currentTarget).parents("li")
         var closestMissionListTitle = this.missionFindTitleAndNewForm(currentTarget).listTitle
