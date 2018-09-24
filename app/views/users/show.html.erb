@@ -6,6 +6,12 @@
     <%= render 'layouts/header' %>
     <%= render "layouts/menu_eventarea" %>
     <%= render "layouts/mission_distributor_menu" %>
+    <%= render "layouts/confirm_dialog", dialogid: "mission-confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
+
+    <%= render "layouts/mission_toolbar",
+    delete_dialog: "#mission-confirm-dialog",
+    dialog_id: "mission-confirm-dialog"
+    %>
 
     <div class="board-box"
          data-controller="member mission">
