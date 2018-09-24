@@ -843,6 +843,12 @@ input[type="checkbox"]:disabled + label::before {
     @include text-link-button-mixin(16px, 0px, #aaa, $logo-color, $logo-color);
 }
 
+.mission-finish-log {
+    color: #aaa;
+    font-size: 15px;
+    font-weight: 350;
+}
+
 .mission-big-title-link {
     @include text-link-button-mixin(16px, 0px, #222, $logo-color, $logo-color);
 

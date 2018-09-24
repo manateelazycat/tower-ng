@@ -10,8 +10,14 @@
   </label>
   <%= link_to project_mission_url(mission.project_hashid, mission.hashid) do %>
     <span id=<%= mission.hashid %>
-	  class="mission-title-link">
+	  class="mission-title-link-finished">
       <%= mission.name %>
+    </span>
+  <% end %>
+
+  <% if mission.finish_time %>
+    <span class="mission-finish-log">
+      (<%= mission.finish_log %>)
     </span>
   <% end %>
 </li>

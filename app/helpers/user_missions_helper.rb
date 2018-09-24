@@ -16,7 +16,6 @@ module UserMissionsHelper
   end
 
   def cancel_mission(mission_id)
-    # UserMission.destroy_all(team_id: current_team.id, mission_id: mission_id)
     UserMission.where(team_id: current_team.id, mission_id: mission_id).destroy_all
   end
 
@@ -43,12 +42,35 @@ module UserMissionsHelper
   end
 
   def show_unfinished_mission(user_id)
-    missions = UserMission.select { |um| um.user_id == user_id && um.team_id == current_team.id && um.is_open }
-    missions.select { |um| Mission.find(um.mission_id) }.map { |um| Mission.find(um.mission_id) }
+    user_missions = UserMission.select { |um| um.user_id == user_id && um.team_id == current_team.id && um.is_open }
+
+    missions = []
+    user_missions.each do |um|
+      if Mission.exists?(um.mission_id)
+        mission = Mission.find(um.mission_id)
+        missions.push(mission)
+      else
+        um.destroy
+      end
+    end
+
+    missions
   end
 
   def show_finished_mission(user_id)
-    UserMission.select { |um| um.user_id == user_id && um.team_id == current_team.id && !um.is_open }.map { |um| Mission.find(um.mission_id) }
+    user_missions = UserMission.select { |um| um.user_id == user_id && um.team_id == current_team.id && !um.is_open }
+
+    missions = []
+    user_missions.each do |um|
+      if Mission.exists?(um.mission_id)
+        mission = Mission.find(um.mission_id)
+        missions.push(mission)
+      else
+        um.destroy
+      end
+    end
+
+    missions
   end
 
   # Find all matches and delete duplicate just keep first match.

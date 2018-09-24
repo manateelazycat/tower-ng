@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_025245) do
+ActiveRecord::Schema.define(version: 2018_09_24_142500) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_025245) do
     t.integer "user_id"
     t.datetime "finish_time"
     t.integer "creator"
+    t.integer "finish_by_user"
     t.index ["mission_list_id"], name: "index_missions_on_mission_list_id"
     t.index ["user_id"], name: "index_missions_on_user_id"
   end

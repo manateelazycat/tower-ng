@@ -16,6 +16,17 @@ class Mission < ApplicationRecord
     user_id.nil? ? "" : User.find(user_id).name
   end
 
+  def finish_log
+    user_name = ""
+
+    if finish_by_user && User.exists?(finish_by_user)
+      user = User.find(finish_by_user)
+      user_name = user.name + ", "
+    end
+
+    user_name + format_time_ago(finish_time)
+  end
+
   def project_hashid
     Project.find(MissionList.find(mission_list_id).project_id).hashid
   end

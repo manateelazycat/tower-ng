@@ -17,7 +17,8 @@ class MissionsController < ApplicationController
     respond_to do |format|
       format.html do
         render "_create_mission",
-               locals: { mission: mission },
+               locals: { mission: mission,
+                         show_project: false },
                layout: false
       end
     end
@@ -74,6 +75,8 @@ class MissionsController < ApplicationController
       return unless mission
 
       mission.is_finish = true
+      mission.finish_time = DateTime.now
+      mission.finish_by_user = current_user.id
       mission.save
 
       finish_mission(current_user.id, mission.id)
@@ -91,6 +94,8 @@ class MissionsController < ApplicationController
       return unless mission
 
       mission.is_finish = false
+      mission.finish_time = nil
+      mission.finish_by_user = nil
       mission.save
 
       reopen_mission(mission.id)
@@ -98,7 +103,8 @@ class MissionsController < ApplicationController
       respond_to do |format|
         format.html do
           render "_opened_mission",
-                 locals: { mission: mission },
+                 locals: { mission: mission,
+                           show_project: false },
                  layout: false
         end
       end

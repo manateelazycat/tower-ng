@@ -4,6 +4,7 @@
 # We add some useful functions, such as detect_browse_device to detect device.
 # Don't need write thos common functions in every controller.
 class ApplicationController < ActionController::Base
+
   include SessionsHelper
   include UserMissionsHelper
 
