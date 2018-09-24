@@ -10,7 +10,8 @@ class MissionsController < ApplicationController
       is_finish: false,
       mission_list_id: params[:mission_list_id],
       user_id: (params[:user_id].nil? || params[:user_id].empty?) ? nil : User.find_by_hashid(params[:user_id]).id,
-      finish_time: (params[:finish_date].nil? || params[:finish_date].empty?) ? nil : DateTime.parse(params[:finish_date])
+      finish_time: (params[:finish_date].nil? || params[:finish_date].empty?) ? nil : DateTime.parse(params[:finish_date]),
+      creator: current_user.id
     )
 
     respond_to do |format|

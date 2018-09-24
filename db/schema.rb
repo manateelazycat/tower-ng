@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_151322) do
+ActiveRecord::Schema.define(version: 2018_09_24_025245) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_151322) do
     t.string "summary"
     t.integer "user_id"
     t.datetime "finish_time"
+    t.integer "creator"
     t.index ["mission_list_id"], name: "index_missions_on_mission_list_id"
     t.index ["user_id"], name: "index_missions_on_user_id"
   end
@@ -68,6 +69,18 @@ ActiveRecord::Schema.define(version: 2018_09_14_151322) do
     t.string "creator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_missions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "team_id"
+    t.integer "mission_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "is_open"
+    t.index ["mission_id"], name: "index_user_missions_on_mission_id"
+    t.index ["team_id"], name: "index_user_missions_on_team_id"
+    t.index ["user_id"], name: "index_user_missions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

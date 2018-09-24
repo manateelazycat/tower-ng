@@ -6,6 +6,8 @@ require "ruby-pinyin"
 class User < ApplicationRecord
   include Hashid::Rails
 
+  serialize :created_missions
+
   mount_uploader :photo, PhotoUploader
 
   has_many :team_admins
@@ -15,13 +17,10 @@ class User < ApplicationRecord
   attr_accessor :activation_token
   attr_accessor :reset_token
   attr_accessor :avatar_files
+
   before_save :downcase_email
   before_create :create_activation_digest
   before_create :create_avatar
-
-  # validates :name,
-  #           presence: true,
-  #           length: {maximum: 100}
 
   before_save { self.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -30,9 +29,6 @@ class User < ApplicationRecord
             length: { maximum: 255 },
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
-
-  # has_secure_password
-  # validates :password, presence: true, length: {minimum: 6}
 
   class << self
     def digest(string)
