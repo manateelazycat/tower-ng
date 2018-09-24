@@ -108,7 +108,7 @@ class MissionsController < ApplicationController
         format.html do
           render "_opened_mission",
                  locals: { mission: mission,
-                           show_project: false },
+                           show_project: params[:at_user_page] == "true" },
                  layout: false
         end
       end

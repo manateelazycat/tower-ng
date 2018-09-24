@@ -1,9 +1,10 @@
 <li id=<%= mission.hashid %>
+    data-project-hashid="<%= mission.project_hashid %>"
     data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
   <input type="checkbox"
          class="mission-checkbox"
          data-action="mission#closeMission"
-         id="<%= mission.hashid %> opened_mission_checkbox">
+	 id="<%= mission.hashid %> opened_mission_checkbox">
   <label for="<%= mission.hashid %> opened_mission_checkbox"
          class="mission-title">
   </label>

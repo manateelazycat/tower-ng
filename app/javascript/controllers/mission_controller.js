@@ -565,25 +565,31 @@ export default class extends Controller {
     }
 
     closeMission(event) {
-	console.log("**********")
-
         var currentTarget = event.currentTarget
         var mission = $(currentTarget).parents("li")
-        var closestMissionListTitle = this.missionFindTitleAndNewForm(currentTarget).listTitle
 
         var urlParams = getUrlParams()
 
         $.ajax({
             type: "PATCH",
-            url: "/projects/" + urlParams[4] + "/missions/" + mission.attr("id"),
+            url: "/projects/" + mission.data("project-hashid") + "/missions/" + mission.attr("id"),
             data: {
                 action_type: "close_mission",
             },
+	    context: this,
             success: function(result) {
                 // Remove open status mission after fade out animation.
                 mission.fadeOut(300, function() {
                     mission.remove()
                 })
+
+		// Find closestMissionListTitle with different page.
+		var closestMissionListTitle
+		if (urlParams.length == 6 && urlParams[3] == "users" && urlParams[5] == "created_missions") {
+		    closestMissionListTitle = $(".created_missions_splitter")
+		} else {
+		    closestMissionListTitle = this.missionFindTitleAndNewForm(currentTarget).listTitle
+		}
 
                 // Add closed status mission at last.
                 $(result).appendTo(closestMissionListTitle).show(300)
@@ -596,12 +602,14 @@ export default class extends Controller {
         var mission = $(currentTarget).parents("li")
 
         var urlParams = getUrlParams()
+	var atUserPage = urlParams.length == 6 && urlParams[3] == "users" && urlParams[5] == "created_missions"
 
         $.ajax({
             type: "PATCH",
             url: "/projects/" + urlParams[4] + "/missions/" + mission.attr("id"),
             data: {
                 action_type: "reopen_mission",
+		at_user_page: atUserPage,
             },
             context: this,
             success: function(result) {
@@ -613,7 +621,14 @@ export default class extends Controller {
                 // Insert open status mission before new form.
                 var resultTarget = $(result)
                 var missionTarget = $($(resultTarget)[0]) // first is mission li, second is mission-edit-form
-                var closestNewFormItem = this.missionFindTitleAndNewForm(currentTarget).newFormItem
+
+		// Find closestNewFormItem with different page.
+		var closestNewFormItem
+		if (atUserPage) {
+		    closestNewFormItem = $(".created_missions_splitter")
+		} else {
+                    closestNewFormItem = this.missionFindTitleAndNewForm(currentTarget).newFormItem
+		}
 
                 // Hide mision.
                 missionTarget.hide()
