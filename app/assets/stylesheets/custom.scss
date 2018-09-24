@@ -1507,3 +1507,13 @@ input[type="checkbox"]:disabled + label::before {
 .avatar {
     clip-path: circle(50% at 50% 50%);
 }
+
+.user-missions-area {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.buttons-middle-blank {
+    display: inline-block;
+    width: 8px;
+}

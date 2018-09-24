@@ -3,7 +3,8 @@
 # User controller.
 class UsersController < ApplicationController
   def show
-    @project = Project.find_by_hashid(params[:id])
+    user = User.find_by_hashid(params[:id])
+    @mission_list = show_unfinished_mission(user.id)
   end
 
   def new

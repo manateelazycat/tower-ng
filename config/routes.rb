@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :settings
     resources :created_missions
+    resources :finished_missions
   end
 
   resources :teams, shallow: true do

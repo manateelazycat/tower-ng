@@ -5,6 +5,7 @@
 # Don't need write thos common functions in every controller.
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include UserMissionsHelper
 
   before_action :detect_browse_device
 

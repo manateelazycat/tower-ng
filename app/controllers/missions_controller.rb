@@ -53,6 +53,12 @@ class MissionsController < ApplicationController
 
       mission.save
 
+      if mission.user_id.nil?
+        cancel_mission(mission.id)
+      else
+        assignment_mission(mission.user_id, mission.id)
+      end
+
       respond_to do |format|
         format.json do
           render json: { distributor_info: mission.format_distributor_info,
@@ -70,6 +76,8 @@ class MissionsController < ApplicationController
       mission.is_finish = true
       mission.save
 
+      finish_mission(current_user.id, mission.id)
+
       respond_to do |format|
         format.html do
           render "_closed_mission",
@@ -84,6 +92,8 @@ class MissionsController < ApplicationController
 
       mission.is_finish = false
       mission.save
+
+      reopen_mission(mission.id)
 
       respond_to do |format|
         format.html do
