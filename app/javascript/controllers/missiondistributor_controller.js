@@ -48,7 +48,21 @@ export default class extends Controller {
                         context: this,
                         success: function(result) {
                             this.updateDistributorButtonInfo(missionDistributorButton, result)
-                        }
+
+			    // NOTE:
+			    // We consider user view user#show page if url match http://0.0.0.0:3000/users/user_hashid
+			    if (urlParams.length == 5 && urlParams[3] == "users") {
+				// Remove mission from page if mission's distributor is different with user.
+				if (urlParams[4] != result["user_hashid"]) {
+				    var mission = missionDistributorButton.parents("li")
+
+				    // Remove open status mission after fade out animation.
+				    mission.fadeOut(500, function() {
+					mission.remove()
+				    })
+				}
+			    }
+			}
                     })
                 }
 

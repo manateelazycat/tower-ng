@@ -60,13 +60,17 @@ class MissionsController < ApplicationController
         assignment_mission(mission.user_id, mission.id)
       end
 
+      user_hashid = mission.user_id.nil? ? nil : User.find(mission.user_id).hashid
+
       respond_to do |format|
         format.json do
           render json: { distributor_info: mission.format_distributor_info,
                          userid: mission.user_id,
                          username: mission.user_name,
                          date: mission.format_finish_time,
-                         css: mission.mission_distributor_button_class }
+                         css: mission.mission_distributor_button_class,
+                         user_hashid: user_hashid
+                       }
         end
       end
     when "close_mission"
