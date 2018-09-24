@@ -48,7 +48,11 @@ module UserMissionsHelper
     user_missions.each do |um|
       if Mission.exists?(um.mission_id)
         mission = Mission.find(um.mission_id)
-        missions.push(mission)
+        if mission.user_id == user_id
+          missions.push(mission)
+        else
+          um.destroy
+        end
       else
         um.destroy
       end
