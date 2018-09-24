@@ -7,21 +7,20 @@
   <label for="<%= mission.hashid %> opened_mission_checkbox"
          class="mission-title">
   </label>
-  <a href="#"
-     id=<%= mission.hashid %>
-     class="mission-title-link"
-     data-action="mission#jumpToMissionPage">
-    <%= mission.name %>
-  </a>
+  <%= link_to project_mission_url(mission.project_hashid, mission.hashid) do %>
+    <span id=<%= mission.hashid %>
+	  class="mission-title-link">
+      <%= mission.name %>
+    </span>
+  <% end %>
 
   <% if mission.comments.length > 0 %>
-    <button type="button"
-            id=<%= mission.hashid %>
-            class="mission-distributor-button mission-distributor-confirm"
-            data-controller="mission"
-            data-action="mission#jumpToMissionPage">
-      <%= mission.comments.length %>条评论
-    </button>
+    <%= link_to project_mission_url(mission.project_hashid, mission.hashid) do %>
+      <span id=<%= mission.hashid %>
+	    class="mission-distributor-button mission-distributor-confirm">
+	<%= mission.comments.length %>条评论
+      </span>
+    <% end %>
   <% end %>
   <%= render "layouts/mission_distributor_button", mission: mission %>
   <% if show_project %>

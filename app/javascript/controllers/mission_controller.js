@@ -417,12 +417,6 @@ export default class extends Controller {
         }
     }
 
-    jumpToMissionPage(event) {
-        event.preventDefault()
-
-        window.location.href = "/projects/" + getUrlParams()[4] + "/missions/" + $(event.currentTarget).attr("id")
-    }
-
     clickMissionPageEditButton(event) {
         event.preventDefault()
 

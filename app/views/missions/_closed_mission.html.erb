@@ -8,10 +8,10 @@
   <label for="<%= mission.hashid %> opened_mission_checkbox"
          class="mission-title">
   </label>
-  <a href="#"
-     id=<%= mission.hashid %>
-     class="mission-title-link mission-title-link-finished"
-     data-action="mission#jumpToMissionPage">
-    <%= mission.name %>
-  </a>
+  <%= link_to project_mission_url(mission.project_hashid, mission.hashid) do %>
+    <span id=<%= mission.hashid %>
+	  class="mission-title-link">
+      <%= mission.name %>
+    </span>
+  <% end %>
 </li>
