@@ -17,10 +17,10 @@
 
   <% if mission.comments.length > 0 %>
     <%= link_to project_mission_url(mission.project_hashid, mission.hashid) do %>
-      <span id=<%= mission.hashid %>
-	    class="mission-distributor-button mission-distributor-confirm">
+      <button id=<%= mission.hashid %>
+	      class="mission-distributor-button mission-distributor-confirm">
 	<%= mission.comments.length %>条评论
-      </span>
+      </button>
     <% end %>
   <% end %>
   <%= render "layouts/mission_distributor_button", mission: mission %>
