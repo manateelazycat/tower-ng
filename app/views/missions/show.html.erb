@@ -1,154 +1,149 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color"
-        id="<%= controller.controller_name %>-<%= controller.action_name %>">
+<body class="fill-background-color"
+      id="<%= controller.controller_name %>-<%= controller.action_name %>">
 
-    <%= render "layouts/menu_eventarea" %>
+  <%= render "layouts/menu_eventarea" %>
 
-    <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
-    <%= render 'layouts/header' %>
-    <%= render "layouts/mission_toolbar",
-    edit_action: "mission#clickMissionPageEditButton",
-    dialog_id: "confirm-dialog"
-    %>
+  <%= render "layouts/loading_dialog", message: "正在删除任务..." %>
+  <%= render 'layouts/header' %>
+  <%= render "layouts/mission_toolbar",
+  edit_action: "mission#clickMissionPageEditButton",
+  dialog_id: "confirm-dialog"
+  %>
 
-    <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
+  <%= render "layouts/confirm_dialog", dialogid: "comment-confirm-dialog", message: "确定要删除这条评论吗?", controller: "comment", action: "comment#confirmDeleteComment" %>
 
-    <%= render "layouts/mission_distributor_menu" %>
+  <%= render "layouts/mission_distributor_menu" %>
 
-    <div class="comment-edit-menu arrow-menu">
-      <ul>
-        <li class="arrow-menu-item">
-          <a href="#"
-             class="arrow-menu-item-text"
-             data-controller="comment"
-             data-action="comment#editComment">
-            编辑
-          </a>
-        </li>
-        <li class="arrow-menu-item">
-          <a href="#"
-             class="arrow-menu-item-text"
-             data-controller="comment"
-             data-action="comment#deleteComment">
-            删除
-          </a>
-        </li>
-      </ul>
+  <div class="comment-edit-menu arrow-menu">
+    <ul>
+      <li class="arrow-menu-item">
+        <a href="#"
+           class="arrow-menu-item-text"
+           data-controller="comment"
+           data-action="comment#editComment">
+          编辑
+        </a>
+      </li>
+      <li class="arrow-menu-item">
+        <a href="#"
+           class="arrow-menu-item-text"
+           data-controller="comment"
+           data-action="comment#deleteComment">
+          删除
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <a href="#"
+     class="comment-edit-button glyphicon glyphicon-align-justify"
+     data-controller="comment"
+     data-action="comment#clickEditButton">
+  </a>
+
+  <%= link_to project_url(@project.hashid) do %>
+    <div class="bread-crumbs-big">
+      <%= @project.name %>
     </div>
+  <% end %>
 
-    <a href="#"
-       class="comment-edit-button glyphicon glyphicon-align-justify"
-       data-controller="comment"
-       data-action="comment#clickEditButton">
-    </a>
+  <div class="right-float-menu-top"></div>
 
-    <%= link_to project_url(@project.hashid) do %>
-      <div class="bread-crumbs-big">
-        <%= @project.name %>
-      </div>
+  <div data-controller="mission rightfloatmenu"
+       data-rightfloatmenu-top-offset="80"
+       class="board-box min-board-height right-float-menu-parent">
+    <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMissionPage" %>
+
+    <%= render "layouts/right_float_menu", edit_action: "mission#clickMissionPageEditButton" %>
+
+    <%= link_to project_mission_list_url(@project.hashid, @mission_list.hashid), class: "mission-list-link" do %>
+      <%= @mission_list.name %>
     <% end %>
 
-    <div class="right-float-menu-top"></div>
-
-    <div data-controller="mission rightfloatmenu"
-         data-rightfloatmenu-top-offset="80"
-         class="board-box min-board-height right-float-menu-parent">
-      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMissionPage" %>
-
-      <%= render "layouts/right_float_menu", edit_action: "mission#clickMissionPageEditButton" %>
-
-      <%= link_to project_mission_list_url(@project.hashid, @mission_list.hashid), class: "mission-list-link" do %>
-        <%= @mission_list.name %>
-      <% end %>
-
-      <li class="mission-edit-form-header">
-        <div class="mission-edit-form">
-          <div class="flex-vcenter">
-            <label class="mission-input-line"></label>
-            <input type="text"
-                   class="edit-input"
-                   placeholder="新的任务"
-                   data-action="keydown->mission#enterMissionPageEdit">
-            <%= render "layouts/mission_distributor_button", mission: @mission %>
-          </div>
-          <% if @mission.summary && !@mission.summary.empty? %>
-            <textarea class="mission-edit-textarea" placeholder="任务描述">
-              <%= @mission.summary %>
-            </textarea>
-          <% else %>
-            <textarea class="mission-edit-textarea" placeholder="任务描述"></textarea>
-          <% end %>
-          <div>
-            <button class="btn-sm mission-edit-submit-button"
-                    data-action="mission#clickMissionPageEditSubmitButton">
-              保存
-            </button>
-            <a href="#"
-               class="link-button-small"
-               data-action="mission#clickMissionPageEditCancelButton">
-              取消
-            </a>
-          </div>
+    <li class="mission-edit-form-header">
+      <div class="mission-edit-form">
+        <div class="flex-vcenter">
+          <label class="mission-input-line"></label>
+          <input type="text"
+                 class="edit-input"
+                 placeholder="新的任务"
+                 data-action="keydown->mission#enterMissionPageEdit">
+          <%= render "layouts/mission_distributor_button", mission: @mission %>
         </div>
-      </li>
-
-      <li id=<%= @mission.hashid %>
-          class="mission-title-item margin-top-normal flex-vcenter"
-          data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
-        <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
-        <label for=<%= @mission.hashid %>
-               class="mission-title">
-          <span
-              id=<%= @mission.hashid %>
-              class="mission-big-title-link">
-            <%= @mission.name %>
-          </span>
-        </label>
-        <%= render "layouts/mission_distributor_button", mission: @mission %>
-      </li>
-      <% if !@mission.summary || @mission.summary.empty? %>
-        <div class="mission-add-summary-button">
+        <% if @mission.summary && !@mission.summary.empty? %>
+          <textarea class="mission-edit-textarea" placeholder="任务描述">
+            <%= @mission.summary %>
+          </textarea>
+        <% else %>
+          <textarea class="mission-edit-textarea" placeholder="任务描述"></textarea>
+        <% end %>
+        <div>
+          <button class="btn-sm mission-edit-submit-button"
+                  data-action="mission#clickMissionPageEditSubmitButton">
+            保存
+          </button>
           <a href="#"
-             class="btn"
-             data-action="mission#clickMissionPageEditButton">
-            添加任务描述
+             class="link-button-small"
+             data-action="mission#clickMissionPageEditCancelButton">
+            取消
           </a>
         </div>
-      <% end %>
-      <span class="mission-summary">
-        <%= @mission.summary %>
-      </span>
+      </div>
+    </li>
 
-      <div class="mission-comment-splitter"></div>
+    <li id=<%= @mission.hashid %>
+        class="mission-title-item margin-top-normal flex-vcenter"
+        data-action="mouseenter->mission#mouseEnterMission mouseleave->mission#mouseLeaveMission">
+      <input type="checkbox" class="mission-checkbox" id=<%= @mission.hashid %>>
+      <label for=<%= @mission.hashid %>
+             class="mission-title">
+        <span
+            id=<%= @mission.hashid %>
+            class="mission-big-title-link">
+          <%= @mission.name %>
+        </span>
+      </label>
+      <%= render "layouts/mission_distributor_button", mission: @mission %>
+    </li>
+    <% if !@mission.summary || @mission.summary.empty? %>
+      <div class="mission-add-summary-button">
+        <a href="#"
+           class="btn"
+           data-action="mission#clickMissionPageEditButton">
+          添加任务描述
+        </a>
+      </div>
+    <% end %>
+    <span class="mission-summary">
+      <%= @mission.summary %>
+    </span>
 
-      <%= render "comments/create_comment_list", mission: @mission %>
+    <div class="mission-comment-splitter"></div>
 
-      <div class="comment-edit-form-wrap">
-        <div class="mission-comment-edit-icon">
-          <%= image_tag current_user.avatar_url, width: 48, height: 48, class: "avatar" %>
-        </div>
-        <div>
-          <textarea class="mission-comment-textarea"
-                    placeholder="点击发表评论"
-                    data-action="mouseup->mission#clickCommentArea"></textarea>
+    <%= render "comments/create_comment_list", mission: @mission %>
 
-          <div class="mission-comment-button-area">
-            <button class="btn-sm mission-comment-submit-button"
-                    data-action="mission#clickCommentSubmitButton">
-              发表评论
-            </button>
-            <a href="#"
-               class="link-button-small"
-               data-action="mission#clickCommentCancelButton">
-              取消
-            </a>
-          </div>
+    <div class="comment-edit-form-wrap">
+      <div class="mission-comment-edit-icon">
+        <%= image_tag current_user.avatar_url, width: 48, height: 48, class: "avatar" %>
+      </div>
+      <div>
+        <textarea class="mission-comment-textarea"
+                  placeholder="点击发表评论"
+                  data-action="mouseup->mission#clickCommentArea"></textarea>
+
+        <div class="mission-comment-button-area">
+          <button class="btn-sm mission-comment-submit-button"
+                  data-action="mission#clickCommentSubmitButton">
+            发表评论
+          </button>
+          <a href="#"
+             class="link-button-small"
+             data-action="mission#clickCommentCancelButton">
+            取消
+          </a>
         </div>
       </div>
     </div>
+  </div>
 
-  </body>
-</html>
+</body>

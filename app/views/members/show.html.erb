@@ -1,54 +1,49 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render 'layouts/header' %>
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
 
-    <%= link_to team_members_url(current_team.hashid) do %>
-      <div class="bread-crumbs-big">
-	团队
-      </div>
-    <% end %>
+  <%= link_to team_members_url(current_team.hashid) do %>
+    <div class="bread-crumbs-big">
+      团队
+    </div>
+  <% end %>
 
-    <div class="board-box"
-         data-controller="member">
+  <div class="board-box"
+       data-controller="member">
 
-      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要取消邀请吗?", controller: "member", action: "member#cancelInivte" %>
+    <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要取消邀请吗?", controller: "member", action: "member#cancelInivte" %>
 
-      <div>
-	<div class="member-icon">Icon</div>
-	<div class="member-name-and-email">
-	  <div class="member-name"><%= @user_name %></div>
-	  <div class="member-email"><%= @user.email %></div>
-	</div>
-      </div>
-
-      <div class="splitter"></div>
-
-      <div class="setting-page-action">
-	<h4 class="setting-page-action-title">他没有收到邀请邮件?</h4>
-	<span class="setting-page-action-summary">如果 <%= @user_name %> 没有收到邀请邮件，请点击下面按钮重新发送激活邮件：</span>
-	<div>
-	  <button id="resend-inivite-button"
-		  class="btn btn-default setting-page-normal-button"
-		  data-action="member#resendActivationMail">
-            重新发送激活邮件
-          </button>
-	</div>
-      </div>
-
-      <div class="setting-page-action">
-	<h4 class="setting-page-action-title">取消对 <%= @user_name %> 的邀请</h4>
-	<span class="setting-page-action-summary">取消邀请后，发送给他的邀请链接将失效，无法激活账号。</span>
-	<a href="#"
-	   class="setting-page-delete-link"
-	   data-toggle="modal"
-           data-target="#confirm-dialog">
-          了解, 取消邀请
-        </a>
+    <div>
+      <div class="member-icon">Icon</div>
+      <div class="member-name-and-email">
+        <div class="member-name"><%= @user_name %></div>
+        <div class="member-email"><%= @user.email %></div>
       </div>
     </div>
 
-  </body>
-</html>
+    <div class="splitter"></div>
+
+    <div class="setting-page-action">
+      <h4 class="setting-page-action-title">他没有收到邀请邮件?</h4>
+      <span class="setting-page-action-summary">如果 <%= @user_name %> 没有收到邀请邮件，请点击下面按钮重新发送激活邮件：</span>
+      <div>
+        <button id="resend-inivite-button"
+                class="btn btn-default setting-page-normal-button"
+                data-action="member#resendActivationMail">
+          重新发送激活邮件
+        </button>
+      </div>
+    </div>
+
+    <div class="setting-page-action">
+      <h4 class="setting-page-action-title">取消对 <%= @user_name %> 的邀请</h4>
+      <span class="setting-page-action-summary">取消邀请后，发送给他的邀请链接将失效，无法激活账号。</span>
+      <a href="#"
+         class="setting-page-delete-link"
+         data-toggle="modal"
+         data-target="#confirm-dialog">
+        了解, 取消邀请
+      </a>
+    </div>
+  </div>
+
+</body>

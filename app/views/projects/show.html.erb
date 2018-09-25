@@ -1,100 +1,95 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render 'layouts/header' %>
-    <%= render "layouts/menu_eventarea" %>
-    <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
-    <%= render "layouts/mission_toolbar",
-    dialog_id: "confirm-dialog"
-    %>
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
+  <%= render "layouts/menu_eventarea" %>
+  <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
+  <%= render "layouts/mission_toolbar",
+  dialog_id: "confirm-dialog"
+  %>
 
-    <%= render "layouts/mission_distributor_menu" %>
+  <%= render "layouts/mission_distributor_menu" %>
 
-    <div class="board-box min-board-height right-float-menu-parent"
-         data-controller="mission rightfloatmenu"
-         data-rightfloatmenu-top-offset="36">
-      <div class="flex-hcenter">
-        <div class="project-header">
-          <div class="project-title" align="left">
-            <%= @project.name %>
-          </div>
-          <div class="project-summary" align="left">
-            <%= @project.summary %>
-          </div>
+  <div class="board-box min-board-height right-float-menu-parent"
+       data-controller="mission rightfloatmenu"
+       data-rightfloatmenu-top-offset="36">
+    <div class="flex-hcenter">
+      <div class="project-header">
+        <div class="project-title" align="left">
+          <%= @project.name %>
         </div>
-        <% if team_administrator? %>
-          <%= link_to edit_project_path(@project.hashid), class: "project-setting" do %>
-            <span class="project-setting-icon glyphicon glyphicon-cog"></span>
-            <span class="project-setting-name">设置</span>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="project-splitter"></div>
-
-      <div class="right-float-menu-box right-float-menu-top">
-        <div class="right-float-menu"
-             data-target="rightfloatmenu.rightMenuArea"
-             data-action="scroll@window->rightfloatmenu#onScroll">
-          <ul class="right-float-menu-scrollarea">
-            <% if !@project.mission_lists.empty? %>
-              <% @project.mission_lists.each do |mission_list| %>
-                <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
-              <% end %>
-            <% else %>
-              <li id="mission-list-default"
-                  class="right-float-menu-item">
-                默认任务列表
-              </li>
-            <% end %>
-          </ul>
-          <ul>
-            <li class="mission-list-new-form-item">
-              <div class="mission-list-new-form"
-                   data-target="mission.missionListNewForm">
-                <div class="flex-vcenter">
-                  <input type="text"
-                         class="mission-list-new-input"
-                         placeholder="新的任务清单"
-                         data-action="keydown->mission#enterMissionListAdd">
-                </div>
-                <div>
-                  <a href="#"
-                     class="btn-sm mission-list-new-submit-button"
-                     data-action="mission#clickMissionListAddButton">
-                    添加任务清单</a>
-                  <a href="#"
-                     class="link-button-small"
-                     data-action="mission#clickMissionListCancelButton">
-                    取消</a>
-                </div>
-              </div>
-            </li>
-            <li>
-              <a href="#"
-                 class="text-link-button"
-                 data-target="mission.missionListNewButton"
-                 data-action="mission#clickMissionListNewButton">
-                添加新任务清单
-              </a>
-            </li>
-          </ul>
+        <div class="project-summary" align="left">
+          <%= @project.summary %>
         </div>
       </div>
-
-      <% if !@project.mission_lists.empty? %>
-        <% @project.mission_lists.each do |mission_list| %>
-          <%= render "mission_lists/create_mission_list", mission_list: mission_list %>
+      <% if team_administrator? %>
+        <%= link_to edit_project_path(@project.hashid), class: "project-setting" do %>
+          <span class="project-setting-icon glyphicon glyphicon-cog"></span>
+          <span class="project-setting-name">设置</span>
         <% end %>
-      <% else %>
-        <ul id="mission-list-title-default"
-            class="mission-list-title">
-          <span>默认任务列表</span>
-          <%= render "mission_lists/mission_new_form" %>
-        </ul>
       <% end %>
-
     </div>
-  </body>
-</html>
+    <div class="project-splitter"></div>
+
+    <div class="right-float-menu-box right-float-menu-top">
+      <div class="right-float-menu"
+           data-target="rightfloatmenu.rightMenuArea"
+           data-action="scroll@window->rightfloatmenu#onScroll">
+        <ul class="right-float-menu-scrollarea">
+          <% if !@project.mission_lists.empty? %>
+            <% @project.mission_lists.each do |mission_list| %>
+              <%= render "mission_lists/create_mission_list_item", mission_list: mission_list %>
+            <% end %>
+          <% else %>
+            <li id="mission-list-default"
+                class="right-float-menu-item">
+              默认任务列表
+            </li>
+          <% end %>
+        </ul>
+        <ul>
+          <li class="mission-list-new-form-item">
+            <div class="mission-list-new-form"
+                 data-target="mission.missionListNewForm">
+              <div class="flex-vcenter">
+                <input type="text"
+                       class="mission-list-new-input"
+                       placeholder="新的任务清单"
+                       data-action="keydown->mission#enterMissionListAdd">
+              </div>
+              <div>
+                <a href="#"
+                   class="btn-sm mission-list-new-submit-button"
+                   data-action="mission#clickMissionListAddButton">
+                  添加任务清单</a>
+                <a href="#"
+                   class="link-button-small"
+                   data-action="mission#clickMissionListCancelButton">
+                  取消</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#"
+               class="text-link-button"
+               data-target="mission.missionListNewButton"
+               data-action="mission#clickMissionListNewButton">
+              添加新任务清单
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <% if !@project.mission_lists.empty? %>
+      <% @project.mission_lists.each do |mission_list| %>
+        <%= render "mission_lists/create_mission_list", mission_list: mission_list %>
+      <% end %>
+    <% else %>
+      <ul id="mission-list-title-default"
+          class="mission-list-title">
+        <span>默认任务列表</span>
+        <%= render "mission_lists/mission_new_form" %>
+      </ul>
+    <% end %>
+
+  </div>
+</body>

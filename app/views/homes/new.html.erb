@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fullscreen-body default-background-image">
-    <div class="flex-center">
-      <h1 class="home-logo">Tower</h1>
-      <h1 class="solgan">团队协作本来就应该这么简单</h1>
-      <p><button class="btn btn-primary sign-button-width sign-button-vertical-margins">
-        <%= link_to "免费注册", sign_up_path, :style => "color:inherit", :class => "no-underline-link" %>
-      </button></p>
-      <p><button class="btn btn-link sign-button-width sign-button-vertical-margins">
-        <%= link_to "登录", sign_in_path, :style => "color:inherit", :class => "no-underline-link" %>
-      </button></p>
-    </div>
-  </body>
-</html>
+<body class="fullscreen-body default-background-image">
+  <%= render 'layouts/flash' %>
+  <div class="flex-center">
+    <h1 class="home-logo">Tower</h1>
+    <h1 class="solgan">团队协作本来就应该这么简单</h1>
+    <p><button class="btn btn-primary sign-button-width sign-button-vertical-margins">
+      <%= link_to "免费注册", sign_up_path, :style => "color:inherit", :class => "no-underline-link" %>
+    </button></p>
+    <p><button class="btn btn-link sign-button-width sign-button-vertical-margins">
+      <%= link_to "登录", sign_in_path, :style => "color:inherit", :class => "no-underline-link" %>
+    </button></p>
+  </div>
+</body>

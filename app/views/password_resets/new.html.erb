@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fullscreen-body default-background-color">
-    <div class="flex-center">
-      <h1 class="logo">Tower</h1>
-      <div class="sign-box">
-        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-          <h3 class="margin-bottom-normal">重新设置密码</h3>
-          <p><%= f.email_field :email, class: "form-control", placeholder: "请填写登录邮箱" %></p>
-          <p><%= f.submit "发送密码重设邮件", class: "btn btn-primary sign-button-width sign-button-vertical-margins" %></p>
-        <% end%>
-      </div>
+<body class="fullscreen-body default-background-color">
+  <%= render 'layouts/flash' %>
+  <div class="flex-center">
+    <h1 class="logo">Tower</h1>
+    <div class="sign-box">
+      <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+        <h3 class="margin-bottom-normal">重新设置密码</h3>
+        <p><%= f.email_field :email, class: "form-control", placeholder: "请填写登录邮箱" %></p>
+        <p><%= f.submit "发送密码重设邮件", class: "btn btn-primary sign-button-width sign-button-vertical-margins" %></p>
+      <% end%>
     </div>
-  </body>
-</html>
+  </div>
+</body>

@@ -1,32 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <%= form_for(:project, url: team_projects_path) do |f| %>
-      <div class="phone-page-box col-xs-12">
-        <div class="phone-page-top-bar flex-vcenter">
-          <%= link_to team_projects_path, class: "flex-vcenter" do %>
-            <span class="glyphicon glyphicon-menu-left phone-top-item-icon"></span>
-          <% end %>
-          <span class="phone-top-title">新建项目</span>
-	  <%= f.button :submit, class: "phone-text-button flex-align-right remove-submit-btn-style" do %>
-	    <span >保存</span>
-          <% end %>
-        </div>
+<body>
+  <%= form_for(:project, url: team_projects_path) do |f| %>
+    <div class="phone-page-box col-xs-12">
+      <div class="phone-page-top-bar flex-vcenter">
+        <%= link_to team_projects_path, class: "flex-vcenter" do %>
+          <span class="glyphicon glyphicon-menu-left phone-top-item-icon"></span>
+        <% end %>
+        <span class="phone-top-title">新建项目</span>
+        <%= f.button :submit, class: "phone-text-button flex-align-right remove-submit-btn-style" do %>
+          <span >保存</span>
+        <% end %>
+      </div>
 
-        <div class="phone-page-scroll-area">
-          <div class="input-group phone-input-group flex-vcenter">
-            <span class="phone-input-title">项目名称</span>
-            <%= f.text_field :name, class: "phone-input-area", autofocus: true %>
-          </div>
-          <div class="input-group phone-input-group flex-vcenter">
-            <span class="phone-input-title">项目描述</span>
-            <%= f.text_field :summary, class: "phone-input-area" %>
-          </div>
+      <div class="phone-page-scroll-area">
+        <div class="input-group phone-input-group flex-vcenter">
+          <span class="phone-input-title">项目名称</span>
+          <%= f.text_field :name, class: "phone-input-area", autofocus: true %>
+        </div>
+        <div class="input-group phone-input-group flex-vcenter">
+          <span class="phone-input-title">项目描述</span>
+          <%= f.text_field :summary, class: "phone-input-area" %>
         </div>
       </div>
-    <% end%>
-  </body>
-</html>
+    </div>
+  <% end%>
+</body>

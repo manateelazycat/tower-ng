@@ -1,33 +1,28 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render 'layouts/header' %>
-    <div class="board-box min-board-height">
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
+  <div class="board-box min-board-height">
 
-      <div class="link-button-group">
-    	<% if team_administrator? %>
-          <span class="glyphicon glyphicon-plus"></span>
-          <%= link_to "新建项目", new_team_project_path, :class => "link-button" %>
-	<% end %>
-        <div class="float-right">
-          <span class="glyphicon glyphicon-search link-button"></span>
-        </div>
-      </div>
-
-      <div class="grid-container" id="sortableContainer">
-        <% current_team.projects.each do |project| %>
-	  <%= link_to project_url(project.hashid) do %>
-            <div class="project-item">
-              <div class="flex-column-center">
-		<span class="glyphicon <%= project.icon %> project-icon"></span>
-		<div class="project-name"><%= project.name %></div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+    <div class="link-button-group">
+      <% if team_administrator? %>
+        <span class="glyphicon glyphicon-plus"></span>
+        <%= link_to "新建项目", new_team_project_path, :class => "link-button" %>
+      <% end %>
+      <div class="float-right">
+        <span class="glyphicon glyphicon-search link-button"></span>
       </div>
     </div>
-  </body>
-</html>
+
+    <div class="grid-container" id="sortableContainer">
+      <% current_team.projects.each do |project| %>
+        <%= link_to project_url(project.hashid) do %>
+          <div class="project-item">
+            <div class="flex-column-center">
+              <span class="glyphicon <%= project.icon %> project-icon"></span>
+              <div class="project-name"><%= project.name %></div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</body>

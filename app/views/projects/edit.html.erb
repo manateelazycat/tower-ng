@@ -1,32 +1,27 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render "layouts/loading_dialog", message: "正在删除项目..." %>
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render "layouts/loading_dialog", message: "正在删除项目..." %>
 
-    <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
 
-    <%= link_to project_url(@project.hashid) do %>
-      <div class="bread-crumbs-big">
-        <%= @project.name %>
+  <%= link_to project_url(@project.hashid) do %>
+    <div class="bread-crumbs-big">
+      <%= @project.name %>
+    </div>
+  <% end %>
+
+  <div class="board-box min-board-height">
+    <% if team_administrator? %>
+      <%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个项目吗?", controller: "project", action: "project#deleteProject" %>
+      <h3>项目设置</h3>
+      <div class="setting-page-action">
+        <h4 class="setting-page-action-title">删除项目</h4>
+        <span class="setting-page-action-summary">项目删除后，所有的内容也将被立刻删除，请谨慎操作。</span>
+        <button class="btn btn-default setting-page-delete-button"
+                data-toggle="modal"
+                data-target="#confirm-dialog">
+          了解风险, 删除这个项目
+        </button>
       </div>
     <% end %>
-
-    <div class="board-box min-board-height">
-      <% if team_administrator? %>
-	<%= render "layouts/confirm_dialog", dialogid: "confirm-dialog", message: "确定要删除这个项目吗?", controller: "project", action: "project#deleteProject" %>
-	<h3>项目设置</h3>
-	<div class="setting-page-action">
-	  <h4 class="setting-page-action-title">删除项目</h4>
-	  <span class="setting-page-action-summary">项目删除后，所有的内容也将被立刻删除，请谨慎操作。</span>
-	  <button class="btn btn-default setting-page-delete-button"
-	          data-toggle="modal"
-                  data-target="#confirm-dialog">
-	    了解风险, 删除这个项目
-	  </button>
-	</div>
-      <% end %>
-    </div>
-  </body>
-</html>
+  </div>
+</body>

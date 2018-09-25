@@ -1,36 +1,31 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render 'layouts/header' %>
-    <%= render "layouts/menu_eventarea" %>
-    <%= render "layouts/mission_distributor_menu" %>
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
+  <%= render "layouts/menu_eventarea" %>
+  <%= render "layouts/mission_distributor_menu" %>
 
-    <%= render "layouts/confirm_dialog", dialogid: "mission-confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
+  <%= render "layouts/confirm_dialog", dialogid: "mission-confirm-dialog", message: "确定要删除这个任务吗?", controller: "mission", action: "mission#deleteMission" %>
 
-    <%= render "layouts/mission_toolbar",
-    delete_dialog: "#mission-confirm-dialog",
-    dialog_id: "mission-confirm-dialog"
-    %>
+  <%= render "layouts/mission_toolbar",
+  delete_dialog: "#mission-confirm-dialog",
+  dialog_id: "mission-confirm-dialog"
+  %>
 
-    <div class="board-box min-board-height"
-	 data-controller="mission member">
-      <div class="page-title"><%= current_user.name %> 创建的任务</div>
+  <div class="board-box min-board-height"
+       data-controller="mission member">
+    <div class="page-title"><%= current_user.name %> 创建的任务</div>
 
-      <% if @mission_list %>
-        <% @mission_list.each do |mission| %>
-          <% if !mission.is_finish %>
-            <%= render "missions/create_mission", mission: mission, show_project: true %>
-          <% end %>
-        <% end %>
-	<div class="created_missions_splitter"></div>
-        <% @mission_list.each do |mission| %>
-          <% if mission.is_finish %>
-            <%= render "missions/create_mission", mission: mission, show_project: true %>
-          <% end %>
+    <% if @mission_list %>
+      <% @mission_list.each do |mission| %>
+        <% if !mission.is_finish %>
+          <%= render "missions/create_mission", mission: mission, show_project: true %>
         <% end %>
       <% end %>
-    </div>
-  </body>
-</html>
+      <div class="created_missions_splitter"></div>
+      <% @mission_list.each do |mission| %>
+        <% if mission.is_finish %>
+          <%= render "missions/create_mission", mission: mission, show_project: true %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</body>

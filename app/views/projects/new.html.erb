@@ -1,26 +1,21 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render 'layouts/header' %>
-    <%= link_to team_projects_path do %>
-      <div class="bread-crumbs-big">
-	所有项目
-      </div>
-    <% end %>
-
-    <div class="board-box">
-
-      <%= form_for(:project, url: team_projects_path) do |f| %>
-	<div class="form-title">创建新项目</div>
-        <p><%= f.text_field :name, class: "form-control", placeholder: "项目名称", autofocus: true %></p>
-        <p><%= f.text_area :summary, rows: "5", class: "form-control", placeholder: "简单描述项目, 便于其他人理解 (选填)" %></p>
-	<div class="flex-vcenter margin-top-normal">
-          <%= f.submit "创建", class: "btn btn-primary btn-xs submit-button-width" %>
-          <%= link_to "取消", team_projects_path, :class => "link-button-big margin-left-normal" %>
-	</div>
-      <% end%>
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
+  <%= link_to team_projects_path do %>
+    <div class="bread-crumbs-big">
+      所有项目
     </div>
-  </body>
-</html>
+  <% end %>
+
+  <div class="board-box">
+
+    <%= form_for(:project, url: team_projects_path) do |f| %>
+      <div class="form-title">创建新项目</div>
+      <p><%= f.text_field :name, class: "form-control", placeholder: "项目名称", autofocus: true %></p>
+      <p><%= f.text_area :summary, rows: "5", class: "form-control", placeholder: "简单描述项目, 便于其他人理解 (选填)" %></p>
+      <div class="flex-vcenter margin-top-normal">
+        <%= f.submit "创建", class: "btn btn-primary btn-xs submit-button-width" %>
+        <%= link_to "取消", team_projects_path, :class => "link-button-big margin-left-normal" %>
+      </div>
+    <% end%>
+  </div>
+</body>

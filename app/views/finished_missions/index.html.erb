@@ -1,19 +1,14 @@
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
-    <%= render 'layouts/header' %>
-    <div class="board-box min-board-height">
-      <div class="page-title"><%= current_user.name %> 已完成的任务</div>
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
+  <div class="board-box min-board-height">
+    <div class="page-title"><%= current_user.name %> 已完成的任务</div>
 
-      <% if @mission_list %>
-        <% @mission_list.each do |mission| %>
-          <% if mission.is_finish %>
-            <%= render "missions/create_mission", mission: mission, show_project: false %>
-          <% end %>
+    <% if @mission_list %>
+      <% @mission_list.each do |mission| %>
+        <% if mission.is_finish %>
+          <%= render "missions/create_mission", mission: mission, show_project: false %>
         <% end %>
       <% end %>
-    </div>
-  </body>
-</html>
+    <% end %>
+  </div>
+</body>

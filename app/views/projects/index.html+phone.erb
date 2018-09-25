@@ -1,34 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div class="phone-page-box col-xs-12">
-      <div class="phone-page-top-bar flex-vcenter">
-        <span class="phone-top-name">项目</span>
-        <div class="flex-align-right">
-          <span class="glyphicon glyphicon-search phone-top-item-icon"></span>
-          <%= link_to new_team_project_path do %>
-            <span class="glyphicon glyphicon-plus phone-top-item-icon"></span>
-          <% end %>
-        </div>
+<body>
+  <div class="phone-page-box col-xs-12">
+    <div class="phone-page-top-bar flex-vcenter">
+      <span class="phone-top-name">项目</span>
+      <div class="flex-align-right">
+        <span class="glyphicon glyphicon-search phone-top-item-icon"></span>
+        <%= link_to new_team_project_path do %>
+          <span class="glyphicon glyphicon-plus phone-top-item-icon"></span>
+        <% end %>
       </div>
-
-      <div class="phone-page-scroll-area">
-        <ul id="phoneSortableContainer">
-          <% current_team.projects.each do |project| %>
-            <%= link_to project_url(project.hashid) do %>
-              <li class="phone-project-item-box flex-vcenter">
-                <span class="glyphicon <%= project.icon %> phone-project-icon"></span>
-                <span class="phone-project-item-name"><%= project.name %></span>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-
-      <%= render 'layouts/footer' %>
     </div>
-  </body>
-</html>
+
+    <div class="phone-page-scroll-area">
+      <ul id="phoneSortableContainer">
+        <% current_team.projects.each do |project| %>
+          <%= link_to project_url(project.hashid) do %>
+            <li class="phone-project-item-box flex-vcenter">
+              <span class="glyphicon <%= project.icon %> phone-project-icon"></span>
+              <span class="phone-project-item-name"><%= project.name %></span>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <%= render 'layouts/footer' %>
+  </div>
+</body>
