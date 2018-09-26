@@ -25,14 +25,16 @@
       </div>
     </div>
   </form>
-  <div class="glyphicon glyphicon-bell top-header-bell"></div>
+  <a href="#"
+     class="glyphicon glyphicon-bell top-header-bell"
+     data-action="header#popNotificationMenu">
+  </a>
   <div class="top-header-icon inline-block">
     <%= image_tag(current_user.avatar_url, width: 24, height: 24, class: "avatar") %>
   </div>
   <a href="#"
      class="glyphicon glyphicon-triangle-bottom top-header-item top-header-menu-button"
-     data-action="header#popMenu">
-
+     data-action="header#popMainMenu">
   </a>
 </div>
 
@@ -71,6 +73,28 @@
       <%= link_to sign_out_path, method: :delete do %>
         <div class="top-header-menu-item-button">退出登录</div>
       <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="notification-menu">
+  <ul>
+    <li class="top-header-menu-item-no-hover">
+      <div class="notification-menu-title">通知</div>
+    </li>
+    <li class="splitter"></li>
+    <li class="top-header-menu-item-no-hover">
+      <div class="notification-menu-content">- 没有新的通知 -</div>
+    </li>
+    <li class="top-header-menu-item-no-hover">
+      <div>
+	<div class="notification-menu-button-link inline-block float-left">
+	  <div class="notification-menu-icon glyphicon glyphicon-cog"></div>通知设置
+	</div>
+	<div class="notification-menu-button-link inline-block float-right">
+	  查看所有通知
+	</div>
+      </div>
     </li>
   </ul>
 </div>

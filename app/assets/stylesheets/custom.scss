@@ -1576,3 +1576,39 @@ activity-line:before {
     flex: 1;
     content: '';
 }
+
+.notification-menu {
+    @include arrow-menu-mixin(
+	linear-gradient($menu-color 150px, rgb(245, 245, 245) 150px, rgb(245, 245, 245) 100%),
+	$menu-color,
+	calc(90% - 80px),
+	center,
+	10000
+    );
+
+    width: 400px;
+    height: 200px;
+}
+
+.notification-menu-title {
+    font-weight: 500;
+    font-size: 15px;
+
+    float: left;
+}
+
+.notification-menu-content {
+    height: 75px;
+    font-size: 18px;
+    padding-top: 20px;
+    color: #666;
+}
+
+.notification-menu-icon {
+    font-size: 14px;
+    margin-right: 3px;
+}
+
+.notification-menu-button-link {
+    @include text-link-button-mixin(14px, 0px, #222, $logo-color, $logo-color);
+}
