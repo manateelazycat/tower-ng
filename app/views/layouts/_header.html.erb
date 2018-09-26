@@ -11,7 +11,7 @@
      data-controller="header">
   <div><%= link_to current_team.name, root_path, :class => "team-name"%></div>
   <div><%= link_to "项目", team_projects_url(current_team.hashid), :class => "top-header-item" %></div>
-  <div><%= link_to "动态", root_path, :class => "top-header-item" %></div>
+  <div><%= link_to "动态", team_activities_url(current_team.hashid), :class => "top-header-item" %></div>
   <div><%= link_to "团队", team_members_url(current_team.hashid), :class => "top-header-item" %></div>
   <div><%= link_to "我自己", user_path(current_user.hashid), :class => "top-header-item" %></div>
   <div class="top-header-blank"></div>

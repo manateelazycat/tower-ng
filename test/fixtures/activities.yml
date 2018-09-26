@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mission_id: 1
+  content: MyString
+
+two:
+  mission_id: 1
+  content: MyString

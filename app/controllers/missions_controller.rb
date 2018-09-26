@@ -14,6 +14,8 @@ class MissionsController < ApplicationController
       creator: current_user.id
     )
 
+    Activity.add_create_activity(current_user.id, mission.id)
+
     respond_to do |format|
       format.html do
         render "_create_mission",
@@ -49,6 +51,9 @@ class MissionsController < ApplicationController
 
       return unless mission
 
+      old_distributor = mission.user_id
+      old_finish_time = mission.finish_time
+
       mission.user_id = params[:user_id].empty? ? nil : User.find(params[:user_id]).id
       mission.finish_time = params[:finish_date].empty? ? nil : DateTime.parse(params[:finish_date])
 
@@ -61,6 +66,14 @@ class MissionsController < ApplicationController
       end
 
       user_hashid = mission.user_id.nil? ? nil : User.find(mission.user_id).hashid
+
+      if mission.user_id
+        Activity.add_change_distributor_activity(current_user.id, mission.id, mission.user_id)
+      else
+        Activity.add_cancel_distributor_activity(current_user.id, mission.id, old_distributor)
+      end
+
+      Activity.add_change_finish_time_activity(current_user.id, mission.id, old_finish_time, mission.finish_time)
 
       respond_to do |format|
         format.json do
@@ -85,6 +98,8 @@ class MissionsController < ApplicationController
 
       finish_mission(current_user.id, mission.id)
 
+      Activity.add_finish_activity(current_user.id, mission.id)
+
       respond_to do |format|
         format.html do
           render "_closed_mission",
@@ -103,6 +118,8 @@ class MissionsController < ApplicationController
       mission.save
 
       reopen_mission(mission.id)
+
+      Activity.add_reopen_activity(current_user.id, mission.id)
 
       respond_to do |format|
         format.html do

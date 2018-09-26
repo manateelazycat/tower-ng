@@ -836,11 +836,11 @@ input[type="checkbox"]:disabled + label::before {
 }
 
 .mission-title-link {
-    @include text-link-button-mixin(16px, 0px, #222, $logo-color, $logo-color);
+    @include text-link-button-mixin(15px, 0px, #222, $logo-color, $logo-color);
 }
 
 .mission-title-link-finished {
-    @include text-link-button-mixin(16px, 0px, #aaa, $logo-color, $logo-color);
+    @include text-link-button-mixin(15px, 0px, #aaa, $logo-color, $logo-color);
 }
 
 .mission-finish-log {
@@ -1522,4 +1522,57 @@ input[type="checkbox"]:disabled + label::before {
 .buttons-middle-blank {
     display: inline-block;
     width: 8px;
+}
+
+.activity-item {
+    height: max-content;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.activity-time {
+    color: #888;
+    font-size: 12px;
+    margin-left: 40px;
+}
+
+.activity-user {
+    font-weight: 800;
+}
+
+.activity-avatar {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.activity-project-line {
+    @include text-link-button-mixin(20px, 0px, #666, $logo-color, $logo-color);
+
+    margin-left: 20px;
+}
+
+.activity-day-line {
+    color: $logo-color;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.activity-comment {
+    margin-top: 10px;
+    color: #666;
+}
+
+activity-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+activity-line:before {
+    background: #eee;
+    height: 1px;
+    flex: 1;
+    content: '';
 }

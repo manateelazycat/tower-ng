@@ -1,0 +1,53 @@
+<body class="fill-background-color" id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <%= render 'layouts/header' %>
+  <div class="board-box min-board-height">
+    <% @activities.each do |activity| %>
+      <li class="activity-item">
+        <% if activity[:log_type] == "day_line" %>
+          <%= link_to project_url(activity[:mission_project_hashid]) do %>
+            <div class="activity-day-line">
+              <%= activity[:log_day] %>
+            </div>
+            <activity-line>
+              <span class="activity-project-line">
+                <%= activity[:project_name] %>
+              </span>
+            </activity-line>
+          <% end %>
+        <% elsif activity[:log_type] == "project_line" %>
+          <%= link_to project_url(activity[:mission_project_hashid]) do %>
+            <activity-line>
+              <span class="activity-project-line">
+                <%= activity[:project_name] %>
+              </span>
+            </activity-line>
+          <% end %>
+        <% else %>
+          <div class="flex-vcenter">
+	    <div class="activity-time inline-block">
+              <%= activity[:log_date].strftime("%H:%M") %>
+            </div>
+            <%= image_tag User.find(activity[:user_id]).avatar_url, width: 48, height: 48, class: "avatar activity-avatar" %>
+            <div class="inline-block">
+	      <div>
+		<div class="activity-user inline-block">
+                  <%= User.find(activity[:user_id]).name %>
+		</div>
+		<%= activity[:log_info] %>
+		<%= link_to project_mission_url(activity[:mission_project_hashid], activity[:mission_hashid]) do %>
+		  <span class="mission-title-link">
+                    <%= activity[:mission_name] %>
+		  </span>
+		<% end %>
+              </div>
+              <div class="activity-comment">
+		<%= activity[:comment] %>
+	      </div>
+	    </div>
+	  </div>
+        <% end %>
+
+      </li>
+    <% end %>
+  </div>
+</body>

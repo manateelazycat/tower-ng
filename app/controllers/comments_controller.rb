@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
       mission_id: params[:mission_id]
     )
 
+    Activity.add_comment_activity(current_user.id, mission.id, params[:content])
+
     respond_to do |format|
       format.html do
         render "_create_comment",

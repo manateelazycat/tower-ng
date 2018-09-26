@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_142500) do
+ActiveRecord::Schema.define(version: 2018_09_26_055856) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer "mission_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "content_type"
+    t.integer "user_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
