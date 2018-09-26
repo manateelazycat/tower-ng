@@ -15,7 +15,7 @@ class MembersController < ApplicationController
                        type: "超级管理员",
                        email: team_creator.email,
                        color: "member-type-super-admin",
-                       photo_url: current_user.avatar_url,
+                       photo_url: team_creator.avatar_url,
                        active: true)
 
     # Push team members.
