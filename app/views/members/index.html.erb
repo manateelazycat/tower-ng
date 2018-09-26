@@ -16,7 +16,7 @@
               <%= image_tag member[:photo_url], width: 48, height: 48, class: "avatar" %>
             </div>
             <div class="member-item-name">
-              <%= link_to member_path(member[:user_hashid]), class: "member-item-name-button" do %>
+              <%= link_to user_path(member[:user_hashid]), class: "member-item-name-button" do %>
                 <%= member[:name] %>
               <% end %>
             </div>
